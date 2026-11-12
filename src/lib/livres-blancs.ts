@@ -15,7 +15,7 @@ export const livresBlancs: LivreBlanc[] = [
   {
     slug: "guide-assurance-cyber-pme",
     audience: "Entreprises",
-    title: "Assurance cyber : le guide pratique pour les PME et ETI",
+    title: "Assurance cyber\u00a0: le guide pratique pour les PME et ETI",
     summary: "Comprendre les garanties, les exclusions et les prérequis pour bien protéger votre entreprise.",
     pages: "12 pages",
     pdf: "/livres-blancs/guide-assurance-cyber-pme.pdf",
@@ -32,7 +32,7 @@ export const livresBlancs: LivreBlanc[] = [
   {
     slug: "checklist-prerequis-assureurs",
     audience: "Entreprises",
-    title: "Checklist : les 10 prérequis des assureurs cyber",
+    title: "Checklist\u00a0: les 10 prérequis des assureurs cyber",
     summary: "Vérifiez en quelques minutes si votre entreprise est prête à souscrire.",
     pages: "6 pages",
     pdf: "/livres-blancs/checklist-prerequis-assureurs.pdf",

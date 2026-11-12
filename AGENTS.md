@@ -30,3 +30,4 @@ use the editor.
 <!-- LOVABLE:END -->
 - Shared header/footer/cards live in src/components/site.tsx and wrap every page from __root; each page sets SEO via its seo() helper so canonical/OG stay consistent.
 - Partner landing pages (/partenaires/*) share src/components/partner-landing.tsx driven by a per-page data object; the commission grid lives in src/lib/commission.ts so all pages show the same values.
+- Content collections (livres blancs, fonctionnalités) live as typed arrays in src/lib/*.ts and render through one $slug route each; the sitemap reads the same arrays.
