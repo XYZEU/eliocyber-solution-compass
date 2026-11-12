@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useFormFeedback } from "@/components/form-feedback";
-import { useState, type FormEvent } from "react";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { seo, type Profil } from "@/components/site";
