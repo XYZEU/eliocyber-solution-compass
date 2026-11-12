@@ -93,7 +93,9 @@ const footerGroups: FooterGroup[] = [
   { title: "Plateforme", links: fonctionnalites.map((f) => ({ slug: f.slug, label: f.name })) },
 ];
 
-const fLink = "text-ink-link transition-colors hover:text-primary-foreground hover:underline";
+const fLink = "text-ink-link underline-offset-4 transition-colors hover:text-primary-foreground hover:underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/80 focus-visible:ring-offset-2 focus-visible:ring-offset-ink active:text-primary-foreground active:underline";
+
+const linkActive = { className: "text-primary-foreground underline", "aria-current": "page" } as const;
 
 const groupAnchor = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
