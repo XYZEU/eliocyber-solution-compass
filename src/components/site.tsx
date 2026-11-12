@@ -147,7 +147,7 @@ export function SiteFooter() {
           ))}
         </nav>
 
-        <nav aria-label="Plan du site" className="mt-6 border-t border-ink-foreground/15 md:hidden">
+        <nav aria-label="Plan du site" className="mt-6 border-t border-ink-foreground/15 md:hidden" onKeyDown={onAccordionKeyDown}>
           {footerGroups.map((col) => {
             const id = groupAnchor(col.title);
             const isOpen = open === col.title;
@@ -156,11 +156,12 @@ export function SiteFooter() {
                 <h2>
                   <button
                     type="button"
+                    data-accordion
                     id={`footer-h-${id}`}
                     aria-expanded={isOpen}
                     aria-controls={`footer-p-${id}`}
                     onClick={() => setOpen(isOpen ? null : col.title)}
-                    className="flex min-h-12 w-full items-center justify-between gap-3 py-3 text-left text-[14px] font-semibold text-primary-foreground"
+                    className="flex min-h-12 w-full items-center justify-between gap-3 py-3 text-left text-[14px] font-semibold text-primary-foreground transition-colors hover:text-primary-foreground/80 focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/80 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                   >
                     {col.title}
                     <ChevronDown className={cn("size-4 shrink-0 transition-transform duration-200", isOpen && "rotate-180")} aria-hidden />
