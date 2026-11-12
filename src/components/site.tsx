@@ -100,9 +100,22 @@ const linkActive = { className: "text-primary-foreground underline", "aria-curre
 const groupAnchor = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
 function FooterLinkItem({ link, className, onClick }: { link: FooterLink; className: string; onClick?: () => void }) {
-  if ("search" in link) return <Link to="/contact" search={link.search} onClick={onClick} className={className}>{link.label}</Link>;
-  if ("slug" in link) return <Link to="/fonctionnalites/$slug" params={{ slug: link.slug }} onClick={onClick} className={className}>{link.label}</Link>;
-  return <Link to={link.to} onClick={onClick} className={className}>{link.label}</Link>;
+  if ("search" in link) return <Link to="/contact" search={link.search} onClick={onClick} className={className} activeProps={linkActive}>{link.label}</Link>;
+  if ("slug" in link) return <Link to="/fonctionnalites/$slug" params={{ slug: link.slug }} onClick={onClick} className={className} activeProps={linkActive}>{link.label}</Link>;
+  return <Link to={link.to} onClick={onClick} className={className} activeProps={linkActive}>{link.label}</Link>;
+}
+
+function onAccordionKeyDown(e: React.KeyboardEvent<HTMLElement>) {
+  if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(e.key)) return;
+  const buttons = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>("button[data-accordion]"));
+  const i = buttons.indexOf(e.target as HTMLButtonElement);
+  if (i === -1) return;
+  e.preventDefault();
+  const next = e.key === "ArrowDown" ? (i + 1) % buttons.length
+    : e.key === "ArrowUp" ? (i - 1 + buttons.length) % buttons.length
+    : e.key === "Home" ? 0
+    : buttons.length - 1;
+  buttons[next]?.focus();
 }
 
 export function SiteFooter() {
