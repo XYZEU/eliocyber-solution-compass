@@ -5,9 +5,9 @@ import { fonctionnalites } from "@/lib/fonctionnalites";
 
 export const Route = createFileRoute("/fonctionnalites/")({
   head: () => ({
-    ...seo("/fonctionnalites", "Plateforme d'assurance cyber : les 5 modules | Eliocyber", "Portail MSP, moteur de souscription, moteur de risque, module de remédiation et portail client : découvrez la plateforme Eliocyber, du risque au sinistre."),
+    ...seo("/fonctionnalites", "Vue d'ensemble : la plateforme d'assurance cyber en 5 modules | Eliocyber", "Portail MSP, moteur de souscription, moteur de risque, module de remédiation et portail client : découvrez la plateforme Eliocyber, du risque au sinistre."),
     scripts: [{ type: "application/ld+json", children: JSON.stringify({
-      "@context": "https://schema.org", "@type": "ItemList", name: "Fonctionnalités de la plateforme Eliocyber",
+      "@context": "https://schema.org", "@type": "ItemList", name: "Vue d'ensemble de la plateforme Eliocyber",
       itemListElement: fonctionnalites.map((f, i) => ({ "@type": "ListItem", position: i + 1, url: `/fonctionnalites/${f.slug}`, name: f.name })),
     }) }],
   }),
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/fonctionnalites/")({
 function Page() {
   return (
     <>
-      <PageIntro eyebrow="Fonctionnalités" title="Une plateforme, de la détection du risque au sinistre">
+      <PageIntro eyebrow="Vue d'ensemble" title="Une plateforme, de la détection du risque au sinistre">
         Cinq modules reliés entre eux pour les partenaires, le courtier, les assureurs et les entreprises assurées.
       </PageIntro>
       <section className="band" aria-labelledby="modules">
