@@ -13,14 +13,14 @@ export const Route = createFileRoute("/fonctionnalites/$slug")({
   head: ({ loaderData, params }) =>
     loaderData
       ? {
-          ...seo(`/fonctionnalites/${params.slug}`, `${loaderData.name} : ${loaderData.tagline.toLowerCase()} | Eliocyber`, `${loaderData.name} — ${loaderData.summary} ${loaderData.audience}.`, { type: "article", section: "Fonctionnalités", tags: loaderData.features.map(([t]) => t) }),
+          ...seo(`/fonctionnalites/${params.slug}`, `${loaderData.name} : ${loaderData.tagline.toLowerCase()} | Eliocyber`, `${loaderData.name} — ${loaderData.summary} ${loaderData.audience}.`, { type: "article", section: "Vue d'ensemble", tags: loaderData.features.map(([t]) => t) }),
           scripts: [
             faqJsonLd(loaderData.faq),
             { type: "application/ld+json", children: JSON.stringify([
               { "@context": "https://schema.org", "@type": "SoftwareApplication", name: `Eliocyber — ${loaderData.name}`, applicationCategory: "BusinessApplication", operatingSystem: "Web", description: loaderData.intro, featureList: loaderData.features.map(([t]) => t), provider: { "@type": "Organization", name: "Eliocyber" } },
               { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
                 { "@type": "ListItem", position: 1, name: "Accueil", item: "/" },
-                { "@type": "ListItem", position: 2, name: "Fonctionnalités", item: "/fonctionnalites" },
+                { "@type": "ListItem", position: 2, name: "Vue d'ensemble", item: "/fonctionnalites" },
                 { "@type": "ListItem", position: 3, name: loaderData.name, item: `/fonctionnalites/${params.slug}` },
               ] },
             ]) },
@@ -36,7 +36,7 @@ function Page() {
   return (
     <>
       <nav aria-label="Fil d'Ariane" className="wrap truncate pt-6 text-sm text-muted-foreground">
-        <Link to="/fonctionnalites" className="hover:text-primary">Fonctionnalités</Link> / <span aria-current="page">{f.name}</span>
+        <Link to="/fonctionnalites" className="hover:text-primary">Vue d'ensemble</Link> / <span aria-current="page">{f.name}</span>
       </nav>
       <section className="wrap sec">
         <p className="eyebrow"><span className="block sm:inline">{f.name}</span><span className="hidden sm:inline"> · </span><span className="block sm:inline">{f.audience}</span></p>

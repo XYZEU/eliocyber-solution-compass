@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 const nav = [
   { to: "/solution", label: "Solution" },
-  { to: "/fonctionnalites", label: "Fonctionnalités" },
+  { to: "/fonctionnalites", label: "Vue d'ensemble" },
   { to: "/comment-ca-marche", label: "Comment ça marche" },
   { to: "/nos-partenaires", label: "Nos partenaires" },
   { to: "/ressources", label: "Ressources" },
@@ -77,7 +77,7 @@ export function SiteFooter() {
           <Link to="/solution" className="mr-4 text-ink-link hover:underline">Nos garanties cyber</Link>
           <Link to="/contact" search={{ profil: "entreprise" }} className="mr-4 text-ink-link hover:underline">Parler à un courtier</Link>
           <Link to="/ressources" className="mr-4 text-ink-link hover:underline">Livres blancs</Link>
-          <Link to="/fonctionnalites" className="text-ink-link hover:underline">Fonctionnalités</Link>
+          <Link to="/fonctionnalites" className="text-ink-link hover:underline">Vue d'ensemble</Link>
         </div>
         <div>
           <p className="mb-1 font-semibold text-primary-foreground">Partenaires</p>
