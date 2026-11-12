@@ -108,7 +108,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         "@context": "https://schema.org",
         "@type": "InsuranceAgency",
         name: "Eliocyber",
-        url: "https://eliocyber.fr",
         description: "Courtier en assurance cyber pour PME et ETI, avec un réseau de prescripteurs cyber, IT et conformité.",
         areaServed: "FR",
       }),
