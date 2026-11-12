@@ -139,7 +139,7 @@ export function CtaBanner({ title, text, to, label, profil, secondary }: { title
   );
 }
 
-export function seo(path: string, title: string, description: string) {
+export function seo(path: string, title: string, description: string, og: { type?: "website" | "article"; section?: string; tags?: string[] } = {}) {
   const url = path;
   return {
     meta: [
@@ -148,7 +148,11 @@ export function seo(path: string, title: string, description: string) {
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:url", content: url },
-      { property: "og:type", content: "website" },
+      { property: "og:type", content: og.type ?? "website" },
+      { property: "og:site_name", content: "Eliocyber" },
+      { property: "og:locale", content: "fr_FR" },
+      ...(og.section ? [{ property: "article:section", content: og.section }] : []),
+      ...(og.tags ?? []).map((t) => ({ property: "article:tag", content: t })),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },

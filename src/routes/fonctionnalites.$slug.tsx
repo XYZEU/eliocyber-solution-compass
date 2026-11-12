@@ -13,7 +13,7 @@ export const Route = createFileRoute("/fonctionnalites/$slug")({
   head: ({ loaderData, params }) =>
     loaderData
       ? {
-          ...seo(`/fonctionnalites/${params.slug}`, `${loaderData.name} : ${loaderData.summary.split(",")[0].toLowerCase()} et plus | Eliocyber`, `${loaderData.name} — ${loaderData.summary} ${loaderData.audience}.`),
+          ...seo(`/fonctionnalites/${params.slug}`, `${loaderData.name} : ${loaderData.tagline.toLowerCase()} | Eliocyber`, `${loaderData.name} — ${loaderData.summary} ${loaderData.audience}.`, { type: "article", section: "Fonctionnalités", tags: loaderData.features.map(([t]) => t) }),
           scripts: [
             faqJsonLd(loaderData.faq),
             { type: "application/ld+json", children: JSON.stringify([

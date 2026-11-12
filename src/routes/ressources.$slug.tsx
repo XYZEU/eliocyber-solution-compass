@@ -15,7 +15,7 @@ export const Route = createFileRoute("/ressources/$slug")({
   head: ({ loaderData, params }) =>
     loaderData
       ? {
-          ...seo(`/ressources/${params.slug}`, `${loaderData.title} — Livre blanc gratuit | Eliocyber`, `${loaderData.summary} Livre blanc gratuit (PDF, ${loaderData.pages}).`),
+          ...seo(`/ressources/${params.slug}`, `${loaderData.title} — Livre blanc gratuit | Eliocyber`, `${loaderData.summary} Livre blanc gratuit (PDF, ${loaderData.pages}).`, { type: "article", section: `Livres blancs — ${loaderData.audience}`, tags: ["assurance cyber", "livre blanc", loaderData.audience] }),
           scripts: [{ type: "application/ld+json", children: JSON.stringify([
             { "@context": "https://schema.org", "@type": "DigitalDocument", name: loaderData.title, description: loaderData.summary, encodingFormat: "application/pdf", inLanguage: "fr-FR", isAccessibleForFree: true, audience: { "@type": "Audience", audienceType: loaderData.audience }, publisher: { "@type": "Organization", name: "Eliocyber" }, url: `/ressources/${params.slug}` },
             { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
