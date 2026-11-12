@@ -105,7 +105,13 @@ function FooterLinkItem({ link, className, onClick }: { link: FooterLink; classN
   return <Link to={link.to} onClick={onClick} className={className} activeProps={linkActive}>{link.label}</Link>;
 }
 
-function onAccordionKeyDown(e: React.KeyboardEvent<HTMLElement>) {
+function onAccordionKeyDown(e: React.KeyboardEvent<HTMLElement>, close: () => void) {
+  if (e.key === "Escape") {
+    const openButton = e.currentTarget.querySelector<HTMLButtonElement>('button[data-accordion][aria-expanded="true"]');
+    close();
+    openButton?.focus();
+    return;
+  }
   if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(e.key)) return;
   const buttons = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>("button[data-accordion]"));
   const i = buttons.indexOf(e.target as HTMLButtonElement);
@@ -147,7 +153,7 @@ export function SiteFooter() {
           ))}
         </nav>
 
-        <nav aria-label="Plan du site" className="mt-6 border-t border-ink-foreground/15 md:hidden" onKeyDown={onAccordionKeyDown}>
+        <nav aria-label="Plan du site" className="mt-6 border-t border-ink-foreground/15 md:hidden" onKeyDown={(e) => onAccordionKeyDown(e, () => setOpen(null))}>
           {footerGroups.map((col) => {
             const id = groupAnchor(col.title);
             const isOpen = open === col.title;

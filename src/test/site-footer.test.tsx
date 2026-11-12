@@ -74,6 +74,51 @@ describe("Footer accordions — keyboard", () => {
   });
 });
 
+describe("Footer accordions — Escape", () => {
+  it("Escape closes the open section and returns focus to its header", async () => {
+    const { buttons } = await renderFooter();
+    const [, part] = buttons;
+    fireEvent.click(part);
+    expect(part).toHaveAttribute("aria-expanded", "true");
+    fireEvent.keyDown(part, { key: "Escape" });
+    expect(part).toHaveAttribute("aria-expanded", "false");
+    const panel = document.getElementById(part.getAttribute("aria-controls")!)!;
+    expect(panel).toHaveClass("invisible");
+    expect(document.activeElement).toBe(part);
+  });
+
+  it("Escape from a link inside the open section closes it and focuses its header", async () => {
+    const { buttons } = await renderFooter();
+    const [ent] = buttons;
+    fireEvent.click(ent);
+    const panel = document.getElementById(ent.getAttribute("aria-controls")!)!;
+    const link = within(panel).getAllByRole("link", { hidden: true })[0]!;
+    link.focus();
+    fireEvent.keyDown(link, { key: "Escape" });
+    expect(ent).toHaveAttribute("aria-expanded", "false");
+    expect(document.activeElement).toBe(ent);
+  });
+
+  it("Escape closes the open section even when focus sits on another header", async () => {
+    const { buttons } = await renderFooter();
+    const [ent, , plat] = buttons;
+    fireEvent.click(ent);
+    plat.focus();
+    fireEvent.keyDown(plat, { key: "Escape" });
+    expect(ent).toHaveAttribute("aria-expanded", "false");
+    expect(document.activeElement).toBe(ent);
+  });
+
+  it("Escape with nothing open closes nothing and leaves focus alone", async () => {
+    const { buttons } = await renderFooter();
+    const [a, b, c] = buttons;
+    b.focus();
+    fireEvent.keyDown(b, { key: "Escape" });
+    for (const x of [a, b, c]) expect(x).toHaveAttribute("aria-expanded", "false");
+    expect(document.activeElement).toBe(b);
+  });
+});
+
 describe("Footer links — states", () => {
   it("marks the current page link with aria-current and underline", async () => {
     await renderFooter("/fonctionnalites/portail-msp");
