@@ -90,8 +90,8 @@ const fLink = "text-ink-link transition-colors hover:text-primary-foreground hov
 export function SiteFooter() {
   return (
     <footer className="bg-ink text-[14px] leading-relaxed text-ink-foreground">
-      <div className="wrap grid gap-10 py-12 md:grid-cols-[1.3fr_repeat(3,1fr)] md:gap-8">
-        <div className="min-w-0">
+      <div className="wrap grid grid-cols-2 gap-x-6 gap-y-10 py-12 md:grid-cols-[1.3fr_repeat(3,1fr)] md:gap-8">
+        <div className="col-span-2 min-w-0 md:col-span-1">
           <Link to="/" className="text-xl font-bold text-primary-foreground" aria-label="Eliocyber, accueil">Eliocyber</Link>
           <p className="mt-3 max-w-[300px]">Courtier spécialisé en assurance cyber pour les PME et ETI, avec un réseau de partenaires cyber, IT et conformité.</p>
           <address className="mt-4 space-y-1.5 not-italic">
