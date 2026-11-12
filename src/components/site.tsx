@@ -10,7 +10,7 @@ const nav = [
   { to: "/nos-partenaires", label: "Nos partenaires" },
 ] as const;
 
-type BtnTo = "/contact" | "/comment-ca-marche" | "/nos-partenaires" | "/solution";
+type BtnTo = "/contact" | "/comment-ca-marche" | "/nos-partenaires" | "/solution" | "/devenir-partenaire";
 export type Profil = "entreprise" | "partenaire";
 
 export function Btn({ to, children, ghost, className, profil }: { to: BtnTo; children: ReactNode; ghost?: boolean; className?: string; profil?: Profil | undefined }) {
@@ -77,9 +77,14 @@ export function SiteFooter() {
         </div>
         <div>
           <p className="mb-1 font-semibold text-primary-foreground">Partenaires</p>
-          <Link to="/comment-ca-marche" className="mr-4 text-ink-link hover:underline">Le parcours</Link>
-          <Link to="/nos-partenaires" className="mr-4 text-ink-link hover:underline">Qui peut nous rejoindre</Link>
-          <Link to="/contact" search={{ profil: "partenaire" }} className="text-ink-link hover:underline">Devenir partenaire</Link>
+          <ul className="flex flex-wrap gap-x-4 gap-y-1">
+            <li><Link to="/partenaires/mssp" className="text-ink-link hover:underline">MSSP</Link></li>
+            <li><Link to="/partenaires/esn" className="text-ink-link hover:underline">ESN</Link></li>
+            <li><Link to="/partenaires/ciso" className="text-ink-link hover:underline">CISO</Link></li>
+            <li><Link to="/devenir-partenaire" className="text-ink-link hover:underline">Devenir partenaire</Link></li>
+            <li><Link to="/nos-partenaires" className="text-ink-link hover:underline">Tous les partenaires</Link></li>
+            <li><Link to="/comment-ca-marche" className="text-ink-link hover:underline">Le parcours</Link></li>
+          </ul>
         </div>
       </nav>
       <div className="wrap">
