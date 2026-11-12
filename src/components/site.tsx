@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
+import { fonctionnalites } from "@/lib/fonctionnalites";
 import { Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -82,13 +83,6 @@ const footerCols = [
     { to: "/nos-partenaires", label: "Tous les partenaires" },
     { to: "/devenir-partenaire", label: "Devenir partenaire" },
   ] },
-  { title: "Plateforme", links: [
-    { to: "/fonctionnalites/portail-msp", label: "Portail MSP" },
-    { to: "/fonctionnalites/moteur-de-souscription", label: "Moteur de souscription" },
-    { to: "/fonctionnalites/moteur-de-risque", label: "Moteur de risque" },
-    { to: "/fonctionnalites/module-de-remediation", label: "Remédiation" },
-    { to: "/fonctionnalites/portail-client", label: "Portail client" },
-  ] },
 ] as const;
 
 const fLink = "text-ink-link transition-colors hover:text-primary-foreground hover:underline";
@@ -122,6 +116,14 @@ export function SiteFooter() {
               </ul>
             </div>
           ))}
+          <div className="min-w-0">
+            <h2 className="mb-3 text-[13px] font-semibold uppercase tracking-wider text-primary-foreground">Plateforme</h2>
+            <ul className="space-y-2">
+              {fonctionnalites.map((f) => (
+                <li key={f.slug}><Link to="/fonctionnalites/$slug" params={{ slug: f.slug }} className={fLink}>{f.name}</Link></li>
+              ))}
+            </ul>
+          </div>
         </nav>
       </div>
       <div className="border-t border-ink-foreground/20">
