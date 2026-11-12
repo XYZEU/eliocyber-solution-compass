@@ -14,7 +14,17 @@ export const Route = createFileRoute("/ressources/$slug")({
   },
   head: ({ loaderData, params }) =>
     loaderData
-      ? seo(`/ressources/${params.slug}`, `${loaderData.title} — Livre blanc Eliocyber`, `${loaderData.summary} Téléchargement gratuit.`)
+      ? {
+          ...seo(`/ressources/${params.slug}`, `${loaderData.title} — Livre blanc gratuit | Eliocyber`, `${loaderData.summary} Livre blanc gratuit (PDF, ${loaderData.pages}).`),
+          scripts: [{ type: "application/ld+json", children: JSON.stringify([
+            { "@context": "https://schema.org", "@type": "DigitalDocument", name: loaderData.title, description: loaderData.summary, encodingFormat: "application/pdf", inLanguage: "fr-FR", isAccessibleForFree: true, audience: { "@type": "Audience", audienceType: loaderData.audience }, publisher: { "@type": "Organization", name: "Eliocyber" }, url: `/ressources/${params.slug}` },
+            { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Accueil", item: "/" },
+              { "@type": "ListItem", position: 2, name: "Ressources", item: "/ressources" },
+              { "@type": "ListItem", position: 3, name: loaderData.title, item: `/ressources/${params.slug}` },
+            ] },
+          ]) }],
+        }
       : { meta: [{ title: "Livre blanc introuvable — Eliocyber" }, { name: "robots", content: "noindex" }] },
   component: Page,
 });
@@ -24,12 +34,13 @@ function Page() {
   const others = livresBlancs.filter((l) => l.slug !== lb.slug);
   return (
     <>
-      <section className="wrap sec grid items-center gap-8 md:grid-cols-[1.4fr_1fr]">
+      <nav aria-label="Fil d'Ariane" className="wrap pt-6 text-sm text-muted-foreground"><Link to="/ressources" className="hover:text-primary">Ressources</Link> / <span aria-current="page">Livre blanc</span></nav>
+      <section className="wrap sec grid items-center gap-6 md:grid-cols-[1.4fr_1fr] md:gap-8">
         <div>
           <p className="eyebrow">Livre blanc · {lb.audience}</p>
           <h1 className="title-1">{lb.title}</h1>
           <p className="body-text max-w-[620px] text-[17px]">{lb.intro}</p>
-          <a href="#telecharger" className="mt-4 inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground hover:bg-primary/90">Recevoir le livre blanc</a>
+          <a href="#telecharger" className="mt-4 inline-flex w-full sm:w-auto items-center justify-center rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground hover:bg-primary/90">Recevoir le livre blanc</a>
         </div>
         <aside className="card-box border-primary" aria-label="Aperçu du document">
           <FileText className="size-8 text-primary" aria-hidden />
@@ -53,7 +64,7 @@ function Page() {
         <p className="eyebrow">Pour qui ?</p>
         <h2 id="pourqui" className="title-2">Ce guide s'adresse à</h2>
         <ul className="mt-4 flex flex-wrap gap-3">
-          {lb.forWho.map((x) => <li key={x} className="pill inline-flex items-center gap-1.5"><Check className="size-3.5" aria-hidden />{x}</li>)}
+          {lb.forWho.map((x) => <li key={x} className="pill inline-flex max-w-full items-center gap-1.5"><Check className="size-3.5" aria-hidden />{x}</li>)}
         </ul>
       </section>
 
@@ -80,17 +91,17 @@ function DownloadForm({ title, pdf, audience }: { title: string; pdf: string; au
   const { onSubmit, sent: done, Summary, Confirmation } = useFormFeedback(() => window.open(pdf, "_blank", "noopener"));
   return (
     <section id="telecharger" className="band scroll-mt-20" aria-labelledby="dl-title">
-      <div className="wrap sec grid items-start gap-8 md:grid-cols-2">
+      <div className="wrap sec grid items-start gap-6 md:grid-cols-2 md:gap-8">
         <div>
           <p className="eyebrow">Téléchargement gratuit</p>
           <h2 id="dl-title" className="title-2">Recevez le livre blanc</h2>
           <p className="body-text">Remplissez ce court formulaire : le document s'ouvre immédiatement au format PDF.</p>
         </div>
-        <div className="card-box">
+        <div className="card-box min-w-0">
           {done ? (
             <Confirmation title="Merci, votre livre blanc est prêt">
               <p>Le document s'est ouvert dans un nouvel onglet. S'il ne s'est pas ouvert, utilisez ce lien :</p>
-              <a href={pdf} target="_blank" rel="noopener" className="inline-flex items-center gap-2 font-semibold text-primary hover:underline"><FileText className="size-4" aria-hidden />Ouvrir « {title} » (PDF)</a>
+              <a href={pdf} target="_blank" rel="noopener" className="inline-flex items-start gap-2 break-words font-semibold text-primary hover:underline"><FileText className="size-4" aria-hidden />Ouvrir « {title} » (PDF)</a>
             </Confirmation>
           ) : (
             <form onSubmit={onSubmit} noValidate>

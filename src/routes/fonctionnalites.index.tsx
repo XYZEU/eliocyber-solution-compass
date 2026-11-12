@@ -4,7 +4,13 @@ import { CtaBanner, PageIntro, seo } from "@/components/site";
 import { fonctionnalites } from "@/lib/fonctionnalites";
 
 export const Route = createFileRoute("/fonctionnalites/")({
-  head: () => seo("/fonctionnalites", "Fonctionnalités de la plateforme d'assurance cyber — Eliocyber", "Portail MSP, moteur de souscription, moteur de risque, remédiation et portail client : la plateforme Eliocyber de bout en bout."),
+  head: () => ({
+    ...seo("/fonctionnalites", "Plateforme d'assurance cyber : les 5 modules | Eliocyber", "Portail MSP, moteur de souscription, moteur de risque, module de remédiation et portail client : découvrez la plateforme Eliocyber, du risque au sinistre."),
+    scripts: [{ type: "application/ld+json", children: JSON.stringify({
+      "@context": "https://schema.org", "@type": "ItemList", name: "Fonctionnalités de la plateforme Eliocyber",
+      itemListElement: fonctionnalites.map((f, i) => ({ "@type": "ListItem", position: i + 1, url: `/fonctionnalites/${f.slug}`, name: f.name })),
+    }) }],
+  }),
   component: Page,
 });
 
