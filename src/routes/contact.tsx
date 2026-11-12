@@ -63,7 +63,7 @@ function Page() {
 
       <section className="card-box" aria-labelledby="form-title">
         {sent ? (
-          <Confirmation title="Merci, votre demande est bien enregistrée">
+          <Confirmation title="Merci pour votre demande">
             <p id="form-title">Un courtier vous recontactera sous deux jours ouvrés.</p>
           </Confirmation>
         ) : (

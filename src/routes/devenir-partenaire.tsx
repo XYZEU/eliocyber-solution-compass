@@ -91,7 +91,7 @@ function ApplicationForm() {
       </div>
       <div className="card-box">
         {sent ? (
-          <Confirmation title="Merci, votre candidature est bien enregistrée">
+          <Confirmation title="Merci pour votre candidature">
             <p>Nous revenons vers vous sous deux jours ouvrés pour activer votre compte et la formation.</p>
           </Confirmation>
         ) : (
