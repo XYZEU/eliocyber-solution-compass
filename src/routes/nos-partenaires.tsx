@@ -10,7 +10,7 @@ const fams = [
   ["Cyber", "MSSP, SOC, ESN cyber", "Incident, audit de maturité, pentest, déploiement EDR ou MFA.", "CISO freelance, experts forensic, pentesters."],
   ["IT", "MSP, DSI externes", "Gestion du parc, QBR, renouvellement, migration cloud.", "Intégrateurs et prestataires cloud ou télécom."],
   ["Conformité", "DPO, avocats, experts-comptables", "Audit RGPD, litige, revue annuelle, budget et gestion des risques.", "Consultants NIS2, DORA ou ISO 27001, DAF externes."],
-];
+] as const;
 
 function Page() {
   return (

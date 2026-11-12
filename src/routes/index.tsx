@@ -11,12 +11,12 @@ const steps = [
   ["Qualifier", "Formulaire court adapté à son métier et consentement du client."],
   ["Transmettre", "Le dossier arrive dans la file de production du courtier, avec score."],
   ["Conseiller", "Le courtier conseille, souscrit et gère le contrat. Le partenaire suit l'avancement."],
-];
+] as const;
 const families = [
   ["Professionnels cyber", "MSSP / SOC, ESN cyber, CISO freelance, pentesters, experts forensic, éditeurs et intégrateurs sécurité."],
   ["Professionnels IT", "MSP, DSI externes, intégrateurs, prestataires cloud et télécom."],
   ["Professionnels de la conformité", "DPO externes, avocats, experts-comptables, DAF externes, consultants NIS2, DORA ou ISO 27001."],
-];
+] as const;
 
 function Home() {
   return (

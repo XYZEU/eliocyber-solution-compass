@@ -13,7 +13,7 @@ const steps = [
   ["Transmission", "Le dossier arrive chez le courtier", "Priorisation, historique et notes internes dans la file de production d'Eliocyber."],
   ["Conseil et souscription", "Eliocyber conseille et souscrit", "Recueil des besoins, présentation des garanties, sélection de l'assureur, contrat et suivi."],
   ["Suivi", "Le partenaire suit l'avancement", "Notifications à chaque statut, puis commission éligible et validée après souscription."],
-];
+] as const;
 
 function Page() {
   return (
