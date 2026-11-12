@@ -1,3 +1,6 @@
 - [x] Pages Devenir partenaire, MSSP, ESN, CISO + footer
 - [x] Footer MSSP/ESN/CISO -> /partenaires/*
 - [x] Accès partenaires -> /devenir-partenaire (nouvelle maquette + formulaire)
+- [x] Ressources + livres blancs (formulaire -> PDF)
+- [ ] Envoi formulaire livre blanc à bonjour@eliocyber.fr (bloqué : domaine e-mail)
+- [ ] Fonctionnalités : index + 5 pages

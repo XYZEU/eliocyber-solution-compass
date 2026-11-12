@@ -20,6 +20,8 @@ import { Route as SolutionRouteImport } from './routes/solution'
 import { Route as PartenairesCisoRouteImport } from './routes/partenaires.ciso'
 import { Route as PartenairesEsnRouteImport } from './routes/partenaires.esn'
 import { Route as PartenairesMsspRouteImport } from './routes/partenaires.mssp'
+import { Route as RessourcesIndexRouteImport } from './routes/ressources.index'
+import { Route as RessourcesSlugRouteImport } from './routes/ressources.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -76,6 +78,16 @@ const PartenairesMsspRoute = PartenairesMsspRouteImport.update({
   path: '/partenaires/mssp',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RessourcesIndexRoute = RessourcesIndexRouteImport.update({
+  id: '/ressources/',
+  path: '/ressources/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RessourcesSlugRoute = RessourcesSlugRouteImport.update({
+  id: '/ressources/$slug',
+  path: '/ressources/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -89,6 +101,8 @@ export interface FileRoutesByFullPath {
   '/partenaires/ciso': typeof PartenairesCisoRoute
   '/partenaires/esn': typeof PartenairesEsnRoute
   '/partenaires/mssp': typeof PartenairesMsspRoute
+  '/ressources/$slug': typeof RessourcesSlugRoute
+  '/ressources/': typeof RessourcesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -102,6 +116,8 @@ export interface FileRoutesByTo {
   '/partenaires/ciso': typeof PartenairesCisoRoute
   '/partenaires/esn': typeof PartenairesEsnRoute
   '/partenaires/mssp': typeof PartenairesMsspRoute
+  '/ressources/$slug': typeof RessourcesSlugRoute
+  '/ressources': typeof RessourcesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -116,6 +132,8 @@ export interface FileRoutesById {
   '/partenaires/ciso': typeof PartenairesCisoRoute
   '/partenaires/esn': typeof PartenairesEsnRoute
   '/partenaires/mssp': typeof PartenairesMsspRoute
+  '/ressources/$slug': typeof RessourcesSlugRoute
+  '/ressources/': typeof RessourcesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -131,6 +149,8 @@ export interface FileRouteTypes {
     | '/partenaires/ciso'
     | '/partenaires/esn'
     | '/partenaires/mssp'
+    | '/ressources/$slug'
+    | '/ressources/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -144,6 +164,8 @@ export interface FileRouteTypes {
     | '/partenaires/ciso'
     | '/partenaires/esn'
     | '/partenaires/mssp'
+    | '/ressources/$slug'
+    | '/ressources'
   id:
     | '__root__'
     | '/'
@@ -157,6 +179,8 @@ export interface FileRouteTypes {
     | '/partenaires/ciso'
     | '/partenaires/esn'
     | '/partenaires/mssp'
+    | '/ressources/$slug'
+    | '/ressources/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -171,6 +195,8 @@ export interface RootRouteChildren {
   PartenairesCisoRoute: typeof PartenairesCisoRoute
   PartenairesEsnRoute: typeof PartenairesEsnRoute
   PartenairesMsspRoute: typeof PartenairesMsspRoute
+  RessourcesSlugRoute: typeof RessourcesSlugRoute
+  RessourcesIndexRoute: typeof RessourcesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -252,6 +278,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PartenairesMsspRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ressources/': {
+      id: '/ressources/'
+      path: '/ressources'
+      fullPath: '/ressources/'
+      preLoaderRoute: typeof RessourcesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ressources/$slug': {
+      id: '/ressources/$slug'
+      path: '/ressources/$slug'
+      fullPath: '/ressources/$slug'
+      preLoaderRoute: typeof RessourcesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -267,6 +307,8 @@ const rootRouteChildren: RootRouteChildren = {
   PartenairesCisoRoute: PartenairesCisoRoute,
   PartenairesEsnRoute: PartenairesEsnRoute,
   PartenairesMsspRoute: PartenairesMsspRoute,
+  RessourcesSlugRoute: RessourcesSlugRoute,
+  RessourcesIndexRoute: RessourcesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
