@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useFormFeedback } from "@/components/form-feedback";
 import { useState, type FormEvent } from "react";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -37,12 +38,7 @@ function Page() {
   const navigate = Route.useNavigate();
   const profil: Profil = search.profil ?? "entreprise";
   const c = copy[profil];
-  const [sent, setSent] = useState(false);
-
-  function submit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (e.currentTarget.checkValidity()) setSent(true);
-  }
+  const { onSubmit, sent, Summary, Confirmation } = useFormFeedback(() => {});
 
   return (
     <div className="wrap sec grid items-start gap-8 md:grid-cols-2 md:gap-6">
@@ -68,12 +64,11 @@ function Page() {
 
       <section className="card-box" aria-labelledby="form-title">
         {sent ? (
-          <div role="status">
-            <h2 id="form-title" className="title-2 !text-xl">Merci, votre demande est prête</h2>
-            <p className="body-text">Un courtier vous recontactera sous deux jours ouvrés.</p>
-          </div>
+          <Confirmation title="Merci, votre demande est bien enregistrée">
+            <p id="form-title">Un courtier vous recontactera sous deux jours ouvrés.</p>
+          </Confirmation>
         ) : (
-          <form onSubmit={submit}>
+          <form onSubmit={onSubmit} noValidate>
             <h2 id="form-title" className="title-2 !text-xl">Vous êtes…</h2>
             <div className="grid grid-cols-2 gap-1 rounded-xl bg-secondary p-1" role="radiogroup" aria-label="Votre profil">
               {(["entreprise", "partenaire"] as const).map((v) => (
@@ -93,6 +88,7 @@ function Page() {
               ))}
             </div>
             <p className="body-text mt-3 text-sm" aria-live="polite">{c.title}</p>
+            <Summary />
 
             <div className="grid gap-x-4 sm:grid-cols-2">
               <div><label htmlFor="n" className={label}>Nom</label><input id="n" name="nom" required autoComplete="name" placeholder="Votre nom" className="field" /></div>

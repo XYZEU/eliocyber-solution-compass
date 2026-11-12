@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, X } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { useFormFeedback } from "@/components/form-feedback";
 import { Card, PageIntro, seo } from "@/components/site";
 import { CommissionTable } from "@/components/partner-landing";
 
@@ -80,11 +80,7 @@ function Page() {
 }
 
 function ApplicationForm() {
-  const [sent, setSent] = useState(false);
-  function submit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (e.currentTarget.checkValidity()) setSent(true);
-  }
+  const { onSubmit, sent, Summary, Confirmation } = useFormFeedback(() => {});
   return (
     <section id="candidature" className="wrap sec scroll-mt-20 grid items-start gap-8 md:grid-cols-2" aria-labelledby="cand-title">
       <div>
@@ -95,12 +91,12 @@ function ApplicationForm() {
       </div>
       <div className="card-box">
         {sent ? (
-          <div role="status">
-            <h3 className="title-3">Merci, votre candidature est prête</h3>
-            <p className="body-text">Nous revenons vers vous sous deux jours ouvrés pour activer votre compte et la formation.</p>
-          </div>
+          <Confirmation title="Merci, votre candidature est bien enregistrée">
+            <p>Nous revenons vers vous sous deux jours ouvrés pour activer votre compte et la formation.</p>
+          </Confirmation>
         ) : (
-          <form onSubmit={submit}>
+          <form onSubmit={onSubmit} noValidate>
+            <Summary />
             <h3 className="title-3">Créer mon compte partenaire</h3>
             <label htmlFor="pf" className={label}>Profil métier</label>
             <select id="pf" name="profil" required defaultValue="" className="field">

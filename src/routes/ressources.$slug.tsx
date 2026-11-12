@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Check, FileText } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { useFormFeedback } from "@/components/form-feedback";
 import { Card, seo } from "@/components/site";
 import { findLivreBlanc, livresBlancs } from "@/lib/livres-blancs";
 
@@ -76,14 +76,8 @@ function Page() {
 }
 
 function DownloadForm({ title, pdf, audience }: { title: string; pdf: string; audience: string }) {
-  const [done, setDone] = useState(false);
-  function submit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (!e.currentTarget.checkValidity()) return;
-    // Ouverture synchrone pour éviter le bloqueur de fenêtres.
-    window.open(pdf, "_blank", "noopener");
-    setDone(true);
-  }
+  // Ouverture synchrone dans le clic pour éviter le bloqueur de fenêtres.
+  const { onSubmit, sent: done, Summary, Confirmation } = useFormFeedback(() => window.open(pdf, "_blank", "noopener"));
   return (
     <section id="telecharger" className="band scroll-mt-20" aria-labelledby="dl-title">
       <div className="wrap sec grid items-start gap-8 md:grid-cols-2">
@@ -94,13 +88,14 @@ function DownloadForm({ title, pdf, audience }: { title: string; pdf: string; au
         </div>
         <div className="card-box">
           {done ? (
-            <div role="status">
-              <h3 className="title-3">Merci, votre livre blanc est ouvert</h3>
-              <p className="body-text">S'il ne s'est pas ouvert, utilisez ce lien :</p>
+            <Confirmation title="Merci, votre livre blanc est prêt">
+              <p>Le document s'est ouvert dans un nouvel onglet. S'il ne s'est pas ouvert, utilisez ce lien :</p>
               <a href={pdf} target="_blank" rel="noopener" className="inline-flex items-center gap-2 font-semibold text-primary hover:underline"><FileText className="size-4" aria-hidden />Ouvrir « {title} » (PDF)</a>
-            </div>
+            </Confirmation>
           ) : (
-            <form onSubmit={submit}>
+            <form onSubmit={onSubmit} noValidate>
+              <Summary />
+              <p className="mb-1 text-[13px] text-muted-foreground">Tous les champs sont obligatoires, sauf la fonction.</p>
               <div className="grid gap-x-4 sm:grid-cols-2">
                 <div><label htmlFor="lp" className={label}>Prénom</label><input id="lp" name="prenom" required maxLength={80} autoComplete="given-name" className="field" /></div>
                 <div><label htmlFor="ln" className={label}>Nom</label><input id="ln" name="nom" required maxLength={80} autoComplete="family-name" className="field" /></div>
