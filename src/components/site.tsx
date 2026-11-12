@@ -3,7 +3,6 @@ import { useState, type ReactNode } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export const SITE_URL = "https://eliocyber.fr";
 
 const nav = [
   { to: "/solution", label: "Solution" },
@@ -11,21 +10,19 @@ const nav = [
   { to: "/nos-partenaires", label: "Nos partenaires" },
 ] as const;
 
-export function Btn({ to, children, ghost, className }: { to: "/contact" | "/comment-ca-marche" | "/nos-partenaires"; children: ReactNode; ghost?: boolean; className?: string }) {
-  return (
-    <Link
-      to={to}
-      className={cn(
+type BtnTo = "/contact" | "/comment-ca-marche" | "/nos-partenaires" | "/solution";
+export type Profil = "entreprise" | "partenaire";
+
+export function Btn({ to, children, ghost, className, profil }: { to: BtnTo; children: ReactNode; ghost?: boolean; className?: string; profil?: Profil | undefined }) {
+  const cls = cn(
         "inline-flex items-center justify-center rounded-lg px-5 py-3 text-[15px] font-semibold transition-colors",
         ghost
           ? "border-[1.5px] border-primary text-primary hover:bg-primary-soft"
           : "bg-primary text-primary-foreground hover:bg-primary/90",
         className,
-      )}
-    >
-      {children}
-    </Link>
-  );
+      );
+  if (to === "/contact") return <Link to="/contact" search={profil ? { profil } : {}} className={cls}>{children}</Link>;
+  return <Link to={to} className={cls}>{children}</Link>;
 }
 
 export function SiteHeader() {
@@ -71,7 +68,20 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="bg-ink px-0 py-4 text-[13px] leading-relaxed text-ink-foreground">
+    <footer className="bg-ink px-0 py-6 text-[13px] leading-relaxed text-ink-foreground">
+      <nav aria-label="Plan du site" className="wrap mb-3 grid gap-4 border-b border-ink-foreground/20 pb-4 sm:grid-cols-2">
+        <div>
+          <p className="mb-1 font-semibold text-primary-foreground">Entreprises</p>
+          <Link to="/solution" className="mr-4 text-ink-link hover:underline">Nos garanties cyber</Link>
+          <Link to="/contact" search={{ profil: "entreprise" }} className="text-ink-link hover:underline">Parler à un courtier</Link>
+        </div>
+        <div>
+          <p className="mb-1 font-semibold text-primary-foreground">Partenaires</p>
+          <Link to="/comment-ca-marche" className="mr-4 text-ink-link hover:underline">Le parcours</Link>
+          <Link to="/nos-partenaires" className="mr-4 text-ink-link hover:underline">Qui peut nous rejoindre</Link>
+          <Link to="/contact" search={{ profil: "partenaire" }} className="text-ink-link hover:underline">Devenir partenaire</Link>
+        </div>
+      </nav>
       <div className="wrap">
         Eliocyber est un courtier en assurance immatriculé à l'ORIAS sous le n° [XXX]. Le partenaire agit exclusivement en qualité d'apporteur d'affaires et n'est pas intermédiaire en assurance. Le conseil, la présentation des garanties, la souscription et la gestion du contrat sont assurés par Eliocyber. Réclamations et médiation : [coordonnées].{" "}
         <Link to="/mentions-legales" className="text-ink-link hover:underline">Mentions légales</Link>
@@ -103,7 +113,7 @@ export function Card({ eyebrow, title, children, className }: { eyebrow?: string
   );
 }
 
-export function CtaBanner({ title, text, to, label }: { title: string; text: string; to: "/contact"; label: string }) {
+export function CtaBanner({ title, text, to, label, profil, secondary }: { title: string; text: string; to: BtnTo; label: string; profil?: Profil; secondary?: { to: BtnTo; label: string; profil?: Profil | undefined } }) {
   return (
     <section className="wrap pb-14">
       <div className="card-box flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-center">
@@ -111,14 +121,17 @@ export function CtaBanner({ title, text, to, label }: { title: string; text: str
           <h2 className="title-3">{title}</h2>
           <p className="body-text !mb-0">{text}</p>
         </div>
-        <Btn to={to} className="shrink-0">{label}</Btn>
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:shrink-0">
+          {secondary && <Btn to={secondary.to} profil={secondary.profil} ghost>{secondary.label}</Btn>}
+          <Btn to={to} profil={profil}>{label}</Btn>
+        </div>
       </div>
     </section>
   );
 }
 
 export function seo(path: string, title: string, description: string) {
-  const url = `${SITE_URL}${path}`;
+  const url = path;
   return {
     meta: [
       { title },
