@@ -13,22 +13,16 @@ const nav = [
 type BtnTo = "/contact" | "/comment-ca-marche" | "/nos-partenaires" | "/solution";
 export type Profil = "entreprise" | "partenaire";
 
-export function Btn({ to, children, ghost, className, profil }: { to: BtnTo; children: ReactNode; ghost?: boolean; className?: string; profil?: Profil }) {
-  return (
-    <Link
-      to={to}
-      search={to === "/contact" ? (profil ? { profil } : {}) : undefined}
-      className={cn(
+export function Btn({ to, children, ghost, className, profil }: { to: BtnTo; children: ReactNode; ghost?: boolean; className?: string; profil?: Profil | undefined }) {
+  const cls = cn(
         "inline-flex items-center justify-center rounded-lg px-5 py-3 text-[15px] font-semibold transition-colors",
         ghost
           ? "border-[1.5px] border-primary text-primary hover:bg-primary-soft"
           : "bg-primary text-primary-foreground hover:bg-primary/90",
         className,
-      )}
-    >
-      {children}
-    </Link>
-  );
+      );
+  if (to === "/contact") return <Link to="/contact" search={profil ? { profil } : {}} className={cls}>{children}</Link>;
+  return <Link to={to} className={cls}>{children}</Link>;
 }
 
 export function SiteHeader() {
@@ -119,7 +113,7 @@ export function Card({ eyebrow, title, children, className }: { eyebrow?: string
   );
 }
 
-export function CtaBanner({ title, text, to, label, profil, secondary }: { title: string; text: string; to: BtnTo; label: string; profil?: Profil; secondary?: { to: BtnTo; label: string; profil?: Profil } }) {
+export function CtaBanner({ title, text, to, label, profil, secondary }: { title: string; text: string; to: BtnTo; label: string; profil?: Profil; secondary?: { to: BtnTo; label: string; profil?: Profil | undefined } }) {
   return (
     <section className="wrap pb-14">
       <div className="card-box flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-center">
