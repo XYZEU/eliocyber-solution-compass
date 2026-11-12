@@ -169,6 +169,7 @@ export function SiteFooter() {
                 </h2>
                 <div
                   id={`footer-p-${id}`}
+                  role="region"
                   aria-labelledby={`footer-h-${id}`}
                   className={cn("grid overflow-hidden transition-all duration-200 ease-out", isOpen ? "visible grid-rows-[1fr] opacity-100" : "invisible grid-rows-[0fr] opacity-0")}
                 >
