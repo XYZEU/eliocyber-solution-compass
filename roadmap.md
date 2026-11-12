@@ -3,4 +3,4 @@
 - [x] Accès partenaires -> /devenir-partenaire (nouvelle maquette + formulaire)
 - [x] Ressources + livres blancs (formulaire -> PDF)
 - [ ] Envoi formulaire livre blanc à bonjour@eliocyber.fr (bloqué : domaine e-mail)
-- [ ] Fonctionnalités : index + 5 pages
+- [x] Fonctionnalités : index + 5 pages
