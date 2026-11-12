@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { fonctionnalites } from "@/lib/fonctionnalites";
-import { Mail, MapPin, Menu, Phone, X } from "lucide-react";
+import { ChevronDown, Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 
@@ -69,12 +69,19 @@ export function SiteHeader() {
   );
 }
 
-const footerCols = [
+type FooterLink =
+  | { label: string; to: "/contact"; search: { profil: Profil } }
+  | { label: string; to: "/solution" | "/fonctionnalites" | "/ressources" | "/nos-partenaires" | "/devenir-partenaire" | "/partenaires/mssp" | "/partenaires/esn" | "/partenaires/ciso" }
+  | { label: string; slug: string };
+
+type FooterGroup = { title: string; links: FooterLink[] };
+
+const footerGroups: FooterGroup[] = [
   { title: "Entreprises", links: [
     { to: "/solution", label: "Nos garanties cyber" },
     { to: "/fonctionnalites", label: "Vue d'ensemble" },
     { to: "/ressources", label: "Livres blancs" },
-    { to: "/contact", label: "Parler à un courtier", search: { profil: "entreprise" as const } },
+    { to: "/contact", label: "Parler à un courtier", search: { profil: "entreprise" } },
   ] },
   { title: "Partenaires", links: [
     { to: "/partenaires/mssp", label: "MSSP et SOC" },
@@ -83,9 +90,18 @@ const footerCols = [
     { to: "/nos-partenaires", label: "Tous les partenaires" },
     { to: "/devenir-partenaire", label: "Devenir partenaire" },
   ] },
-] as const;
+  { title: "Plateforme", links: fonctionnalites.map((f) => ({ slug: f.slug, label: f.name })) },
+];
 
 const fLink = "text-ink-link transition-colors hover:text-primary-foreground hover:underline";
+
+const groupAnchor = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
+function FooterLinkItem({ link, className, onClick }: { link: FooterLink; className: string; onClick?: () => void }) {
+  if ("search" in link) return <Link to="/contact" search={link.search} onClick={onClick} className={className}>{link.label}</Link>;
+  if ("slug" in link) return <Link to="/fonctionnalites/$slug" params={{ slug: link.slug }} onClick={onClick} className={className}>{link.label}</Link>;
+  return <Link to={link.to} onClick={onClick} className={className}>{link.label}</Link>;
+}
 
 export function SiteFooter() {
   return (
