@@ -46,7 +46,7 @@ export function PartnerLanding({ d }: { d: LandingData }) {
           <h1 className="title-1">{d.h1}</h1>
           <p className="body-text max-w-[620px] text-[17px]">{d.intro}</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <Link to="/contact" search={{ profil: "partenaire" }} className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground hover:bg-primary/90">{d.cta}</Link>
+            <Link to="/devenir-partenaire" hash="candidature" className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground hover:bg-primary/90">{d.cta}</Link>
             <a href="#offre" className="inline-flex items-center justify-center rounded-lg border-[1.5px] border-primary px-5 py-3 text-[15px] font-semibold text-primary hover:bg-primary-soft">Voir l'offre</a>
           </div>
         </div>
@@ -147,7 +147,7 @@ export function PartnerLanding({ d }: { d: LandingData }) {
       </section>
 
       <div className="pt-14" />
-      <CtaBanner title={d.finalTitle} text={d.finalText} to="/contact" profil="partenaire" label={d.cta} secondary={{ to: "/devenir-partenaire", label: "Devenir partenaire" }} />
+      <CtaBanner title={d.finalTitle} text={d.finalText} to="/devenir-partenaire" label={d.cta} secondary={{ to: "/nos-partenaires", label: "Tous les partenaires" }} />
     </>
   );
 }

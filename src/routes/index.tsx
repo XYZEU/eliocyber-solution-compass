@@ -28,7 +28,7 @@ function Home() {
           <p className="body-text">Eliocyber connecte les professionnels de la cyber, de l'IT et de la conformité à notre cabinet de courtage en assurance cyber. Vos clients bénéficient d'un conseil spécialisé ; vous percevez une commission d'apport.</p>
           <p className="body-text text-[13px]">Les partenaires ne vendent pas l'assurance : ils informent et transmettent le dossier.</p>
           <div className="mt-5 flex flex-wrap gap-3">
-            <Btn to="/contact" profil="partenaire">Devenir partenaire</Btn>
+            <Btn to="/devenir-partenaire">Devenir partenaire</Btn>
             <Btn to="/comment-ca-marche" ghost>Découvrir le fonctionnement</Btn>
             <Link to="/solution" className="self-center text-sm font-semibold text-primary hover:underline">Vous êtes une entreprise ? →</Link>
           </div>

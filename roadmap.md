@@ -1,3 +1,3 @@
 - [x] Pages Devenir partenaire, MSSP, ESN, CISO + footer
 - [x] Footer MSSP/ESN/CISO -> /partenaires/*
-- [ ] Accès partenaires -> /devenir-partenaire (nouvelle maquette + formulaire)
+- [x] Accès partenaires -> /devenir-partenaire (nouvelle maquette + formulaire)

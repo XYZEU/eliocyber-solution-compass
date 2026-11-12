@@ -39,7 +39,7 @@ export function SiteHeader() {
               {n.label}
             </Link>
           ))}
-          <Link to="/contact" search={{ profil: "partenaire" }} className="text-foreground hover:text-primary">Accès partenaires</Link>
+          <Link to="/devenir-partenaire" className="text-foreground hover:text-primary" activeProps={{ className: "text-primary font-semibold" }}>Devenir partenaire</Link>
           <Btn to="/contact">Être contacté</Btn>
         </nav>
         <button
@@ -58,7 +58,7 @@ export function SiteHeader() {
           {nav.map((n) => (
             <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="py-2.5 text-foreground">{n.label}</Link>
           ))}
-          <Link to="/contact" search={{ profil: "partenaire" }} onClick={() => setOpen(false)} className="py-2.5 text-foreground">Accès partenaires</Link>
+          <Link to="/devenir-partenaire" onClick={() => setOpen(false)} className="py-2.5 text-foreground">Devenir partenaire</Link>
           <span onClick={() => setOpen(false)} className="mt-2"><Btn to="/contact" className="w-full">Être contacté</Btn></span>
         </nav>
       )}

@@ -1,7 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, X } from "lucide-react";
-import { Btn, Card, CtaBanner, PageIntro, seo } from "@/components/site";
+import { useState, type FormEvent } from "react";
+import { Card, PageIntro, seo } from "@/components/site";
 import { CommissionTable } from "@/components/partner-landing";
+
+const label = "mb-1.5 mt-3.5 block text-[13px] font-semibold text-foreground";
 
 export const Route = createFileRoute("/devenir-partenaire")({
   head: () => seo("/devenir-partenaire", "Devenir partenaire apporteur d'affaires cyber — Eliocyber", "Recommandez la cyber-assurance à vos clients sans devenir intermédiaire : inscription, formation courte, premier dossier et commission d'apport."),
@@ -28,7 +31,7 @@ function Page() {
         Vous détectez le risque chez vos clients. Eliocyber, courtier en assurance, s'occupe du conseil, de la souscription et du suivi. Vous percevez une commission d'apport.
       </PageIntro>
       <div className="wrap -mt-6 mb-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <Btn to="/contact" profil="partenaire">Créer mon compte partenaire</Btn>
+        <a href="#candidature" className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground hover:bg-primary/90">Créer mon compte partenaire</a>
         <p className="text-sm text-muted-foreground">
           Votre métier :{" "}
           {profiles.map((p, i) => <span key={p.to}>{i > 0 && " · "}<Link to={p.to} className="text-primary hover:underline">{p.label}</Link></span>)}
@@ -71,8 +74,74 @@ function Page() {
         </div>
       </section>
 
-      <div className="pt-14" />
-      <CtaBanner title="Prêt à transmettre votre premier dossier ?" text="Choisissez votre profil et démarrez en quelques minutes." to="/contact" profil="partenaire" label="Créer mon compte partenaire" secondary={{ to: "/nos-partenaires", label: "Tous les partenaires" }} />
+      <ApplicationForm />
     </>
+  );
+}
+
+function ApplicationForm() {
+  const [sent, setSent] = useState(false);
+  function submit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (e.currentTarget.checkValidity()) setSent(true);
+  }
+  return (
+    <section id="candidature" className="wrap sec scroll-mt-20 grid items-start gap-8 md:grid-cols-2" aria-labelledby="cand-title">
+      <div>
+        <p className="eyebrow">Candidature partenaire</p>
+        <h2 id="cand-title" className="title-2">Prêt à transmettre votre premier dossier ?</h2>
+        <p className="body-text">Choisissez votre profil et démarrez en quelques minutes. Nous validons votre inscription, puis vous accédez à la formation courte.</p>
+        <p className="body-text text-sm">Découvrez d'abord <Link to="/nos-partenaires" className="font-semibold text-primary hover:underline">tous les profils partenaires</Link>.</p>
+      </div>
+      <div className="card-box">
+        {sent ? (
+          <div role="status">
+            <h3 className="title-3">Merci, votre candidature est prête</h3>
+            <p className="body-text">Nous revenons vers vous sous deux jours ouvrés pour activer votre compte et la formation.</p>
+          </div>
+        ) : (
+          <form onSubmit={submit}>
+            <h3 className="title-3">Créer mon compte partenaire</h3>
+            <label htmlFor="pf" className={label}>Profil métier</label>
+            <select id="pf" name="profil" required defaultValue="" className="field">
+              <option value="" disabled>Sélectionnez</option>
+              <option>MSSP / SOC</option><option>ESN cyber</option><option>CISO freelance</option>
+              <option>IT (MSP, DSI externe…)</option><option>Conformité (DPO, avocat, expert-comptable…)</option><option>Autre</option>
+            </select>
+            <div className="grid gap-x-4 sm:grid-cols-2">
+              <div><label htmlFor="pn" className={label}>Nom</label><input id="pn" name="nom" required autoComplete="name" className="field" /></div>
+              <div><label htmlFor="po" className={label}>Société</label><input id="po" name="societe" required autoComplete="organization" className="field" /></div>
+            </div>
+            <div className="grid gap-x-4 sm:grid-cols-2">
+              <div><label htmlFor="pe" className={label}>E-mail professionnel</label><input id="pe" name="email" type="email" required autoComplete="email" className="field" /></div>
+              <div><label htmlFor="pt" className={label}>Téléphone</label><input id="pt" name="tel" type="tel" autoComplete="tel" className="field" /></div>
+            </div>
+            <div className="grid gap-x-4 sm:grid-cols-2">
+              <div>
+                <label htmlFor="ps" className={label}>Statut juridique</label>
+                <select id="ps" name="statut" required defaultValue="" className="field">
+                  <option value="" disabled>Sélectionnez</option><option>Société (SAS, SARL…)</option><option>Entrepreneur individuel</option><option>Autre</option>
+                </select>
+              </div>
+              <div>
+                <label htmlFor="pr" className={label}>RC professionnelle</label>
+                <select id="pr" name="rcpro" required defaultValue="" className="field">
+                  <option value="" disabled>Sélectionnez</option><option>Oui</option><option>Non</option>
+                </select>
+              </div>
+            </div>
+            <label className="mt-3.5 flex items-start gap-2 text-[13px]">
+              <input type="checkbox" required className="mt-1 accent-primary" />
+              <span>Je comprends que j'agis comme apporteur d'affaires, sans conseiller l'assurance, et je m'engage à suivre la formation obligatoire.</span>
+            </label>
+            <label className="mt-2 flex items-start gap-2 text-[13px]">
+              <input type="checkbox" required className="mt-1 accent-primary" />
+              <span>J'accepte que mes données soient traitées pour étudier ma candidature (<Link to="/mentions-legales" hash="donnees" className="text-primary underline">en savoir plus</Link>).</span>
+            </label>
+            <button type="submit" className="mt-4 w-full rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground hover:bg-primary/90 sm:w-auto">Envoyer ma candidature</button>
+          </form>
+        )}
+      </div>
+    </section>
   );
 }
