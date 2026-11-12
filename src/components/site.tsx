@@ -93,14 +93,29 @@ const footerGroups: FooterGroup[] = [
   { title: "Plateforme", links: fonctionnalites.map((f) => ({ slug: f.slug, label: f.name })) },
 ];
 
-const fLink = "text-ink-link transition-colors hover:text-primary-foreground hover:underline";
+const fLink = "text-ink-link underline-offset-4 transition-colors hover:text-primary-foreground hover:underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/80 focus-visible:ring-offset-2 focus-visible:ring-offset-ink active:text-primary-foreground active:underline";
+
+const linkActive = { className: "text-primary-foreground underline", "aria-current": "page" } as const;
 
 const groupAnchor = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
 function FooterLinkItem({ link, className, onClick }: { link: FooterLink; className: string; onClick?: () => void }) {
-  if ("search" in link) return <Link to="/contact" search={link.search} onClick={onClick} className={className}>{link.label}</Link>;
-  if ("slug" in link) return <Link to="/fonctionnalites/$slug" params={{ slug: link.slug }} onClick={onClick} className={className}>{link.label}</Link>;
-  return <Link to={link.to} onClick={onClick} className={className}>{link.label}</Link>;
+  if ("search" in link) return <Link to="/contact" search={link.search} onClick={onClick} className={className} activeProps={linkActive}>{link.label}</Link>;
+  if ("slug" in link) return <Link to="/fonctionnalites/$slug" params={{ slug: link.slug }} onClick={onClick} className={className} activeProps={linkActive}>{link.label}</Link>;
+  return <Link to={link.to} onClick={onClick} className={className} activeProps={linkActive}>{link.label}</Link>;
+}
+
+function onAccordionKeyDown(e: React.KeyboardEvent<HTMLElement>) {
+  if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(e.key)) return;
+  const buttons = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>("button[data-accordion]"));
+  const i = buttons.indexOf(e.target as HTMLButtonElement);
+  if (i === -1) return;
+  e.preventDefault();
+  const next = e.key === "ArrowDown" ? (i + 1) % buttons.length
+    : e.key === "ArrowUp" ? (i - 1 + buttons.length) % buttons.length
+    : e.key === "Home" ? 0
+    : buttons.length - 1;
+  buttons[next]?.focus();
 }
 
 export function SiteFooter() {
@@ -132,7 +147,7 @@ export function SiteFooter() {
           ))}
         </nav>
 
-        <nav aria-label="Plan du site" className="mt-6 border-t border-ink-foreground/15 md:hidden">
+        <nav aria-label="Plan du site" className="mt-6 border-t border-ink-foreground/15 md:hidden" onKeyDown={onAccordionKeyDown}>
           {footerGroups.map((col) => {
             const id = groupAnchor(col.title);
             const isOpen = open === col.title;
@@ -141,11 +156,12 @@ export function SiteFooter() {
                 <h2>
                   <button
                     type="button"
+                    data-accordion
                     id={`footer-h-${id}`}
                     aria-expanded={isOpen}
                     aria-controls={`footer-p-${id}`}
                     onClick={() => setOpen(isOpen ? null : col.title)}
-                    className="flex min-h-12 w-full items-center justify-between gap-3 py-3 text-left text-[14px] font-semibold text-primary-foreground"
+                    className="flex min-h-12 w-full items-center justify-between gap-3 py-3 text-left text-[14px] font-semibold text-primary-foreground transition-colors hover:text-primary-foreground/80 focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/80 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                   >
                     {col.title}
                     <ChevronDown className={cn("size-4 shrink-0 transition-transform duration-200", isOpen && "rotate-180")} aria-hidden />
@@ -153,6 +169,7 @@ export function SiteFooter() {
                 </h2>
                 <div
                   id={`footer-p-${id}`}
+                  role="region"
                   aria-labelledby={`footer-h-${id}`}
                   className={cn("grid overflow-hidden transition-all duration-200 ease-out", isOpen ? "visible grid-rows-[1fr] opacity-100" : "invisible grid-rows-[0fr] opacity-0")}
                 >
