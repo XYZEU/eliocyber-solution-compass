@@ -4,3 +4,4 @@
 - [x] Ressources + livres blancs (formulaire -> PDF)
 - [ ] Envoi formulaire livre blanc à bonjour@eliocyber.fr (bloqué : domaine e-mail)
 - [x] Fonctionnalités : index + 5 pages
+- [x] Open Graph adaptés Ressources + Fonctionnalités

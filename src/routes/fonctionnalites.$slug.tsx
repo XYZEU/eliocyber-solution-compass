@@ -12,7 +12,20 @@ export const Route = createFileRoute("/fonctionnalites/$slug")({
   },
   head: ({ loaderData, params }) =>
     loaderData
-      ? { ...seo(`/fonctionnalites/${params.slug}`, `${loaderData.name} — Fonctionnalités Eliocyber`, loaderData.summary), scripts: [faqJsonLd(loaderData.faq)] }
+      ? {
+          ...seo(`/fonctionnalites/${params.slug}`, `${loaderData.name} : ${loaderData.tagline.toLowerCase()} | Eliocyber`, `${loaderData.name} — ${loaderData.summary} ${loaderData.audience}.`, { type: "article", section: "Fonctionnalités", tags: loaderData.features.map(([t]) => t) }),
+          scripts: [
+            faqJsonLd(loaderData.faq),
+            { type: "application/ld+json", children: JSON.stringify([
+              { "@context": "https://schema.org", "@type": "SoftwareApplication", name: `Eliocyber — ${loaderData.name}`, applicationCategory: "BusinessApplication", operatingSystem: "Web", description: loaderData.intro, featureList: loaderData.features.map(([t]) => t), provider: { "@type": "Organization", name: "Eliocyber" } },
+              { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Accueil", item: "/" },
+                { "@type": "ListItem", position: 2, name: "Fonctionnalités", item: "/fonctionnalites" },
+                { "@type": "ListItem", position: 3, name: loaderData.name, item: `/fonctionnalites/${params.slug}` },
+              ] },
+            ]) },
+          ],
+        }
       : { meta: [{ title: "Fonctionnalité introuvable — Eliocyber" }, { name: "robots", content: "noindex" }] },
   component: Page,
 });
@@ -22,14 +35,14 @@ function Page() {
   const others = fonctionnalites.filter((o) => o.slug !== f.slug);
   return (
     <>
-      <nav aria-label="Fil d'Ariane" className="wrap pt-6 text-sm text-muted-foreground">
+      <nav aria-label="Fil d'Ariane" className="wrap truncate pt-6 text-sm text-muted-foreground">
         <Link to="/fonctionnalites" className="hover:text-primary">Fonctionnalités</Link> / <span aria-current="page">{f.name}</span>
       </nav>
       <section className="wrap sec">
-        <p className="eyebrow">{f.name} · {f.audience}</p>
+        <p className="eyebrow"><span className="block sm:inline">{f.name}</span><span className="hidden sm:inline"> · </span><span className="block sm:inline">{f.audience}</span></p>
         <h1 className="title-1">{f.tagline}</h1>
         <p className="body-text max-w-[720px] text-[17px]">{f.intro}</p>
-        <ul className="mt-4 flex flex-wrap gap-2">{f.features.map(([t]) => <li key={t} className="pill">{t}</li>)}</ul>
+        <ul className="mt-4 hidden flex-wrap gap-2 sm:flex">{f.features.map(([t]) => <li key={t} className="pill">{t}</li>)}</ul>
       </section>
 
       <section className="band" aria-labelledby="fn">
@@ -47,10 +60,10 @@ function Page() {
         <h2 id="fonct" className="title-2">En quatre étapes</h2>
         <ol className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {f.steps.map(([t, x], i) => (
-            <li key={t} className="card-box">
+            <li key={t} className="card-box grid grid-cols-[auto_minmax(0,1fr)] gap-x-4 sm:block">
               <p className="text-2xl font-bold text-primary" aria-hidden>{String(i + 1).padStart(2, "0")}</p>
-              <h3 className="title-3 mt-1">{t}</h3>
-              <p className="body-text">{x}</p>
+              <div className="min-w-0"><h3 className="title-3 sm:mt-1">{t}</h3>
+              <p className="body-text !mb-0">{x}</p></div>
             </li>
           ))}
         </ol>
@@ -82,7 +95,7 @@ function Page() {
       <section className="band" aria-labelledby="autres">
         <div className="wrap sec">
           <h2 id="autres" className="title-2">Les autres modules</h2>
-          <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-4 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
             {others.map((o) => <li key={o.slug}><Link to="/fonctionnalites/$slug" params={{ slug: o.slug }} className="card-box block h-full font-semibold hover:text-primary">{o.name}</Link></li>)}
           </ul>
         </div>
