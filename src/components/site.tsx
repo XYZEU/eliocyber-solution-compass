@@ -107,14 +107,14 @@ export function SiteFooter() {
   const [open, setOpen] = useState<string | null>(null);
   return (
     <footer className="bg-ink text-[14px] leading-relaxed text-ink-foreground">
-      <div className="wrap py-9 md:grid md:grid-cols-[1.3fr_repeat(3,1fr)] md:gap-8 md:py-12">
+      <div className="wrap py-8 md:grid md:grid-cols-[1.3fr_repeat(3,1fr)] md:gap-8 md:py-12">
         <div className="min-w-0">
           <Link to="/" className="text-xl font-bold text-primary-foreground" aria-label="Eliocyber, accueil">Eliocyber</Link>
           <p className="mt-2.5 max-w-[300px] md:mt-3">Courtier spécialisé en assurance cyber pour les PME et ETI, avec un réseau de partenaires cyber, IT et conformité.</p>
-          <address className="mt-3 not-italic md:mt-4">
-            <p className="flex min-h-10 items-center gap-2 md:min-h-0 md:py-[3px]"><Mail className="size-4 shrink-0" aria-hidden /><a href="mailto:bonjour@eliocyber.fr" className={fLink}>bonjour@eliocyber.fr</a></p>
-            <p className="flex min-h-10 items-center gap-2 md:min-h-0 md:py-[3px]"><Phone className="size-4 shrink-0" aria-hidden />[Téléphone]</p>
-            <p className="flex min-h-10 items-center gap-2 md:min-h-0 md:py-[3px]"><MapPin className="size-4 shrink-0" aria-hidden />[Adresse]</p>
+          <address className="mt-2.5 not-italic md:mt-4">
+            <p className="flex min-h-11 items-center gap-2 md:min-h-0 md:py-[3px]"><Mail className="size-4 shrink-0" aria-hidden /><a href="mailto:bonjour@eliocyber.fr" className={fLink}>bonjour@eliocyber.fr</a></p>
+            <p className="flex min-h-9 items-center gap-2 md:min-h-0 md:py-[3px]"><Phone className="size-4 shrink-0" aria-hidden />[Téléphone]</p>
+            <p className="flex min-h-9 items-center gap-2 md:min-h-0 md:py-[3px]"><MapPin className="size-4 shrink-0" aria-hidden />[Adresse]</p>
           </address>
           <Link to="/contact" className="mt-4 flex w-full items-center justify-center rounded-lg bg-primary px-4 py-3 text-[14px] font-semibold text-primary-foreground hover:bg-primary/90 md:mt-5 md:inline-flex md:w-auto md:py-2.5">Être contacté</Link>
         </div>
@@ -132,7 +132,7 @@ export function SiteFooter() {
           ))}
         </nav>
 
-        <nav aria-label="Plan du site" className="mt-7 border-t border-ink-foreground/15 md:hidden">
+        <nav aria-label="Plan du site" className="mt-6 border-t border-ink-foreground/15 md:hidden">
           {footerGroups.map((col) => {
             const id = groupAnchor(col.title);
             const isOpen = open === col.title;
@@ -169,11 +169,11 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-ink-foreground/20">
-        <div className="wrap py-5 text-[12px] md:py-6">
-          <p className="leading-snug opacity-80 md:leading-relaxed">Eliocyber est un courtier en assurance immatriculé à l'ORIAS sous le n° [XXX]. Le partenaire agit exclusivement en qualité d'apporteur d'affaires et n'est pas intermédiaire en assurance. Le conseil, la présentation des garanties, la souscription et la gestion du contrat sont assurés par Eliocyber. Réclamations et médiation : [coordonnées].</p>
-          <div className="mt-3 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+        <div className="wrap py-4 text-[11px] md:py-6 md:text-[12px]">
+          <p className="leading-[1.5] opacity-75 md:leading-relaxed md:opacity-80">Eliocyber est un courtier en assurance immatriculé à l'ORIAS sous le n° [XXX]. Le partenaire agit exclusivement en qualité d'apporteur d'affaires et n'est pas intermédiaire en assurance. Le conseil, la présentation des garanties, la souscription et la gestion du contrat sont assurés par Eliocyber. Réclamations et médiation : [coordonnées].</p>
+          <div className="mt-2.5 flex flex-col gap-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
             <span className="opacity-70">© {new Date().getFullYear()} Eliocyber. Tous droits réservés.</span>
-            <ul className="flex flex-wrap gap-x-4 sm:gap-x-5">
+            <ul className="grid grid-cols-2 gap-x-4 sm:flex sm:flex-wrap sm:gap-x-5">
               <li><Link to="/mentions-legales" className={cn(fLink, "inline-flex min-h-10 items-center md:min-h-0")}>Mentions légales</Link></li>
               <li><Link to="/mentions-legales" hash="donnees" className={cn(fLink, "inline-flex min-h-10 items-center md:min-h-0")}>Confidentialité</Link></li>
               <li><Link to="/mentions-legales" hash="reclamations" className={cn(fLink, "inline-flex min-h-10 items-center md:min-h-0")}>Réclamations</Link></li>
