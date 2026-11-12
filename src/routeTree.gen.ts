@@ -17,9 +17,13 @@ import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as NosPartenairesRouteImport } from './routes/nos-partenaires'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SolutionRouteImport } from './routes/solution'
+import { Route as FonctionnalitesIndexRouteImport } from './routes/fonctionnalites.index'
+import { Route as FonctionnalitesSlugRouteImport } from './routes/fonctionnalites.$slug'
 import { Route as PartenairesCisoRouteImport } from './routes/partenaires.ciso'
 import { Route as PartenairesEsnRouteImport } from './routes/partenaires.esn'
 import { Route as PartenairesMsspRouteImport } from './routes/partenaires.mssp'
+import { Route as RessourcesIndexRouteImport } from './routes/ressources.index'
+import { Route as RessourcesSlugRouteImport } from './routes/ressources.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -61,6 +65,16 @@ const SolutionRoute = SolutionRouteImport.update({
   path: '/solution',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FonctionnalitesIndexRoute = FonctionnalitesIndexRouteImport.update({
+  id: '/fonctionnalites/',
+  path: '/fonctionnalites/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FonctionnalitesSlugRoute = FonctionnalitesSlugRouteImport.update({
+  id: '/fonctionnalites/$slug',
+  path: '/fonctionnalites/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PartenairesCisoRoute = PartenairesCisoRouteImport.update({
   id: '/partenaires/ciso',
   path: '/partenaires/ciso',
@@ -76,6 +90,16 @@ const PartenairesMsspRoute = PartenairesMsspRouteImport.update({
   path: '/partenaires/mssp',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RessourcesIndexRoute = RessourcesIndexRouteImport.update({
+  id: '/ressources/',
+  path: '/ressources/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RessourcesSlugRoute = RessourcesSlugRouteImport.update({
+  id: '/ressources/$slug',
+  path: '/ressources/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -86,9 +110,13 @@ export interface FileRoutesByFullPath {
   '/nos-partenaires': typeof NosPartenairesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solution': typeof SolutionRoute
+  '/fonctionnalites/$slug': typeof FonctionnalitesSlugRoute
   '/partenaires/ciso': typeof PartenairesCisoRoute
   '/partenaires/esn': typeof PartenairesEsnRoute
   '/partenaires/mssp': typeof PartenairesMsspRoute
+  '/ressources/$slug': typeof RessourcesSlugRoute
+  '/fonctionnalites/': typeof FonctionnalitesIndexRoute
+  '/ressources/': typeof RessourcesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -99,9 +127,13 @@ export interface FileRoutesByTo {
   '/nos-partenaires': typeof NosPartenairesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solution': typeof SolutionRoute
+  '/fonctionnalites/$slug': typeof FonctionnalitesSlugRoute
   '/partenaires/ciso': typeof PartenairesCisoRoute
   '/partenaires/esn': typeof PartenairesEsnRoute
   '/partenaires/mssp': typeof PartenairesMsspRoute
+  '/ressources/$slug': typeof RessourcesSlugRoute
+  '/fonctionnalites': typeof FonctionnalitesIndexRoute
+  '/ressources': typeof RessourcesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -113,9 +145,13 @@ export interface FileRoutesById {
   '/nos-partenaires': typeof NosPartenairesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solution': typeof SolutionRoute
+  '/fonctionnalites/$slug': typeof FonctionnalitesSlugRoute
   '/partenaires/ciso': typeof PartenairesCisoRoute
   '/partenaires/esn': typeof PartenairesEsnRoute
   '/partenaires/mssp': typeof PartenairesMsspRoute
+  '/ressources/$slug': typeof RessourcesSlugRoute
+  '/fonctionnalites/': typeof FonctionnalitesIndexRoute
+  '/ressources/': typeof RessourcesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -128,9 +164,13 @@ export interface FileRouteTypes {
     | '/nos-partenaires'
     | '/sitemap.xml'
     | '/solution'
+    | '/fonctionnalites/$slug'
     | '/partenaires/ciso'
     | '/partenaires/esn'
     | '/partenaires/mssp'
+    | '/ressources/$slug'
+    | '/fonctionnalites/'
+    | '/ressources/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -141,9 +181,13 @@ export interface FileRouteTypes {
     | '/nos-partenaires'
     | '/sitemap.xml'
     | '/solution'
+    | '/fonctionnalites/$slug'
     | '/partenaires/ciso'
     | '/partenaires/esn'
     | '/partenaires/mssp'
+    | '/ressources/$slug'
+    | '/fonctionnalites'
+    | '/ressources'
   id:
     | '__root__'
     | '/'
@@ -154,9 +198,13 @@ export interface FileRouteTypes {
     | '/nos-partenaires'
     | '/sitemap.xml'
     | '/solution'
+    | '/fonctionnalites/$slug'
     | '/partenaires/ciso'
     | '/partenaires/esn'
     | '/partenaires/mssp'
+    | '/ressources/$slug'
+    | '/fonctionnalites/'
+    | '/ressources/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -168,9 +216,13 @@ export interface RootRouteChildren {
   NosPartenairesRoute: typeof NosPartenairesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolutionRoute: typeof SolutionRoute
+  FonctionnalitesSlugRoute: typeof FonctionnalitesSlugRoute
   PartenairesCisoRoute: typeof PartenairesCisoRoute
   PartenairesEsnRoute: typeof PartenairesEsnRoute
   PartenairesMsspRoute: typeof PartenairesMsspRoute
+  RessourcesSlugRoute: typeof RessourcesSlugRoute
+  FonctionnalitesIndexRoute: typeof FonctionnalitesIndexRoute
+  RessourcesIndexRoute: typeof RessourcesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -231,6 +283,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fonctionnalites/': {
+      id: '/fonctionnalites/'
+      path: '/fonctionnalites'
+      fullPath: '/fonctionnalites/'
+      preLoaderRoute: typeof FonctionnalitesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fonctionnalites/$slug': {
+      id: '/fonctionnalites/$slug'
+      path: '/fonctionnalites/$slug'
+      fullPath: '/fonctionnalites/$slug'
+      preLoaderRoute: typeof FonctionnalitesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/partenaires/ciso': {
       id: '/partenaires/ciso'
       path: '/partenaires/ciso'
@@ -252,6 +318,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PartenairesMsspRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ressources/': {
+      id: '/ressources/'
+      path: '/ressources'
+      fullPath: '/ressources/'
+      preLoaderRoute: typeof RessourcesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ressources/$slug': {
+      id: '/ressources/$slug'
+      path: '/ressources/$slug'
+      fullPath: '/ressources/$slug'
+      preLoaderRoute: typeof RessourcesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -264,9 +344,13 @@ const rootRouteChildren: RootRouteChildren = {
   NosPartenairesRoute: NosPartenairesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolutionRoute: SolutionRoute,
+  FonctionnalitesSlugRoute: FonctionnalitesSlugRoute,
   PartenairesCisoRoute: PartenairesCisoRoute,
   PartenairesEsnRoute: PartenairesEsnRoute,
   PartenairesMsspRoute: PartenairesMsspRoute,
+  RessourcesSlugRoute: RessourcesSlugRoute,
+  FonctionnalitesIndexRoute: FonctionnalitesIndexRoute,
+  RessourcesIndexRoute: RessourcesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
