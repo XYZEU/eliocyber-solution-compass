@@ -13,7 +13,7 @@ async function renderFooter(path = "/") {
   });
   const nav = (await screen.findAllByRole("navigation", { name: "Plan du site", hidden: true }))
     .find((n) => n.querySelector("button[data-accordion]"))!;
-  const buttons = Array.from(nav.querySelectorAll<HTMLButtonElement>("button[data-accordion]"));
+  const buttons = Array.from(nav.querySelectorAll<HTMLButtonElement>("button[data-accordion]")) as [HTMLButtonElement, HTMLButtonElement, HTMLButtonElement];
   return { nav, buttons };
 }
 
@@ -89,7 +89,7 @@ describe("Footer links — states", () => {
 
   it("links carry hover and visible focus styles", async () => {
     await renderFooter();
-    const link = screen.getAllByRole("link", { name: "Portail MSP", hidden: true })[0];
+    const link = screen.getAllByRole("link", { name: "Portail MSP", hidden: true })[0]!;
     expect(link.className).toMatch(/hover:underline/);
     expect(link.className).toMatch(/focus-visible:ring-2/);
   });
