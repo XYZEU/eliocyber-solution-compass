@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { Menu, X } from "lucide-react";
+import { Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 
@@ -68,35 +68,75 @@ export function SiteHeader() {
   );
 }
 
+const footerCols = [
+  { title: "Entreprises", links: [
+    { to: "/solution", label: "Nos garanties cyber" },
+    { to: "/fonctionnalites", label: "Vue d'ensemble" },
+    { to: "/ressources", label: "Livres blancs" },
+    { to: "/contact", label: "Parler à un courtier", search: { profil: "entreprise" as const } },
+  ] },
+  { title: "Partenaires", links: [
+    { to: "/partenaires/mssp", label: "MSSP et SOC" },
+    { to: "/partenaires/esn", label: "ESN cyber" },
+    { to: "/partenaires/ciso", label: "CISO freelance" },
+    { to: "/nos-partenaires", label: "Tous les partenaires" },
+    { to: "/devenir-partenaire", label: "Devenir partenaire" },
+  ] },
+  { title: "Plateforme", links: [
+    { to: "/fonctionnalites/portail-msp", label: "Portail MSP" },
+    { to: "/fonctionnalites/moteur-de-souscription", label: "Moteur de souscription" },
+    { to: "/fonctionnalites/moteur-de-risque", label: "Moteur de risque" },
+    { to: "/fonctionnalites/module-de-remediation", label: "Remédiation" },
+    { to: "/fonctionnalites/portail-client", label: "Portail client" },
+  ] },
+] as const;
+
+const fLink = "text-ink-link transition-colors hover:text-primary-foreground hover:underline";
+
 export function SiteFooter() {
   return (
-    <footer className="bg-ink px-0 py-6 text-[13px] leading-relaxed text-ink-foreground">
-      <nav aria-label="Plan du site" className="wrap mb-3 grid gap-4 border-b border-ink-foreground/20 pb-4 sm:grid-cols-2">
-        <div>
-          <p className="mb-1 font-semibold text-primary-foreground">Entreprises</p>
-          <Link to="/solution" className="mr-4 text-ink-link hover:underline">Nos garanties cyber</Link>
-          <Link to="/contact" search={{ profil: "entreprise" }} className="mr-4 text-ink-link hover:underline">Parler à un courtier</Link>
-          <Link to="/ressources" className="mr-4 text-ink-link hover:underline">Livres blancs</Link>
-          <Link to="/fonctionnalites" className="text-ink-link hover:underline">Vue d'ensemble</Link>
+    <footer className="bg-ink text-[14px] leading-relaxed text-ink-foreground">
+      <div className="wrap grid gap-10 py-12 md:grid-cols-[1.3fr_repeat(3,1fr)] md:gap-8">
+        <div className="min-w-0">
+          <Link to="/" className="text-xl font-bold text-primary-foreground" aria-label="Eliocyber, accueil">Eliocyber</Link>
+          <p className="mt-3 max-w-[300px]">Courtier spécialisé en assurance cyber pour les PME et ETI, avec un réseau de partenaires cyber, IT et conformité.</p>
+          <address className="mt-4 space-y-1.5 not-italic">
+            <p className="flex items-center gap-2"><Mail className="size-4 shrink-0" aria-hidden /><a href="mailto:bonjour@eliocyber.fr" className={fLink}>bonjour@eliocyber.fr</a></p>
+            <p className="flex items-center gap-2"><Phone className="size-4 shrink-0" aria-hidden />[Téléphone]</p>
+            <p className="flex items-center gap-2"><MapPin className="size-4 shrink-0" aria-hidden />[Adresse]</p>
+          </address>
+          <Link to="/contact" className="mt-5 inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2.5 text-[14px] font-semibold text-primary-foreground hover:bg-primary/90">Être contacté</Link>
         </div>
-        <div>
-          <p className="mb-1 font-semibold text-primary-foreground">Partenaires</p>
-          <ul className="flex flex-wrap gap-x-4 gap-y-1">
-            <li><Link to="/partenaires/mssp" className="text-ink-link hover:underline">MSSP</Link></li>
-            <li><Link to="/partenaires/esn" className="text-ink-link hover:underline">ESN</Link></li>
-            <li><Link to="/partenaires/ciso" className="text-ink-link hover:underline">CISO</Link></li>
-            <li><Link to="/devenir-partenaire" className="text-ink-link hover:underline">Devenir partenaire</Link></li>
-            <li><Link to="/nos-partenaires" className="text-ink-link hover:underline">Tous les partenaires</Link></li>
-            <li><Link to="/comment-ca-marche" className="text-ink-link hover:underline">Le parcours</Link></li>
-          </ul>
+        <nav aria-label="Plan du site" className="contents">
+          {footerCols.map((col) => (
+            <div key={col.title} className="min-w-0">
+              <h2 className="mb-3 text-[13px] font-semibold uppercase tracking-wider text-primary-foreground">{col.title}</h2>
+              <ul className="space-y-2">
+                {col.links.map((l) => (
+                  <li key={l.to}>
+                    {"search" in l
+                      ? <Link to="/contact" search={l.search} className={fLink}>{l.label}</Link>
+                      : <Link to={l.to} className={fLink}>{l.label}</Link>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </nav>
+      </div>
+      <div className="border-t border-ink-foreground/20">
+        <div className="wrap py-6 text-[12px]">
+          <p className="opacity-80">Eliocyber est un courtier en assurance immatriculé à l'ORIAS sous le n° [XXX]. Le partenaire agit exclusivement en qualité d'apporteur d'affaires et n'est pas intermédiaire en assurance. Le conseil, la présentation des garanties, la souscription et la gestion du contrat sont assurés par Eliocyber. Réclamations et médiation : [coordonnées].</p>
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <span className="opacity-70">© {new Date().getFullYear()} Eliocyber. Tous droits réservés.</span>
+            <ul className="flex flex-wrap gap-x-5 gap-y-1">
+              <li><Link to="/mentions-legales" className={fLink}>Mentions légales</Link></li>
+              <li><Link to="/mentions-legales" hash="donnees" className={fLink}>Confidentialité</Link></li>
+              <li><Link to="/mentions-legales" hash="reclamations" className={fLink}>Réclamations</Link></li>
+              <li><a href="/sitemap.xml" className={fLink}>Plan du site</a></li>
+            </ul>
+          </div>
         </div>
-      </nav>
-      <div className="wrap">
-        Eliocyber est un courtier en assurance immatriculé à l'ORIAS sous le n° [XXX]. Le partenaire agit exclusivement en qualité d'apporteur d'affaires et n'est pas intermédiaire en assurance. Le conseil, la présentation des garanties, la souscription et la gestion du contrat sont assurés par Eliocyber. Réclamations et médiation : [coordonnées].{" "}
-        <Link to="/mentions-legales" className="text-ink-link hover:underline">Mentions légales</Link>
-        {" · "}
-        <Link to="/mentions-legales" hash="donnees" className="text-ink-link hover:underline">Confidentialité</Link>
-        <span className="mt-1 block opacity-70">© {new Date().getFullYear()} Eliocyber</span>
       </div>
     </footer>
   );
