@@ -29,3 +29,4 @@ use the editor.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
 - Shared header/footer/cards live in src/components/site.tsx and wrap every page from __root; each page sets SEO via its seo() helper so canonical/OG stay consistent.
+- Partner landing pages (/partenaires/*) share src/components/partner-landing.tsx driven by a per-page data object; the commission grid lives in src/lib/commission.ts so all pages show the same values.

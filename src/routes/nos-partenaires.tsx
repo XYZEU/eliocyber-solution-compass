@@ -50,7 +50,7 @@ function Page() {
           </Card>
         </div>
       </section>
-      <CtaBanner title="Devenir partenaire" text="Choisissez votre profil, suivez la formation courte et créez votre premier dossier." to="/contact" profil="partenaire" label="Créer mon compte partenaire" secondary={{ to: "/comment-ca-marche", label: "Voir les 6 étapes" }} />
+      <CtaBanner title="Devenir partenaire" text="Choisissez votre profil, suivez la formation courte et créez votre premier dossier." to="/devenir-partenaire" label="Créer mon compte partenaire" secondary={{ to: "/comment-ca-marche", label: "Voir les 6 étapes" }} />
     </>
   );
 }

@@ -12,10 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CommentCaMarcheRouteImport } from './routes/comment-ca-marche'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DevenirPartenaireRouteImport } from './routes/devenir-partenaire'
 import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as NosPartenairesRouteImport } from './routes/nos-partenaires'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SolutionRouteImport } from './routes/solution'
+import { Route as PartenairesCisoRouteImport } from './routes/partenaires.ciso'
+import { Route as PartenairesEsnRouteImport } from './routes/partenaires.esn'
+import { Route as PartenairesMsspRouteImport } from './routes/partenaires.mssp'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -30,6 +34,11 @@ const CommentCaMarcheRoute = CommentCaMarcheRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevenirPartenaireRoute = DevenirPartenaireRouteImport.update({
+  id: '/devenir-partenaire',
+  path: '/devenir-partenaire',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
@@ -52,34 +61,61 @@ const SolutionRoute = SolutionRouteImport.update({
   path: '/solution',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PartenairesCisoRoute = PartenairesCisoRouteImport.update({
+  id: '/partenaires/ciso',
+  path: '/partenaires/ciso',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartenairesEsnRoute = PartenairesEsnRouteImport.update({
+  id: '/partenaires/esn',
+  path: '/partenaires/esn',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartenairesMsspRoute = PartenairesMsspRouteImport.update({
+  id: '/partenaires/mssp',
+  path: '/partenaires/mssp',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/comment-ca-marche': typeof CommentCaMarcheRoute
   '/contact': typeof ContactRoute
+  '/devenir-partenaire': typeof DevenirPartenaireRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/nos-partenaires': typeof NosPartenairesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solution': typeof SolutionRoute
+  '/partenaires/ciso': typeof PartenairesCisoRoute
+  '/partenaires/esn': typeof PartenairesEsnRoute
+  '/partenaires/mssp': typeof PartenairesMsspRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/comment-ca-marche': typeof CommentCaMarcheRoute
   '/contact': typeof ContactRoute
+  '/devenir-partenaire': typeof DevenirPartenaireRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/nos-partenaires': typeof NosPartenairesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solution': typeof SolutionRoute
+  '/partenaires/ciso': typeof PartenairesCisoRoute
+  '/partenaires/esn': typeof PartenairesEsnRoute
+  '/partenaires/mssp': typeof PartenairesMsspRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/comment-ca-marche': typeof CommentCaMarcheRoute
   '/contact': typeof ContactRoute
+  '/devenir-partenaire': typeof DevenirPartenaireRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/nos-partenaires': typeof NosPartenairesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solution': typeof SolutionRoute
+  '/partenaires/ciso': typeof PartenairesCisoRoute
+  '/partenaires/esn': typeof PartenairesEsnRoute
+  '/partenaires/mssp': typeof PartenairesMsspRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -87,38 +123,54 @@ export interface FileRouteTypes {
     | '/'
     | '/comment-ca-marche'
     | '/contact'
+    | '/devenir-partenaire'
     | '/mentions-legales'
     | '/nos-partenaires'
     | '/sitemap.xml'
     | '/solution'
+    | '/partenaires/ciso'
+    | '/partenaires/esn'
+    | '/partenaires/mssp'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/comment-ca-marche'
     | '/contact'
+    | '/devenir-partenaire'
     | '/mentions-legales'
     | '/nos-partenaires'
     | '/sitemap.xml'
     | '/solution'
+    | '/partenaires/ciso'
+    | '/partenaires/esn'
+    | '/partenaires/mssp'
   id:
     | '__root__'
     | '/'
     | '/comment-ca-marche'
     | '/contact'
+    | '/devenir-partenaire'
     | '/mentions-legales'
     | '/nos-partenaires'
     | '/sitemap.xml'
     | '/solution'
+    | '/partenaires/ciso'
+    | '/partenaires/esn'
+    | '/partenaires/mssp'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CommentCaMarcheRoute: typeof CommentCaMarcheRoute
   ContactRoute: typeof ContactRoute
+  DevenirPartenaireRoute: typeof DevenirPartenaireRoute
   MentionsLegalesRoute: typeof MentionsLegalesRoute
   NosPartenairesRoute: typeof NosPartenairesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolutionRoute: typeof SolutionRoute
+  PartenairesCisoRoute: typeof PartenairesCisoRoute
+  PartenairesEsnRoute: typeof PartenairesEsnRoute
+  PartenairesMsspRoute: typeof PartenairesMsspRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -142,6 +194,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/devenir-partenaire': {
+      id: '/devenir-partenaire'
+      path: '/devenir-partenaire'
+      fullPath: '/devenir-partenaire'
+      preLoaderRoute: typeof DevenirPartenaireRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mentions-legales': {
@@ -172,6 +231,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/partenaires/ciso': {
+      id: '/partenaires/ciso'
+      path: '/partenaires/ciso'
+      fullPath: '/partenaires/ciso'
+      preLoaderRoute: typeof PartenairesCisoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partenaires/esn': {
+      id: '/partenaires/esn'
+      path: '/partenaires/esn'
+      fullPath: '/partenaires/esn'
+      preLoaderRoute: typeof PartenairesEsnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partenaires/mssp': {
+      id: '/partenaires/mssp'
+      path: '/partenaires/mssp'
+      fullPath: '/partenaires/mssp'
+      preLoaderRoute: typeof PartenairesMsspRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -179,10 +259,14 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CommentCaMarcheRoute: CommentCaMarcheRoute,
   ContactRoute: ContactRoute,
+  DevenirPartenaireRoute: DevenirPartenaireRoute,
   MentionsLegalesRoute: MentionsLegalesRoute,
   NosPartenairesRoute: NosPartenairesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolutionRoute: SolutionRoute,
+  PartenairesCisoRoute: PartenairesCisoRoute,
+  PartenairesEsnRoute: PartenairesEsnRoute,
+  PartenairesMsspRoute: PartenairesMsspRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -10,7 +10,7 @@ const nav = [
   { to: "/nos-partenaires", label: "Nos partenaires" },
 ] as const;
 
-type BtnTo = "/contact" | "/comment-ca-marche" | "/nos-partenaires" | "/solution";
+type BtnTo = "/contact" | "/comment-ca-marche" | "/nos-partenaires" | "/solution" | "/devenir-partenaire";
 export type Profil = "entreprise" | "partenaire";
 
 export function Btn({ to, children, ghost, className, profil }: { to: BtnTo; children: ReactNode; ghost?: boolean; className?: string; profil?: Profil | undefined }) {
@@ -39,7 +39,7 @@ export function SiteHeader() {
               {n.label}
             </Link>
           ))}
-          <Link to="/contact" search={{ profil: "partenaire" }} className="text-foreground hover:text-primary">Accès partenaires</Link>
+          <Link to="/devenir-partenaire" className="text-foreground hover:text-primary" activeProps={{ className: "text-primary font-semibold" }}>Devenir partenaire</Link>
           <Btn to="/contact">Être contacté</Btn>
         </nav>
         <button
@@ -58,7 +58,7 @@ export function SiteHeader() {
           {nav.map((n) => (
             <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="py-2.5 text-foreground">{n.label}</Link>
           ))}
-          <Link to="/contact" search={{ profil: "partenaire" }} onClick={() => setOpen(false)} className="py-2.5 text-foreground">Accès partenaires</Link>
+          <Link to="/devenir-partenaire" onClick={() => setOpen(false)} className="py-2.5 text-foreground">Devenir partenaire</Link>
           <span onClick={() => setOpen(false)} className="mt-2"><Btn to="/contact" className="w-full">Être contacté</Btn></span>
         </nav>
       )}
@@ -77,9 +77,14 @@ export function SiteFooter() {
         </div>
         <div>
           <p className="mb-1 font-semibold text-primary-foreground">Partenaires</p>
-          <Link to="/comment-ca-marche" className="mr-4 text-ink-link hover:underline">Le parcours</Link>
-          <Link to="/nos-partenaires" className="mr-4 text-ink-link hover:underline">Qui peut nous rejoindre</Link>
-          <Link to="/contact" search={{ profil: "partenaire" }} className="text-ink-link hover:underline">Devenir partenaire</Link>
+          <ul className="flex flex-wrap gap-x-4 gap-y-1">
+            <li><Link to="/partenaires/mssp" className="text-ink-link hover:underline">MSSP</Link></li>
+            <li><Link to="/partenaires/esn" className="text-ink-link hover:underline">ESN</Link></li>
+            <li><Link to="/partenaires/ciso" className="text-ink-link hover:underline">CISO</Link></li>
+            <li><Link to="/devenir-partenaire" className="text-ink-link hover:underline">Devenir partenaire</Link></li>
+            <li><Link to="/nos-partenaires" className="text-ink-link hover:underline">Tous les partenaires</Link></li>
+            <li><Link to="/comment-ca-marche" className="text-ink-link hover:underline">Le parcours</Link></li>
+          </ul>
         </div>
       </nav>
       <div className="wrap">
