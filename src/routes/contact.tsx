@@ -7,7 +7,7 @@ type Profil = "entreprise" | "partenaire";
 
 export const Route = createFileRoute("/contact")({
   validateSearch: (s: Record<string, unknown>): { profil?: Profil } =>
-    s.profil === "partenaire" || s.profil === "entreprise" ? { profil: s.profil } : {},
+    s["profil"] === "partenaire" || s["profil"] === "entreprise" ? { profil: s["profil"] } : {},
   head: () => seo("/contact", "Contact — Parlez à un courtier en assurance cyber | Eliocyber", "Entreprise ou partenaire, décrivez votre besoin : un courtier spécialisé en assurance cyber Eliocyber vous répond sous deux jours ouvrés."),
   component: Page,
 });
