@@ -30,7 +30,7 @@ function Page() {
       <PageIntro eyebrow="Devenir partenaire" title="Recommandez la cyber-assurance à vos clients, sans devenir intermédiaire">
         Vous détectez le risque chez vos clients. Eliocyber, courtier en assurance, s'occupe du conseil, de la souscription et du suivi. Vous percevez une commission d'apport.
       </PageIntro>
-      <div className="wrap pt-8 pb-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+      <div className="wrap pt-8 pb-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-3">
         <a href="#candidature" className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground hover:bg-primary/90">Créer mon compte partenaire</a>
         <p className="text-sm text-muted-foreground">
           Votre métier :{" "}
