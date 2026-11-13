@@ -48,7 +48,7 @@ function Page() {
           <p className="body-text">PDF · {lb.pages} · gratuit</p>
           <blockquote className="border-l-2 border-primary pl-3 text-sm italic text-muted-foreground">« {lb.extract} »</blockquote>
         </aside>
-      </section>
+      </section></div>
 
       <section className="band" aria-labelledby="apprendre">
         <div className="wrap sec">

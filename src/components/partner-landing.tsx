@@ -56,7 +56,7 @@ export function PartnerLanding({ d }: { d: LandingData }) {
           <p className="body-text mt-2">{d.visual.text}</p>
           {d.visual.items && <ul className="mt-3 flex flex-wrap gap-2">{d.visual.items.map((x) => <li key={x} className="pill">{x}</li>)}</ul>}
         </aside>
-      </section>
+      </section></div>
 
       <section id="probleme" className="band scroll-mt-20" aria-labelledby="h-probleme">
         <div className="wrap sec">
