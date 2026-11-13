@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { fonctionnalites } from "@/lib/fonctionnalites";
-import { ChevronDown, Mail, MapPin, Menu, Phone, X } from "lucide-react";
+import { ChevronDown, Mail, MapPin, Menu, Phone, ShieldCheck, X, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import radarLight from "@/assets/eliocyber-logo-radar-clair.svg";
 import radarDark from "@/assets/eliocyber-logo-radar-sombre.svg";
@@ -18,11 +18,13 @@ const nav = [
 type BtnTo = "/contact" | "/comment-ca-marche" | "/nos-partenaires" | "/solution" | "/devenir-partenaire";
 export type Profil = "entreprise" | "partenaire";
 
-export function Btn({ to, children, ghost, className, profil }: { to: BtnTo; children: ReactNode; ghost?: boolean; className?: string; profil?: Profil | undefined }) {
+export function Btn({ to, children, ghost, className, profil, onDark }: { to: BtnTo; children: ReactNode; ghost?: boolean; className?: string; profil?: Profil | undefined; onDark?: boolean }) {
   const cls = cn(
-        "inline-flex items-center justify-center rounded-lg px-5 py-3 text-[15px] font-semibold transition-colors",
-        ghost
-          ? "border-[1.5px] border-primary text-primary hover:bg-primary-soft"
+        "inline-flex items-center justify-center rounded-lg px-5 py-3 text-[15px] font-semibold shadow-sm transition-all hover:-translate-y-px",
+        ghost && onDark
+          ? "border-[1.5px] border-ink-foreground/40 text-primary-foreground shadow-none hover:bg-ink-foreground/10"
+          : ghost
+          ? "border-[1.5px] border-primary text-primary shadow-none hover:bg-primary-soft"
           : "bg-primary text-primary-foreground hover:bg-primary/90",
         className,
       );
@@ -222,9 +224,10 @@ export function PageIntro({ eyebrow, title, children }: { eyebrow: string; title
   );
 }
 
-export function Card({ eyebrow, title, children, className }: { eyebrow?: string; title: string; children: ReactNode; className?: string }) {
+export function Card({ eyebrow, title, children, className, icon: Icon }: { eyebrow?: string; title: string; children: ReactNode; className?: string; icon?: LucideIcon }) {
   return (
-    <article className={cn("card-box", className)}>
+    <article className={cn("card-box card-hover", className)}>
+      {Icon && <span className="icon-chip mb-4"><Icon className="size-5" aria-hidden /></span>}
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
       <h3 className={cn("title-3", eyebrow && "mt-2")}>{title}</h3>
       {children}
@@ -235,13 +238,14 @@ export function Card({ eyebrow, title, children, className }: { eyebrow?: string
 export function CtaBanner({ title, text, to, label, profil, secondary }: { title: string; text: string; to: BtnTo; label: string; profil?: Profil; secondary?: { to: BtnTo; label: string; profil?: Profil | undefined } }) {
   return (
     <section className="wrap pb-14">
-      <div className="card-box flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-center">
+      <div className="bg-ink-glow flex flex-col items-start justify-between gap-6 overflow-hidden rounded-2xl px-6 py-8 shadow-lg sm:flex-row sm:items-center sm:px-10 sm:py-10">
         <div>
-          <h2 className="title-3">{title}</h2>
-          <p className="body-text !mb-0">{text}</p>
+          <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[.14em] text-ink-link"><span className="live-dot" aria-hidden />Réponse sous 2 jours ouvrés</p>
+          <h2 className="mt-3 text-[22px] font-bold leading-tight !text-primary-foreground sm:text-[26px]">{title}</h2>
+          <p className="mt-2 max-w-[560px] text-ink-foreground">{text}</p>
         </div>
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:shrink-0">
-          {secondary && <Btn to={secondary.to} profil={secondary.profil} ghost>{secondary.label}</Btn>}
+          {secondary && <Btn to={secondary.to} profil={secondary.profil} ghost onDark>{secondary.label}</Btn>}
           <Btn to={to} profil={profil}>{label}</Btn>
         </div>
       </div>
@@ -269,4 +273,31 @@ export function seo(path: string, title: string, description: string, og: { type
     ],
     links: [{ rel: "canonical", href: url }],
   };
+}
+
+export function KeyFigures({ items }: { items: readonly (readonly [string, string])[] }) {
+  return (
+    <dl className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border shadow-sm sm:grid-cols-2 lg:grid-cols-4">
+      {items.map(([v, l]) => (
+        <div key={l} className="bg-card px-6 py-5">
+          <dt className="sr-only">{l}</dt>
+          <dd className="font-display text-[26px] font-extrabold tracking-tight text-foreground">{v}</dd>
+          <dd className="mt-1 text-sm text-muted-foreground">{l}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+export function TrustSeal() {
+  return (
+    <div className="inline-flex flex-wrap items-center gap-x-4 gap-y-2 rounded-xl border border-border bg-card px-4 py-3 text-[13px] text-muted-foreground shadow-sm">
+      <span className="icon-chip !size-8"><ShieldCheck className="size-4" aria-hidden /></span>
+      <span><strong className="text-foreground">Courtier immatriculé ORIAS</strong> n° [XXX]</span>
+      <span aria-hidden className="hidden h-4 w-px bg-border sm:block" />
+      <span>Contrôle ACPR</span>
+      <span aria-hidden className="hidden h-4 w-px bg-border sm:block" />
+      <span>Données traitées selon le RGPD</span>
+    </div>
+  );
 }

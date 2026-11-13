@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Btn, Card, CtaBanner, PageIntro, seo } from "@/components/site";
+import { Btn, Card, CtaBanner, KeyFigures, PageIntro, TrustSeal, seo } from "@/components/site";
+import { Siren, Scale, TrendingDown, ShieldCheck, Building2, Handshake, type LucideIcon } from "lucide-react";
 
 export const Route = createFileRoute("/solution")({
   head: () => seo("/solution", "Solution d'assurance cyber pour PME et ETI — Eliocyber", "Fraude, rançongiciel, perte d'exploitation et RC cyber : découvrez notre couverture sur mesure et notre accompagnement dédié aux entreprises."),
@@ -13,22 +14,26 @@ const garanties = [
   ["Prévention", "Évaluation de la maturité cyber, plan de remédiation priorisé et preuves de contrôle pour améliorer l'assurabilité."],
 ] as const;
 
+const icons: LucideIcon[] = [Siren, Scale, TrendingDown, ShieldCheck];
+const figures = [["2 jours", "Délai de réponse ouvré"], ["4 garanties", "Incidents, RC, exploitation, prévention"], ["PME & ETI", "Couverture construite sur mesure"], ["1 courtier", "Conseil, souscription et gestion"]] as const;
+
 function Page() {
   return (
     <>
       <PageIntro eyebrow="Solution" title="Un réseau de prescripteurs, adossé à un courtier spécialisé en cyber">
         Eliocyber transforme les professionnels qui voient le risque au quotidien en source de protection pour leurs clients PME et ETI. Nous ne vendons pas de contrat via nos partenaires : nous recueillons le besoin, conseillons et souscrivons.
       </PageIntro>
+      <div className="wrap -mt-4 pb-10 space-y-6"><TrustSeal /><KeyFigures items={figures} /></div>
 
       <section className="band" aria-labelledby="valeur">
         <div className="wrap sec">
           <h2 id="valeur" className="sr-only">La valeur pour chacun</h2>
           <div className="grid gap-5 md:grid-cols-2">
-            <Card eyebrow="Pour les entreprises" title="Un conseil expert et une protection adaptée" className="flex flex-col">
+            <Card eyebrow="Pour les entreprises" icon={Building2} title="Un conseil expert et une protection adaptée" className="flex flex-col">
               <p className="body-text">Un courtier analyse votre situation, présente les garanties et sélectionne l'assureur adapté à votre profil de risque. Vous savez précisément ce qui est couvert, et comment réagir en cas d'attaque.</p>
               <div className="mt-auto pt-2"><Btn to="/contact" profil="entreprise">Parler à un courtier</Btn></div>
             </Card>
-            <Card eyebrow="Pour nos partenaires" title="Une valeur ajoutée sans devenir intermédiaire" className="flex flex-col">
+            <Card eyebrow="Pour nos partenaires" icon={Handshake} title="Une valeur ajoutée sans devenir intermédiaire" className="flex flex-col">
               <p className="body-text">Un suivi clair des dossiers, une commission d'apport et des outils pour prouver l'amélioration de la posture de vos clients — sans jamais présenter ni recommander de contrat.</p>
               <div className="mt-auto pt-2"><Btn to="/comment-ca-marche" ghost>Découvrir le parcours partenaire</Btn></div>
             </Card>
@@ -41,7 +46,7 @@ function Page() {
         <h2 id="garanties" className="title-2">Ce que nous couvrons</h2>
         <p className="body-text max-w-[720px]">Une couverture construite sur mesure à partir de votre activité, de vos systèmes et de vos contrôles existants.</p>
         <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {garanties.map(([t, d]) => <Card key={t} title={t} className="h-full"><p className="body-text">{d}</p></Card>)}
+          {garanties.map(([t, d], i) => <Card key={t} icon={icons[i]} title={t} className="h-full"><p className="body-text">{d}</p></Card>)}
         </div>
       </section>
 
