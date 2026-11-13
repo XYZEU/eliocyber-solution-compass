@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as CommentCaMarcheRouteImport } from './routes/comment-ca-marche'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DevenirPartenaireRouteImport } from './routes/devenir-partenaire'
@@ -28,6 +29,11 @@ import { Route as RessourcesSlugRouteImport } from './routes/ressources.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AProposRoute = AProposRouteImport.update({
+  id: '/a-propos',
+  path: '/a-propos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CommentCaMarcheRoute = CommentCaMarcheRouteImport.update({
@@ -103,6 +109,7 @@ const RessourcesSlugRoute = RessourcesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
   '/comment-ca-marche': typeof CommentCaMarcheRoute
   '/contact': typeof ContactRoute
   '/devenir-partenaire': typeof DevenirPartenaireRoute
@@ -120,6 +127,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
   '/comment-ca-marche': typeof CommentCaMarcheRoute
   '/contact': typeof ContactRoute
   '/devenir-partenaire': typeof DevenirPartenaireRoute
@@ -138,6 +146,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
   '/comment-ca-marche': typeof CommentCaMarcheRoute
   '/contact': typeof ContactRoute
   '/devenir-partenaire': typeof DevenirPartenaireRoute
@@ -157,6 +166,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/a-propos'
     | '/comment-ca-marche'
     | '/contact'
     | '/devenir-partenaire'
@@ -174,6 +184,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/a-propos'
     | '/comment-ca-marche'
     | '/contact'
     | '/devenir-partenaire'
@@ -191,6 +202,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/a-propos'
     | '/comment-ca-marche'
     | '/contact'
     | '/devenir-partenaire'
@@ -209,6 +221,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AProposRoute: typeof AProposRoute
   CommentCaMarcheRoute: typeof CommentCaMarcheRoute
   ContactRoute: typeof ContactRoute
   DevenirPartenaireRoute: typeof DevenirPartenaireRoute
@@ -232,6 +245,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/a-propos': {
+      id: '/a-propos'
+      path: '/a-propos'
+      fullPath: '/a-propos'
+      preLoaderRoute: typeof AProposRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/comment-ca-marche': {
@@ -337,6 +357,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AProposRoute: AProposRoute,
   CommentCaMarcheRoute: CommentCaMarcheRoute,
   ContactRoute: ContactRoute,
   DevenirPartenaireRoute: DevenirPartenaireRoute,
