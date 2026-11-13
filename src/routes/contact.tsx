@@ -125,6 +125,6 @@ function Page() {
           </form>
         )}
       </section>
-    </div>
+    </div></div>
   );
 }
