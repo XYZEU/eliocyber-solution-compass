@@ -2,13 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Card, CtaBanner, PageIntro, seo } from "@/components/site";
 
 const faq = [
-  ["Qu'est-ce qu'Eliocyber ?", "Eliocyber est une plateforme nouvelle génération pour les courtiers d'assurances, mettant à disposition une marketplace d'assurances professionnelles et un CRM orienté conformité. La marketplace fonctionne comme un extranet multi-compagnies : elle facilite la tarification, la comparaison, la souscription et la gestion de produits d'assurance, sans passer par les extranets des compagnies. L'espace CRM facilite la prospection, le suivi clients et la gestion de la conformité. Notre ambition : qu'un courtier puisse opérer toute son activité sur un seul outil."],
-  ["Eliocyber est-il un assureur, un courtier ou un éditeur de logiciel ?", "Eliocyber n'est pas assureur. Eliocyber est un courtier grossiste nouvelle génération qui délivre un maximum de valeur à son réseau de courtiers partenaires via une plateforme tout-en-un, incluant une marketplace qui référence les meilleures offres du marché. Eliocyber n'exerce aucune activité en direct et ne contacte en aucun cas les assurés finaux à des fins commerciales. Eliocyber est aussi éditeur de logiciel, puisque son offre est fournie dans une plateforme conçue spécialement pour les courtiers."],
+  ["Que fait Eliocyber ?", "Eliocyber accompagne les PME et ETI dans leur assurance cyber. Nous analysons leur exposition au risque, présentons les garanties adaptées et suivons le contrat dans la durée, en nous appuyant sur un réseau de partenaires cyber, IT et conformité."],
+  ["Quel est le rôle des partenaires ?", "Nos partenaires (MSSP, ESN, CISO freelance, intégrateurs IT, consultants conformité) repèrent un besoin chez leurs clients et nous le transmettent, avec leur accord. Ils agissent comme apporteurs d'affaires : ils informent, mais ne conseillent pas, ne présentent pas de contrat et ne donnent pas de prix. Le conseil et la souscription relèvent d'Eliocyber."],
+  ["Comment sont rémunérés les partenaires ?", "Selon une règle simple : un lead, un apporteur, une commission. Le premier partenaire qui transmet le dossier, avec le consentement du client, est rémunéré une fois le contrat souscrit."],
+  ["Sous quel délai répondez-vous ?", "Nous répondons à chaque demande, entreprise ou partenaire, sous 2 jours ouvrés."],
 ] as const;
 
 export const Route = createFileRoute("/a-propos")({
   head: () => {
-    const s = seo("/a-propos", "À propos — Eliocyber, courtage de proximité et innovation", "Eliocyber réinvente, aux côtés des courtiers, l'assurance de proximité : notre modèle, notre histoire, nos valeurs et notre fonctionnement.");
+    const s = seo("/a-propos", "À propos — Eliocyber, l'assurance cyber portée par ceux qui voient le risque", "Qui est Eliocyber : un courtier spécialisé en assurance cyber pour les PME et ETI, entouré d'un réseau de partenaires cyber, IT et conformité.");
     return { ...s, scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@graph": [
       { "@type": "AboutPage", name: "À propos d'Eliocyber", url: "/a-propos" },
       { "@type": "FAQPage", mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
@@ -18,51 +20,51 @@ export const Route = createFileRoute("/a-propos")({
 });
 
 const modele = [
-  ["Une marketplace indépendante", "Eliocyber est une marketplace d'assurance indépendante, reconnue des compagnies d'assurance et spécialisée sur l'assurance professionnelle. Eliocyber opère en tant que courtier grossiste sur tous les contrats distribués."],
-  ["Une plateforme tout-en-un", "Notre marketplace est accessible au sein d'une plateforme dotée des outils indispensables pour exercer le courtage de manière moderne et sécurisée : comparaison, souscription, gestion de contrats, CRM complet, outil de conformité."],
+  ["Un courtier spécialisé en cyber", "Nous conseillons les entreprises sur leur couverture cyber : réponse aux incidents, responsabilité civile, perte d'exploitation, prévention. Nous recueillons les besoins, comparons les offres des assureurs et suivons le contrat après la souscription."],
+  ["Un réseau de prescripteurs", "Les acteurs qui sécurisent déjà les systèmes d'information sont les mieux placés pour repérer un besoin. Ils nous transmettent les dossiers, et une plateforme dédiée relie chaque étape : évaluation du risque, plan de remédiation, souscription, suivi."],
 ] as const;
 
 const valeurs = [
-  ["Esprit d'équipe", "Nos équipes travaillent main dans la main avec les courtiers pour les aider à exceller dans le conseil fourni aux clients."],
-  ["Humain", "Nous croyons que rien ne remplacera le contact humain. Notre mission est de mettre la technologie au service de l'humain."],
-  ["Indépendance", "Nous sommes un acteur indépendant et nous le revendiquons. Nous privilégions toujours l'intérêt des assurés."],
+  ["Rôles clairs", "Le partenaire informe, le courtier conseille. Chacun sait ce qu'il peut dire et faire, pour protéger le client comme le partenaire."],
+  ["Transparence", "Une seule règle de commission, un suivi visible à chaque étape du dossier et des réponses sous 2 jours ouvrés."],
+  ["Prévention d'abord", "Une bonne assurance commence par un risque maîtrisé. Nous aidons les entreprises à combler leurs écarts avant de les couvrir."],
 ] as const;
 
 const etapes = [
-  ["Découvrez", "Parcourez notre catalogue produit et découvrez les fonctionnalités de notre plateforme."],
-  ["Inscrivez-vous", "Remplissez vos informations pour devenir partenaire : nous vous créons un espace sécurisé."],
-  ["Conseillez", "Consacrez du temps à vos assurés, pour leur conseiller les meilleures offres."],
-  ["Pilotez", "Chaque mois, vous touchez vos commissions et consultez les tableaux de pilotage de votre activité."],
+  ["Repérer", "Un partenaire identifie un besoin de couverture cyber chez son client."],
+  ["Transmettre", "Il nous adresse le dossier, avec le consentement du client."],
+  ["Conseiller", "Eliocyber analyse le risque, présente les garanties et accompagne la souscription."],
+  ["Suivre", "Le partenaire suit l'avancement du dossier et perçoit sa commission après souscription."],
 ] as const;
 
 function Page() {
   return (
     <>
-      <PageIntro eyebrow="À propos" title="Réinventer, aux côtés des courtiers, l'assurance de proximité">
-        Eliocyber a été créé par des passionnés du secteur de l'assurance et des experts du digital, avec une promesse : concilier <strong className="text-foreground">courtage de proximité</strong> et <strong className="text-foreground">innovation technologique</strong>.
+      <PageIntro eyebrow="À propos" title="L'assurance cyber, portée par ceux qui voient le risque">
+        Eliocyber est né d'une idée simple : les experts qui protègent les systèmes d'information au quotidien sont les premiers à repérer un besoin d'assurance. Nous les réunissons autour d'un <strong className="text-foreground">courtier spécialisé en cyber</strong>, pour que chaque PME et ETI accède à une <strong className="text-foreground">couverture adaptée à son risque réel</strong>.
       </PageIntro>
       <section className="band" aria-labelledby="modele">
         <div className="wrap sec">
           <p className="eyebrow">Notre modèle</p>
-          <h2 id="modele" className="title-2">Courtier grossiste et plateforme tout-en-un</h2>
+          <h2 id="modele" className="title-2">Un courtier et un réseau de partenaires</h2>
           <div className="mt-5 grid gap-5 md:grid-cols-2">
             {modele.map(([t, d]) => <Card key={t} title={t} className="h-full border-l-4 !border-l-primary"><p className="body-text !mb-0">{d}</p></Card>)}
           </div>
         </div>
       </section>
       <section className="wrap sec" aria-labelledby="histoire">
-        <p className="eyebrow">Notre histoire</p>
-        <h2 id="histoire" className="title-2">Né d'un constat</h2>
+        <p className="eyebrow">Pourquoi Eliocyber</p>
+        <h2 id="histoire" className="title-2">Rapprocher la sécurité et l'assurance</h2>
         <div className="max-w-[760px]">
-          <p className="body-text text-[17px]">Les innovations technologiques dans le secteur de l'assurance sont majoritairement orientées vers la digitalisation de la distribution. Pourtant, côté client, l'attente principale reste un accompagnement humain. La technologie est un outil au service des courtiers de proximité, mais ne pourra pas les remplacer.</p>
+          <p className="body-text text-[17px]">Beaucoup d'entreprises restent mal couvertes face au risque cyber : les questionnaires des assureurs sont exigeants, les garanties difficiles à comparer, et le lien avec leur niveau de sécurité réel est rarement fait. À l'inverse, leurs prestataires cyber et IT connaissent précisément leurs forces et leurs failles.</p>
           <blockquote className="card-box mt-4 border-l-4 !border-l-primary">
-            <p className="body-text !mb-0 text-[17px]"><strong className="text-foreground">Notre ambition :</strong> co-construire, avec nos partenaires courtiers, l'outil digital moderne permettant de sélectionner les meilleures couvertures pour leurs clients, tout en optimisant le temps passé sur les tâches à faible valeur ajoutée, afin de se concentrer sur l'essence du métier de courtier : le conseil.</p>
+            <p className="body-text !mb-0 text-[17px]"><strong className="text-foreground">Notre mission :</strong> faire travailler ensemble ceux qui voient le risque et ceux qui le protègent, pour que l'assurance cyber s'appuie sur l'état réel de la sécurité de chaque entreprise.</p>
           </blockquote>
         </div>
       </section>
       <section className="band" aria-labelledby="valeurs">
         <div className="wrap sec">
-          <p className="eyebrow">Nos valeurs</p>
+          <p className="eyebrow">Nos engagements</p>
           <h2 id="valeurs" className="title-2">Ce qui nous guide</h2>
           <div className="mt-5 grid gap-5 md:grid-cols-3">
             {valeurs.map(([t, d]) => <Card key={t} title={t} className="h-full"><p className="body-text !mb-0">{d}</p></Card>)}
@@ -71,7 +73,7 @@ function Page() {
       </section>
       <section className="wrap sec" aria-labelledby="fonctionnement">
         <p className="eyebrow">Comment ça marche ?</p>
-        <h2 id="fonctionnement" className="title-2">Rejoignez-nous en 4 étapes</h2>
+        <h2 id="fonctionnement" className="title-2">Du besoin repéré au client protégé</h2>
         <ol className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {etapes.map(([t, d], i) => <li key={t}><Card eyebrow={`Étape ${i + 1}`} title={t} className="h-full"><p className="body-text !mb-0">{d}</p></Card></li>)}
         </ol>
@@ -91,7 +93,7 @@ function Page() {
         </div>
       </section>
       <div className="mt-10" />
-      <CtaBanner title="Envie d'en savoir plus ?" text="Échangeons sur votre besoin ou rejoignez notre réseau de partenaires." to="/contact" label="Être contacté" secondary={{ to: "/devenir-partenaire", label: "Devenir partenaire" }} />
+      <CtaBanner title="Envie d'en savoir plus ?" text="Parlons de votre besoin, ou rejoignez notre réseau de partenaires." to="/contact" label="Être contacté" secondary={{ to: "/devenir-partenaire", label: "Devenir partenaire" }} />
     </>
   );
 }
