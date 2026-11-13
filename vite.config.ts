@@ -8,8 +8,12 @@
 // hosting already compresses at the edge.
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
-import { fonctionnalites } from "./src/lib/fonctionnalites";
-import { livresBlancs } from "./src/lib/livres-blancs";
+import { readFileSync } from "node:fs";
+
+// Read slugs as text instead of importing the content modules: an import makes Vite restart the
+// dev server (and re-optimize deps) on every content edit, which left open tabs with two React copies.
+const slugsOf = (file: string) =>
+  [...readFileSync(new URL(file, import.meta.url), "utf8").matchAll(/^\s*slug: "([^"]+)"/gm)].map((m) => m[1]);
 
 // GitHub Pages project site: the workflow sets VITE_BASE_PATH=/eliocyber-solution-compass/.
 // Lovable builds leave it unset, so the base stays "/" and nothing changes there.
@@ -30,8 +34,8 @@ export default defineConfig({
       router: { basepath: basePath.replace(/\/$/, "") },
       // The Lovable build pins crawlLinks: false, so dynamic $slug pages must be listed here.
       pages: [
-        ...livresBlancs.map((l) => ({ path: `/ressources/${l.slug}` })),
-        ...fonctionnalites.map((f) => ({ path: `/fonctionnalites/${f.slug}` })),
+        ...slugsOf("./src/lib/livres-blancs.ts").map((s) => ({ path: `/ressources/${s}` })),
+        ...slugsOf("./src/lib/fonctionnalites.ts").map((s) => ({ path: `/fonctionnalites/${s}` })),
       ],
       prerender: {
         enabled: true,
