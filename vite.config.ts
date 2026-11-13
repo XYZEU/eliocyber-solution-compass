@@ -13,7 +13,7 @@ import { livresBlancs } from "./src/lib/livres-blancs";
 
 // GitHub Pages project site: the workflow sets VITE_BASE_PATH=/eliocyber-solution-compass/.
 // Lovable builds leave it unset, so the base stays "/" and nothing changes there.
-const basePath = process.env.VITE_BASE_PATH ?? "/";
+const basePath = process.env["VITE_BASE_PATH"] ?? "/";
 const isStaticDeploy = basePath !== "/";
 
 export default defineConfig({
