@@ -95,7 +95,7 @@ const footerGroups: FooterGroup[] = [
     { to: "/nos-partenaires", label: "Tous les partenaires" },
     { to: "/devenir-partenaire", label: "Devenir partenaire" },
   ] },
-  { title: "Plateforme", links: fonctionnalites.map((f) => ({ slug: f.slug, label: f.name })) },
+  { title: "Plateforme", links: fonctionnalites.filter((f) => !f.group).map((f) => ({ slug: f.slug, label: f.name })) },
 ];
 
 const fLink = "text-ink-link underline-offset-4 transition-colors hover:text-primary-foreground hover:underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/80 focus-visible:ring-offset-2 focus-visible:ring-offset-ink active:text-primary-foreground active:underline";
