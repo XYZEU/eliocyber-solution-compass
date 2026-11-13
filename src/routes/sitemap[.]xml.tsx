@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { livresBlancs } from "@/lib/livres-blancs";
 import { fonctionnalites } from "@/lib/fonctionnalites";
 
-const paths = ["/fonctionnalites", ...fonctionnalites.map((f) => `/fonctionnalites/${f.slug}`), "/ressources", ...livresBlancs.map((l) => `/ressources/${l.slug}`), "/", "/solution", "/comment-ca-marche", "/nos-partenaires", "/contact", "/mentions-legales", "/devenir-partenaire", "/partenaires/mssp", "/partenaires/esn", "/partenaires/ciso"];
+const paths = ["/fonctionnalites", ...fonctionnalites.map((f) => `/fonctionnalites/${f.slug}`), "/ressources", ...livresBlancs.map((l) => `/ressources/${l.slug}`), "/", "/solution", "/comment-ca-marche", "/nos-partenaires", "/contact", "/mentions-legales", "/a-propos", "/devenir-partenaire", "/partenaires/mssp", "/partenaires/esn", "/partenaires/ciso"];
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {

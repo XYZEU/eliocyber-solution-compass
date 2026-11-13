@@ -73,7 +73,7 @@ export function SiteHeader() {
 
 type FooterLink =
   | { label: string; to: "/contact"; search: { profil: Profil } }
-  | { label: string; to: "/solution" | "/fonctionnalites" | "/ressources" | "/nos-partenaires" | "/devenir-partenaire" | "/partenaires/mssp" | "/partenaires/esn" | "/partenaires/ciso" }
+  | { label: string; to: "/solution" | "/a-propos" | "/fonctionnalites" | "/ressources" | "/nos-partenaires" | "/devenir-partenaire" | "/partenaires/mssp" | "/partenaires/esn" | "/partenaires/ciso" }
   | { label: string; slug: string };
 
 type FooterGroup = { title: string; links: FooterLink[] };
@@ -83,6 +83,7 @@ const footerGroups: FooterGroup[] = [
     { to: "/solution", label: "Nos garanties cyber" },
     { to: "/fonctionnalites", label: "Vue d'ensemble" },
     { to: "/ressources", label: "Livres blancs" },
+    { to: "/a-propos", label: "À propos" },
     { to: "/contact", label: "Parler à un courtier", search: { profil: "entreprise" } },
   ] },
   { title: "Partenaires", links: [
