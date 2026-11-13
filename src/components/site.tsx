@@ -7,13 +7,62 @@ import radarLight from "@/assets/eliocyber-logo-radar-clair.svg";
 import radarDark from "@/assets/eliocyber-logo-radar-sombre.svg";
 
 
-const nav = [
-  { to: "/solution", label: "Solution" },
-  { to: "/fonctionnalites", label: "Vue d'ensemble" },
-  { to: "/comment-ca-marche", label: "Comment ça marche" },
-  { to: "/nos-partenaires", label: "Nos partenaires" },
-  { to: "/ressources", label: "Ressources" },
-] as const;
+const partnerFeatures = fonctionnalites.filter((f) => f.group === "partenaire");
+const coreFeatures = fonctionnalites.filter((f) => !f.group);
+
+function FeaturesMenu({ onNavigate }: { onNavigate: () => void }) {
+  const item = "group block rounded-lg px-3 py-2.5 transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+  const col = (title: string, list: typeof fonctionnalites, first?: ReactNode) => (
+    <div className="min-w-0">
+      <p className="eyebrow mb-2 px-3">{title}</p>
+      <ul className="space-y-0.5">
+        {first}
+        {list.map((f) => (
+          <li key={f.slug}>
+            <Link to="/fonctionnalites/$slug" params={{ slug: f.slug }} onClick={onNavigate} className={item} activeProps={{ className: "bg-secondary" }}>
+              <span className="block text-[14px] font-semibold text-foreground group-hover:text-primary">{f.name}</span>
+              <span className="mt-0.5 line-clamp-1 block text-[12.5px] text-muted-foreground">{f.tagline}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+  return (
+    <div className="grid gap-6 md:grid-cols-2">
+      {col("Pour les partenaires", partnerFeatures, (
+        <li>
+          <Link to="/fonctionnalites" onClick={onNavigate} activeOptions={{ exact: true }} className={item + " mb-1 border border-border bg-primary-soft/40"}>
+            <span className="block text-[14px] font-semibold text-primary">Vue d'ensemble →</span>
+            <span className="mt-0.5 block text-[12.5px] text-muted-foreground">Toutes les fonctionnalités de la plateforme</span>
+          </Link>
+        </li>
+      ))}
+      {col("Cœur de plateforme et souscription", coreFeatures)}
+    </div>
+  );
+}
+
+function DesktopFeatures() {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}
+      onKeyDown={(e) => { if (e.key === "Escape") { setOpen(false); (e.currentTarget.querySelector("button") as HTMLButtonElement | null)?.focus(); } }}
+      onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false); }}>
+      <button type="button" aria-expanded={open} aria-controls="menu-fonctionnalites" onClick={() => setOpen((o) => !o)}
+        className="inline-flex min-h-11 items-center gap-1 rounded-sm text-foreground hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+        Fonctionnalités <ChevronDown className={cn("size-4 transition-transform", open && "rotate-180")} aria-hidden />
+      </button>
+      {open && (
+        <div id="menu-fonctionnalites" className="absolute right-0 top-full z-50 pt-2">
+          <div className="w-[680px] rounded-xl border border-border bg-card p-5 shadow-lift">
+            <FeaturesMenu onNavigate={() => setOpen(false)} />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 type BtnTo = "/contact" | "/comment-ca-marche" | "/nos-partenaires" | "/solution" | "/devenir-partenaire";
 export type Profil = "entreprise" | "partenaire";
@@ -41,12 +90,8 @@ export function SiteHeader() {
           <img src={radarLight} alt="Eliocyber" width={180} height={42} className="h-auto w-[156px] sm:w-[180px]" />
         </Link>
         <nav aria-label="Navigation principale" className="hidden items-center gap-4 text-sm xl:flex">
-          {nav.map((n) => (
-            <Link key={n.to} to={n.to} className="text-foreground hover:text-primary" activeProps={{ className: "text-primary font-semibold" }}>
-              {n.label}
-            </Link>
-          ))}
-          <Link to="/devenir-partenaire" className="text-foreground hover:text-primary" activeProps={{ className: "text-primary font-semibold" }}>Devenir partenaire</Link>
+          <DesktopFeatures />
+          <Link to="/a-propos" className="text-foreground hover:text-primary" activeProps={{ className: "text-primary font-semibold" }}>À propos</Link>
           <Btn to="/contact">Être contacté</Btn>
         </nav>
         <button
@@ -62,10 +107,9 @@ export function SiteHeader() {
       </div>
       {open && (
         <nav id="menu-mobile" aria-label="Navigation mobile" className="flex flex-col gap-1 border-t border-border px-5 pb-5 pt-2 xl:hidden">
-          {nav.map((n) => (
-            <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="py-2.5 text-foreground">{n.label}</Link>
-          ))}
-          <Link to="/devenir-partenaire" onClick={() => setOpen(false)} className="py-2.5 text-foreground">Devenir partenaire</Link>
+          <p className="pt-2 text-[15px] font-semibold text-foreground">Fonctionnalités</p>
+          <div className="-mx-3"><FeaturesMenu onNavigate={() => setOpen(false)} /></div>
+          <Link to="/a-propos" onClick={() => setOpen(false)} className="border-t border-border py-3 text-foreground">À propos</Link>
           <span onClick={() => setOpen(false)} className="mt-2"><Btn to="/contact" className="w-full">Être contacté</Btn></span>
         </nav>
       )}
@@ -75,7 +119,7 @@ export function SiteHeader() {
 
 type FooterLink =
   | { label: string; to: "/contact"; search: { profil: Profil } }
-  | { label: string; to: "/solution" | "/a-propos" | "/fonctionnalites" | "/ressources" | "/nos-partenaires" | "/devenir-partenaire" | "/partenaires/mssp" | "/partenaires/esn" | "/partenaires/ciso" }
+  | { label: string; to: "/solution" | "/comment-ca-marche" | "/a-propos" | "/fonctionnalites" | "/ressources" | "/nos-partenaires" | "/devenir-partenaire" | "/partenaires/mssp" | "/partenaires/esn" | "/partenaires/ciso" }
   | { label: string; slug: string };
 
 type FooterGroup = { title: string; links: FooterLink[] };
@@ -84,7 +128,8 @@ const footerGroups: FooterGroup[] = [
   { title: "Entreprises", links: [
     { to: "/solution", label: "Nos garanties cyber" },
     { to: "/fonctionnalites", label: "Vue d'ensemble" },
-    { to: "/ressources", label: "Livres blancs" },
+    { to: "/comment-ca-marche", label: "Comment ça marche" },
+    { to: "/ressources", label: "Ressources et livres blancs" },
     { to: "/a-propos", label: "À propos" },
     { to: "/contact", label: "Parler à un courtier", search: { profil: "entreprise" } },
   ] },
