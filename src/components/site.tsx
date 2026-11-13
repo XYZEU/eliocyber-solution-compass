@@ -3,6 +3,8 @@ import { useState, type ReactNode } from "react";
 import { fonctionnalites } from "@/lib/fonctionnalites";
 import { ChevronDown, Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import radarLight from "@/assets/eliocyber-logo-radar-clair.svg";
+import radarDark from "@/assets/eliocyber-logo-radar-sombre.svg";
 
 
 const nav = [
@@ -33,10 +35,10 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-card/95 backdrop-blur">
       <div className="flex items-center justify-between px-5 py-4 sm:px-8 sm:py-5">
-        <Link to="/" className="text-xl font-bold text-foreground" aria-label="Eliocyber, accueil">
-          Eliocyber
+        <Link to="/" className="inline-flex min-h-11 shrink-0 items-center rounded-sm focus-visible:ring-2 focus-visible:ring-ring" aria-label="Eliocyber, accueil">
+          <img src={radarLight} alt="Eliocyber" width={180} height={42} className="h-auto w-[156px] sm:w-[180px]" />
         </Link>
-        <nav aria-label="Navigation principale" className="hidden items-center gap-6 text-sm md:flex">
+        <nav aria-label="Navigation principale" className="hidden items-center gap-4 text-sm xl:flex">
           {nav.map((n) => (
             <Link key={n.to} to={n.to} className="text-foreground hover:text-primary" activeProps={{ className: "text-primary font-semibold" }}>
               {n.label}
@@ -47,7 +49,7 @@ export function SiteHeader() {
         </nav>
         <button
           type="button"
-          className="rounded-md p-2 text-foreground md:hidden"
+          className="rounded-md p-2 text-foreground xl:hidden"
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={open}
           aria-controls="menu-mobile"
@@ -57,7 +59,7 @@ export function SiteHeader() {
         </button>
       </div>
       {open && (
-        <nav id="menu-mobile" aria-label="Navigation mobile" className="flex flex-col gap-1 border-t border-border px-5 pb-5 pt-2 md:hidden">
+        <nav id="menu-mobile" aria-label="Navigation mobile" className="flex flex-col gap-1 border-t border-border px-5 pb-5 pt-2 xl:hidden">
           {nav.map((n) => (
             <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="py-2.5 text-foreground">{n.label}</Link>
           ))}
@@ -130,7 +132,7 @@ export function SiteFooter() {
     <footer className="bg-ink text-[14px] leading-relaxed text-ink-foreground">
       <div className="wrap py-8 md:grid md:grid-cols-[1.3fr_repeat(3,1fr)] md:gap-8 md:py-12">
         <div className="min-w-0">
-          <Link to="/" className="text-xl font-bold text-primary-foreground" aria-label="Eliocyber, accueil">Eliocyber</Link>
+          <Link to="/" className="inline-flex min-h-11 items-center rounded-sm focus-visible:ring-2 focus-visible:ring-primary-foreground" aria-label="Eliocyber, accueil"><img src={radarDark} alt="Eliocyber" width={190} height={44} className="h-auto w-[190px] max-w-full" /></Link>
           <p className="mt-2.5 max-w-[300px] md:mt-3">Courtier spécialisé en assurance cyber pour les PME et ETI, avec un réseau de partenaires cyber, IT et conformité.</p>
           <address className="mt-2.5 not-italic md:mt-4">
             <p className="flex min-h-11 items-center gap-2 md:min-h-0 md:py-[3px]"><Mail className="size-4 shrink-0" aria-hidden /><a href="mailto:bonjour@eliocyber.fr" className={fLink}>bonjour@eliocyber.fr</a></p>
