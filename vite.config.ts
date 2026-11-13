@@ -23,7 +23,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
     // Static deploys (GitHub Pages) have no server: prerender every page to <route>/index.html.
+    // router.basepath tells the prerenderer the site lives under the GitHub Pages subpath.
     ...(isStaticDeploy && {
+      router: { basepath: basePath.replace(/\/$/, "") },
       prerender: {
         enabled: true,
         crawlLinks: true,
