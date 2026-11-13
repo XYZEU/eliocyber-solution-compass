@@ -21,6 +21,16 @@ jobs:
 
       - uses: oven-sh/setup-bun@v2
 
+      # Cache du magasin global de bun : les déploiements suivants réutilisent
+      # les paquets déjà téléchargés tant que bun.lock ne change pas.
+      - name: Mettre en cache les dépendances
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            bun-${{ runner.os }}-
+
       - name: Installer les dépendances
         run: bun install --frozen-lockfile
 
@@ -28,6 +38,19 @@ jobs:
         run: bun run build
         env:
           VITE_BASE_PATH: /eliocyber-solution-compass/
+
+      # Garde-fou : on ne publie que si le build statique est complet.
+      # Vérifie la page d'accueil, le nombre de pages générées et le préfixe des liens.
+      - name: Vérifier le build statique avant publication
+        run: |
+          set -euo pipefail
+          test -f dist/client/index.html || { echo "index.html manquant"; exit 1; }
+          pages=$(find dist/client -name 'index.html' | wc -l)
+          echo "Pages générées : $pages"
+          [ "$pages" -ge 20 ] || { echo "Moins de 20 pages générées, build incomplet"; exit 1; }
+          grep -q '/eliocyber-solution-compass/' dist/client/index.html || { echo "Préfixe de base absent des liens"; exit 1; }
+          test -f dist/client/livres-blancs/guide-assurance-cyber-pme.pdf || { echo "PDF manquant"; exit 1; }
+          echo "Build statique vérifié, publication autorisée."
 
       - uses: actions/configure-pages@v5
 
