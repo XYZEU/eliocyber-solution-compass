@@ -39,8 +39,8 @@ function Page() {
         <Link to="/fonctionnalites" className="hover:text-primary">Vue d'ensemble</Link> / <span aria-current="page">{f.name}</span>
       </nav>
       <section className="wrap sec">
-        <p className="eyebrow"><span className="block sm:inline">{f.name}</span><span className="hidden sm:inline"> · </span><span className="block sm:inline">{f.audience}</span></p>
-        <h1 className="title-1">{f.tagline}</h1>
+        <p className="eyebrow"><span className="flex items-center gap-2 sm:inline-flex"><span className="live-dot" aria-hidden />{f.name}</span><span className="hidden sm:inline"> · </span><span className="block sm:inline">{f.audience}</span></p>
+        <h1 className="title-1 max-sm:!text-[28px]">{f.tagline}</h1>
         <p className="body-text max-w-[720px] text-[17px]">{f.intro}</p>
         <ul className="mt-4 hidden flex-wrap gap-2 sm:flex">{f.features.map(([t]) => <li key={t} className="pill">{t}</li>)}</ul>
       </section></div>
