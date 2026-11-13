@@ -32,7 +32,7 @@ function Page() {
       </PageIntro>
       <div className="wrap pt-8 pb-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-3">
         <a href="#candidature" className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground hover:bg-primary/90">Créer mon compte partenaire</a>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm leading-7 text-muted-foreground sm:leading-normal">
           Votre métier :{" "}
           {profiles.map((p, i) => <span key={p.to}>{i > 0 && " · "}<Link to={p.to} className="text-primary hover:underline">{p.label}</Link></span>)}
         </p>
