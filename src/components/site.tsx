@@ -88,7 +88,7 @@ function DesktopFeatures() {
       </button>
       {open && (
         <div id="menu-fonctionnalites" className="absolute right-0 top-full z-50 pt-2">
-          <div className="fade-in-up w-[720px] rounded-xl border border-border bg-card/90 p-5 shadow-[var(--shadow-lift)] backdrop-blur-md">
+          <div className="fade-in-up w-[720px] rounded-xl border border-border bg-card/[0.97] p-5 shadow-[var(--shadow-lift)] backdrop-blur-xl">
             <FeaturesMenu onNavigate={() => setOpen(false)} />
           </div>
         </div>
