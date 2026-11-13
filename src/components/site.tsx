@@ -284,7 +284,7 @@ export function KeyFigures({ items }: { items: readonly (readonly [string, strin
       {items.map(([v, l]) => (
         <div key={l} className="bg-card px-6 py-5">
           <dt className="sr-only">{l}</dt>
-          <dd className="whitespace-nowrap font-display text-[22px] font-extrabold tracking-tight text-foreground sm:text-[24px] xl:text-[26px]">{v}</dd>
+          <dd className="whitespace-nowrap font-display text-[22px] font-extrabold tracking-tight text-foreground sm:text-[24px] lg:text-[22px] xl:text-[24px]">{v}</dd>
           <dd className="mt-1 text-sm text-muted-foreground">{l}</dd>
         </div>
       ))}
