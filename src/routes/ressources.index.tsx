@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { seo } from "@/lib/seo";
 import { FileText } from "lucide-react";
-import { PageIntro, seo } from "@/components/site";
+import { PageIntro } from "@/components/site";
 import { livresBlancs } from "@/lib/livres-blancs";
 
 export const Route = createFileRoute("/ressources/")({

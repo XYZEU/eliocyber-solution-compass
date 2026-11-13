@@ -1,7 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { seo } from "@/lib/seo";
 import { Check, FileText } from "lucide-react";
 import { useFormFeedback } from "@/components/form-feedback";
-import { Card, seo } from "@/components/site";
+import { Card } from "@/components/site";
 import { findLivreBlanc, livresBlancs } from "@/lib/livres-blancs";
 
 const label = "mb-1.5 mt-3.5 block text-[13px] font-semibold text-foreground";

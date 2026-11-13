@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { seo } from "@/components/site";
-import { PartnerLanding, faqJsonLd, type LandingData } from "@/components/partner-landing";
+import { faqJsonLd } from "@/lib/seo";
+import { seo } from "@/lib/seo";
+import { PartnerLanding, type LandingData } from "@/components/partner-landing";
 
 const d: LandingData = {
   slug: "esn",

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Btn, Card, CtaBanner, KeyFigures, PageIntro, TrustSeal, seo } from "@/components/site";
+import { seo } from "@/lib/seo";
+import { Btn, Card, CtaBanner, KeyFigures, PageIntro, TrustSeal } from "@/components/site";
 import { Siren, Scale, TrendingDown, ShieldCheck, Building2, Handshake, type LucideIcon } from "lucide-react";
 
 export const Route = createFileRoute("/solution")({

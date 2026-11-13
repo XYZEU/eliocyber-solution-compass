@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { seo } from "@/lib/seo";
 import { Check, X } from "lucide-react";
 import { useFormFeedback } from "@/components/form-feedback";
-import { Card, PageIntro, seo } from "@/components/site";
+import { Card, PageIntro } from "@/components/site";
 import { CommissionTable } from "@/components/partner-landing";
 
 const label = "mb-1.5 mt-3.5 block text-[13px] font-semibold text-foreground";

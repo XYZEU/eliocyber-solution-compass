@@ -172,13 +172,3 @@ export function CommissionTable() {
   );
 }
 
-export function faqJsonLd(faq: [string, string][]) {
-  return {
-    type: "application/ld+json",
-    children: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
-    }),
-  };
-}

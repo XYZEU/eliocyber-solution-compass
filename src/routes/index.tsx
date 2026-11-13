@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Btn, Card, KeyFigures, TrustSeal, seo } from "@/components/site";
+import { seo } from "@/lib/seo";
+import { Btn, Card, KeyFigures, TrustSeal } from "@/components/site";
 import { InsurerMarquee } from "@/components/insurer-marquee";
 import { Radar, ClipboardCheck, Send, ShieldCheck, ShieldAlert, Server, Scale, type LucideIcon } from "lucide-react";
 

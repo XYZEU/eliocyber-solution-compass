@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Card, CtaBanner, PageIntro, seo } from "@/components/site";
+import { seo } from "@/lib/seo";
+import { Card, CtaBanner, PageIntro } from "@/components/site";
 
 export const Route = createFileRoute("/comment-ca-marche")({
   head: () => seo("/comment-ca-marche", "Comment ça marche — Parcours partenaire Eliocyber", "De la détection du risque à la souscription : découvrez les 6 étapes pour transmettre un dossier d'assurance cyber et percevoir votre commission."),

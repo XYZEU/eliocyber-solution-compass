@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { seo } from "@/lib/seo";
 import { Check, X } from "lucide-react";
-import { Card, CtaBanner, PageIntro, seo } from "@/components/site";
+import { Card, CtaBanner, PageIntro } from "@/components/site";
 
 export const Route = createFileRoute("/nos-partenaires")({
   head: () => seo("/nos-partenaires", "Partenaires cyber, IT et conformité — Réseau Eliocyber", "MSP, MSSP, DSI, DPO et experts-comptables : rejoignez le réseau Eliocyber pour proposer une solution cyber à vos clients sans être courtier."),

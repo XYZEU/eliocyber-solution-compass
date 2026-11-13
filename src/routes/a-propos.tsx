@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Card, CtaBanner, PageIntro, seo } from "@/components/site";
+import { seo } from "@/lib/seo";
+import { Card, CtaBanner, PageIntro } from "@/components/site";
 
 const faq = [
   ["Que fait Eliocyber ?", "Eliocyber accompagne les PME et ETI dans leur assurance cyber. Nous analysons leur exposition au risque, présentons les garanties adaptées et suivons le contrat dans la durée, en nous appuyant sur un réseau de partenaires cyber, IT et conformité."],
