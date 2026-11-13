@@ -62,7 +62,8 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Plus Jakarta Sans", "Figtree", system-ui, sans-serif;
   --color-primary-soft: var(--primary-soft);
   --color-primary-soft-foreground: var(--primary-soft-foreground);
   --color-ink: var(--ink);
@@ -109,6 +110,9 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
+  --shadow-soft: 0 1px 2px color-mix(in oklab, var(--ink) 6%, transparent), 0 4px 14px -6px color-mix(in oklab, var(--ink) 10%, transparent);
+  --shadow-lift: 0 2px 4px color-mix(in oklab, var(--ink) 6%, transparent), 0 14px 30px -12px color-mix(in oklab, var(--primary) 30%, transparent);
+  --gradient-ink: radial-gradient(ellipse 60% 90% at 85% 10%, color-mix(in oklab, var(--primary) 45%, transparent), transparent 70%), radial-gradient(ellipse 50% 70% at 0% 100%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 70%), var(--ink);
   --sidebar: oklch(1 0 0);
   --sidebar-foreground: oklch(0.27 0.05 245);
   --sidebar-primary: oklch(0.52 0.09 193);
@@ -134,15 +138,15 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
-  h1, h2, h3 { color: var(--color-foreground); text-wrap: balance; }
+  h1, h2, h3 { color: var(--color-foreground); text-wrap: balance; font-family: var(--font-display); letter-spacing: -.015em; }
   p { text-wrap: pretty; }
   :focus-visible { outline: 2px solid var(--color-ring); outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
 }
 
 @utility wrap { max-width: 1180px; margin-inline: auto; padding-inline: 20px; @media (min-width: 640px) { padding-inline: 32px; } }
-@utility eyebrow { color: var(--color-primary); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-@utility card-box { background: var(--color-card); border: 1px solid var(--color-border); border-radius: 12px; padding: 24px; }
+@utility eyebrow { color: var(--color-primary); font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+@utility card-box { background: var(--color-card); border: 1px solid var(--color-border); border-radius: 14px; padding: 24px; box-shadow: var(--shadow-soft); }
 @utility sec { padding-block: 40px; @media (min-width: 860px) { padding-block: 56px; } }
 @utility band { background: var(--color-card); border-block: 1px solid var(--color-border); }
 @utility pill { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--color-primary-soft); color: var(--color-primary-soft-foreground); }
@@ -153,3 +157,8 @@
 @utility field { width: 100%; padding: 10px 12px; border: 1px solid var(--color-input); border-radius: 8px; font: inherit; background: var(--color-card); color: var(--color-foreground); }
 
 .field[aria-invalid="true"] { border-color: var(--destructive); box-shadow: 0 0 0 1px var(--destructive); }
+
+@utility card-hover { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; &:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); border-color: color-mix(in oklab, var(--primary) 40%, var(--border)); } }
+@utility icon-chip { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 10px; background: color-mix(in oklab, var(--primary) 10%, transparent); color: var(--color-primary); border: 1px solid color-mix(in oklab, var(--primary) 22%, transparent); }
+@utility bg-ink-glow { background: var(--gradient-ink); }
+@utility live-dot { position: relative; display: inline-block; width: 8px; height: 8px; border-radius: 999px; background: var(--color-primary); &::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: inherit; animation: ping 1.6s cubic-bezier(0,0,.2,1) infinite; } }
