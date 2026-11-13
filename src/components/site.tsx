@@ -80,7 +80,7 @@ function DesktopFeatures() {
   const [open, setOpen] = useState(false);
   return (
     <div className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}
-      onKeyDown={(e) => { if (e.key === "Escape") { setOpen(false); (e.currentTarget.querySelector("button") as HTMLButtonElement | null)?.focus(); } }}
+      onKeyDown={(e) => { if ((e.key === "ArrowDown" || e.key === "ArrowUp") && (e.target as HTMLElement).tagName === "BUTTON") { e.preventDefault(); const root = e.currentTarget; const last = e.key === "ArrowUp"; setOpen(true); requestAnimationFrame(() => { const l = root.querySelectorAll<HTMLAnchorElement>("a[data-menu-item]"); l[last ? l.length - 1 : 0]?.focus(); }); return; } if (e.key === "Escape") { setOpen(false); (e.currentTarget.querySelector("button") as HTMLButtonElement | null)?.focus(); } }}
       onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false); }}>
       <button type="button" aria-expanded={open} aria-controls="menu-fonctionnalites" onClick={(e) => { const kb = e.detail === 0; setOpen((o) => (kb ? !o : true)); }}
         className="inline-flex min-h-11 items-center gap-1 rounded-sm text-foreground hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
@@ -88,7 +88,7 @@ function DesktopFeatures() {
       </button>
       {open && (
         <div id="menu-fonctionnalites" className="absolute right-0 top-full z-50 pt-2">
-          <div className="fade-in-up w-[720px] rounded-xl border border-border bg-card/[0.97] p-5 shadow-[var(--shadow-lift)] backdrop-blur-xl">
+          <div className="fade-in-up w-[720px] rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-lift)] backdrop-blur-xl">
             <FeaturesMenu onNavigate={() => setOpen(false)} />
           </div>
         </div>
