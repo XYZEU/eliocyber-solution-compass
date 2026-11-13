@@ -49,7 +49,7 @@ function DesktopFeatures() {
     <div className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}
       onKeyDown={(e) => { if (e.key === "Escape") { setOpen(false); (e.currentTarget.querySelector("button") as HTMLButtonElement | null)?.focus(); } }}
       onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false); }}>
-      <button type="button" aria-expanded={open} aria-controls="menu-fonctionnalites" onClick={() => setOpen((o) => !o)}
+      <button type="button" aria-expanded={open} aria-controls="menu-fonctionnalites" onClick={(e) => setOpen((o) => (e.detail === 0 ? !o : true))}
         className="inline-flex min-h-11 items-center gap-1 rounded-sm text-foreground hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
         Fonctionnalités <ChevronDown className={cn("size-4 transition-transform", open && "rotate-180")} aria-hidden />
       </button>
