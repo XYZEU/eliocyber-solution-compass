@@ -20,7 +20,7 @@ function Page() {
   return (
     <>
       <PageIntro eyebrow="Informations légales" title="Mentions légales et réclamations" />
-      <div className="wrap -mt-6 grid gap-6 pb-14 lg:-mt-10 lg:grid-cols-[220px_1fr]">
+      <div className="wrap grid gap-6 pt-8 pb-14 lg:grid-cols-[220px_1fr]">
         <nav aria-label="Sommaire" className="hidden lg:block">
           <ul className="sticky top-24 space-y-2 text-sm">
             {blocks.map(([id, t]) => <li key={id}><a href={`#${id}`} className="text-muted-foreground hover:text-primary">{t}</a></li>)}

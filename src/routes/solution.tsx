@@ -23,7 +23,7 @@ function Page() {
       <PageIntro eyebrow="Solution" title="Un réseau de prescripteurs, adossé à un courtier spécialisé en cyber">
         Eliocyber transforme les professionnels qui voient le risque au quotidien en source de protection pour leurs clients PME et ETI. Nous ne vendons pas de contrat via nos partenaires : nous recueillons le besoin, conseillons et souscrivons.
       </PageIntro>
-      <div className="wrap -mt-4 pb-10 space-y-6"><TrustSeal /><KeyFigures items={figures} /></div>
+      <div className="wrap pt-8 pb-10 space-y-6"><TrustSeal /><KeyFigures items={figures} /></div>
 
       <section className="band" aria-labelledby="valeur">
         <div className="wrap sec">
