@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { seo } from "@/lib/seo";
 import { Btn, Card, KeyFigures, TrustSeal } from "@/components/site";
 import { InsurerMarquee } from "@/components/insurer-marquee";
+import { CommissionMockup, GaugeMockup, PipelineMockup } from "@/components/ui-mockups";
+import { CommissionSimulator } from "@/components/commission-simulator";
 import { Radar, ClipboardCheck, Send, ShieldCheck, ShieldAlert, Server, Scale, type LucideIcon } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -27,7 +29,9 @@ const families = [
 function Home() {
   return (
     <>
-      <section className="wrap sec grid items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:py-16">
+      <div className="relative overflow-hidden">
+      <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
+      <section className="wrap sec relative grid items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:py-16">
         <div>
           <p className="eyebrow">Réseau de prescripteurs cyber</p>
           <h1 className="title-1 lg:!text-[44px]">Vos experts identifient le risque. Nous le transformons en protection.</h1>
@@ -56,6 +60,7 @@ function Home() {
           <Link to="/solution" className="text-sm font-semibold text-primary hover:underline">Voir le plan de remédiation →</Link>
         </aside>
       </section>
+      </div>
 
       <InsurerMarquee />
 
@@ -70,6 +75,22 @@ function Home() {
               <li key={t}><Card icon={stepIcons[i]} eyebrow={`Étape ${i + 1}`} title={t} className="h-full"><p className="body-text text-sm">{d}</p></Card></li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section className="wrap sec lg:py-16" aria-labelledby="apercu">
+        <p className="eyebrow flex items-center gap-2"><span className="live-dot" aria-hidden />La plateforme partenaire</p>
+        <h2 id="apercu" className="title-2 lg:!text-[28px]">Suivez, mesurez, soyez payé</h2>
+        <div className="mt-6 grid gap-5 md:grid-cols-3">
+          <PipelineMockup /><GaugeMockup /><CommissionMockup />
+        </div>
+        <div className="mt-8 grid items-start gap-8 md:grid-cols-[1fr_1.1fr]">
+          <div>
+            <h3 className="title-3 !text-[20px]">Estimez votre commission d'apport</h3>
+            <p className="body-text">Une grille simple, appliquée à chaque dossier souscrit. Le partenaire n'intervient jamais sur le prix de l'assurance.</p>
+            <div className="mt-4 flex flex-wrap gap-3"><Btn to="/devenir-partenaire">Devenir partenaire</Btn><Btn to="/comment-ca-marche" ghost>Voir le parcours</Btn></div>
+          </div>
+          <CommissionSimulator />
         </div>
       </section>
 
