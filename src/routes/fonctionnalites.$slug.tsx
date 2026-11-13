@@ -1,7 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { faqJsonLd } from "@/lib/seo";
+import { seo } from "@/lib/seo";
 import { Check, ChevronDown } from "lucide-react";
-import { Card, CtaBanner, seo } from "@/components/site";
-import { faqJsonLd } from "@/components/partner-landing";
+import { Card, CtaBanner } from "@/components/site";
 import { findFonctionnalite, fonctionnalites } from "@/lib/fonctionnalites";
 
 export const Route = createFileRoute("/fonctionnalites/$slug")({

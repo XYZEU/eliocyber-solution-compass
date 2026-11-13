@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageIntro, seo } from "@/components/site";
+import { seo } from "@/lib/seo";
+import { PageIntro } from "@/components/site";
 
 export const Route = createFileRoute("/mentions-legales")({
   head: () => seo("/mentions-legales", "Mentions légales et réclamations — Eliocyber Courtage", "Informations réglementaires d'Eliocyber, immatriculation ORIAS, procédure de réclamation et cadre juridique du statut d'apporteur d'affaires."),

@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { seo } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
-import { CtaBanner, PageIntro, seo } from "@/components/site";
+import { CtaBanner, PageIntro } from "@/components/site";
 import { fonctionnalites, type Fonctionnalite } from "@/lib/fonctionnalites";
 
 export const Route = createFileRoute("/fonctionnalites/")({

@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { seo } from "@/lib/seo";
 import { useFormFeedback } from "@/components/form-feedback";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { seo, type Profil } from "@/components/site";
+import { type Profil } from "@/components/site";
 
 export const Route = createFileRoute("/contact")({
   validateSearch: (s: Record<string, unknown>): { profil?: Profil } =>
