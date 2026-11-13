@@ -224,7 +224,7 @@ export function PageIntro({ eyebrow, title, children }: { eyebrow: string; title
   );
 }
 
-export function Card({ eyebrow, title, children, className, icon: Icon }: { eyebrow?: string; title: string; children: ReactNode; className?: string; icon?: LucideIcon }) {
+export function Card({ eyebrow, title, children, className, icon: Icon }: { eyebrow?: string; title: string; children: ReactNode; className?: string; icon?: LucideIcon | undefined }) {
   return (
     <article className={cn("card-box card-hover", className)}>
       {Icon && <span className="icon-chip mb-4"><Icon className="size-5" aria-hidden /></span>}
