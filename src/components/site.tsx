@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { fonctionnalites } from "@/lib/fonctionnalites";
-import { ChevronDown, Mail, MapPin, Menu, Phone, ShieldCheck, X, type LucideIcon } from "lucide-react";
+import { Activity, BookOpen, ChevronDown, Coins, Cpu, Gauge, LayoutGrid, Mail, MapPin, Menu, Phone, QrCode, Server, ShieldCheck, UserRound, Wrench, X, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import radarLight from "@/assets/eliocyber-logo-radar-clair.svg";
 import radarDark from "@/assets/eliocyber-logo-radar-sombre.svg";
@@ -10,35 +10,68 @@ import radarDark from "@/assets/eliocyber-logo-radar-sombre.svg";
 const partnerFeatures = fonctionnalites.filter((f) => f.group === "partenaire");
 const coreFeatures = fonctionnalites.filter((f) => !f.group);
 
+const featureIcons: Record<string, LucideIcon> = {
+  "attirer-vos-clients": QrCode, "suivre-vos-prospects": Activity, "etre-paye-sans-effort": Coins, "conformite-et-securite": ShieldCheck,
+  "portail-msp": Server, "moteur-de-souscription": Cpu, "moteur-de-risque": Gauge, "module-de-remediation": Wrench, "portail-client": UserRound,
+};
+
+function onMenuKeyDown(e: React.KeyboardEvent<HTMLElement>) {
+  if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+  const links = Array.from(e.currentTarget.querySelectorAll<HTMLAnchorElement>("a[data-menu-item]"));
+  const i = links.indexOf(document.activeElement as HTMLAnchorElement);
+  e.preventDefault();
+  const next = i === -1 ? 0 : e.key === "ArrowDown" ? (i + 1) % links.length : (i - 1 + links.length) % links.length;
+  links[next]?.focus();
+}
+
 function FeaturesMenu({ onNavigate }: { onNavigate: () => void }) {
-  const item = "group block rounded-lg px-3 py-2.5 transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+  const item = "group flex items-start gap-3 rounded-lg border-l-2 border-transparent px-3 py-2.5 transition-colors duration-150 hover:border-primary hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+  const chip = "icon-chip !size-8 shrink-0 transition-transform duration-150 group-hover:translate-x-0.5";
   const col = (title: string, list: typeof fonctionnalites, first?: ReactNode) => (
     <div className="min-w-0">
       <p className="eyebrow mb-2 px-3">{title}</p>
       <ul className="space-y-0.5">
         {first}
-        {list.map((f) => (
-          <li key={f.slug}>
-            <Link to="/fonctionnalites/$slug" params={{ slug: f.slug }} onClick={onNavigate} className={item} activeProps={{ className: "bg-secondary" }}>
-              <span className="block text-[14px] font-semibold text-foreground group-hover:text-primary">{f.name}</span>
-              <span className="mt-0.5 line-clamp-1 block text-[12.5px] text-muted-foreground">{f.tagline}</span>
-            </Link>
-          </li>
-        ))}
+        {list.map((f) => {
+          const Icon = featureIcons[f.slug] ?? LayoutGrid;
+          return (
+            <li key={f.slug}>
+              <Link data-menu-item to="/fonctionnalites/$slug" params={{ slug: f.slug }} onClick={onNavigate} className={item} activeProps={{ className: "bg-secondary !border-primary" }}>
+                <span className={chip}><Icon className="size-4" aria-hidden /></span>
+                <span className="min-w-0">
+                  <span className="block text-[14px] font-semibold text-foreground transition-colors group-hover:text-primary">{f.name}</span>
+                  <span className="mt-0.5 line-clamp-1 block text-[12.5px] text-muted-foreground">{f.tagline}</span>
+                </span>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
   return (
-    <div className="grid gap-6 md:grid-cols-2">
-      {col("Pour les partenaires", partnerFeatures, (
-        <li>
-          <Link to="/fonctionnalites" onClick={onNavigate} activeOptions={{ exact: true }} className={item + " mb-1 border border-border bg-primary-soft/40"}>
-            <span className="block text-[14px] font-semibold text-primary">Vue d'ensemble →</span>
-            <span className="mt-0.5 block text-[12.5px] text-muted-foreground">Toutes les fonctionnalités de la plateforme</span>
-          </Link>
-        </li>
-      ))}
-      {col("Cœur de plateforme et souscription", coreFeatures)}
+    <div onKeyDown={onMenuKeyDown}>
+      <div className="grid gap-6 md:grid-cols-2">
+        {col("Pour les partenaires", partnerFeatures, (
+          <li>
+            <Link data-menu-item to="/fonctionnalites" onClick={onNavigate} activeOptions={{ exact: true }} className={item + " mb-1 border border-border bg-primary-soft/40"}>
+              <span className={chip}><LayoutGrid className="size-4" aria-hidden /></span>
+              <span><span className="block text-[14px] font-semibold text-primary">Vue d'ensemble →</span>
+              <span className="mt-0.5 block text-[12.5px] text-muted-foreground">Toutes les fonctionnalités de la plateforme</span></span>
+            </Link>
+          </li>
+        ))}
+        {col("Cœur de plateforme et souscription", coreFeatures)}
+      </div>
+      <Link data-menu-item to="/ressources" onClick={onNavigate} className="bg-ink-glow group relative mt-4 flex items-center gap-3 overflow-hidden rounded-lg px-4 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+        <span aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
+        <span className="relative flex size-8 shrink-0 items-center justify-center rounded-md border border-ink-foreground/25 text-ink-link"><BookOpen className="size-4" aria-hidden /></span>
+        <span className="relative min-w-0 flex-1">
+          <span className="flex items-center gap-2 text-[13.5px] font-semibold text-primary-foreground"><span className="live-dot" aria-hidden />Guides et livres blancs</span>
+          <span className="block text-[12.5px] text-ink-foreground">Téléchargez le guide partenaire apporteur</span>
+        </span>
+        <span className="relative text-ink-link transition-transform group-hover:translate-x-1" aria-hidden>→</span>
+      </Link>
     </div>
   );
 }
@@ -55,7 +88,7 @@ function DesktopFeatures() {
       </button>
       {open && (
         <div id="menu-fonctionnalites" className="absolute right-0 top-full z-50 pt-2">
-          <div className="w-[680px] rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-lift)]">
+          <div className="fade-in-up w-[720px] rounded-xl border border-border bg-card/90 p-5 shadow-[var(--shadow-lift)] backdrop-blur-md">
             <FeaturesMenu onNavigate={() => setOpen(false)} />
           </div>
         </div>
@@ -83,6 +116,7 @@ export function Btn({ to, children, ghost, className, profil, onDark }: { to: Bt
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [featOpen, setFeatOpen] = useState(false);
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-card/95 backdrop-blur">
       <div className="flex items-center justify-between px-5 py-4 sm:px-8 sm:py-5">
@@ -107,8 +141,10 @@ export function SiteHeader() {
       </div>
       {open && (
         <nav id="menu-mobile" aria-label="Navigation mobile" className="flex flex-col gap-1 border-t border-border px-5 pb-5 pt-2 xl:hidden">
-          <p className="pt-2 text-[15px] font-semibold text-foreground">Fonctionnalités</p>
-          <div className="-mx-3"><FeaturesMenu onNavigate={() => setOpen(false)} /></div>
+          <button type="button" aria-expanded={featOpen} aria-controls="menu-mobile-features" onClick={() => setFeatOpen((o) => !o)} className="flex min-h-11 items-center justify-between pt-2 text-left text-[15px] font-semibold text-foreground">
+            Fonctionnalités <ChevronDown className={cn("size-4 transition-transform", featOpen && "rotate-180")} aria-hidden />
+          </button>
+          {featOpen && <div id="menu-mobile-features" className="fade-in-up -mx-3 pb-2"><FeaturesMenu onNavigate={() => setOpen(false)} /></div>}
           <Link to="/a-propos" onClick={() => setOpen(false)} className="border-t border-border py-3 text-foreground">À propos</Link>
           <span onClick={() => setOpen(false)} className="mt-2"><Btn to="/contact" className="w-full">Être contacté</Btn></span>
         </nav>
@@ -265,6 +301,7 @@ export function SiteFooter() {
 export function PageIntro({ eyebrow, title, children }: { eyebrow: string; title: string; children?: ReactNode }) {
   return (
     <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-secondary/60 to-background">
+      <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
       <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full bg-primary/10 blur-3xl" />
       <div className="wrap sec relative">
         <p className="eyebrow flex items-center gap-2"><span className="live-dot" aria-hidden />{eyebrow}</p>
@@ -289,13 +326,14 @@ export function Card({ eyebrow, title, children, className, icon: Icon }: { eyeb
 export function CtaBanner({ title, text, to, label, profil, secondary }: { title: string; text: string; to: BtnTo; label: string; profil?: Profil; secondary?: { to: BtnTo; label: string; profil?: Profil | undefined } }) {
   return (
     <section className="wrap pb-14">
-      <div className="bg-ink-glow flex flex-col items-start justify-between gap-6 overflow-hidden rounded-2xl px-6 py-8 shadow-lg sm:flex-row sm:items-center sm:px-10 sm:py-10">
-        <div>
+      <div className="bg-ink-glow relative flex flex-col items-start justify-between gap-6 overflow-hidden rounded-2xl px-6 py-8 shadow-lg sm:flex-row sm:items-center sm:px-10 sm:py-10">
+        <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
+        <div className="relative">
           <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[.14em] text-ink-link"><span className="live-dot" aria-hidden />Réponse sous 2 jours ouvrés</p>
           <h2 className="mt-3 text-[22px] font-bold leading-tight !text-primary-foreground sm:text-[26px]">{title}</h2>
           <p className="mt-2 max-w-[560px] text-ink-foreground">{text}</p>
         </div>
-        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:shrink-0">
+        <div className="relative flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:shrink-0">
           {secondary && <Btn to={secondary.to} profil={secondary.profil} ghost onDark>{secondary.label}</Btn>}
           <Btn to={to} profil={profil}>{label}</Btn>
         </div>

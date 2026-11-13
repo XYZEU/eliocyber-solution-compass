@@ -4,6 +4,7 @@ import { Check, X } from "lucide-react";
 import { useFormFeedback } from "@/components/form-feedback";
 import { Card, PageIntro } from "@/components/site";
 import { CommissionTable } from "@/components/partner-landing";
+import { CommissionSimulator } from "@/components/commission-simulator";
 
 const label = "mb-1.5 mt-3.5 block text-[13px] font-semibold text-foreground";
 
@@ -52,6 +53,7 @@ function Page() {
         <div>
           <h2 id="commission" className="title-2">Votre commission d'apport</h2>
           <p className="body-text">Une commission unique, versée à la souscription de la police une fois la prime encaissée et le délai de rétractation dépassé. Pas de paiement au simple envoi du dossier.</p>
+          <div className="mt-5"><CommissionSimulator /></div>
         </div>
         <CommissionTable />
       </section>
