@@ -35,7 +35,7 @@ function Page() {
   const others = fonctionnalites.filter((o) => o.slug !== f.slug);
   return (
     <>
-      <nav aria-label="Fil d'Ariane" className="wrap truncate pt-6 text-sm text-muted-foreground">
+      <div className="hero-band"><nav aria-label="Fil d'Ariane" className="wrap truncate pt-6 text-sm text-muted-foreground">
         <Link to="/fonctionnalites" className="hover:text-primary">Vue d'ensemble</Link> / <span aria-current="page">{f.name}</span>
       </nav>
       <section className="wrap sec">

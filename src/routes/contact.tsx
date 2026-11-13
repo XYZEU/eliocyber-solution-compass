@@ -40,9 +40,9 @@ function Page() {
   const { onSubmit, sent, Summary, Confirmation } = useFormFeedback(() => {});
 
   return (
-    <div className="wrap sec grid items-start gap-8 md:grid-cols-2 md:gap-6">
+    <div className="hero-band"><div className="wrap sec grid items-start gap-8 md:grid-cols-2 md:gap-6">
       <section aria-labelledby="contact-title">
-        <p className="eyebrow">Contact</p>
+        <p className="eyebrow flex items-center gap-2"><span className="live-dot" aria-hidden />Contact</p>
         <h1 id="contact-title" className="title-1">Parlons de votre besoin</h1>
         <p className="body-text text-[17px]">Un courtier spécialisé en assurance cyber vous répond sous deux jours ouvrés.</p>
         <p className="pill mt-1 inline-flex items-center gap-1.5"><Clock className="size-3.5" aria-hidden />Réponse sous 2 jours ouvrés</p>
