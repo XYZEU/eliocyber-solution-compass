@@ -10,7 +10,7 @@ export function InsurerMarquee() {
     </ul>
   );
   return (
-    <section className="border-y border-border bg-muted/40 py-6" aria-label="Assureurs avec lesquels nous travaillons">
+    <section className="border-y border-border bg-muted/40 py-4" aria-label="Assureurs avec lesquels nous travaillons">
       <div className="marquee flex overflow-hidden">
         <div className="marquee-track flex">{row(false)}{row(true)}</div>
       </div>
