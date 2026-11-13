@@ -8,6 +8,8 @@ export const getRouter = () => {
 
   const router = createRouter({
     routeTree,
+    // Matches vite base: "/" locally and on Lovable, "/eliocyber-solution-compass" on GitHub Pages.
+    basepath: import.meta.env.BASE_URL.replace(/\/$/, "") || "/",
     context: { queryClient },
     scrollRestoration: true,
     // Lets Query own freshness; set caching defaults on the QueryClient, not the router.

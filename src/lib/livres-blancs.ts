@@ -1,3 +1,6 @@
+// Public assets must carry the vite base path (GitHub Pages serves under /eliocyber-solution-compass/).
+const base = import.meta.env.BASE_URL;
+
 export type LivreBlanc = {
   slug: string;
   audience: "Entreprises" | "Partenaires";
@@ -18,7 +21,7 @@ export const livresBlancs: LivreBlanc[] = [
     title: "Assurance cyber\u00a0: le guide pratique pour les PME et ETI",
     summary: "Comprendre les garanties, les exclusions et les prérequis pour bien protéger votre entreprise.",
     pages: "12 pages",
-    pdf: "/livres-blancs/guide-assurance-cyber-pme.pdf",
+    pdf: `${base}livres-blancs/guide-assurance-cyber-pme.pdf`,
     intro: "Rançongiciel, fraude au président, fuite de données : ce guide explique simplement ce que couvre une assurance cyber et comment préparer votre dossier.",
     learn: [
       ["Les vrais coûts d'un incident", "Arrêt d'activité, frais d'expertise, notification, réclamations : ce qui pèse vraiment sur une PME."],
@@ -35,7 +38,7 @@ export const livresBlancs: LivreBlanc[] = [
     title: "Checklist\u00a0: les 10 prérequis des assureurs cyber",
     summary: "Vérifiez en quelques minutes si votre entreprise est prête à souscrire.",
     pages: "6 pages",
-    pdf: "/livres-blancs/checklist-prerequis-assureurs.pdf",
+    pdf: `${base}livres-blancs/checklist-prerequis-assureurs.pdf`,
     intro: "Une liste de contrôle courte et concrète pour savoir où vous en êtes avant de demander une couverture cyber.",
     learn: [
       ["Accès", "Authentification multifacteur sur la messagerie, les accès distants et les comptes à privilèges."],
@@ -52,7 +55,7 @@ export const livresBlancs: LivreBlanc[] = [
     title: "Recommander l'assurance cyber sans être intermédiaire",
     summary: "Le guide des MSSP, ESN, CISO et conseils pour orienter leurs clients en toute conformité.",
     pages: "10 pages",
-    pdf: "/livres-blancs/guide-partenaire-apporteur.pdf",
+    pdf: `${base}livres-blancs/guide-partenaire-apporteur.pdf`,
     intro: "Vous détectez le risque chez vos clients. Ce guide explique comment les orienter vers un courtier, ce que vous pouvez dire et ce qui reste du ressort du courtier.",
     learn: [
       ["Le rôle d'apporteur d'affaires", "Détecter, informer, recueillir le consentement et transmettre."],

@@ -200,7 +200,7 @@ export function SiteFooter() {
               <li><Link to="/mentions-legales" className={cn(fLink, "inline-flex min-h-10 items-center md:min-h-0")}>Mentions légales</Link></li>
               <li><Link to="/mentions-legales" hash="donnees" className={cn(fLink, "inline-flex min-h-10 items-center md:min-h-0")}>Confidentialité</Link></li>
               <li><Link to="/mentions-legales" hash="reclamations" className={cn(fLink, "inline-flex min-h-10 items-center md:min-h-0")}>Réclamations</Link></li>
-              <li><a href="/sitemap.xml" className={cn(fLink, "inline-flex min-h-10 items-center md:min-h-0")}>Plan du site</a></li>
+              <li><a href={`${import.meta.env.BASE_URL}sitemap.xml`} className={cn(fLink, "inline-flex min-h-10 items-center md:min-h-0")}>Plan du site</a></li>
             </ul>
           </div>
         </div>
