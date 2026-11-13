@@ -1,5 +1,6 @@
 // Public assets must carry the vite base path (GitHub Pages serves under /eliocyber-solution-compass/).
-const base = import.meta.env.BASE_URL;
+// import.meta.env is absent when vite.config.ts imports this file, hence the fallback.
+const base = import.meta.env?.BASE_URL ?? "/";
 
 export type LivreBlanc = {
   slug: string;

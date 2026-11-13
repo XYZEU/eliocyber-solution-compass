@@ -10,6 +10,9 @@ export const getRouter = () => {
     routeTree,
     // Matches vite base: "/" locally and on Lovable, "/eliocyber-solution-compass" on GitHub Pages.
     basepath: import.meta.env.BASE_URL.replace(/\/$/, "") || "/",
+    // The static-build prerenderer fetches every page with a trailing slash and cannot follow
+    // redirects (Lovable build pins maxRedirects: 0), so accept both forms instead of redirecting.
+    trailingSlash: import.meta.env.BASE_URL === "/" ? "never" : "preserve",
     context: { queryClient },
     scrollRestoration: true,
     // Lets Query own freshness; set caching defaults on the QueryClient, not the router.
