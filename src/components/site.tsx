@@ -55,7 +55,7 @@ function DesktopFeatures() {
       </button>
       {open && (
         <div id="menu-fonctionnalites" className="absolute right-0 top-full z-50 pt-2">
-          <div className="w-[680px] rounded-xl border border-border bg-card p-5 shadow-lift">
+          <div className="w-[680px] rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-lift)]">
             <FeaturesMenu onNavigate={() => setOpen(false)} />
           </div>
         </div>
