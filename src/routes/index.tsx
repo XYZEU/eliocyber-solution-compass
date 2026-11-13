@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Btn, Card, KeyFigures, TrustSeal, seo } from "@/components/site";
+import { InsurerMarquee } from "@/components/insurer-marquee";
 import { Radar, ClipboardCheck, Send, ShieldCheck, ShieldAlert, Server, Scale, type LucideIcon } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -55,7 +56,9 @@ function Home() {
         </aside>
       </section>
 
-      <section className="wrap pb-10 lg:pb-14" aria-label="Chiffres clés"><KeyFigures items={figures} /></section>
+      <InsurerMarquee />
+
+      <section className="wrap pt-10 lg:pt-14 pb-10 lg:pb-14" aria-label="Chiffres clés"><KeyFigures items={figures} /></section>
 
       <section className="band">
         <div className="wrap sec lg:py-16">
