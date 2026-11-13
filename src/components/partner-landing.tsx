@@ -32,11 +32,11 @@ export function PartnerLanding({ d }: { d: LandingData }) {
   return (
     <>
       <nav aria-label="Sur cette page" className="border-b border-border bg-card">
-        <ul className="wrap flex gap-5 overflow-x-auto py-3 text-sm">
+        <ul className="wrap flex flex-wrap items-center gap-x-4 gap-y-0 py-1 text-sm sm:gap-x-5">
           {[["probleme", "Problème"], ["services", "Services"], ["offre", "Offre"], ["questions", "Questions"]].map(([id, l]) => (
-            <li key={id}><a href={`#${id}`} className="whitespace-nowrap text-muted-foreground hover:text-primary">{l}</a></li>
+            <li key={id}><a href={`#${id}`} className="inline-flex min-h-11 items-center whitespace-nowrap text-muted-foreground hover:text-primary">{l}</a></li>
           ))}
-          <li className="ml-auto"><Link to="/devenir-partenaire" className="whitespace-nowrap font-semibold text-primary">Devenir partenaire</Link></li>
+          <li className="w-full border-t border-border sm:ml-auto sm:w-auto sm:border-0"><Link to="/devenir-partenaire" className="inline-flex min-h-11 items-center gap-1 whitespace-nowrap font-semibold text-primary hover:underline">Devenir partenaire →</Link></li>
         </ul>
       </nav>
 
