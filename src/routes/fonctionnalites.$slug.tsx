@@ -35,7 +35,7 @@ function Page() {
   const others = fonctionnalites.filter((o) => o.slug !== f.slug);
   return (
     <>
-      <nav aria-label="Fil d'Ariane" className="wrap truncate pt-6 text-sm text-muted-foreground">
+      <div className="hero-band"><nav aria-label="Fil d'Ariane" className="wrap truncate pt-6 text-sm text-muted-foreground">
         <Link to="/fonctionnalites" className="hover:text-primary">Vue d'ensemble</Link> / <span aria-current="page">{f.name}</span>
       </nav>
       <section className="wrap sec">
@@ -43,7 +43,7 @@ function Page() {
         <h1 className="title-1">{f.tagline}</h1>
         <p className="body-text max-w-[720px] text-[17px]">{f.intro}</p>
         <ul className="mt-4 hidden flex-wrap gap-2 sm:flex">{f.features.map(([t]) => <li key={t} className="pill">{t}</li>)}</ul>
-      </section>
+      </section></div>
 
       <section className="band" aria-labelledby="fn">
         <div className="wrap sec">

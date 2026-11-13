@@ -40,9 +40,9 @@ export function PartnerLanding({ d }: { d: LandingData }) {
         </ul>
       </nav>
 
-      <section className="wrap sec grid items-center gap-8 md:grid-cols-[1.4fr_1fr]">
+      <div className="hero-band"><section className="wrap sec grid items-center gap-8 md:grid-cols-[1.4fr_1fr]">
         <div>
-          <p className="eyebrow">{d.eyebrow}</p>
+          <p className="eyebrow flex items-center gap-2"><span className="live-dot" aria-hidden />{d.eyebrow}</p>
           <h1 className="title-1">{d.h1}</h1>
           <p className="body-text max-w-[620px] text-[17px]">{d.intro}</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -56,7 +56,7 @@ export function PartnerLanding({ d }: { d: LandingData }) {
           <p className="body-text mt-2">{d.visual.text}</p>
           {d.visual.items && <ul className="mt-3 flex flex-wrap gap-2">{d.visual.items.map((x) => <li key={x} className="pill">{x}</li>)}</ul>}
         </aside>
-      </section>
+      </section></div>
 
       <section id="probleme" className="band scroll-mt-20" aria-labelledby="h-probleme">
         <div className="wrap sec">

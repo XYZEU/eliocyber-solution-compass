@@ -34,10 +34,10 @@ function Page() {
   const others = livresBlancs.filter((l) => l.slug !== lb.slug);
   return (
     <>
-      <nav aria-label="Fil d'Ariane" className="wrap pt-6 text-sm text-muted-foreground"><Link to="/ressources" className="hover:text-primary">Ressources</Link> / <span aria-current="page">Livre blanc</span></nav>
+      <div className="hero-band"><nav aria-label="Fil d'Ariane" className="wrap pt-6 text-sm text-muted-foreground"><Link to="/ressources" className="hover:text-primary">Ressources</Link> / <span aria-current="page">Livre blanc</span></nav>
       <section className="wrap sec grid items-center gap-6 md:grid-cols-[1.4fr_1fr] md:gap-8">
         <div>
-          <p className="eyebrow">Livre blanc · {lb.audience}</p>
+          <p className="eyebrow flex items-center gap-2"><span className="live-dot" aria-hidden />Livre blanc · {lb.audience}</p>
           <h1 className="title-1">{lb.title}</h1>
           <p className="body-text max-w-[620px] text-[17px]">{lb.intro}</p>
           <a href="#telecharger" className="mt-4 inline-flex w-full sm:w-auto items-center justify-center rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground hover:bg-primary/90">Recevoir le livre blanc</a>
@@ -48,7 +48,7 @@ function Page() {
           <p className="body-text">PDF · {lb.pages} · gratuit</p>
           <blockquote className="border-l-2 border-primary pl-3 text-sm italic text-muted-foreground">« {lb.extract} »</blockquote>
         </aside>
-      </section>
+      </section></div>
 
       <section className="band" aria-labelledby="apprendre">
         <div className="wrap sec">
