@@ -5,4 +5,4 @@
 - [ ] Envoi formulaire livre blanc à bonjour@eliocyber.fr (bloqué : domaine e-mail)
 - [x] Fonctionnalités : index + 5 pages
 - [x] Open Graph adaptés Ressources + Fonctionnalités
-- [ ] Workflow GitHub Actions -> xyzeu.github.io/eliocyber-solution-compass/ (base path + prérendu statique + deploy.yml)
+- [x] Workflow GitHub Actions -> xyzeu.github.io/eliocyber-solution-compass/ (base path + prérendu statique + deploy.yml)
