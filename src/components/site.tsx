@@ -216,10 +216,13 @@ export function SiteFooter() {
 
 export function PageIntro({ eyebrow, title, children }: { eyebrow: string; title: string; children?: ReactNode }) {
   return (
-    <section className="wrap sec">
-      <p className="eyebrow">{eyebrow}</p>
-      <h1 className="title-1">{title}</h1>
-      {children && <p className="body-text max-w-[720px] text-[17px]">{children}</p>}
+    <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-secondary/60 to-background">
+      <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full bg-primary/10 blur-3xl" />
+      <div className="wrap sec relative">
+        <p className="eyebrow flex items-center gap-2"><span className="live-dot" aria-hidden />{eyebrow}</p>
+        <h1 className="title-1">{title}</h1>
+        {children && <p className="body-text max-w-[720px] text-[17px]">{children}</p>}
+      </div>
     </section>
   );
 }
@@ -281,7 +284,7 @@ export function KeyFigures({ items }: { items: readonly (readonly [string, strin
       {items.map(([v, l]) => (
         <div key={l} className="bg-card px-6 py-5">
           <dt className="sr-only">{l}</dt>
-          <dd className="font-display text-[26px] font-extrabold tracking-tight text-foreground">{v}</dd>
+          <dd className="whitespace-nowrap font-display text-[22px] font-extrabold tracking-tight text-foreground sm:text-[24px] lg:text-[22px] xl:text-[24px]">{v}</dd>
           <dd className="mt-1 text-sm text-muted-foreground">{l}</dd>
         </div>
       ))}
@@ -291,13 +294,13 @@ export function KeyFigures({ items }: { items: readonly (readonly [string, strin
 
 export function TrustSeal() {
   return (
-    <div className="inline-flex flex-wrap items-center gap-x-4 gap-y-2 rounded-xl border border-border bg-card px-4 py-3 text-[13px] text-muted-foreground shadow-sm">
+    <div className="inline-flex max-w-full flex-wrap items-center gap-x-4 gap-y-2 rounded-xl border border-border bg-card px-4 py-3 text-[13px] text-muted-foreground shadow-sm">
       <span className="icon-chip !size-8"><ShieldCheck className="size-4" aria-hidden /></span>
-      <span><strong className="text-foreground">Courtier immatriculé ORIAS</strong> n° [XXX]</span>
+      <span className="whitespace-nowrap"><strong className="text-foreground">Courtier ORIAS</strong> n° [XXX]</span>
       <span aria-hidden className="hidden h-4 w-px bg-border sm:block" />
-      <span>Contrôle ACPR</span>
+      <span className="whitespace-nowrap">Contrôle ACPR</span>
       <span aria-hidden className="hidden h-4 w-px bg-border sm:block" />
-      <span>Données traitées selon le RGPD</span>
+      <span className="whitespace-nowrap">Conforme RGPD</span>
     </div>
   );
 }
