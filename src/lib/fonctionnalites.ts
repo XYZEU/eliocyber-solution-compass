@@ -67,6 +67,32 @@ export const fonctionnalites: Fonctionnalite[] = [
     faq: [["Dois-je émettre mes factures ?", "Non. Elles sont éditées en votre nom dans le cadre d'un mandat de facturation."], ["La TVA est-elle gérée ?", "Oui, la TVA applicable figure sur chaque facture."]],
   },
   {
+    slug: "agir-en-cas-de-crise",
+    group: "partenaire",
+    name: "Agir en cas de crise",
+    audience: "Pour les partenaires cyber, MSSP, ESN et CISO",
+    tagline: "Intervenez auprès de votre client, avec notre pilotage du sinistre auprès de l'assureur",
+    summary: "Coordination de crise, intervention du partenaire, suivi auprès de l'assureur et accompagnement de la prise en charge des frais d'expertise.",
+    intro: "En cas d'incident cyber, vous restez actif aux côtés de votre client pour mener les interventions techniques relevant de votre expertise. Eliocyber pilote les échanges liés au sinistre auprès de l'assureur et accompagne la demande de prise en charge de vos interventions, selon les garanties du contrat et l'accord de l'assureur.",
+    features: [
+      ["Un partenaire actif dans la crise", "Vous apportez votre connaissance du système d'information du client et réalisez les interventions techniques convenues avec les intervenants mobilisés."],
+      ["Pilotage auprès de l'assureur", "Eliocyber accompagne la déclaration et le suivi du sinistre, centralise les échanges avec l'assureur et facilite la coordination entre le client et les intervenants."],
+      ["Cadrage des interventions d'expertise", "Le périmètre, les justificatifs et les coûts de vos interventions sont documentés pour permettre leur examen par l'assureur. Les modalités d'accord préalable sont vérifiées selon le contrat et la procédure de crise."],
+      ["Accompagnement de la prise en charge", "Nous suivons la demande de prise en charge de vos frais d'intervention auprès de l'assureur. Elle dépend des garanties, plafonds, franchises, exclusions et validations applicables ; elle n'est pas automatique."],
+    ],
+    steps: [
+      ["Alerte et déclaration", "Le client contacte l'assistance prévue au contrat ; vous contribuez à réunir les premiers éléments techniques."],
+      ["Coordination", "Eliocyber pilote les échanges avec l'assureur pour cadrer les interventions et les modalités de prise en charge."],
+      ["Intervention technique", "Vous réalisez les actions convenues et conservez les preuves, rapports et justificatifs de vos interventions."],
+      ["Suivi des frais", "Eliocyber accompagne la transmission des justificatifs et le suivi de la décision de prise en charge par l'assureur."],
+    ],
+    benefits: ["Un rôle technique actif auprès de votre client", "Un interlocuteur pour piloter les échanges avec l'assureur", "Vos interventions d'expertise documentées pour la demande de prise en charge"],
+    faq: [
+      ["Mes interventions sont-elles automatiquement prises en charge ?", "Non. Leur prise en charge dépend des garanties du contrat, des limites applicables et de la validation de l'assureur. Eliocyber vous accompagne pour cadrer et documenter la demande, sans garantir son acceptation."],
+      ["Mon rôle d'apporteur d'affaires change-t-il pendant la crise ?", "Non. Vous intervenez dans votre domaine d'expertise technique. Vous ne conseillez pas le client en assurance et ne décidez pas de l'indemnisation ; Eliocyber pilote les échanges assurantiels et l'assureur statue sur la prise en charge."],
+    ],
+  },
+  {
     slug: "conformite-et-securite",
     group: "partenaire",
     name: "Conformité et sécurité",
