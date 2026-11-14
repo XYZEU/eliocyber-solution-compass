@@ -5,6 +5,7 @@
 - [ ] Envoi formulaire livre blanc à bonjour@eliocyber.fr (bloqué : domaine e-mail)
 - [x] Fonctionnalités : index + 5 pages
 - [x] Agir en cas de crise : page au modèle commun, insertion dans le menu et vérification mobile/ordinateur.
+- [ ] Clarifier les conditions de prise en charge et vérifier les liens vers Agir en cas de crise depuis tous les modules.
 - [x] Open Graph adaptés Ressources + Fonctionnalités
 - [x] Workflow GitHub Actions -> xyzeu.github.io/eliocyber-solution-compass/ (base path + prérendu statique + deploy.yml)
 - [x] Logo radar : SVG transparents clair/sombre, intégration header/footer, favicon et vérification mobile/ordinateur.

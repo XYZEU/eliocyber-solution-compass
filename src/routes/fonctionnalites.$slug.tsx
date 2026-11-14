@@ -33,7 +33,7 @@ export const Route = createFileRoute("/fonctionnalites/$slug")({
 
 function Page() {
   const f = Route.useLoaderData();
-  const others = fonctionnalites.filter((o) => o.slug !== f.slug && o.group === f.group);
+  const others = fonctionnalites.filter((o) => o.slug !== f.slug && (o.group === f.group || o.slug === "agir-en-cas-de-crise"));
   return (
     <>
       <div className="hero-band"><nav aria-label="Fil d'Ariane" className="wrap truncate pt-6 text-sm text-muted-foreground">
