@@ -14,7 +14,7 @@ export const Route = createFileRoute("/fonctionnalites/$slug")({
   head: ({ loaderData, params }) =>
     loaderData
       ? {
-          ...seo(`/fonctionnalites/${params.slug}`, `${loaderData.name} : ${loaderData.tagline.toLowerCase()} | Eliocyber`, `${loaderData.name} — ${loaderData.summary} ${loaderData.audience}.`, { type: "article", section: "Vue d'ensemble", tags: loaderData.features.map(([t]) => t) }),
+          ...seo(`https://eliocyber-solution-compass.lovable.app/fonctionnalites/${params.slug}`, `${loaderData.name} : ${loaderData.tagline.toLowerCase()} | Eliocyber`, `${loaderData.name} — ${loaderData.summary} ${loaderData.audience}.`, { type: "article", section: "Vue d'ensemble", tags: loaderData.features.map(([t]) => t) }),
           scripts: [
             faqJsonLd(loaderData.faq),
             { type: "application/ld+json", children: JSON.stringify([

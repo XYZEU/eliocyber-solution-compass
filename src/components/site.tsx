@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { fonctionnalites } from "@/lib/fonctionnalites";
-import { Activity, BookOpen, ChevronDown, Coins, Cpu, Gauge, LayoutGrid, Mail, MapPin, Menu, Phone, QrCode, Server, ShieldCheck, UserRound, Wrench, X, type LucideIcon } from "lucide-react";
+import { Activity, BookOpen, ChevronDown, Coins, Cpu, Gauge, LayoutGrid, LifeBuoy, Mail, MapPin, Menu, Phone, QrCode, Server, ShieldCheck, UserRound, Wrench, X, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import radarLight from "@/assets/eliocyber-logo-radar-clair.svg";
 import radarDark from "@/assets/eliocyber-logo-radar-sombre.svg";
@@ -11,7 +11,7 @@ const partnerFeatures = fonctionnalites.filter((f) => f.group === "partenaire");
 const coreFeatures = fonctionnalites.filter((f) => !f.group);
 
 const featureIcons: Record<string, LucideIcon> = {
-  "attirer-vos-clients": QrCode, "suivre-vos-prospects": Activity, "etre-paye-sans-effort": Coins, "conformite-et-securite": ShieldCheck,
+  "attirer-vos-clients": QrCode, "suivre-vos-prospects": Activity, "etre-paye-sans-effort": Coins, "agir-en-cas-de-crise": LifeBuoy, "conformite-et-securite": ShieldCheck,
   "portail-msp": Server, "moteur-de-souscription": Cpu, "moteur-de-risque": Gauge, "module-de-remediation": Wrench, "portail-client": UserRound,
 };
 
