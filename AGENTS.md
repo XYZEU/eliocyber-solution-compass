@@ -31,6 +31,7 @@ use the editor.
 - Shared header/footer/cards live in src/components/site.tsx and wrap every page from __root; each page sets SEO via its seo() helper so canonical/OG stay consistent.
 - Partner landing pages (/partenaires/*) share src/components/partner-landing.tsx driven by a per-page data object; the commission grid lives in src/lib/commission.ts so all pages show the same values.
 - Content collections (livres blancs, fonctionnalités) live as typed arrays in src/lib/*.ts and render through one $slug route each; the sitemap reads the same arrays.
+- Related feature links keep their audience grouping but expose crisis management across groups so every module provides direct access to incident support.
 - Use the traced SVG logo variants for shared header/footer and the same symbol in the color-scheme-aware public SVG favicon; outlined lettering removes font dependencies and keeps brand rendering consistent.
 - vite.config.ts must not import src/ modules (read slugs as text): a config import makes Vite restart and re-optimize deps on every content edit, crashing open tabs with duplicate React.
 - Component files (src/components/*.tsx) export only React components; head/SEO helpers (seo, faqJsonLd) live in src/lib/seo.ts so Fast Refresh never invalidates the root layout and crashes open tabs.
