@@ -195,7 +195,7 @@ function Home() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-auto pt-6"><Btn to="/devenir-partenaire" ghost>Ouvrir un compte Pro <ArrowRight className="ml-2 size-4" aria-hidden /></Btn></div>
+              <div className="mt-auto pt-6"><Btn to="/devenir-partenaire" ghost>Devenir partenaire apporteur <ArrowRight className="ml-2 size-4" aria-hidden /></Btn></div>
             </article>
           ))}
         </div>
