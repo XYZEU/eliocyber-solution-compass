@@ -12,8 +12,16 @@ const problemes: [string, string][] = [
   ["Des assureurs qui vendent vos services", "Certaines assurances cyber vendent des services cyber. Elles deviennent, de fait, vos concurrentes."],
 ];
 
+const faq: [string, string][] = [
+  ["Dois-je être inscrit à l’ORIAS pour présenter un client ?", "Non, tant que vous restez dans le périmètre strict de la mise en relation : vous informez votre client de l’existence d’Eliocyber et vous le mettez en relation, avec son accord. Le conseil, la présentation des garanties et la souscription sont assurés par Eliocyber, courtier immatriculé à l’ORIAS sous le n° 22004647."],
+  ["Vais-je devoir conseiller ou vendre des contrats d’assurance ?", "Non. Vous ne présentez pas les garanties, vous ne comparez pas les contrats et vous ne donnez aucun conseil en assurance. Eliocyber porte l’intégralité de la mission de courtage et sa responsabilité."],
+  ["Comment suis-je rémunéré ?", "Quand un dossier que vous avez présenté aboutit, vous percevez une commission selon le type de client assuré, dans le cadre d’une convention formalisée. Un simulateur vous permet d’estimer ce revenu avant de vous engager."],
+  ["Que se passe-t-il en cas de sinistre chez mon client ?", "Eliocyber pilote le dossier auprès de l’assureur et vous tient informé. Vos interventions techniques peuvent être prises en charge, selon les garanties du contrat, ses plafonds et franchises, et l’accord de l’assureur."],
+  ["Ma relation client est-elle protégée ?", "Oui. Le parcours est co-brandé : votre marque reste visible à chaque étape, et Eliocyber ne vend aucun service cyber, IT ou conformité. Nous restons le courtier, vous restez le prestataire de confiance."],
+];
+
 export const Route = createFileRoute("/")({
-  head: () => seo("/", "Eliocyber — Plateforme de cyberassurance pour apporteurs d’affaires", "Recommandez vos clients, suivez vos dossiers et vos commissions. Eliocyber, la plateforme de cyberassurance des professionnels cyber, IT et conformité."),
+  head: () => ({ ...seo("/", "Eliocyber — Plateforme de cyberassurance pour apporteurs d’affaires", "Recommandez vos clients, suivez vos dossiers et vos commissions. Eliocyber, la plateforme de cyberassurance des professionnels cyber, IT et conformité."), scripts: [faqJsonLd(faq)] }),
   component: Home,
 });
 
