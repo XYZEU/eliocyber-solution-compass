@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { seo } from "@/lib/seo";
 import { Btn, Card, CtaBanner, TrustSeal } from "@/components/site";
 import { InsurerMarquee } from "@/components/insurer-marquee";
-import { ShieldAlert, Server, Scale, Users, Handshake, BadgeCheck, Check, type LucideIcon } from "lucide-react";
+import { ShieldAlert, Server, Scale, Check, FileCheck2, Handshake, Activity, Layers, Code2, ArrowRight, type LucideIcon } from "lucide-react";
+import { ClientPreview, PartnerJourney } from "@/components/home-product";
 
 const problemes: [string, string][] = [
   ["Le sujet n’est pas traité", "Votre client reste exposé, et vous passez à côté d’un vrai levier de valeur — sans avoir les moyens de le traiter vous-même."],
@@ -28,7 +29,7 @@ const promesses: [string, string][] = [
   ["Nous faisons le courtage, en co-branding", "Eliocyber prend en charge le conseil, l’étude des besoins, la présentation des contrats et le suivi. Votre marque reste visible aux côtés de la nôtre, votre client ne vous perd jamais de vue."],
   ["Vous suivez, vous êtes rémunéré", "Vous avez le suivi de votre dossier, avec des étapes partageables. Quand le dossier aboutit, vous percevez une commission par type de client assuré."],
 ];
-const promiseIcons: LucideIcon[] = [Users, Handshake, BadgeCheck];
+const figureIcons = [FileCheck2, Handshake, Activity];
 const changements = [
   "Votre client est enfin couvert, sans que vous deveniez courtier",
   "Aucun risque réglementaire, les rôles sont clairs et formalisés",
@@ -75,42 +76,27 @@ function Home() {
           <h1 className="title-1">L’assurance cyber,<br />sans jamais concurrencer<br />votre métier.</h1>
           <p className="body-text max-w-[760px] text-[17px]">Gagnez un nouveau levier de valeur client, sans changer de métier, sans devenir courtier, sans concurrencer vos services. Eliocyber porte le courtage. Vous gardez votre relation.</p>
           <div className="mt-5 flex flex-wrap gap-3">
-            <Btn to="/devenir-partenaire">Devenir apporteur d'affaires</Btn>
+            <Btn to="/devenir-partenaire">Ouvrir un compte Pro</Btn>
             <Btn to="/comment-ca-marche" ghost>Découvrir le parcours</Btn>
           </div>
           <div className="mt-6"><Link to="/cadre-apporteur" className="text-sm font-semibold text-primary hover:underline">Comprendre le statut d'apporteur →</Link></div>
           <div className="mt-6"><TrustSeal /></div>
         </div>
-        <aside className="rounded-[24px] border border-border bg-card p-6 shadow-lg sm:p-8" aria-labelledby="express-title">
-          <div className="flex flex-wrap items-start justify-between gap-3">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Présentation express</p>
-              <h2 id="express-title" className="mt-2 font-display text-2xl font-bold text-foreground">Un client, rien de plus.</h2>
-            </div>
-            <span className="rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-primary">Sans questionnaire</span>
-          </div>
-          <ol className="mt-6 grid gap-5">
-            {[["Coordonnées + accord de contact","Vous transmettez l’essentiel, rien de plus."],["Prise en charge Eliocyber","Conseil, étude, présentation, suivi."],["Vous restez visible","Étapes partageables, en co-branding."]].map(([t,d],i)=>(
-              <li key={t} className="flex gap-4">
-                <span className="grid size-10 shrink-0 place-items-center rounded-full bg-foreground text-sm font-bold text-background">{i+1}</span>
-                <div><p className="font-semibold text-foreground">{t}</p><p className="text-sm text-muted-foreground">{d}</p></div>
-              </li>
-            ))}
-          </ol>
-          <Link to="/devenir-partenaire" className="mt-7 flex min-h-12 items-center justify-center gap-2 rounded-xl bg-foreground px-5 font-semibold text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">Présenter un client <span aria-hidden>→</span></Link>
-          <p className="mt-4 text-center text-xs text-muted-foreground">Aucune mission d’assurance à vendre. Aucun rôle de courtier à assumer.</p>
-        </aside>
+        <ClientPreview />
       </section>
       </div>
       <section className="bg-ink-glow relative overflow-hidden" aria-label="Chiffres clés">
-        <dl className="wrap grid gap-4 py-10 sm:grid-cols-2 lg:grid-cols-4 lg:py-12">
-          {figures.map(([v, l]) => (
-            <div key={v} className="group rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 px-6 py-5 backdrop-blur-sm transition-colors hover:border-ink-link/60 hover:bg-primary-foreground/10">
-              <dt className="sr-only">{l}</dt>
-              <dd className="font-display text-[26px] font-extrabold tracking-tight text-ink-link">{v}</dd>
-              <dd className="mt-1 text-sm leading-snug text-ink-foreground">{l}</dd>
+        <dl className="wrap grid gap-4 py-10 sm:grid-cols-3 lg:py-12">
+          {figures.map(([v, l], i) => {
+            const Icon = figureIcons[i] ?? Activity;
+            return (
+            <div key={v} className="group flex items-center gap-4 rounded-lg border border-ink-foreground/20 px-6 py-5 transition-colors hover:border-ink-link/60">
+              <Icon className="size-6 shrink-0 text-ink-link" aria-hidden />
+              <div><dt className="sr-only">{l}</dt>
+              <dd className="font-display text-[26px] font-extrabold text-ink-link">{v}</dd>
+              <dd className="mt-1 text-sm leading-snug text-ink-foreground">{l}</dd></div>
             </div>
-          ))}
+          );})}
         </dl>
       </section>
       <section className="bg-ink-glow relative overflow-hidden border-t border-primary-foreground/10" aria-labelledby="pourquoi">
@@ -120,14 +106,14 @@ function Home() {
           <p className="mt-3 max-w-[60ch] text-[17px] leading-7 text-ink-foreground">Le besoin d’assurance cyber apparaît chez vos clients. Aujourd’hui, vous n’avez aucun moyen simple, conforme et non concurrentiel de le traiter.</p>
           <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {problemes.map(([t, d], i) => (
-              <li key={t} className="card-hover rounded-2xl bg-card p-5 shadow-[var(--shadow-soft)]">
-                <span className="font-display text-sm font-bold text-primary">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="mt-3 font-display text-[17px] font-bold leading-snug text-foreground">{t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
+              <li key={t} className="home-problem-card group rounded-lg border border-ink-foreground/20 p-5">
+                <span className="font-display text-sm font-bold text-ink-link transition-colors group-hover:text-primary-foreground">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="mt-3 font-display text-[17px] font-bold leading-snug text-primary-foreground">{t}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-foreground">{d}</p>
               </li>
             ))}
           </ol>
-          <div className="mt-6 flex flex-col gap-5 rounded-2xl border border-ink-link/40 bg-primary-foreground/5 p-6 md:flex-row md:items-center md:justify-between lg:p-8">
+          <div className="mt-6 flex flex-col gap-5 border-t border-ink-link/40 pt-6 md:flex-row md:items-center md:justify-between lg:p-8">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-link">La réponse Eliocyber Pro</p>
               <p className="mt-2 max-w-[62ch] text-lg font-semibold leading-snug text-primary-foreground">Vous présentez le client. Nous faisons le courtage. Vous restez le prestataire de confiance. Nous restons le courtier. Personne ne marche sur le métier de l’autre.</p>
@@ -142,7 +128,7 @@ function Home() {
             <p className="eyebrow">La solution</p>
             <h2 id="solution" className="title-2">Un courtier cyber, intégré à votre relation client. <span className="text-primary">Pas à la place.</span></h2>
             <p className="body-text mt-3 max-w-[60ch] text-[17px]">Eliocyber Pro transforme un besoin que vous détectez déjà en un dossier traité, suivi et rémunéré — sans que vous changiez de métier.</p>
-            <div className="mt-6 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-soft)]">
+            <div className="mt-6 border-l-2 border-primary pl-5">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Co-branding, à chaque étape</p>
               <p className="mt-3 flex flex-wrap items-center gap-2 text-sm font-semibold text-foreground">
                 <span className="rounded-full bg-foreground px-3 py-1 text-background">Votre marque</span><span aria-hidden>+</span>
@@ -156,29 +142,8 @@ function Home() {
               <Btn to="/comment-ca-marche" ghost>Voir le fonctionnement</Btn>
             </div>
           </div>
-          <div className="rounded-[24px] border border-border bg-muted/40 p-5 sm:p-7">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Le principe, en un coup d’œil</p>
-            <ol className="mt-5 grid gap-2">
-              {([["Vous présentez", "Coordonnées + accord de contact.", false], ["Eliocyber assure le courtage", "Conseil, étude, contrat, suivi.", true], ["Vous suivez, vous êtes rémunéré", "Étapes partageables, commission à l’aboutissement.", false]] as const).map(([t, d, dark], i) => (
-                <li key={t} className="grid gap-2">
-                  {i > 0 && <span aria-hidden className="mx-auto text-primary">↓</span>}
-                  <div className={dark ? "flex gap-4 rounded-2xl bg-ink-glow p-4 shadow-[var(--shadow-lift)]" : "flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-soft)]"}>
-                    <span className={i === 0 ? "grid size-9 shrink-0 place-items-center rounded-full bg-foreground text-sm font-bold text-background" : "grid size-9 shrink-0 place-items-center rounded-full bg-primary text-sm font-bold text-primary-foreground"}>{i + 1}</span>
-                    <div><p className={dark ? "font-semibold text-primary-foreground" : "font-semibold text-foreground"}>{t}</p><p className={dark ? "text-sm text-ink-foreground" : "text-sm text-muted-foreground"}>{d}</p></div>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <p className="mt-5 rounded-xl bg-secondary px-4 py-3 text-center text-sm font-semibold text-primary">Vous restez le prestataire de confiance. Nous restons le courtier.</p>
-          </div>
+          <PartnerJourney steps={promesses} />
         </div>
-      </section>
-      <section className="wrap sec relative lg:py-16" aria-label="Ce que chacun fait">
-        <ul className="grid gap-5 md:grid-cols-3">
-          {promesses.map(([t, d], i) => (
-            <li key={t}><Card icon={promiseIcons[i]} title={t} className="h-full"><p className="body-text text-sm">{d}</p></Card></li>
-          ))}
-        </ul>
       </section>
       <InsurerMarquee />
 
@@ -208,18 +173,21 @@ function Home() {
         <h2 id="offres" className="title-2">Deux façons de collaborer, selon votre modèle.</h2>
         <div className="mt-6 grid gap-5 md:grid-cols-2">
           {offres.map((o) => (
-            <article key={o.badge} className={`card-box flex h-full flex-col ${o.dark ? "border-border bg-card" : "border-primary bg-secondary"}`}>
-              <span className={`inline-block self-start rounded-full px-3 py-1 text-xs font-semibold ${o.dark ? "bg-foreground text-background" : "bg-primary text-primary-foreground"}`}>{o.badge}</span>
-              <h3 className="title-3 mt-4 !text-[19px]">{o.title}</h3>
+            <article key={o.badge} className={`flex h-full flex-col rounded-lg border p-6 sm:p-8 ${o.dark ? "border-border bg-card" : "border-primary/40 bg-primary-soft/50"}`}>
+              <div className="mb-6 flex items-center justify-between gap-4">
+                <span className="icon-chip !size-11">{o.dark ? <Code2 className="size-5" aria-hidden /> : <Layers className="size-5" aria-hidden />}</span>
+              <span className={`inline-block self-start rounded-full px-3 py-1 text-xs font-semibold ${o.dark ? "bg-foreground text-background" : "bg-primary text-primary-foreground"}`}>{o.badge}</span></div>
+              <h3 className="title-3 !text-[19px]">{o.title}</h3>
               <p className="mt-1 text-[13px] font-medium text-muted-foreground">{o.tags}</p>
               <p className="body-text mt-3 text-sm">{o.text}</p>
-              <ul className="mt-4 grid gap-2.5">
+              <ul className="mt-5 grid gap-3 border-t border-border pt-5">
                 {o.points.map((p) => (
                   <li key={p} className="flex items-start gap-2.5 text-sm text-foreground">
                     <Check className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />{p}
                   </li>
                 ))}
               </ul>
+              <div className="mt-auto pt-6"><Btn to="/devenir-partenaire" ghost>Ouvrir un compte Pro <ArrowRight className="ml-2 size-4" aria-hidden /></Btn></div>
             </article>
           ))}
         </div>
