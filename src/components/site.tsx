@@ -113,7 +113,7 @@ export function Btn({ to, children, ghost, className, profil, onDark, hash }: { 
         className,
       );
   if (to === "/contact") return <Link to="/contact" search={profil ? { profil } : {}} className={cls}>{children}</Link>;
-  return <Link to={to} hash={hash} className={cls}>{children}</Link>;
+  return <Link to={to} {...(hash ? { hash } : {})} className={cls}>{children}</Link>;
 }
 
 export function SiteHeader() {
@@ -335,7 +335,7 @@ export function CtaBanner({ title, text, to, label, profil, secondary }: { title
           <p className="mt-2 max-w-[560px] text-ink-foreground">{text}</p>
         </div>
         <div className="relative flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:shrink-0">
-          {secondary && <Btn to={secondary.to} hash={secondary.hash} profil={secondary.profil} ghost onDark>{secondary.label}</Btn>}
+          {secondary && <Btn to={secondary.to} {...(secondary.hash ? { hash: secondary.hash } : {})} profil={secondary.profil} ghost onDark>{secondary.label}</Btn>}
           <Btn to={to} profil={profil}>{label}</Btn>
         </div>
       </div>
