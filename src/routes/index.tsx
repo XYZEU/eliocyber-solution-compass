@@ -20,7 +20,7 @@ const steps = [
 ] as const;
 const stepIcons: LucideIcon[] = [Radar, ClipboardCheck, Send, ShieldCheck];
 const familyIcons: LucideIcon[] = [ShieldAlert, Server, Scale];
-const figures = [["2 jours", "Délai de réponse ouvré à chaque demande"], ["1 lead = 1 commission", "Une règle d'apport simple et transparente"], ["100 % B2B", "PME, ETI et leurs prescripteurs"], ["Votre expertise", "Cyber, IT et conformité"]] as const;
+const figures = [["0", "questionnaire technique"], ["2 min", "pour présenter un client"], ["Co-branding", "à chaque étape"], ["Suivi", "partageable"]] as const;
 const families = [
   ["Professionnels cyber", "MSSP / SOC, ESN cyber, CISO freelance, pentesters, experts forensic, éditeurs et intégrateurs sécurité."],
   ["Professionnels IT", "MSP, DSI externes, intégrateurs, prestataires cloud et télécom."],
@@ -68,7 +68,17 @@ function Home() {
       </div>
       <InsurerMarquee />
 
-      <section className="wrap pt-10 lg:pt-14 pb-10 lg:pb-14" aria-label="Chiffres clés"><KeyFigures items={figures} /></section>
+      <section className="bg-ink-glow bg-grid relative overflow-hidden" aria-label="Chiffres clés">
+        <dl className="wrap grid gap-4 py-10 sm:grid-cols-2 lg:grid-cols-4 lg:py-12">
+          {figures.map(([v, l]) => (
+            <div key={v} className="group rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 px-6 py-5 backdrop-blur-sm transition-colors hover:border-accent/60 hover:bg-primary-foreground/10">
+              <dt className="sr-only">{l}</dt>
+              <dd className="font-display text-[26px] font-extrabold tracking-tight text-accent">{v}</dd>
+              <dd className="mt-1 text-sm leading-snug text-primary-foreground/75">{l}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
 
       <section className="band">
         <div className="wrap sec lg:py-16">
