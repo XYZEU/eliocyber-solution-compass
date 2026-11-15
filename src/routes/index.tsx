@@ -18,11 +18,11 @@ export const Route = createFileRoute("/")({
 });
 
 const familyIcons: LucideIcon[] = [ShieldAlert, Server, Scale];
-const figures = [["0", "questionnaire technique"], ["Co-branding", "à chaque étape"], ["Suivi", "partageable"]] as const;
+const figures = [["0", "questionnaire technique à remplir"], ["100 %", "co-brandé à votre marque"], ["J+2", "ouvrés pour répondre à votre client"]] as const;
 const families = [
-  ["EXPERTS TECHNIQUES", "MSP, MSSP, SOC, Intégrateurs, Cloud."],
-  ["EXPERTS GOUVERNANCE", "ESN, DSI externes, Ciso externes, Dpo, Auditeurs."],
-  ["EXPERTS EDITEURS", "Grc, Edr, Siem, Elearning, Scoring."],
+  ["EXPERTS TECHNIQUES", "MSP, MSSP, SOC, Intégrateurs, Cloud. Vos interventions de réponse à incident peuvent être prises en charge, selon le contrat et l’accord de l’assureur."],
+  ["EXPERTS GOUVERNANCE", "ESN, DSI externes, Ciso externes, Dpo, Auditeurs. Complétez vos missions NIS2 ou DORA par le transfert du risque résiduel."],
+  ["EXPERTS EDITEURS", "Grc, Edr, Siem, Elearning, Scoring. Proposez l’assurance cyber dans votre parcours d’onboarding ou votre marketplace."],
 ] as const;
 const promesses: [string, string][] = [
   ["Vous présentez, nous assurons", "Vous nous présentez le client : coordonnées + accord de contact. C’est tout. Aucun questionnaire technique à faire remplir, aucun devoir de conseil assurance à votre charge."],
@@ -72,12 +72,12 @@ function Home() {
       <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
       <section className="wrap sec relative grid items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-12">
         <div className="min-w-0">
-          <p className="eyebrow">POUR UNE CYBER RESILIENCE TOTALE</p>
-          <h1 className="title-1">L’assurance cyber,<br />sans jamais concurrencer<br />votre métier.</h1>
-          <p className="body-text max-w-[760px] text-[17px]">Gagnez un nouveau levier de valeur client, sans changer de métier, sans devenir courtier, sans concurrencer vos services. Eliocyber porte le courtage. Vous gardez votre relation.</p>
+          <p className="eyebrow">PROGRAMME APPORTEURS D’AFFAIRES CYBER</p>
+          <h1 className="title-1">L’assurance cyber pour vos clients,<br />sans jamais concurrencer<br />votre métier.</h1>
+          <p className="body-text max-w-[760px] text-[17px]">Recommandez l’assurance cyber à vos clients et faites valoir vos interventions techniques en cas de crise. Eliocyber porte le courtage et ses obligations réglementaires. Vous gardez votre relation client.</p>
           <div className="mt-5 flex flex-wrap gap-3">
-            <Btn to="/devenir-partenaire">Ouvrir un compte Pro</Btn>
-            <Btn to="/comment-ca-marche" ghost>Découvrir le parcours</Btn>
+            <Btn to="/devenir-partenaire">Devenir partenaire apporteur</Btn>
+            <Btn to="/devenir-partenaire" hash="simulateur" ghost>Estimer mes commissions →</Btn>
           </div>
           <div className="mt-6"><Link to="/cadre-apporteur" className="text-sm font-semibold text-primary hover:underline">Comprendre le statut d'apporteur →</Link></div>
           <div className="mt-6"><TrustSeal /></div>
@@ -118,7 +118,7 @@ function Home() {
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-link">La réponse Eliocyber Pro</p>
               <p className="mt-2 max-w-[62ch] text-lg font-semibold leading-snug text-primary-foreground">Vous présentez le client. Nous faisons le courtage. Vous restez le prestataire de confiance. Nous restons le courtier. Personne ne marche sur le métier de l’autre.</p>
             </div>
-            <Btn to="/devenir-partenaire" onDark className="shrink-0">Ouvrir un compte Pro</Btn>
+            <Btn to="/devenir-partenaire" onDark className="shrink-0">Rejoindre le réseau</Btn>
           </div>
         </div>
       </section>
@@ -161,8 +161,8 @@ function Home() {
               ))}
             </ul>
             <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-sm leading-relaxed text-ink-foreground">Concrètement, comment ça se passe au quotidien ? Voici le parcours en 4 étapes.</p>
-              <Btn to="/comment-ca-marche" onDark className="shrink-0">Voir le fonctionnement →</Btn>
+              <p className="text-sm leading-relaxed text-ink-foreground">Une simple mise en relation, encadrée par le Code des assurances : vous informez, Eliocyber conseille et porte la responsabilité du conseil.</p>
+              <Btn to="/cadre-apporteur" onDark className="shrink-0">Comprendre le rôle d’apporteur →</Btn>
             </div>
           </div>
         </div>
@@ -205,7 +205,7 @@ function Home() {
         </figure>
       </section>
 
-      <CtaBanner title="Prêt à présenter votre premier client ?" text="Sans questionnaire technique. Sans changer de métier." to="/devenir-partenaire" label="Ouvrir un compte Pro" />
+      <CtaBanner title="Prêt à présenter votre premier client ?" text="Sans questionnaire technique. Sans changer de métier." to="/devenir-partenaire" label="Demander ma convention d’apporteur" />
     </>
   );
 }

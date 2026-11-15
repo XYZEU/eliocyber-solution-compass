@@ -13,7 +13,7 @@ export function ClientPreview() {
       </div>
       <div className="p-5 sm:p-6">
         <p className="eyebrow">Présentation express</p>
-        <h2 id="client-preview-title" className="title-2 mt-2">Un client, rien de plus.</h2>
+        <h2 id="client-preview-title" className="title-2 mt-2">Une présentation en 3 clics.</h2>
         <div className="mt-5 flex items-center gap-3 border-b border-border pb-5">
           <span className="icon-chip shrink-0"><Building2 className="size-5" aria-hidden /></span>
           <div className="min-w-0"><p className="font-semibold">PME industrielle</p><p className="text-xs text-muted-foreground">Recommandée par votre entreprise</p></div>
@@ -28,8 +28,8 @@ export function ClientPreview() {
           <span className="flex items-center gap-2 font-semibold text-primary"><BadgeCheck className="size-4" aria-hidden />Sans questionnaire</span>
           <span className="text-muted-foreground">Suivi partageable</span>
         </div>
-        <Btn to="/devenir-partenaire" className="mt-5 w-full">Ouvrir un compte Pro <ArrowRight className="ml-2 size-4" aria-hidden /></Btn>
-        <p className="mt-3 text-xs leading-relaxed text-muted-foreground">Aucune mission d’assurance à vendre. Aucun rôle de courtier à assumer.</p>
+        <Btn to="/devenir-partenaire" className="mt-5 w-full">Présenter un premier dossier <ArrowRight className="ml-2 size-4" aria-hidden /></Btn>
+        <p className="mt-3 text-xs leading-relaxed text-muted-foreground">Vos interventions d’expert peuvent être prises en charge par l’assureur en cas d’attaque, selon les garanties du contrat.</p>
       </div>
     </aside>
   );
