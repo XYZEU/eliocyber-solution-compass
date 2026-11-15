@@ -59,7 +59,7 @@ export function PartnerLanding({ d }: { d: LandingData }) {
             <p className="eyebrow flex items-center gap-2"><span className="live-dot" aria-hidden />{d.eyebrow}</p>
             <h1 className="title-1 !m-0">{d.h1}</h1>
           </div>
-          <p className="body-text max-w-[620px] text-[17px]">{d.intro}</p>
+          <p className="body-text w-full max-w-[60ch] text-[17px] leading-7">{d.intro}</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link to="/devenir-partenaire" hash="candidature" className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground hover:bg-primary/90">{d.cta}</Link>
             <a href="#offre" className="inline-flex items-center justify-center rounded-lg border-[1.5px] border-primary px-5 py-3 text-[15px] font-semibold text-primary hover:bg-primary-soft">Voir l'offre</a>
