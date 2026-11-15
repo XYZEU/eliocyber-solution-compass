@@ -32,8 +32,8 @@ function Home() {
     <>
       <div className="relative overflow-hidden">
       <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
-      <section className="wrap sec relative lg:py-16">
-        <div className="max-w-[880px]">
+      <section className="wrap sec relative grid items-center gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-12 lg:py-16">
+        <div className="min-w-0">
           <p className="eyebrow">POUR UNE CYBER RESILIENCE TOTALE</p>
           <h1 className="title-1 lg:!text-[44px]">L’assurance cyber,<br />sans jamais concurrencer<br />votre métier.</h1>
           <p className="body-text max-w-[760px] text-[17px]">Gagnez un nouveau levier de valeur client, sans changer de métier, sans devenir courtier, sans concurrencer vos services. Eliocyber porte le courtage. Vous gardez votre relation.</p>
@@ -45,6 +45,25 @@ function Home() {
           <div className="mt-6"><Link to="/cadre-apporteur" className="text-sm font-semibold text-primary hover:underline">Comprendre le statut d'apporteur →</Link></div>
           <div className="mt-6"><TrustSeal /></div>
         </div>
+        <aside className="rounded-[24px] border border-border bg-card p-6 shadow-lg sm:p-8" aria-labelledby="express-title">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Présentation express</p>
+              <h2 id="express-title" className="mt-2 font-display text-2xl font-bold text-foreground">Un client, en 2 minutes.</h2>
+            </div>
+            <span className="rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-primary">Sans questionnaire</span>
+          </div>
+          <ol className="mt-6 grid gap-5">
+            {[["Coordonnées + accord de contact","Vous transmettez l’essentiel, rien de plus."],["Prise en charge Eliocyber","Conseil, étude, présentation, suivi."],["Vous restez visible","Étapes partageables, en co-branding."]].map(([t,d],i)=>(
+              <li key={t} className="flex gap-4">
+                <span className="grid size-10 shrink-0 place-items-center rounded-full bg-foreground text-sm font-bold text-background">{i+1}</span>
+                <div><p className="font-semibold text-foreground">{t}</p><p className="text-sm text-muted-foreground">{d}</p></div>
+              </li>
+            ))}
+          </ol>
+          <Link to="/devenir-partenaire" className="mt-7 flex min-h-12 items-center justify-center gap-2 rounded-xl bg-foreground px-5 font-semibold text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">Présenter un client <span aria-hidden>→</span></Link>
+          <p className="mt-4 text-center text-xs text-muted-foreground">Aucune mission d’assurance à vendre. Aucun rôle de courtier à assumer.</p>
+        </aside>
       </section>
       </div>
       <InsurerMarquee />
