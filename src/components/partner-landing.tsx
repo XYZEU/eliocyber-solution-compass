@@ -36,7 +36,7 @@ export function PartnerLanding({ d }: { d: LandingData }) {
           {[["probleme", "Problème"], ["services", "Services"], ["offre", "Offre"], ["questions", "Questions"]].map(([id, l]) => (
             <li key={id}><a href={`#${id}`} className="inline-flex min-h-11 items-center whitespace-nowrap text-muted-foreground hover:text-primary">{l}</a></li>
           ))}
-          <li className="w-full border-t border-border sm:ml-auto sm:w-auto sm:border-0"><Link to="/devenir-partenaire" className="inline-flex min-h-11 items-center gap-1 whitespace-nowrap font-semibold text-primary hover:underline">Devenir partenaire →</Link></li>
+          <li className="w-full border-t border-border sm:ml-auto sm:w-auto sm:border-0"><Link to="/devenir-partenaire" className="inline-flex min-h-11 items-center gap-1 whitespace-nowrap font-semibold text-primary hover:underline">Devenir apporteur d’affaires →</Link></li>
         </ul>
       </nav>
 

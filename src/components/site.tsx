@@ -63,12 +63,12 @@ function FeaturesMenu({ onNavigate }: { onNavigate: () => void }) {
         ))}
         {col("Cœur de plateforme et souscription", coreFeatures)}
       </div>
-      <Link data-menu-item to="/ressources" onClick={onNavigate} className="bg-ink-glow group relative mt-4 flex items-center gap-3 overflow-hidden rounded-lg px-4 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+      <Link data-menu-item to="/cadre-apporteur" onClick={onNavigate} className="bg-ink-glow group relative mt-4 flex items-center gap-3 overflow-hidden rounded-lg px-4 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
         <span aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
         <span className="relative flex size-8 shrink-0 items-center justify-center rounded-md border border-ink-foreground/25 text-ink-link"><BookOpen className="size-4" aria-hidden /></span>
         <span className="relative min-w-0 flex-1">
-          <span className="flex items-center gap-2 text-[13.5px] font-semibold text-primary-foreground"><span className="live-dot" aria-hidden />Guides et livres blancs</span>
-          <span className="block text-[12.5px] text-ink-foreground">Téléchargez le guide partenaire apporteur</span>
+          <span className="flex items-center gap-2 text-[13.5px] font-semibold text-primary-foreground"><span className="live-dot" aria-hidden />Statut et cadre de l’apporteur</span>
+          <span className="block text-[12.5px] text-ink-foreground">Le cadre et les ressources de l'apporteur</span>
         </span>
         <span className="relative text-ink-link transition-transform group-hover:translate-x-1" aria-hidden>→</span>
       </Link>
@@ -126,7 +126,7 @@ export function SiteHeader() {
         <nav aria-label="Navigation principale" className="hidden items-center gap-4 text-sm xl:flex">
           <DesktopFeatures />
           <Link to="/a-propos" className="text-foreground hover:text-primary" activeProps={{ className: "text-primary font-semibold" }}>À propos</Link>
-          <Btn to="/contact">Être contacté</Btn>
+          <Btn to="/devenir-partenaire">Devenir apporteur d’affaires</Btn>
         </nav>
         <button
           type="button"
@@ -140,13 +140,13 @@ export function SiteHeader() {
         </button>
       </div>
       {open && (
-        <nav id="menu-mobile" aria-label="Navigation mobile" className="flex flex-col gap-1 border-t border-border px-5 pb-5 pt-2 xl:hidden">
+        <nav id="menu-mobile" aria-label="Navigation mobile" className="flex max-h-[calc(100dvh-100px)] flex-col gap-1 overflow-y-auto border-t border-border px-5 pb-5 pt-2 xl:hidden">
           <button type="button" aria-expanded={featOpen} aria-controls="menu-mobile-features" onClick={() => setFeatOpen((o) => !o)} className="flex min-h-11 items-center justify-between pt-2 text-left text-[15px] font-semibold text-foreground">
             Fonctionnalités <ChevronDown className={cn("size-4 transition-transform", featOpen && "rotate-180")} aria-hidden />
           </button>
           {featOpen && <div id="menu-mobile-features" className="fade-in-up -mx-3 pb-2"><FeaturesMenu onNavigate={() => setOpen(false)} /></div>}
           <Link to="/a-propos" onClick={() => setOpen(false)} className="border-t border-border py-3 text-foreground">À propos</Link>
-          <span onClick={() => setOpen(false)} className="mt-2"><Btn to="/contact" className="w-full">Être contacté</Btn></span>
+          <span onClick={() => setOpen(false)} className="mt-2"><Btn to="/devenir-partenaire" className="w-full">Devenir apporteur d’affaires</Btn></span>
         </nav>
       )}
     </header>
@@ -155,26 +155,27 @@ export function SiteHeader() {
 
 type FooterLink =
   | { label: string; to: "/contact"; search: { profil: Profil } }
-  | { label: string; to: "/solution" | "/comment-ca-marche" | "/a-propos" | "/fonctionnalites" | "/ressources" | "/nos-partenaires" | "/devenir-partenaire" | "/partenaires/mssp" | "/partenaires/esn" | "/partenaires/ciso" }
+  | { label: string; to: "/solution" | "/comment-ca-marche" | "/a-propos" | "/fonctionnalites" | "/ressources" | "/nos-partenaires" | "/devenir-partenaire" | "/partenaires/mssp" | "/partenaires/esn" | "/partenaires/ciso" | "/cadre-apporteur" }
   | { label: string; slug: string };
 
 type FooterGroup = { title: string; links: FooterLink[] };
 
 const footerGroups: FooterGroup[] = [
-  { title: "Entreprises", links: [
-    { to: "/solution", label: "Nos garanties cyber" },
+  { title: "Découvrir", links: [
+    { to: "/solution", label: "La cyberassurance de vos clients" },
     { to: "/fonctionnalites", label: "Vue d'ensemble" },
     { to: "/comment-ca-marche", label: "Comment ça marche" },
     { to: "/ressources", label: "Ressources et livres blancs" },
     { to: "/a-propos", label: "À propos" },
-    { to: "/contact", label: "Parler à un courtier", search: { profil: "entreprise" } },
+    { to: "/cadre-apporteur", label: "Statut et cadre de l’apporteur" },
+    { to: "/contact", label: "Échanger sur un partenariat", search: { profil: "partenaire" } },
   ] },
   { title: "Partenaires", links: [
     { to: "/partenaires/mssp", label: "MSSP et SOC" },
     { to: "/partenaires/esn", label: "ESN cyber" },
     { to: "/partenaires/ciso", label: "CISO freelance" },
     { to: "/nos-partenaires", label: "Tous les partenaires" },
-    { to: "/devenir-partenaire", label: "Devenir partenaire" },
+    { to: "/devenir-partenaire", label: "Devenir apporteur d’affaires" },
   ] },
   { title: "Plateforme", links: fonctionnalites.filter((f) => !f.group).map((f) => ({ slug: f.slug, label: f.name })) },
 ];
@@ -217,7 +218,7 @@ export function SiteFooter() {
       <div className="wrap py-8 md:grid md:grid-cols-[1.3fr_repeat(3,1fr)] md:gap-8 md:py-12">
         <div className="min-w-0">
           <Link to="/" className="inline-flex min-h-11 items-center rounded-sm focus-visible:ring-2 focus-visible:ring-primary-foreground" aria-label="Eliocyber, accueil"><img src={radarDark} alt="Eliocyber" width={190} height={44} className="h-auto w-[190px] max-w-full" /></Link>
-          <p className="mt-2.5 max-w-[300px] md:mt-3">Courtier spécialisé en assurance cyber pour les PME et ETI, avec un réseau de partenaires cyber, IT et conformité.</p>
+          <p className="mt-2.5 max-w-[300px] md:mt-3">La plateforme de cyberassurance pour apporteurs d'affaires cyber, IT et conformité. Le courtier prend le relais auprès de vos clients.</p>
           <address className="mt-2.5 not-italic md:mt-4">
             <p className="flex min-h-11 items-center gap-2 md:min-h-0 md:py-[3px]"><Mail className="size-4 shrink-0" aria-hidden /><a href="mailto:bonjour@eliocyber.fr" className={fLink}>bonjour@eliocyber.fr</a></p>
             <p className="flex min-h-9 items-center gap-2 md:min-h-0 md:py-[3px]"><Phone className="size-4 shrink-0" aria-hidden />[Téléphone]</p>
@@ -226,7 +227,7 @@ export function SiteFooter() {
           <a href="https://www.linkedin.com/company/eliocyber" target="_blank" rel="noopener noreferrer" aria-label="Eliocyber sur LinkedIn (nouvel onglet)" className="mt-3 flex size-11 items-center justify-center rounded-lg border border-ink-foreground/25 text-ink-foreground transition-colors hover:border-primary-foreground/60 hover:bg-ink-foreground/10 hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/80 focus-visible:ring-offset-2 focus-visible:ring-offset-ink md:size-10">
             <svg viewBox="0 0 24 24" className="size-[18px]" fill="currentColor" aria-hidden><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
           </a>
-          <Link to="/contact" className="mt-4 flex w-full items-center justify-center rounded-lg bg-primary px-4 py-3 text-[14px] font-semibold text-primary-foreground hover:bg-primary/90 md:mt-5 md:inline-flex md:w-auto md:py-2.5">Être contacté</Link>
+          <Link to="/contact" search={{ profil: "partenaire" }} className="mt-4 flex w-full items-center justify-center rounded-lg bg-primary px-4 py-3 text-[14px] font-semibold text-primary-foreground hover:bg-primary/90 md:mt-5 md:inline-flex md:w-auto md:py-2.5">Échanger sur un partenariat</Link>
         </div>
 
         <nav aria-label="Plan du site" className="hidden md:contents">

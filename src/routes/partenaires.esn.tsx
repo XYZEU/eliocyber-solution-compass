@@ -8,7 +8,7 @@ const d: LandingData = {
   eyebrow: "Pour les ESN cyber",
   h1: "Votre audit est le point de départ d'une protection pour votre client",
   intro: "Pentest, audit de maturité, remédiation : vous connaissez les failles de vos clients mieux que personne. Transformez ce diagnostic en dossier d'assurance cyber.",
-  cta: "Créer mon compte ESN",
+  cta: "Devenir apporteur d’affaires",
   visual: { label: "Après un audit", text: "Vos constats sont structurés en dossier : contrôles manquants, niveau de maturité, plan de remédiation.", items: ["Score de maturité", "Historique du dossier"] },
   problemTitle: "Un diagnostic de qualité, puis plus rien",
   problems: [
@@ -25,16 +25,16 @@ const d: LandingData = {
   steps: [["Inscription", "Profil ESN cyber, RC professionnelle, code de conduite."], ["Formation", "Une demi-journée pour savoir ce qui est permis."], ["Dossier", "Consentement du client, constats et score de maturité."], ["Suivi", "Chaque étape notifiée, jusqu'à la commission validée."]],
   services: [["Plan de remédiation", "Actions priorisées, assignables à votre client, avec suivi de mise en œuvre."], ["Preuves de contrôle", "Horodatage et historique des preuves, exportables vers le courtier."], ["Suivi de renouvellement", "Rappel et re-scan à l'échéance, pour entretenir la relation."]],
   offerTitle: "Une commission unique, sans négociation",
-  offerText: "Un lead, un apporteur, une commission. Versée à la souscription, sans partage à négocier.",
+  offerText: "Un lead, un apporteur, une commission. Selon la convention, après souscription, prime encaissée et délai de rétractation dépassé.",
   testimonialsTitle: "Ce que disent nos partenaires",
   faq: [
     ["Puis-je recommander une police à mon client ?", "Non. Vous informez et transmettez. Le courtier conseille et présente les garanties."],
-    ["Combien de temps prend la formation ?", "Environ une demi-journée, obligatoire avant la création du premier dossier."],
+    ["Combien de temps prend la formation ?", "Une formation courte et obligatoire avant votre premier apport. Ses modalités sont précisées lors du partenariat."],
     ["Et si mon client est déjà suivi par un autre partenaire ?", "Le premier partenaire ayant créé le dossier en est l'apporteur. Le doublon est signalé."],
     ["Dois-je gérer le sinistre ?", "Non. Le courtier gère le contrat et le sinistre. Vous restez le lien technique avec votre client."],
   ],
-  finalTitle: "Faites de chaque audit un contrat",
-  finalText: "Votre premier dossier peut être transmis dans la semaine.",
+  finalTitle: "Recommandez vos clients après un audit",
+  finalText: "Présentez votre activité pour étudier votre convention, puis accéder à la formation avant votre premier apport.",
 };
 
 export const Route = createFileRoute("/partenaires/esn")({

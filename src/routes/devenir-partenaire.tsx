@@ -14,9 +14,9 @@ export const Route = createFileRoute("/devenir-partenaire")({
 });
 
 const steps = [
-  ["1 · Inscription", "Profil métier, identité, statut juridique, RC professionnelle."],
+  ["1 · Inscription", "Profil métier, identité et situation professionnelle pour étudier la convention d'apport."],
   ["2 · Formation", "Une formation courte et obligatoire : ce que vous pouvez dire, ce que vous ne pouvez pas dire."],
-  ["3 · Premier dossier", "Un formulaire court adapté à votre métier, avec le consentement du client."],
+  ["3 · Premier dossier", "Après convention et formation, une mise en relation avec le consentement du client."],
   ["4 · Suivi", "Notifications à chaque étape, de la réception au versement de la commission."],
 ] as const;
 
@@ -29,11 +29,11 @@ const profiles = [
 function Page() {
   return (
     <>
-      <PageIntro eyebrow="Devenir partenaire" title="Recommandez la cyber-assurance à vos clients, sans devenir intermédiaire">
-        Vous détectez le risque chez vos clients. Eliocyber, courtier en assurance, s'occupe du conseil, de la souscription et du suivi. Vous percevez une commission d'apport.
+      <PageIntro eyebrow="Devenir partenaire" title="Devenir apporteur d'affaires en cyberassurance">
+        Votre expertise ouvre la relation. La plateforme Eliocyber vous permet de transmettre vos recommandations et de suivre leur avancement ; le courtier prend en charge le conseil et la souscription.
       </PageIntro>
       <div className="wrap pt-8 pb-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-3">
-        <a href="#candidature" className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground hover:bg-primary/90">Créer mon compte partenaire</a>
+        <a href="#candidature" className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground hover:bg-primary/90">Présenter ma candidature</a>
         <p className="text-sm leading-7 text-muted-foreground sm:leading-normal">
           Votre métier :{" "}
           {profiles.map((p, i) => <span key={p.to}>{i > 0 && " · "}<Link to={p.to} className="text-primary hover:underline">{p.label}</Link></span>)}
@@ -77,6 +77,7 @@ function Page() {
         </div>
       </section>
 
+      <section className="wrap pb-10" aria-label="Cadre du partenariat"><Link to="/cadre-apporteur" className="font-semibold text-primary hover:underline">Statut, ORIAS, convention et obligations : comprendre le cadre de l'apport →</Link></section>
       <ApplicationForm />
     </>
   );
@@ -89,18 +90,19 @@ function ApplicationForm() {
       <div>
         <p className="eyebrow">Candidature partenaire</p>
         <h2 id="cand-title" className="title-2">Prêt à transmettre votre premier dossier ?</h2>
-        <p className="body-text">Choisissez votre profil et démarrez en quelques minutes. Nous validons votre inscription, puis vous accédez à la formation courte.</p>
+        <p className="body-text">Présentez votre profil. Nous étudions votre candidature, précisons les conditions de la convention et la formation obligatoire avant votre premier apport.</p>
         <p className="body-text text-sm">Découvrez d'abord <Link to="/nos-partenaires" className="font-semibold text-primary hover:underline">tous les profils partenaires</Link>.</p>
       </div>
       <div className="card-box">
         {sent ? (
-          <Confirmation title="Merci pour votre candidature">
-            <p>Nous revenons vers vous sous deux jours ouvrés pour activer votre compte et la formation.</p>
+          <Confirmation title="Candidature vérifiée">
+            <p>Votre candidature a été vérifiée dans cet aperçu, mais n'a pas été envoyée. L'envoi et l'activation d'un compte ne sont pas encore disponibles.</p>
           </Confirmation>
         ) : (
           <form onSubmit={onSubmit} noValidate>
             <Summary />
-            <h3 className="title-3">Créer mon compte partenaire</h3>
+            <h3 className="title-3">Présenter ma candidature</h3>
+            <p className="body-text text-sm">L’envoi n’est pas encore disponible. Ce formulaire permet uniquement de vérifier votre saisie, sans créer de compte.</p>
             <label htmlFor="pf" className={label}>Profil métier</label>
             <select id="pf" name="profil" required defaultValue="" className="field">
               <option value="" disabled>Sélectionnez</option>
@@ -137,7 +139,7 @@ function ApplicationForm() {
               <input type="checkbox" required className="mt-1 accent-primary" />
               <span>J'accepte que mes données soient traitées pour étudier ma candidature (<Link to="/mentions-legales" hash="donnees" className="text-primary underline">en savoir plus</Link>).</span>
             </label>
-            <button type="submit" className="mt-4 w-full rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground hover:bg-primary/90 sm:w-auto">Envoyer ma candidature</button>
+            <button type="submit" className="mt-4 w-full rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground hover:bg-primary/90 sm:w-auto">Vérifier ma candidature</button>
           </form>
         )}
       </div>

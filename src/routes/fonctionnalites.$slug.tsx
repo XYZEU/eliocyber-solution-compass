@@ -102,7 +102,7 @@ function Page() {
         </div>
       </section>
       <div className="pt-14" />
-      <CtaBanner title={`Découvrir ${f.name}`} text="Un courtier vous présente la plateforme et répond à vos questions." to="/contact" label="Être contacté" secondary={{ to: "/devenir-partenaire", label: "Devenir partenaire" }} />
+      <CtaBanner title={`Découvrir ${f.name}`} text="Échangeons sur les outils qui accompagnent vos recommandations et vos clients." to="/devenir-partenaire" label="Devenir apporteur d’affaires" secondary={{ to: "/contact", profil: "partenaire", label: "Échanger sur un partenariat" }} />
     </>
   );
 }

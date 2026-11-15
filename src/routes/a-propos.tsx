@@ -3,7 +3,7 @@ import { seo } from "@/lib/seo";
 import { Card, CtaBanner, PageIntro } from "@/components/site";
 
 const faq = [
-  ["Que fait Eliocyber ?", "Eliocyber accompagne les PME et ETI dans leur assurance cyber. Nous analysons leur exposition au risque, présentons les garanties adaptées et suivons le contrat dans la durée, en nous appuyant sur un réseau de partenaires cyber, IT et conformité."],
+  ["Que fait Eliocyber ?", "Eliocyber est une plateforme de cyberassurance pour apporteurs d'affaires cyber, IT et conformité. Elle relie leurs recommandations au conseil et à la souscription portés par le courtier, puis au suivi des commissions et des sinistres."],
   ["Quel est le rôle des partenaires ?", "Nos partenaires (MSSP, ESN, CISO freelance, intégrateurs IT, consultants conformité) repèrent un besoin chez leurs clients et nous le transmettent, avec leur accord. Ils agissent comme apporteurs d'affaires : ils informent, mais ne conseillent pas, ne présentent pas de contrat et ne donnent pas de prix. Le conseil et la souscription relèvent d'Eliocyber."],
   ["Comment sont rémunérés les partenaires ?", "Selon une règle simple : un lead, un apporteur, une commission. Le premier partenaire qui transmet le dossier, avec le consentement du client, est rémunéré une fois le contrat souscrit."],
   ["Sous quel délai répondez-vous ?", "Nous répondons à chaque demande, entreprise ou partenaire, sous 2 jours ouvrés."],
@@ -11,7 +11,7 @@ const faq = [
 
 export const Route = createFileRoute("/a-propos")({
   head: () => {
-    const s = seo("/a-propos", "À propos — Eliocyber, l'assurance cyber portée par ceux qui voient le risque", "Qui est Eliocyber : un courtier spécialisé en assurance cyber pour les PME et ETI, entouré d'un réseau de partenaires cyber, IT et conformité.");
+    const s = seo("/a-propos", "À propos — Eliocyber, l'assurance cyber portée par ceux qui voient le risque", "Découvrez Eliocyber, plateforme de cyberassurance dédiée aux apporteurs d'affaires : recommandations, dossiers, commissions et accompagnement en cas de crise.");
     return { ...s, scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@graph": [
       { "@type": "AboutPage", name: "À propos d'Eliocyber", url: "/a-propos" },
       { "@type": "FAQPage", mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
@@ -22,7 +22,7 @@ export const Route = createFileRoute("/a-propos")({
 
 const modele = [
   ["Un courtier spécialisé en cyber", "Nous conseillons les entreprises sur leur couverture cyber : réponse aux incidents, responsabilité civile, perte d'exploitation, prévention. Nous recueillons les besoins, comparons les offres des assureurs et suivons le contrat après la souscription."],
-  ["Un réseau de prescripteurs", "Les acteurs qui sécurisent déjà les systèmes d'information sont les mieux placés pour repérer un besoin. Ils nous transmettent les dossiers, et une plateforme dédiée relie chaque étape : évaluation du risque, plan de remédiation, souscription, suivi."],
+  ["La plateforme de l’apporteur", "Liens de recommandation, suivi des prospects, commissions et accompagnement en cas de crise : vos outils sont réunis dans un parcours distinct du conseil assurantiel."],
 ] as const;
 
 const valeurs = [
@@ -42,12 +42,12 @@ function Page() {
   return (
     <>
       <PageIntro eyebrow="À propos" title="L'assurance cyber, portée par ceux qui voient le risque">
-        Eliocyber est né d'une idée simple : les experts qui protègent les systèmes d'information au quotidien sont les premiers à repérer un besoin d'assurance. Nous les réunissons autour d'un <strong className="text-foreground">courtier spécialisé en cyber</strong>, pour que chaque PME et ETI accède à une <strong className="text-foreground">couverture adaptée à son risque réel</strong>.
+        Eliocyber est une plateforme de cyberassurance pour les apporteurs d'affaires cyber, IT et conformité. Vous recommandez vos clients sans vendre d'assurance ; le courtier prend le relais pour les besoins, les offres et la souscription. La plateforme relie votre mise en relation au suivi du dossier et de votre rémunération.
       </PageIntro>
       <section className="band" aria-labelledby="modele">
         <div className="wrap sec">
           <p className="eyebrow">Notre modèle</p>
-          <h2 id="modele" className="title-2">Un courtier et un réseau de partenaires</h2>
+          <h2 id="modele" className="title-2">Une plateforme d'apport, un courtier pour le conseil</h2>
           <div className="mt-5 grid gap-5 md:grid-cols-2">
             {modele.map(([t, d]) => <Card key={t} title={t} className="h-full border-l-4 !border-l-primary"><p className="body-text !mb-0">{d}</p></Card>)}
           </div>
@@ -94,7 +94,7 @@ function Page() {
         </div>
       </section>
       <div className="mt-10" />
-      <CtaBanner title="Envie d'en savoir plus ?" text="Parlons de votre besoin, ou rejoignez notre réseau de partenaires." to="/contact" label="Être contacté" secondary={{ to: "/devenir-partenaire", label: "Devenir partenaire" }} />
+      <CtaBanner title="Envie d'en savoir plus ?" text="Présentez votre activité et vos recommandations clients." to="/devenir-partenaire" label="Devenir apporteur d’affaires" secondary={{ to: "/contact", profil: "partenaire", label: "Échanger sur un partenariat" }} />
     </>
   );
 }

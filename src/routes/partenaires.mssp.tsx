@@ -6,9 +6,9 @@ import { PartnerLanding, type LandingData } from "@/components/partner-landing";
 const d: LandingData = {
   slug: "mssp",
   eyebrow: "Pour les MSSP et SOC",
-  h1: "Transformez votre surveillance en revenu récurrent",
+  h1: "Valorisez vos recommandations en cyberassurance",
   intro: "Vous voyez les failles de vos clients avant tout le monde. Chaque constat peut devenir un dossier d'assurance cyber, transmis à un courtier spécialisé.",
-  cta: "Créer mon compte MSSP",
+  cta: "Devenir apporteur d’affaires",
   visual: { label: "Un dossier transmis", title: "Clinique, 180 postes", text: "Score de priorité élevé. MFA partiel sur accès privilégiés, sauvegardes non testées.", items: ["Consentement recueilli", "Plan de remédiation joint"] },
   problemTitle: "Vos clients ont des failles, et aucun moyen de les transformer en protection",
   problems: [
@@ -25,7 +25,7 @@ const d: LandingData = {
   steps: [["Inscription", "Profil MSSP, identité, RC professionnelle."], ["Formation", "Une courte formation : ce que vous pouvez dire et ne pas dire."], ["Dossier", "Formulaire court, consentement client, score préliminaire."], ["Suivi", "Notification à chaque étape, jusqu'à la commission validée."]],
   services: [["Tableau de bord multi-clients", "Portefeuille, statut d'assurabilité, échéances et actions prioritaires."], ["Dossier de souscription pré-rempli", "Généré à partir de vos données, exportable ou transmis au courtier."], ["Reporting client", "Preuve de l'amélioration de la posture, utile pour les QBR et les renouvellements."]],
   offerTitle: "Une commission simple, versée au dossier",
-  offerText: "Pas de frais d'entrée, pas de partage à négocier. Vous êtes l'apporteur exclusif du dossier que vous créez, et la commission est versée à la souscription.",
+  offerText: "Un lead, un apporteur, une commission. Une rémunération unique selon la convention, après souscription, prime encaissée et délai de rétractation dépassé.",
   testimonialsTitle: "Ils ont franchi le pas",
   faq: [
     ["Devenons-nous courtiers ?", "Non. Vous apportez des affaires. Vous ne conseillez pas, ne présentez pas de police et ne signez rien."],
@@ -34,7 +34,7 @@ const d: LandingData = {
     ["Puis-je transmettre plusieurs dossiers ?", "Oui, sans limite. Chaque dossier fait l'objet de son propre suivi."],
   ],
   finalTitle: "Vos clients ont déjà besoin de cette protection",
-  finalText: "Créez votre compte MSSP, suivez la formation et transmettez votre premier dossier cette semaine.",
+  finalText: "Présentez votre activité pour étudier votre convention, puis accéder à la formation avant votre premier apport.",
 };
 
 export const Route = createFileRoute("/partenaires/mssp")({

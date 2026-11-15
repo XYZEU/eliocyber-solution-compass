@@ -20,7 +20,7 @@ async function renderFooter(path = "/") {
 describe("Footer accordions — ARIA", () => {
   it("each header button controls a labelled region and starts closed", async () => {
     const { buttons } = await renderFooter();
-    expect(buttons.map((b) => b.textContent)).toEqual(["Entreprises", "Partenaires", "Plateforme"]);
+    expect(buttons.map((b) => b.textContent)).toEqual(["Découvrir", "Partenaires", "Plateforme"]);
     for (const b of buttons) {
       expect(b).toHaveAttribute("aria-expanded", "false");
       const panel = document.getElementById(b.getAttribute("aria-controls")!)!;
