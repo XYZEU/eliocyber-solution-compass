@@ -309,7 +309,7 @@ export function SiteFooter() {
 
       <div className="border-t border-ink-foreground/20">
         <div className="wrap py-4 text-[11px] md:py-6 md:text-[12px]">
-          <p className="leading-[1.5] opacity-75 md:leading-relaxed md:opacity-80">Eliocyber est un courtier en assurance immatriculé à l'ORIAS sous le n° [XXX]. Le partenaire agit exclusivement en qualité d'apporteur d'affaires et n'est pas intermédiaire en assurance. Le conseil, la présentation des garanties, la souscription et la gestion du contrat sont assurés par Eliocyber. Réclamations et médiation : [coordonnées].</p>
+          <p className="leading-[1.5] opacity-75 md:leading-relaxed md:opacity-80">Eliocyber est un courtier en assurance immatriculé à l'ORIAS sous le n° 22004647. Le partenaire agit exclusivement en qualité d'apporteur d'affaires et n'est pas intermédiaire en assurance. Le conseil, la présentation des garanties, la souscription et la gestion du contrat sont assurés par Eliocyber. Réclamations et médiation : [coordonnées].</p>
           <div className="mt-2.5 flex flex-col gap-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
             <span className="opacity-70">© {new Date().getFullYear()} Eliocyber. Tous droits réservés.</span>
             <ul aria-label="Informations légales" className="grid grid-cols-2 gap-x-4 sm:flex sm:flex-wrap sm:gap-x-5">

@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { seo } from "@/lib/seo";
+import { seo, faqJsonLd } from "@/lib/seo";
 import { Btn, Card, CtaBanner, TrustSeal } from "@/components/site";
 import { InsurerMarquee } from "@/components/insurer-marquee";
-import { ShieldAlert, Server, Scale, Check, FileCheck2, Handshake, Activity, Layers, Code2, ArrowRight, type LucideIcon } from "lucide-react";
+import { ShieldAlert, Server, Scale, Check, FileCheck2, Handshake, Activity, Layers, Code2, ArrowRight, ChevronDown, type LucideIcon } from "lucide-react";
 import { ClientPreview, PartnerJourney } from "@/components/home-product";
 
 const problemes: [string, string][] = [
