@@ -4,7 +4,7 @@ import { Btn, Card, TrustSeal } from "@/components/site";
 import { InsurerMarquee } from "@/components/insurer-marquee";
 import { CommissionMockup, GaugeMockup, PipelineMockup } from "@/components/ui-mockups";
 import { CommissionSimulator } from "@/components/commission-simulator";
-import { Radar, ClipboardCheck, Send, ShieldCheck, ShieldAlert, Server, Scale, Users, Handshake, BadgeCheck, Check, type LucideIcon } from "lucide-react";
+import { ShieldAlert, Server, Scale, Users, Handshake, BadgeCheck, Check, type LucideIcon } from "lucide-react";
 
 const problemes: [string, string][] = [
   ["Le sujet n’est pas traité", "Votre client reste exposé, et vous passez à côté d’un vrai levier de valeur — sans avoir les moyens de le traiter vous-même."],
