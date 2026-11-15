@@ -5,7 +5,7 @@ import { InsurerMarquee } from "@/components/insurer-marquee";
 import { CommissionMockup, GaugeMockup, PipelineMockup } from "@/components/ui-mockups";
 import { fonctionnalites } from "@/lib/fonctionnalites";
 import { CommissionSimulator } from "@/components/commission-simulator";
-import { Radar, ClipboardCheck, Send, ShieldCheck, ShieldAlert, Server, Scale, type LucideIcon } from "lucide-react";
+import { Radar, ClipboardCheck, Send, ShieldCheck, ShieldAlert, Server, Scale, Users, Handshake, BadgeCheck, type LucideIcon } from "lucide-react";
 
 const problemes: [string, string][] = [
   ["Le sujet n’est pas traité", "Votre client reste exposé, et vous passez à côté d’un vrai levier de valeur — sans avoir les moyens de le traiter vous-même."],
@@ -33,6 +33,12 @@ const families = [
   ["Professionnels IT", "MSP, DSI externes, intégrateurs, prestataires cloud et télécom."],
   ["Professionnels de la conformité", "DPO externes, avocats, experts-comptables, DAF externes, consultants NIS2, DORA ou ISO 27001."],
 ] as const;
+const promesses: [string, string][] = [
+  ["Vous présentez, nous assurons", "Vous nous présentez le client : coordonnées + accord de contact. C’est tout. Aucun questionnaire technique à faire remplir, aucun devoir de conseil assurance à votre charge."],
+  ["Nous faisons le courtage, en co-branding", "Eliocyber prend en charge le conseil, l’étude des besoins, la présentation des contrats et le suivi. Votre marque reste visible aux côtés de la nôtre, votre client ne vous perd jamais de vue."],
+  ["Vous suivez, vous êtes rémunéré", "Vous suivez les étapes partageables de chaque dossier dans votre Espace Pro. Quand le dossier aboutit, vous percevez une prime par type de client assuré."],
+];
+const promiseIcons: LucideIcon[] = [Users, Handshake, BadgeCheck];
 
 function Home() {
   return (
@@ -143,6 +149,13 @@ function Home() {
             <p className="mt-5 rounded-xl bg-secondary px-4 py-3 text-center text-sm font-semibold text-primary">Vous restez le prestataire de confiance. Nous restons le courtier.</p>
           </div>
         </div>
+      </section>
+      <section className="wrap sec relative lg:py-16" aria-label="Ce que chacun fait">
+        <ul className="grid gap-5 md:grid-cols-3">
+          {promesses.map(([t, d], i) => (
+            <li key={t}><Card icon={promiseIcons[i]} title={t} className="h-full"><p className="body-text text-sm">{d}</p></Card></li>
+          ))}
+        </ul>
       </section>
       <InsurerMarquee />
 
