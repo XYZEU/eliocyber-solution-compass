@@ -6,7 +6,7 @@ import { PartnerLanding, type LandingData } from "@/components/partner-landing";
 const d: LandingData = {
   slug: "ciso",
   eyebrow: "Pour les CISO freelance",
-  h1: "Votre roadmap cyber, enfin concrétisée pour vos dirigeants",
+  h1: "CISO freelance",
   intro: "Vous pilotez la sécurité de plusieurs entreprises. Quand le comité de direction demande « et si ça arrivait demain ? », vous pouvez ouvrir un dossier d'assurance cyber, transmis à un courtier spécialisé.",
   cta: "Devenir apporteur d’affaires",
   visual: { label: "Au comité de direction", title: "« Votre roadmap prévoit quatre chantiers. Le dossier d'assurance couvre le risque résiduel. »", text: "Le dossier pré-qualifié est transmis au courtier, qui conseille le dirigeant." },

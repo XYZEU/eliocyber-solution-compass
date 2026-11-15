@@ -6,7 +6,7 @@ import { PartnerLanding, type LandingData } from "@/components/partner-landing";
 const d: LandingData = {
   slug: "esn",
   eyebrow: "Pour les ESN cyber",
-  h1: "Votre audit est le point de départ d'une protection pour votre client",
+  h1: "ESN cyber",
   intro: "Pentest, audit de maturité, remédiation : vous connaissez les failles de vos clients mieux que personne. Transformez ce diagnostic en dossier d'assurance cyber.",
   cta: "Devenir apporteur d’affaires",
   visual: { label: "Après un audit", text: "Vos constats sont structurés en dossier : contrôles manquants, niveau de maturité, plan de remédiation.", items: ["Score de maturité", "Historique du dossier"] },
