@@ -13,14 +13,14 @@ async function renderFooter(path = "/") {
   });
   const nav = (await screen.findAllByRole("navigation", { name: "Plan du site", hidden: true }))
     .find((n) => n.querySelector("button[data-accordion]"))!;
-  const buttons = Array.from(nav.querySelectorAll<HTMLButtonElement>("button[data-accordion]")) as [HTMLButtonElement, HTMLButtonElement, HTMLButtonElement];
+  const buttons = Array.from(nav.querySelectorAll<HTMLButtonElement>("button[data-accordion]")) as [HTMLButtonElement, HTMLButtonElement, HTMLButtonElement, HTMLButtonElement];
   return { nav, buttons };
 }
 
 describe("Footer accordions — ARIA", () => {
   it("each header button controls a labelled region and starts closed", async () => {
     const { buttons } = await renderFooter();
-    expect(buttons.map((b) => b.textContent)).toEqual(["Outils de l’apporteur", "Parcours apporteur", "Société et ressources"]);
+    expect(buttons.map((b) => b.textContent)).toEqual(["Usages", "Outils de l’apporteur", "Parcours apporteur", "Société et ressources"]);
     for (const b of buttons) {
       expect(b).toHaveAttribute("aria-expanded", "false");
       const panel = document.getElementById(b.getAttribute("aria-controls")!)!;
@@ -47,23 +47,25 @@ describe("Footer accordions — ARIA", () => {
 describe("Footer accordions — keyboard", () => {
   it("ArrowDown/ArrowUp move focus and wrap around", async () => {
     const { buttons } = await renderFooter();
-    const [a, b, c] = buttons;
+    const [a, b, c, d] = buttons;
     a.focus();
     fireEvent.keyDown(a, { key: "ArrowDown" });
     expect(document.activeElement).toBe(b);
     fireEvent.keyDown(b, { key: "ArrowDown" });
     fireEvent.keyDown(c, { key: "ArrowDown" });
+    expect(document.activeElement).toBe(d);
+    fireEvent.keyDown(d, { key: "ArrowDown" });
     expect(document.activeElement).toBe(a);
     fireEvent.keyDown(a, { key: "ArrowUp" });
-    expect(document.activeElement).toBe(c);
+    expect(document.activeElement).toBe(d);
   });
 
   it("Home and End jump to the first and last section", async () => {
     const { buttons } = await renderFooter();
     buttons[1].focus();
     fireEvent.keyDown(buttons[1], { key: "End" });
-    expect(document.activeElement).toBe(buttons[2]);
-    fireEvent.keyDown(buttons[2], { key: "Home" });
+    expect(document.activeElement).toBe(buttons[3]);
+    fireEvent.keyDown(buttons[3], { key: "Home" });
     expect(document.activeElement).toBe(buttons[0]);
   });
 
