@@ -104,7 +104,7 @@ function DesktopFeatures() {
   );
 }
 
-type BtnTo = "/contact" | "/comment-ca-marche" | "/devenir-partenaire";
+type BtnTo = "/contact" | "/comment-ca-marche" | "/devenir-partenaire" | "/cadre-apporteur";
 export type Profil = "entreprise" | "partenaire";
 
 export function Btn({ to, href, children, ghost, className, profil, onDark, hash }: { children: ReactNode; ghost?: boolean; className?: string; profil?: Profil | undefined; onDark?: boolean; hash?: string } & ({ to: BtnTo; href?: never } | { href: `#${string}`; to?: never })) {
