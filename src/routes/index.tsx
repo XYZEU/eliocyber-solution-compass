@@ -71,9 +71,9 @@ function Home() {
       <section className="bg-ink-glow bg-grid relative overflow-hidden" aria-label="Chiffres clés">
         <dl className="wrap grid gap-4 py-10 sm:grid-cols-2 lg:grid-cols-4 lg:py-12">
           {figures.map(([v, l]) => (
-            <div key={v} className="group rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 px-6 py-5 backdrop-blur-sm transition-colors hover:border-accent/60 hover:bg-primary-foreground/10">
+            <div key={v} className="group rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 px-6 py-5 backdrop-blur-sm transition-colors hover:border-chart-2/60 hover:bg-primary-foreground/10">
               <dt className="sr-only">{l}</dt>
-              <dd className="font-display text-[26px] font-extrabold tracking-tight text-accent">{v}</dd>
+              <dd className="font-display text-[26px] font-extrabold tracking-tight text-chart-2">{v}</dd>
               <dd className="mt-1 text-sm leading-snug text-primary-foreground/75">{l}</dd>
             </div>
           ))}
