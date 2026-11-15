@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AProposRouteImport } from './routes/a-propos'
+import { Route as CadreApporteurRouteImport } from './routes/cadre-apporteur'
 import { Route as CommentCaMarcheRouteImport } from './routes/comment-ca-marche'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DevenirPartenaireRouteImport } from './routes/devenir-partenaire'
@@ -34,6 +35,11 @@ const IndexRoute = IndexRouteImport.update({
 const AProposRoute = AProposRouteImport.update({
   id: '/a-propos',
   path: '/a-propos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CadreApporteurRoute = CadreApporteurRouteImport.update({
+  id: '/cadre-apporteur',
+  path: '/cadre-apporteur',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CommentCaMarcheRoute = CommentCaMarcheRouteImport.update({
@@ -110,6 +116,7 @@ const RessourcesSlugRoute = RessourcesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/cadre-apporteur': typeof CadreApporteurRoute
   '/comment-ca-marche': typeof CommentCaMarcheRoute
   '/contact': typeof ContactRoute
   '/devenir-partenaire': typeof DevenirPartenaireRoute
@@ -128,6 +135,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/cadre-apporteur': typeof CadreApporteurRoute
   '/comment-ca-marche': typeof CommentCaMarcheRoute
   '/contact': typeof ContactRoute
   '/devenir-partenaire': typeof DevenirPartenaireRoute
@@ -147,6 +155,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/cadre-apporteur': typeof CadreApporteurRoute
   '/comment-ca-marche': typeof CommentCaMarcheRoute
   '/contact': typeof ContactRoute
   '/devenir-partenaire': typeof DevenirPartenaireRoute
@@ -167,6 +176,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/a-propos'
+    | '/cadre-apporteur'
     | '/comment-ca-marche'
     | '/contact'
     | '/devenir-partenaire'
@@ -185,6 +195,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/a-propos'
+    | '/cadre-apporteur'
     | '/comment-ca-marche'
     | '/contact'
     | '/devenir-partenaire'
@@ -203,6 +214,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/a-propos'
+    | '/cadre-apporteur'
     | '/comment-ca-marche'
     | '/contact'
     | '/devenir-partenaire'
@@ -222,6 +234,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AProposRoute: typeof AProposRoute
+  CadreApporteurRoute: typeof CadreApporteurRoute
   CommentCaMarcheRoute: typeof CommentCaMarcheRoute
   ContactRoute: typeof ContactRoute
   DevenirPartenaireRoute: typeof DevenirPartenaireRoute
@@ -252,6 +265,13 @@ declare module '@tanstack/react-router' {
       path: '/a-propos'
       fullPath: '/a-propos'
       preLoaderRoute: typeof AProposRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cadre-apporteur': {
+      id: '/cadre-apporteur'
+      path: '/cadre-apporteur'
+      fullPath: '/cadre-apporteur'
+      preLoaderRoute: typeof CadreApporteurRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/comment-ca-marche': {
@@ -358,6 +378,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AProposRoute: AProposRoute,
+  CadreApporteurRoute: CadreApporteurRoute,
   CommentCaMarcheRoute: CommentCaMarcheRoute,
   ContactRoute: ContactRoute,
   DevenirPartenaireRoute: DevenirPartenaireRoute,

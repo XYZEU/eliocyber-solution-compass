@@ -18,13 +18,13 @@ export const Route = createFileRoute("/fonctionnalites/")({
 function Page() {
   return (
     <>
-      <PageIntro eyebrow="Vue d'ensemble" title="Une plateforme, de la détection du risque au sinistre">
-        Des outils pour les apporteurs d'affaires et cinq modules reliés entre eux pour les partenaires, le courtier, les assureurs et les entreprises assurées.
+      <PageIntro eyebrow="Vue d'ensemble" title="La suite de cyberassurance de l'apporteur d'affaires">
+        Attirez vos clients, suivez vos recommandations et vos commissions, restez actif en cas de crise. En complément, les modules de risque, de souscription et de suivi soutiennent le travail du courtier et la protection de vos clients.
       </PageIntro>
       <ModuleList id="partenaires" title="Outils partenaires et apport d'affaires" items={fonctionnalites.filter((f) => f.group === "partenaire")} />
       <ModuleList id="modules" title="Cœur de plateforme et souscription" items={fonctionnalites.filter((f) => !f.group)} />
       <div className="pt-14" />
-      <CtaBanner title="Voir la plateforme en action" text="Un courtier vous présente les modules adaptés à votre situation." to="/contact" label="Être contacté" secondary={{ to: "/devenir-partenaire", label: "Devenir partenaire" }} />
+      <CtaBanner title="Voir la plateforme en action" text="Échangeons sur votre activité et les outils utiles à vos recommandations." to="/devenir-partenaire" label="Devenir apporteur d’affaires" secondary={{ to: "/contact", profil: "partenaire", label: "Échanger sur un partenariat" }} />
     </>
   );
 }

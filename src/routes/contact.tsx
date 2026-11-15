@@ -8,7 +8,7 @@ import { type Profil } from "@/components/site";
 export const Route = createFileRoute("/contact")({
   validateSearch: (s: Record<string, unknown>): { profil?: Profil } =>
     s["profil"] === "partenaire" || s["profil"] === "entreprise" ? { profil: s["profil"] } : {},
-  head: () => seo("/contact", "Contactez un courtier en assurance cyber — Eliocyber", "Échangez avec un courtier cyber sous 48h. Entreprises cherchant une couverture ou partenaires souhaitant transmettre un dossier, contactez-nous."),
+  head: () => seo("/contact", "Contact partenariat — Plateforme Eliocyber", "Présentez votre activité et échangez sur le partenariat avec Eliocyber, plateforme de cyberassurance pour apporteurs d'affaires. Réponse sous deux jours ouvrés."),
   component: Page,
 });
 
@@ -19,7 +19,7 @@ const copy = {
     orgPh: "Nom de votre entreprise",
     need: "Votre besoin",
     needPh: "Décrivez brièvement votre activité et votre situation (incident, renouvellement, exigence client…)",
-    submit: "Être rappelé par un courtier",
+    submit: "Vérifier ma demande",
   },
   partenaire: {
     title: "Rejoindre le réseau ou transmettre un dossier",
@@ -27,7 +27,7 @@ const copy = {
     orgPh: "Nom de votre structure",
     need: "Votre message",
     needPh: "Présentez votre activité et, le cas échéant, le besoin détecté chez votre client",
-    submit: "Envoyer ma demande partenaire",
+    submit: "Vérifier ma demande partenaire",
   },
 } as const;
 
@@ -36,7 +36,7 @@ const label = "mb-1.5 mt-3.5 block text-[13px] font-semibold";
 function Page() {
   const search = Route.useSearch();
   const navigate = Route.useNavigate();
-  const profil: Profil = search.profil ?? "entreprise";
+  const profil: Profil = search.profil ?? "partenaire";
   const c = copy[profil];
   const { onSubmit, sent, Summary, Confirmation } = useFormFeedback(() => {});
 
@@ -44,7 +44,7 @@ function Page() {
     <div className="hero-band"><div className="wrap sec grid items-start gap-8 md:grid-cols-2 md:gap-6">
       <section aria-labelledby="contact-title">
         <p className="eyebrow flex items-center gap-2"><span className="live-dot" aria-hidden />Contact</p>
-        <h1 id="contact-title" className="title-1">Parlons de votre besoin</h1>
+        <h1 id="contact-title" className="title-1">Parlons de vos recommandations clients</h1>
         <p className="body-text text-[17px]">Un courtier spécialisé en assurance cyber vous répond sous deux jours ouvrés.</p>
         <p className="pill mt-1 inline-flex items-center gap-1.5"><Clock className="size-3.5" aria-hidden />Réponse sous 2 jours ouvrés</p>
         <address className="card-box mt-5 not-italic">
@@ -64,11 +64,12 @@ function Page() {
 
       <section className="card-box" aria-labelledby="form-title">
         {sent ? (
-          <Confirmation title="Merci pour votre demande">
-            <p id="form-title">Un courtier vous recontactera sous deux jours ouvrés.</p>
+          <Confirmation title="Demande vérifiée">
+            <p id="form-title">Votre saisie est valide mais n'a pas été envoyée. L'envoi n'est pas encore disponible.</p>
           </Confirmation>
         ) : (
           <form onSubmit={onSubmit} noValidate>
+            <p className="body-text text-sm">L’envoi n’est pas encore disponible. Vos informations sont uniquement vérifiées dans cet aperçu.</p>
             <h2 id="form-title" className="title-2 !text-xl">Vous êtes…</h2>
             <div className="grid grid-cols-2 gap-1 rounded-xl bg-secondary p-1" role="radiogroup" aria-label="Votre profil">
               {(["entreprise", "partenaire"] as const).map((v) => (
