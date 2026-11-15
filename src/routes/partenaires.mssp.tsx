@@ -6,7 +6,7 @@ import { PartnerLanding, type LandingData } from "@/components/partner-landing";
 const d: LandingData = {
   slug: "mssp",
   eyebrow: "Pour les MSSP et SOC",
-  h1: "Valorisez vos recommandations en cyberassurance",
+  h1: "MSSP et SOC",
   intro: "Vous voyez les failles de vos clients avant tout le monde. Chaque constat peut devenir un dossier d'assurance cyber, transmis à un courtier spécialisé.",
   cta: "Devenir apporteur d’affaires",
   visual: { label: "Un dossier transmis", title: "Clinique, 180 postes", text: "Score de priorité élevé. MFA partiel sur accès privilégiés, sauvegardes non testées.", items: ["Consentement recueilli", "Plan de remédiation joint"] },
