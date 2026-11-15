@@ -1,5 +1,5 @@
 import { QueryClient } from "@tanstack/react-query";
-import { createRouter, rootRouteId } from "@tanstack/react-router";
+import { createMemoryHistory, createRouter, rootRouteId } from "@tanstack/react-router";
 import { describe, expect, it } from "vitest";
 
 import { routeTree } from "@/routeTree.gen";
@@ -13,5 +13,16 @@ describe("App routing", () => {
     const matches = router.matchRoutes("/");
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
+  });
+
+  it.each([
+    ["/solution", "/fonctionnalites", "modules"],
+    ["/nos-partenaires", "/devenir-partenaire", "profils"],
+    ...["portail-msp", "moteur-de-souscription", "moteur-de-risque", "module-de-remediation", "portail-client"].map((slug) => [`/fonctionnalites/${slug}`, "/fonctionnalites", "modules"]),
+  ])("redirects retired %s to %s", async (from, to, hash) => {
+    const router = createRouter({ routeTree, history: createMemoryHistory({ initialEntries: [from] }), context: { queryClient: new QueryClient() } });
+    await router.load();
+    expect(router.state.location.pathname).toBe(to);
+    expect(router.state.location.hash).toBe(hash);
   });
 });
