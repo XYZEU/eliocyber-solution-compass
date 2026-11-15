@@ -4,7 +4,7 @@ import { Btn, Card, TrustSeal } from "@/components/site";
 import { InsurerMarquee } from "@/components/insurer-marquee";
 import { CommissionMockup, GaugeMockup, PipelineMockup } from "@/components/ui-mockups";
 import { CommissionSimulator } from "@/components/commission-simulator";
-import { Radar, ClipboardCheck, Send, ShieldCheck, ShieldAlert, Server, Scale, Users, Handshake, BadgeCheck, Check, type LucideIcon } from "lucide-react";
+import { ShieldAlert, Server, Scale, Users, Handshake, BadgeCheck, Check, type LucideIcon } from "lucide-react";
 
 const problemes: [string, string][] = [
   ["Le sujet n’est pas traité", "Votre client reste exposé, et vous passez à côté d’un vrai levier de valeur — sans avoir les moyens de le traiter vous-même."],
@@ -18,13 +18,6 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const steps = [
-  ["Détecter", "Le partenaire identifie un besoin de protection cyber chez son client."],
-  ["Recommander", "Mise en relation avec le consentement du client, sans conseil en assurance."],
-  ["Suivre", "L’apporteur suit le statut du dossier ; Eliocyber porte le conseil et la souscription."],
-  ["Être rémunéré", "Commission selon la convention, après souscription, prime encaissée et délai de rétractation dépassé."],
-] as const;
-const stepIcons: LucideIcon[] = [Radar, ClipboardCheck, Send, ShieldCheck];
 const familyIcons: LucideIcon[] = [ShieldAlert, Server, Scale];
 const figures = [["0", "questionnaire technique"], ["2 min", "pour présenter un client"], ["Co-branding", "à chaque étape"], ["Suivi", "partageable"]] as const;
 const families = [
@@ -191,18 +184,6 @@ function Home() {
         </ul>
       </section>
       <InsurerMarquee />
-
-      <section className="band">
-        <div className="wrap sec lg:py-16">
-          <p className="eyebrow">Parcours</p>
-          <h2 className="title-2 lg:!text-[28px]">Comment ça marche</h2>
-          <ol className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map(([t, d], i) => (
-              <li key={t}><Card icon={stepIcons[i]} eyebrow={`Étape ${i + 1}`} title={t} className="h-full"><p className="body-text text-sm">{d}</p></Card></li>
-            ))}
-          </ol>
-        </div>
-      </section>
 
       <section className="wrap sec lg:py-16" aria-labelledby="concretement">
         <div className="bg-ink-glow relative overflow-hidden rounded-[24px] p-6 shadow-lg sm:p-8 lg:p-10">
