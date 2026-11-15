@@ -2,8 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { seo } from "@/lib/seo";
 import { Btn, Card, TrustSeal } from "@/components/site";
 import { InsurerMarquee } from "@/components/insurer-marquee";
-import { CommissionMockup, GaugeMockup, PipelineMockup } from "@/components/ui-mockups";
-import { CommissionSimulator } from "@/components/commission-simulator";
 import { ShieldAlert, Server, Scale, Users, Handshake, BadgeCheck, Check, type LucideIcon } from "lucide-react";
 
 const problemes: [string, string][] = [
@@ -238,22 +236,6 @@ function Home() {
           <figcaption className="eyebrow">Mention de recommandation</figcaption>
           <blockquote className="mt-2.5 text-base text-foreground">« Recommandé par [Partenaire] — Conseil, souscription et gestion assurés par Eliocyber, courtier en assurance. »</blockquote>
         </figure>
-      </section>
-
-      <section className="wrap sec lg:py-16" aria-labelledby="apercu">
-        <p className="eyebrow flex items-center gap-2"><span className="live-dot" aria-hidden />Votre plateforme d’apport d’affaires</p>
-        <h2 id="apercu" className="title-2 lg:!text-[28px]">Vos recommandations, vos dossiers, vos commissions</h2>
-        <div className="mt-6 grid gap-5 md:grid-cols-3">
-          <PipelineMockup /><GaugeMockup /><CommissionMockup />
-        </div>
-        <div className="mt-8 grid items-start gap-8 md:grid-cols-[1fr_1.1fr]">
-          <div>
-            <h3 className="title-3 !text-[20px]">Estimez votre commission d'apport</h3>
-            <p className="body-text">Une grille simple, appliquée à chaque dossier souscrit. Le partenaire n'intervient jamais sur le prix de l'assurance.</p>
-            <div className="mt-4 flex flex-wrap gap-3"><Btn to="/devenir-partenaire">Devenir apporteur d'affaires</Btn><Btn to="/comment-ca-marche" ghost>Voir le parcours</Btn></div>
-          </div>
-          <CommissionSimulator />
-        </div>
       </section>
     </>
   );
