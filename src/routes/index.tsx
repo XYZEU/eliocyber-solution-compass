@@ -18,13 +18,6 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const steps = [
-  ["Détecter", "Le partenaire identifie un besoin de protection cyber chez son client."],
-  ["Recommander", "Mise en relation avec le consentement du client, sans conseil en assurance."],
-  ["Suivre", "L’apporteur suit le statut du dossier ; Eliocyber porte le conseil et la souscription."],
-  ["Être rémunéré", "Commission selon la convention, après souscription, prime encaissée et délai de rétractation dépassé."],
-] as const;
-const stepIcons: LucideIcon[] = [Radar, ClipboardCheck, Send, ShieldCheck];
 const familyIcons: LucideIcon[] = [ShieldAlert, Server, Scale];
 const figures = [["0", "questionnaire technique"], ["2 min", "pour présenter un client"], ["Co-branding", "à chaque étape"], ["Suivi", "partageable"]] as const;
 const families = [
