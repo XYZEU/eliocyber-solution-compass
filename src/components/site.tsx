@@ -276,7 +276,7 @@ export function SiteFooter() {
                     aria-expanded={isOpen}
                     aria-controls={`footer-p-${id}`}
                     onClick={() => setOpen(isOpen ? null : col.title)}
-                    className="flex min-h-12 w-full items-center justify-between gap-3 py-3 text-left text-[14px] font-semibold text-primary-foreground transition-colors hover:text-primary-foreground/80 focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/80 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+                    className="flex min-h-12 w-full items-center justify-between gap-3 py-3 text-left text-[14px] font-semibold text-primary-foreground transition-colors hover:bg-ink-foreground/10 hover:text-primary-foreground focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/80 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                   >
                     {col.title}
                     <ChevronDown className={cn("size-4 shrink-0 transition-transform duration-200", isOpen && "rotate-180")} aria-hidden />
