@@ -26,7 +26,6 @@ export const Route = createFileRoute("/")({
 });
 
 const familyIcons: LucideIcon[] = [ShieldAlert, Server, Scale];
-const figures = [["0", "questionnaire technique à remplir"], ["100 %", "co-brandé à votre marque"], ["J+2", "ouvrés pour répondre à votre client"]] as const;
 const families = [
   ["EXPERTS TECHNIQUES", "MSP, MSSP, SOC, Intégrateurs, Cloud. Vos interventions de réponse à incident peuvent être prises en charge, selon le contrat et l’accord de l’assureur."],
   ["EXPERTS GOUVERNANCE", "ESN, DSI externes, Ciso externes, Dpo, Auditeurs. Complétez vos missions NIS2 ou DORA par le transfert du risque résiduel."],
