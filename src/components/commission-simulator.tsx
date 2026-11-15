@@ -7,7 +7,7 @@ export function CommissionSimulator() {
   const [t, setT] = useState(1);
   const total = estimateMonthly(n, t);
   return (
-    <div className="card-box">
+    <div id="simulateur" className="card-box scroll-mt-32">
       <div className="flex items-center gap-3"><span className="icon-chip"><Calculator className="size-5" aria-hidden /></span><h3 className="title-3 !mb-0">Simulateur de commission</h3></div>
       <label htmlFor="sim-n" className="mt-5 flex justify-between text-sm font-semibold text-foreground"><span>Dossiers souscrits par mois</span><span className="text-primary">{n}</span></label>
       <input id="sim-n" type="range" min={1} max={20} value={n} onChange={(e) => setN(Number(e.target.value))} className="mt-2 w-full accent-primary" />

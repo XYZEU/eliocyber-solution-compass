@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { fonctionnalites } from "@/lib/fonctionnalites";
-import { Activity, BookOpen, ChevronDown, Coins, LayoutGrid, LifeBuoy, Mail, MapPin, Menu, Phone, QrCode, ShieldCheck, X, type LucideIcon } from "lucide-react";
+import { Activity, BookOpen, Calculator, ChevronDown, Coins, LayoutGrid, LifeBuoy, Mail, Menu, QrCode, ShieldCheck, X, type LucideIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import radarLight from "@/assets/eliocyber-logo-radar-clair.svg";
 import radarDark from "@/assets/eliocyber-logo-radar-sombre.svg";
@@ -63,6 +64,10 @@ function FeaturesMenu({ onNavigate }: { onNavigate: () => void }) {
           <p className="eyebrow mb-2">Cœur de plateforme et souscription</p>
           <p className="body-text text-sm">Suivi technique, souscription et démarches du client : les modules qui soutiennent vos recommandations et le travail du courtier.</p>
           <Link data-menu-item to="/fonctionnalites" hash="modules" onClick={onNavigate} className={item}><span className={chip}><LayoutGrid className="size-4" aria-hidden /></span><span className="text-sm font-semibold text-primary">Découvrir les modules dans la vue d’ensemble →</span></Link>
+          <div className="mt-5 border-t border-border pt-4">
+            <Link data-menu-item to="/devenir-partenaire" hash="simulateur" onClick={onNavigate} className={item}><span className={chip}><Calculator className="size-4" aria-hidden /></span><span><span className="block text-sm font-semibold text-foreground">Simulateur de commission</span><span className="mt-1 block text-[12.5px] text-muted-foreground">Estimer votre rémunération d’apport</span></span></Link>
+            <Link data-menu-item to="/ressources" onClick={onNavigate} className={item}><span className={chip}><BookOpen className="size-4" aria-hidden /></span><span className="text-sm font-semibold text-foreground">Livres blancs et guides</span></Link>
+          </div>
         </div>
       </div>
       <Link data-menu-item to="/cadre-apporteur" onClick={onNavigate} className="bg-ink-glow group relative mt-4 flex items-center gap-3 overflow-hidden rounded-lg px-4 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
@@ -84,13 +89,13 @@ function DesktopFeatures() {
     <div className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}
       onKeyDown={(e) => { if ((e.key === "ArrowDown" || e.key === "ArrowUp") && (e.target as HTMLElement).tagName === "BUTTON") { e.preventDefault(); const root = e.currentTarget; const last = e.key === "ArrowUp"; setOpen(true); requestAnimationFrame(() => { const l = root.querySelectorAll<HTMLAnchorElement>("a[data-menu-item]"); l[last ? l.length - 1 : 0]?.focus(); }); return; } if (e.key === "Escape") { setOpen(false); (e.currentTarget.querySelector("button") as HTMLButtonElement | null)?.focus(); } }}
       onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false); }}>
-      <button type="button" aria-expanded={open} aria-controls="menu-fonctionnalites" onClick={(e) => { const kb = e.detail === 0; setOpen((o) => (kb ? !o : true)); }}
+      <Button variant="ghost" type="button" aria-expanded={open} aria-controls="menu-fonctionnalites" onClick={(e) => { const kb = e.detail === 0; setOpen((o) => (kb ? !o : true)); }}
         className="inline-flex min-h-11 items-center gap-1 rounded-sm text-foreground hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
         Fonctionnalités <ChevronDown className={cn("size-4 transition-transform", open && "rotate-180")} aria-hidden />
-      </button>
+      </Button>
       {open && (
-        <div id="menu-fonctionnalites" className="absolute right-0 top-full z-50 pt-2">
-          <div className="fade-in-up w-[720px] rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-lift)] backdrop-blur-xl">
+        <div id="menu-fonctionnalites" className="absolute left-0 top-full z-50 pt-2">
+          <div className="fade-in-up w-[720px] max-w-[calc(100vw-3rem)] rounded-lg border border-border bg-card p-5 shadow-[var(--shadow-lift)] backdrop-blur-xl">
             <FeaturesMenu onNavigate={() => setOpen(false)} />
           </div>
         </div>
@@ -119,36 +124,36 @@ export function Btn({ to, children, ghost, className, profil, onDark, hash }: { 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [featOpen, setFeatOpen] = useState(false);
+  const closeMenu = () => { setOpen(false); setFeatOpen(false); };
+  const navLinks = [
+    { to: "/comment-ca-marche", label: "Comment ça marche" },
+    { to: "/cadre-apporteur", label: "Cadre réglementaire" },
+    { to: "/ressources", label: "Ressources" },
+  ] as const;
+  const navStyle = "inline-flex min-h-11 items-center rounded-sm text-foreground hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-card/95 backdrop-blur">
-      <div className="flex items-center justify-between px-5 py-4 sm:px-8 sm:py-5">
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-5 py-3 sm:px-8 sm:py-4">
         <Link to="/" className="inline-flex min-h-11 shrink-0 items-center rounded-sm focus-visible:ring-2 focus-visible:ring-ring" aria-label="Eliocyber, accueil">
           <img src={radarLight} alt="Eliocyber" width={180} height={42} className="h-auto w-[156px] sm:w-[180px]" />
         </Link>
         <nav aria-label="Navigation principale" className="hidden items-center gap-4 text-sm xl:flex">
           <DesktopFeatures />
-          <Link to="/a-propos" className="text-foreground hover:text-primary" activeProps={{ className: "text-primary font-semibold" }}>À propos</Link>
-          <Btn to="/devenir-partenaire">Devenir apporteur d’affaires</Btn>
+          {navLinks.map((link) => <Link key={link.to} to={link.to} className={navStyle} activeProps={{ className: "text-primary font-semibold" }}>{link.label}</Link>)}
+          <Btn to="/devenir-partenaire" className="ml-2 whitespace-nowrap">Devenir apporteur</Btn>
         </nav>
-        <button
-          type="button"
-          className="rounded-md p-2 text-foreground xl:hidden"
-          aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-          aria-expanded={open}
-          aria-controls="menu-mobile"
-          onClick={() => setOpen((o) => !o)}
-        >
-          {open ? <X className="size-6" /> : <Menu className="size-6" />}
-        </button>
+        <Button variant="ghost" size="icon" className="size-11 text-foreground xl:hidden" aria-label={open ? "Fermer le menu" : "Ouvrir le menu"} aria-expanded={open} aria-controls="menu-mobile" onClick={() => { setOpen((o) => !o); setFeatOpen(false); }}>
+          {open ? <X /> : <Menu />}
+        </Button>
       </div>
       {open && (
-        <nav id="menu-mobile" aria-label="Navigation mobile" className="flex max-h-[calc(100dvh-100px)] flex-col gap-1 overflow-y-auto border-t border-border px-5 pb-5 pt-2 xl:hidden">
-          <button type="button" aria-expanded={featOpen} aria-controls="menu-mobile-features" onClick={() => setFeatOpen((o) => !o)} className="flex min-h-11 items-center justify-between pt-2 text-left text-[15px] font-semibold text-foreground">
-            Fonctionnalités <ChevronDown className={cn("size-4 transition-transform", featOpen && "rotate-180")} aria-hidden />
-          </button>
-          {featOpen && <div id="menu-mobile-features" className="fade-in-up -mx-3 pb-2"><FeaturesMenu onNavigate={() => setOpen(false)} /></div>}
-          <Link to="/a-propos" onClick={() => setOpen(false)} className="border-t border-border py-3 text-foreground">À propos</Link>
-          <span onClick={() => setOpen(false)} className="mt-2"><Btn to="/devenir-partenaire" className="w-full">Devenir apporteur d’affaires</Btn></span>
+        <nav id="menu-mobile" aria-label="Navigation mobile" onKeyDown={(e) => { if (e.key === "Escape") { closeMenu(); document.querySelector<HTMLButtonElement>('button[aria-controls="menu-mobile"]')?.focus(); } }} className="flex max-h-[calc(100dvh-85px)] flex-col gap-1 overflow-y-auto border-t border-border px-5 pb-5 pt-2 xl:hidden">
+          <Button variant="ghost" aria-expanded={featOpen} aria-controls="menu-mobile-features" onClick={() => setFeatOpen((o) => !o)} className="min-h-11 justify-between px-0 text-left text-[15px] font-semibold text-foreground">
+            Fonctionnalités <ChevronDown className={cn("transition-transform", featOpen && "rotate-180")} aria-hidden />
+          </Button>
+          {featOpen && <div id="menu-mobile-features" className="fade-in-up -mx-3 pb-2"><FeaturesMenu onNavigate={closeMenu} /></div>}
+          {navLinks.map((link) => <Link key={link.to} to={link.to} hash={link.hash} onClick={closeMenu} className={cn(navStyle, "border-t border-border py-3")} activeProps={{ className: "text-primary font-semibold" }}>{link.label}</Link>)}
+          <span onClick={closeMenu} className="mt-3"><Btn to="/devenir-partenaire" className="w-full">Devenir apporteur</Btn></span>
         </nav>
       )}
     </header>
@@ -157,27 +162,30 @@ export function SiteHeader() {
 
 type FooterLink =
   | { label: string; to: "/contact"; search: { profil: Profil } }
-  | { label: string; to: "/comment-ca-marche" | "/a-propos" | "/fonctionnalites" | "/ressources" | "/devenir-partenaire" | "/partenaires/mssp" | "/partenaires/esn" | "/partenaires/ciso" | "/cadre-apporteur" }
+  | { label: string; to: "/comment-ca-marche" | "/a-propos" | "/fonctionnalites" | "/ressources" | "/devenir-partenaire" | "/partenaires/mssp" | "/partenaires/esn" | "/partenaires/ciso" | "/cadre-apporteur"; hash?: string }
   | { label: string; slug: string };
 
 type FooterGroup = { title: string; links: FooterLink[] };
 
 const footerGroups: FooterGroup[] = [
-  { title: "Découvrir", links: [
+  { title: "Outils de l’apporteur", links: [
     { to: "/fonctionnalites", label: "Vue d'ensemble" },
-    { to: "/comment-ca-marche", label: "Comment ça marche" },
-    { to: "/ressources", label: "Ressources et livres blancs" },
-    { to: "/a-propos", label: "À propos" },
-    { to: "/cadre-apporteur", label: "Statut et cadre de l’apporteur" },
-    { to: "/contact", label: "Échanger sur un partenariat", search: { profil: "partenaire" } },
+    ...fonctionnalites.map((f) => ({ slug: f.slug, label: f.name })),
   ] },
-  { title: "Partenaires", links: [
+  { title: "Modèle partenaire", links: [
+    { to: "/comment-ca-marche", label: "Comment ça marche" },
+    { to: "/cadre-apporteur", label: "Statut et cadre de l’apporteur" },
+    { to: "/devenir-partenaire", hash: "simulateur", label: "Simulateur de commission" },
     { to: "/partenaires/mssp", label: "MSSP et SOC" },
     { to: "/partenaires/esn", label: "ESN cyber" },
     { to: "/partenaires/ciso", label: "CISO freelance" },
     { to: "/devenir-partenaire", label: "Devenir apporteur d’affaires" },
   ] },
-  { title: "Plateforme", links: fonctionnalites.map((f) => ({ slug: f.slug, label: f.name })) },
+  { title: "Société et ressources", links: [
+    { to: "/a-propos", label: "À propos d’Eliocyber" },
+    { to: "/ressources", label: "Livres blancs et guides" },
+    { to: "/contact", label: "Nous contacter", search: { profil: "partenaire" } },
+  ] },
 ];
 
 const fLink = "text-ink-link underline-offset-4 transition-colors hover:text-primary-foreground hover:underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/80 focus-visible:ring-offset-2 focus-visible:ring-offset-ink active:text-primary-foreground active:underline";
@@ -189,7 +197,7 @@ const groupAnchor = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g
 function FooterLinkItem({ link, className, onClick }: { link: FooterLink; className: string; onClick?: () => void }) {
   if ("search" in link) return <Link to="/contact" search={link.search} onClick={onClick} className={className} activeProps={linkActive}>{link.label}</Link>;
   if ("slug" in link) return <Link to="/fonctionnalites/$slug" params={{ slug: link.slug }} onClick={onClick} className={className} activeProps={linkActive}>{link.label}</Link>;
-  return <Link to={link.to} onClick={onClick} className={className} activeProps={linkActive}>{link.label}</Link>;
+  return <Link to={link.to} hash={link.hash} onClick={onClick} className={className} activeProps={linkActive}>{link.label}</Link>;
 }
 
 function onAccordionKeyDown(e: React.KeyboardEvent<HTMLElement>, close: () => void) {
@@ -215,19 +223,23 @@ export function SiteFooter() {
   const [open, setOpen] = useState<string | null>(null);
   return (
     <footer className="bg-ink text-[14px] leading-relaxed text-ink-foreground">
+      <div className="border-b border-ink-foreground/15">
+        <div className="wrap grid gap-4 py-5 text-sm md:grid-cols-3 md:gap-8">
+          <p className="flex items-center gap-3"><ShieldCheck className="size-5 shrink-0 text-ink-link" aria-hidden /><span>Le partenaire informe, le courtier conseille.</span></p>
+          <p className="flex items-center gap-3"><Coins className="size-5 shrink-0 text-ink-link" aria-hidden /><span>Un lead, un apporteur, une commission.</span></p>
+          <p className="flex items-center gap-3"><Mail className="size-5 shrink-0 text-ink-link" aria-hidden /><span>Réponse sous 2 jours ouvrés.</span></p>
+        </div>
+      </div>
       <div className="wrap py-8 md:grid md:grid-cols-[1.3fr_repeat(3,1fr)] md:gap-8 md:py-12">
         <div className="min-w-0">
           <Link to="/" className="inline-flex min-h-11 items-center rounded-sm focus-visible:ring-2 focus-visible:ring-primary-foreground" aria-label="Eliocyber, accueil"><img src={radarDark} alt="Eliocyber" width={190} height={44} className="h-auto w-[190px] max-w-full" /></Link>
           <p className="mt-2.5 max-w-[300px] md:mt-3">La plateforme de cyberassurance pour apporteurs d'affaires cyber, IT et conformité. Le courtier prend le relais auprès de vos clients.</p>
           <address className="mt-2.5 not-italic md:mt-4">
             <p className="flex min-h-11 items-center gap-2 md:min-h-0 md:py-[3px]"><Mail className="size-4 shrink-0" aria-hidden /><a href="mailto:bonjour@eliocyber.fr" className={fLink}>bonjour@eliocyber.fr</a></p>
-            <p className="flex min-h-9 items-center gap-2 md:min-h-0 md:py-[3px]"><Phone className="size-4 shrink-0" aria-hidden />[Téléphone]</p>
-            <p className="flex min-h-9 items-center gap-2 md:min-h-0 md:py-[3px]"><MapPin className="size-4 shrink-0" aria-hidden />[Adresse]</p>
           </address>
           <a href="https://www.linkedin.com/company/eliocyber" target="_blank" rel="noopener noreferrer" aria-label="Eliocyber sur LinkedIn (nouvel onglet)" className="mt-3 flex size-11 items-center justify-center rounded-lg border border-ink-foreground/25 text-ink-foreground transition-colors hover:border-primary-foreground/60 hover:bg-ink-foreground/10 hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/80 focus-visible:ring-offset-2 focus-visible:ring-offset-ink md:size-10">
             <svg viewBox="0 0 24 24" className="size-[18px]" fill="currentColor" aria-hidden><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
           </a>
-          <Link to="/contact" search={{ profil: "partenaire" }} className="mt-4 flex w-full items-center justify-center rounded-lg bg-primary px-4 py-3 text-[14px] font-semibold text-primary-foreground hover:bg-primary/90 md:mt-5 md:inline-flex md:w-auto md:py-2.5">Échanger sur un partenariat</Link>
         </div>
 
         <nav aria-label="Plan du site" className="hidden md:contents">
@@ -250,7 +262,7 @@ export function SiteFooter() {
             return (
               <div key={col.title} className="border-b border-ink-foreground/15">
                 <h2>
-                  <button
+                  <Button variant="ghost"
                     type="button"
                     data-accordion
                     id={`footer-h-${id}`}
@@ -261,7 +273,7 @@ export function SiteFooter() {
                   >
                     {col.title}
                     <ChevronDown className={cn("size-4 shrink-0 transition-transform duration-200", isOpen && "rotate-180")} aria-hidden />
-                  </button>
+                  </Button>
                 </h2>
                 <div
                   id={`footer-p-${id}`}
@@ -287,10 +299,10 @@ export function SiteFooter() {
           <div className="mt-2.5 flex flex-col gap-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
             <span className="opacity-70">© {new Date().getFullYear()} Eliocyber. Tous droits réservés.</span>
             <ul className="grid grid-cols-2 gap-x-4 sm:flex sm:flex-wrap sm:gap-x-5">
-              <li><Link to="/mentions-legales" className={cn(fLink, "inline-flex min-h-10 items-center md:min-h-0")}>Mentions légales</Link></li>
-              <li><Link to="/mentions-legales" hash="donnees" className={cn(fLink, "inline-flex min-h-10 items-center md:min-h-0")}>Confidentialité</Link></li>
-              <li><Link to="/mentions-legales" hash="reclamations" className={cn(fLink, "inline-flex min-h-10 items-center md:min-h-0")}>Réclamations</Link></li>
-              <li><a href={`${import.meta.env.BASE_URL}sitemap.xml`} className={cn(fLink, "inline-flex min-h-10 items-center md:min-h-0")}>Plan du site</a></li>
+              <li><Link to="/mentions-legales" className={cn(fLink, "inline-flex min-h-11 items-center md:min-h-0")}>Mentions légales</Link></li>
+              <li><Link to="/mentions-legales" hash="donnees" className={cn(fLink, "inline-flex min-h-11 items-center md:min-h-0")}>Confidentialité</Link></li>
+              <li><Link to="/mentions-legales" hash="reclamations" className={cn(fLink, "inline-flex min-h-11 items-center md:min-h-0")}>Réclamations</Link></li>
+              <li><a href={`${import.meta.env.BASE_URL}sitemap.xml`} className={cn(fLink, "inline-flex min-h-11 items-center md:min-h-0")}>Plan du site</a></li>
             </ul>
           </div>
         </div>
