@@ -29,3 +29,4 @@
 - [x] Bloc « La suite de l'apporteur » retiré de l'accueil ; les 5 pages outils restent accessibles via le menu et la Vue d'ensemble
 - [x] Bloc « Qui peut nous rejoindre » déplacé entre « Offres partenaires » et l'aperçu de la plateforme
 - [x] Bloc « Comment ça marche » (parcours en 4 étapes) retiré de l'accueil ; la page dédiée /comment-ca-marche reste accessible depuis le bouton « Voir le fonctionnement »
+- [x] Bloc « Vos recommandations, vos dossiers, vos commissions » (aperçus + simulateur) retiré de l'accueil ; simulateur conservé sur /devenir-partenaire#simulateur
