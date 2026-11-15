@@ -1,3 +1,4 @@
+- [x] Réorganiser le header et les quatre colonnes du footer ; vérifier navigation clavier, mobile et accès au simulateur.
 - [x] Pages Devenir partenaire, MSSP, ESN, CISO + footer
 - [x] Recentrer l'accueil et les appels à l'action sur les apporteurs d'affaires.
 - [x] Réaligner le parcours et la candidature, sans créer de faux compte ou envoi.
