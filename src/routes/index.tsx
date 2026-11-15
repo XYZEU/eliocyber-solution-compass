@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { seo } from "@/lib/seo";
-import { Btn, Card, TrustSeal } from "@/components/site";
+import { Btn, Card, CtaBanner, TrustSeal } from "@/components/site";
 import { InsurerMarquee } from "@/components/insurer-marquee";
 import { ShieldAlert, Server, Scale, Users, Handshake, BadgeCheck, Check, type LucideIcon } from "lucide-react";
 
@@ -72,7 +72,7 @@ function Home() {
       <section className="wrap sec relative grid items-center gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-12 lg:py-16">
         <div className="min-w-0">
           <p className="eyebrow">POUR UNE CYBER RESILIENCE TOTALE</p>
-          <h1 className="title-1 lg:!text-[44px]">L’assurance cyber,<br />sans jamais concurrencer<br />votre métier.</h1>
+          <h1 className="title-1">L’assurance cyber,<br />sans jamais concurrencer<br />votre métier.</h1>
           <p className="body-text max-w-[760px] text-[17px]">Gagnez un nouveau levier de valeur client, sans changer de métier, sans devenir courtier, sans concurrencer vos services. Eliocyber porte le courtage. Vous gardez votre relation.</p>
           <p className="body-text text-[13px]">Accès gratuit</p>
           <div className="mt-5 flex flex-wrap gap-3">
@@ -116,8 +116,8 @@ function Home() {
       </section>
       <section className="bg-ink-glow relative overflow-hidden border-t border-primary-foreground/10" aria-labelledby="pourquoi">
         <div className="wrap sec lg:py-16">
-          <p className="inline-flex rounded-full border border-primary-foreground/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-ink-link">Le problème que nous réglons</p>
-          <h2 id="pourquoi" className="mt-4 font-display text-3xl font-extrabold tracking-tight text-primary-foreground sm:text-4xl">Pourquoi Eliocyber Pro existe</h2>
+          <p className="eyebrow !text-ink-link">Le problème que nous réglons</p>
+          <h2 id="pourquoi" className="title-2 !text-primary-foreground">Pourquoi Eliocyber Pro existe</h2>
           <p className="mt-3 max-w-[60ch] text-[17px] leading-7 text-ink-foreground">Le besoin d’assurance cyber apparaît chez vos clients. Aujourd’hui, vous n’avez aucun moyen simple, conforme et non concurrentiel de le traiter.</p>
           <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {problemes.map(([t, d], i) => (
@@ -133,15 +133,15 @@ function Home() {
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-link">La réponse Eliocyber Pro</p>
               <p className="mt-2 max-w-[62ch] text-lg font-semibold leading-snug text-primary-foreground">Vous présentez le client. Nous faisons le courtage. Vous restez le prestataire de confiance. Nous restons le courtier. Personne ne marche sur le métier de l’autre.</p>
             </div>
-            <Btn to="/devenir-partenaire" onDark className="shrink-0">Ouvrir un compte Pro — gratuit →</Btn>
+            <Btn to="/devenir-partenaire" onDark className="shrink-0">Ouvrir un compte Pro</Btn>
           </div>
         </div>
       </section>
       <section className="wrap sec relative lg:py-16" aria-labelledby="solution">
         <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
           <div className="min-w-0">
-            <p className="inline-flex rounded-full bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">La solution</p>
-            <h2 id="solution" className="mt-4 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Un courtier cyber, intégré à votre relation client. <span className="text-primary">Pas à la place.</span></h2>
+            <p className="eyebrow">La solution</p>
+            <h2 id="solution" className="title-2">Un courtier cyber, intégré à votre relation client. <span className="text-primary">Pas à la place.</span></h2>
             <p className="body-text mt-3 max-w-[60ch] text-[17px]">Eliocyber Pro transforme un besoin que vous détectez déjà en un dossier traité, suivi et rémunéré — sans que vous changiez de métier.</p>
             <div className="mt-6 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-soft)]">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Co-branding, à chaque étape</p>
@@ -153,7 +153,7 @@ function Home() {
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Votre marque reste visible aux côtés de la nôtre. Le client sait qui l’accompagne au quotidien et qui assure le courtage. Personne ne marche sur le métier de l’autre.</p>
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Btn to="/devenir-partenaire">Ouvrir un compte Pro — gratuit →</Btn>
+              <Btn to="/devenir-partenaire">Ouvrir un compte Pro</Btn>
               <Btn to="/comment-ca-marche" ghost>Voir le fonctionnement</Btn>
             </div>
           </div>
@@ -187,7 +187,7 @@ function Home() {
         <div className="bg-ink-glow relative overflow-hidden rounded-[24px] p-6 shadow-lg sm:p-8 lg:p-10">
           <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
           <div className="relative">
-            <h2 id="concretement" className="font-display text-2xl font-extrabold tracking-tight text-primary-foreground sm:text-[28px]">Ce que la solution change, concrètement</h2>
+            <h2 id="concretement" className="title-2 !text-primary-foreground">Ce que la solution change, concrètement</h2>
             <ul className="mt-6 grid gap-4 sm:grid-cols-2">
               {changements.map((t) => (
                 <li key={t} className="flex items-start gap-3 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 p-5 backdrop-blur-sm">
@@ -206,7 +206,7 @@ function Home() {
 
       <section className="wrap sec lg:py-16" aria-labelledby="offres">
         <p className="eyebrow">Offres partenaires</p>
-        <h2 id="offres" className="title-2 lg:!text-[28px]">Deux façons de collaborer, selon votre modèle.</h2>
+        <h2 id="offres" className="title-2">Deux façons de collaborer, selon votre modèle.</h2>
         <div className="mt-6 grid gap-5 md:grid-cols-2">
           {offres.map((o) => (
             <article key={o.badge} className={`card-box flex h-full flex-col ${o.dark ? "border-border bg-card" : "border-primary bg-secondary"}`}>
@@ -228,7 +228,7 @@ function Home() {
 
       <section className="wrap sec lg:py-16">
         <p className="eyebrow">Qui peut nous rejoindre</p>
-        <h2 className="title-2 lg:!text-[28px]">Une plateforme pour les experts de leurs clients</h2>
+        <h2 className="title-2">Une plateforme pour les experts de leurs clients</h2>
         <div className="mt-6 grid gap-5 md:grid-cols-3">
           {families.map(([t, d], i) => <Card key={t} icon={familyIcons[i]} title={t}><p className="body-text text-sm">{d}</p></Card>)}
         </div>
@@ -238,18 +238,7 @@ function Home() {
         </figure>
       </section>
 
-      <section className="wrap sec lg:py-16" aria-labelledby="cta-final">
-        <div className="bg-ink-glow relative overflow-hidden rounded-[24px] p-6 shadow-lg sm:p-8 lg:p-10">
-          <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
-          <div className="relative flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <h2 id="cta-final" className="font-display text-2xl font-extrabold tracking-tight text-primary-foreground sm:text-[28px]">Prêt à présenter<br className="hidden sm:block" /> votre premier client&nbsp;?</h2>
-              <p className="body-text mt-3 max-w-[52ch] text-sm leading-relaxed text-ink-foreground">Compte Pro gratuit. 2 minutes. Sans questionnaire technique. Sans changer de métier.</p>
-            </div>
-            <Btn to="/devenir-partenaire" onDark className="shrink-0 rounded-full px-6">Ouvrir un compte Pro — gratuit →</Btn>
-          </div>
-        </div>
-      </section>
+      <CtaBanner title="Prêt à présenter votre premier client ?" text="Sans questionnaire technique. Sans changer de métier." to="/devenir-partenaire" label="Ouvrir un compte Pro" />
     </>
   );
 }
