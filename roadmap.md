@@ -1,3 +1,4 @@
+- [ ] Accueil : aperçu produit, trois chiffres équilibrés, parcours fusionné, cartes problème et offres différenciées ; vérifier mobile et ordinateur.
 - [x] Accueil : bloc trois cartes « Vous présentez / Nous faisons le courtage / Vous suivez » sous « La solution », avant les logos assureurs ; vérifier mobile et ordinateur.
 - [x] Accueil : bloc « Offres partenaires » (Integrated / Embedded, 2 cartes) sous le bloc sombre « Ce que la solution change » ; vérifier mobile et ordinateur.
 - [x] Accueil : bloc sombre « Ce que la solution change, concrètement » (4 points + accès au parcours) juste après « Comment ça marche » ; vérifier mobile et ordinateur.
