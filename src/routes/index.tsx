@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
 });
 
 const familyIcons: LucideIcon[] = [ShieldAlert, Server, Scale];
-const figures = [["0", "questionnaire technique"], ["2 min", "pour présenter un client"], ["Co-branding", "à chaque étape"], ["Suivi", "partageable"]] as const;
+const figures = [["0", "questionnaire technique"], ["Co-branding", "à chaque étape"], ["Suivi", "partageable"]] as const;
 const families = [
   ["EXPERTS TECHNIQUES", "MSP, MSSP, SOC, Intégrateurs, Cloud."],
   ["EXPERTS GOUVERNANCE", "ESN, DSI externes, Ciso externes, Dpo, Auditeurs."],
@@ -74,7 +74,6 @@ function Home() {
           <p className="eyebrow">POUR UNE CYBER RESILIENCE TOTALE</p>
           <h1 className="title-1">L’assurance cyber,<br />sans jamais concurrencer<br />votre métier.</h1>
           <p className="body-text max-w-[760px] text-[17px]">Gagnez un nouveau levier de valeur client, sans changer de métier, sans devenir courtier, sans concurrencer vos services. Eliocyber porte le courtage. Vous gardez votre relation.</p>
-          <p className="body-text text-[13px]">Accès gratuit</p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Btn to="/devenir-partenaire">Devenir apporteur d'affaires</Btn>
             <Btn to="/comment-ca-marche" ghost>Découvrir le parcours</Btn>
@@ -86,7 +85,7 @@ function Home() {
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Présentation express</p>
-              <h2 id="express-title" className="mt-2 font-display text-2xl font-bold text-foreground">Un client, en 2 minutes.</h2>
+              <h2 id="express-title" className="mt-2 font-display text-2xl font-bold text-foreground">Un client, rien de plus.</h2>
             </div>
             <span className="rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-primary">Sans questionnaire</span>
           </div>
