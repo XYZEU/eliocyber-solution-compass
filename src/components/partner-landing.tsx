@@ -42,6 +42,15 @@ export function PartnerLanding({ d }: { d: LandingData }) {
 
       <div className="hero-band"><section className="wrap sec grid items-center gap-8 md:grid-cols-[1.4fr_1fr]">
         <div>
+          <nav aria-label="Fil d’Ariane" className="mb-4 text-sm text-muted-foreground">
+            <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
+              <li><Link to="/" className="inline-flex min-h-11 items-center hover:text-primary focus-visible:ring-2 focus-visible:ring-ring">Accueil</Link></li>
+              <li aria-hidden="true">/</li>
+              <li><Link to="/devenir-partenaire" hash="profils" className="inline-flex min-h-11 items-center hover:text-primary focus-visible:ring-2 focus-visible:ring-ring">Profils partenaires</Link></li>
+              <li aria-hidden="true">/</li>
+              <li><span aria-current="page" className="text-foreground">{d.h1}</span></li>
+            </ol>
+          </nav>
           <p className="eyebrow flex items-center gap-2"><span className="live-dot" aria-hidden />{d.eyebrow}</p>
           <h1 className="title-1">{d.h1}</h1>
           <p className="body-text max-w-[620px] text-[17px]">{d.intro}</p>
