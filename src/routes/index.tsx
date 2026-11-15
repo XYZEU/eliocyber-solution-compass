@@ -45,6 +45,34 @@ const changements = [
   "En cas de sinistre, le pilotage assurance est assuré — votre relation est protégée",
   "Vous créez un revenu adjacent, sans vendre de services en plus, sans concurrencer qui que ce soit",
 ];
+const offres = [
+  {
+    badge: "Integrated",
+    dark: false,
+    title: "Pour les partenaires de services",
+    tags: "MSP · MSSP · ESN · DSI / RSSI externe · DPO",
+    text: "Intégrez la présentation d’un client à votre accompagnement existant. Vous ne changez ni votre offre, ni votre relation, ni votre facturation.",
+    points: [
+      "Présentation simple, sans questionnaire technique",
+      "Co-branding à chaque étape",
+      "Suivi partageable avec votre client",
+      "Aucune gestion de sinistre à votre charge",
+    ],
+  },
+  {
+    badge: "Embedded",
+    dark: true,
+    title: "Pour les éditeurs SaaS",
+    tags: "Produits logiciels · plateformes · services en ligne",
+    text: "Intégrez un parcours de présentation à votre produit ou à votre parcours client, avec des outils pensés pour une intégration propre et mesurable.",
+    points: [
+      "Liens trackés et pages co-brandées",
+      "Widget ou iframe selon votre parcours",
+      "API pour les parcours SaaS",
+      "Mesure des présentations et des aboutissements",
+    ],
+  },
+];
 
 function Home() {
   return (
@@ -195,6 +223,28 @@ function Home() {
               <Btn to="/comment-ca-marche" onDark className="shrink-0">Voir le fonctionnement →</Btn>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="wrap sec lg:py-16" aria-labelledby="offres">
+        <p className="eyebrow">Offres partenaires</p>
+        <h2 id="offres" className="title-2 lg:!text-[28px]">Deux façons de collaborer, selon votre modèle.</h2>
+        <div className="mt-6 grid gap-5 md:grid-cols-2">
+          {offres.map((o) => (
+            <article key={o.badge} className={`card-box flex h-full flex-col ${o.dark ? "border-border bg-card" : "border-primary bg-secondary"}`}>
+              <span className={`inline-block self-start rounded-full px-3 py-1 text-xs font-semibold ${o.dark ? "bg-foreground text-background" : "bg-primary text-primary-foreground"}`}>{o.badge}</span>
+              <h3 className="title-3 mt-4 !text-[19px]">{o.title}</h3>
+              <p className="mt-1 text-[13px] font-medium text-muted-foreground">{o.tags}</p>
+              <p className="body-text mt-3 text-sm">{o.text}</p>
+              <ul className="mt-4 grid gap-2.5">
+                {o.points.map((p) => (
+                  <li key={p} className="flex items-start gap-2.5 text-sm text-foreground">
+                    <Check className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />{p}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
         </div>
       </section>
 
