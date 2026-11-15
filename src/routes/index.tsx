@@ -237,6 +237,19 @@ function Home() {
           <blockquote className="mt-2.5 text-base text-foreground">« Recommandé par [Partenaire] — Conseil, souscription et gestion assurés par Eliocyber, courtier en assurance. »</blockquote>
         </figure>
       </section>
+
+      <section className="wrap sec lg:py-16" aria-labelledby="cta-final">
+        <div className="bg-ink-glow relative overflow-hidden rounded-[24px] p-6 shadow-lg sm:p-8 lg:p-10">
+          <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
+          <div className="relative flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 id="cta-final" className="font-display text-2xl font-extrabold tracking-tight text-primary-foreground sm:text-[28px]">Prêt à présenter<br className="hidden sm:block" /> votre premier client&nbsp;?</h2>
+              <p className="body-text mt-3 max-w-[52ch] text-sm leading-relaxed text-ink-foreground">Compte Pro gratuit. 2 minutes. Sans questionnaire technique. Sans changer de métier.</p>
+            </div>
+            <Btn to="/devenir-partenaire" onDark className="shrink-0 rounded-full px-6">Ouvrir un compte Pro — gratuit →</Btn>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
