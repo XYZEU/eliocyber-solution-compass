@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { seo, faqJsonLd } from "@/lib/seo";
 import { Btn, Card, CtaBanner, TrustSeal } from "@/components/site";
 import { InsurerMarquee } from "@/components/insurer-marquee";
-import { ShieldAlert, Server, Scale, Check, FileCheck2, Handshake, Activity, Layers, Code2, ArrowRight, ChevronDown, type LucideIcon } from "lucide-react";
+import { ShieldAlert, Server, Scale, Check, Layers, Code2, ArrowRight, ChevronDown, type LucideIcon } from "lucide-react";
 import { ClientPreview, PartnerJourney } from "@/components/home-product";
 
 const problemes: [string, string][] = [
@@ -26,7 +26,6 @@ export const Route = createFileRoute("/")({
 });
 
 const familyIcons: LucideIcon[] = [ShieldAlert, Server, Scale];
-const figures = [["0", "questionnaire technique à remplir"], ["100 %", "co-brandé à votre marque"], ["J+2", "ouvrés pour répondre à votre client"]] as const;
 const families = [
   ["EXPERTS TECHNIQUES", "MSP, MSSP, SOC, Intégrateurs, Cloud. Vos interventions de réponse à incident peuvent être prises en charge, selon le contrat et l’accord de l’assureur."],
   ["EXPERTS GOUVERNANCE", "ESN, DSI externes, Ciso externes, Dpo, Auditeurs. Complétez vos missions NIS2 ou DORA par le transfert du risque résiduel."],
@@ -37,7 +36,6 @@ const promesses: [string, string][] = [
   ["Nous faisons le courtage, en co-branding", "Eliocyber prend en charge le conseil, l’étude des besoins, la présentation des contrats et le suivi. Votre marque reste visible aux côtés de la nôtre, votre client ne vous perd jamais de vue."],
   ["Vous suivez, vous êtes rémunéré", "Vous avez le suivi de votre dossier, avec des étapes partageables. Quand le dossier aboutit, vous percevez une commission par type de client assuré."],
 ];
-const figureIcons = [FileCheck2, Handshake, Activity];
 const changements = [
   "Votre client est enfin couvert, sans que vous deveniez courtier",
   "Aucun risque réglementaire, les rôles sont clairs et formalisés",
@@ -93,20 +91,6 @@ function Home() {
         <ClientPreview />
       </section>
       </div>
-      <section className="bg-ink-glow relative overflow-hidden" aria-label="Chiffres clés">
-        <dl className="wrap grid gap-5 py-6 sm:grid-cols-3 sm:py-8">
-          {figures.map(([v, l], i) => {
-            const Icon = figureIcons[i] ?? Activity;
-            return (
-            <div key={v} className="group flex items-center gap-4 rounded-lg border border-ink-foreground/20 px-6 py-5 transition-colors hover:border-ink-link/60">
-              <Icon className="size-6 shrink-0 text-ink-link" aria-hidden />
-              <div><dt className="sr-only">{l}</dt>
-              <dd className="font-display text-[26px] font-extrabold text-ink-link">{v}</dd>
-              <dd className="mt-1 text-sm leading-snug text-ink-foreground">{l}</dd></div>
-            </div>
-          );})}
-        </dl>
-      </section>
       <section className="bg-ink-glow relative overflow-hidden border-t border-primary-foreground/10" aria-labelledby="pourquoi">
         <div className="wrap sec">
           <p className="eyebrow !text-ink-link">Le problème que nous réglons</p>
