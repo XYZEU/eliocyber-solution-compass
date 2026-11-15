@@ -30,3 +30,4 @@
 - [x] Bloc « Qui peut nous rejoindre » déplacé entre « Offres partenaires » et l'aperçu de la plateforme
 - [x] Bloc « Comment ça marche » (parcours en 4 étapes) retiré de l'accueil ; la page dédiée /comment-ca-marche reste accessible depuis le bouton « Voir le fonctionnement »
 - [x] Bloc « Vos recommandations, vos dossiers, vos commissions » (aperçus + simulateur) retiré de l'accueil ; simulateur conservé sur /devenir-partenaire#simulateur
+- [x] Accueil : bloc final « Prêt à présenter votre premier client ? » (CTA Ouvrir un compte Pro) en bas de page ; vérifier mobile et ordinateur.
