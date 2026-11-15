@@ -70,7 +70,7 @@ function Home() {
     <>
       <div className="relative overflow-hidden">
       <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
-      <section className="wrap sec relative grid items-center gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-12 lg:py-16">
+      <section className="wrap sec relative grid items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-12">
         <div className="min-w-0">
           <p className="eyebrow">POUR UNE CYBER RESILIENCE TOTALE</p>
           <h1 className="title-1">L’assurance cyber,<br />sans jamais concurrencer<br />votre métier.</h1>
@@ -86,7 +86,7 @@ function Home() {
       </section>
       </div>
       <section className="bg-ink-glow relative overflow-hidden" aria-label="Chiffres clés">
-        <dl className="wrap grid gap-4 py-10 sm:grid-cols-3 lg:py-12">
+        <dl className="wrap grid gap-5 py-6 sm:grid-cols-3 sm:py-8">
           {figures.map(([v, l], i) => {
             const Icon = figureIcons[i] ?? Activity;
             return (
@@ -100,11 +100,11 @@ function Home() {
         </dl>
       </section>
       <section className="bg-ink-glow relative overflow-hidden border-t border-primary-foreground/10" aria-labelledby="pourquoi">
-        <div className="wrap sec lg:py-16">
+        <div className="wrap sec">
           <p className="eyebrow !text-ink-link">Le problème que nous réglons</p>
           <h2 id="pourquoi" className="title-2 !text-primary-foreground">Pourquoi Eliocyber Pro existe</h2>
           <p className="mt-3 max-w-[60ch] text-[17px] leading-7 text-ink-foreground">Le besoin d’assurance cyber apparaît chez vos clients. Aujourd’hui, vous n’avez aucun moyen simple, conforme et non concurrentiel de le traiter.</p>
-          <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {problemes.map(([t, d], i) => (
               <li key={t} className="home-problem-card group rounded-lg border border-ink-foreground/20 p-5">
                 <span className="font-display text-sm font-bold text-ink-link transition-colors group-hover:text-primary-foreground">{String(i + 1).padStart(2, "0")}</span>
@@ -113,7 +113,7 @@ function Home() {
               </li>
             ))}
           </ol>
-          <div className="mt-6 flex flex-col gap-5 border-t border-ink-link/40 pt-6 md:flex-row md:items-center md:justify-between lg:p-8">
+          <div className="mt-6 flex flex-col gap-5 border-t border-ink-link/40 pt-6 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-link">La réponse Eliocyber Pro</p>
               <p className="mt-2 max-w-[62ch] text-lg font-semibold leading-snug text-primary-foreground">Vous présentez le client. Nous faisons le courtage. Vous restez le prestataire de confiance. Nous restons le courtier. Personne ne marche sur le métier de l’autre.</p>
@@ -122,8 +122,8 @@ function Home() {
           </div>
         </div>
       </section>
-      <section className="wrap sec relative lg:py-16" aria-labelledby="solution">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
+      <section className="wrap sec relative" aria-labelledby="solution">
+        <div className="grid items-start gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
           <div className="min-w-0">
             <p className="eyebrow">La solution</p>
             <h2 id="solution" className="title-2">Un courtier cyber, intégré à votre relation client. <span className="text-primary">Pas à la place.</span></h2>
@@ -147,7 +147,7 @@ function Home() {
       </section>
       <InsurerMarquee />
 
-      <section className="wrap sec lg:py-16" aria-labelledby="concretement">
+      <section className="wrap sec" aria-labelledby="concretement">
         <div className="bg-ink-glow relative overflow-hidden rounded-[24px] p-6 shadow-lg sm:p-8 lg:p-10">
           <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
           <div className="relative">
@@ -168,10 +168,10 @@ function Home() {
         </div>
       </section>
 
-      <section className="wrap sec lg:py-16" aria-labelledby="offres">
+      <section className="wrap sec" aria-labelledby="offres">
         <p className="eyebrow">Offres partenaires</p>
         <h2 id="offres" className="title-2">Deux façons de collaborer, selon votre modèle.</h2>
-        <div className="mt-6 grid gap-5 md:grid-cols-2">
+        <div className="mt-5 grid gap-5 md:grid-cols-2">
           {offres.map((o) => (
             <article key={o.badge} className={`flex h-full flex-col rounded-lg border p-6 sm:p-8 ${o.dark ? "border-border bg-card" : "border-primary/40 bg-primary-soft/50"}`}>
               <div className="mb-6 flex items-center justify-between gap-4">
@@ -193,7 +193,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="wrap sec lg:py-16">
+      <section className="wrap sec">
         <p className="eyebrow">Qui peut nous rejoindre</p>
         <h2 className="title-2">Une plateforme pour les experts de leurs clients</h2>
         <div className="mt-6 grid gap-5 md:grid-cols-3">

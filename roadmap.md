@@ -1,3 +1,4 @@
+- [ ] Harmoniser les espacements des cinq zones de l’accueil avec le rythme des autres pages ; vérifier mobile et ordinateur.
 - [x] Accueil : aperçu produit illustratif, trois chiffres équilibrés, parcours fusionné avec navigation clavier, cartes problème et offres différenciées ; vérifiés mobile et ordinateur.
 - [x] Accueil : bloc trois cartes « Vous présentez / Nous faisons le courtage / Vous suivez » sous « La solution », avant les logos assureurs ; vérifier mobile et ordinateur.
 - [x] Accueil : bloc « Offres partenaires » (Integrated / Embedded, 2 cartes) sous le bloc sombre « Ce que la solution change » ; vérifier mobile et ordinateur.
