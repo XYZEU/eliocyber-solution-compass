@@ -84,6 +84,43 @@ function Home() {
           ))}
         </dl>
       </section>
+      <section className="wrap sec relative lg:py-16" aria-labelledby="solution">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
+          <div className="min-w-0">
+            <p className="inline-flex rounded-full bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">La solution</p>
+            <h2 id="solution" className="mt-4 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Un courtier cyber, intégré à votre relation client. <span className="text-primary">Pas à la place.</span></h2>
+            <p className="body-text mt-3 max-w-[60ch] text-[17px]">Eliocyber Pro transforme un besoin que vous détectez déjà en un dossier traité, suivi et rémunéré — sans que vous changiez de métier.</p>
+            <div className="mt-6 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-soft)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Co-branding, à chaque étape</p>
+              <p className="mt-3 flex flex-wrap items-center gap-2 text-sm font-semibold text-foreground">
+                <span className="rounded-full bg-foreground px-3 py-1 text-background">Votre marque</span><span aria-hidden>+</span>
+                <span className="rounded-full bg-primary px-3 py-1 text-primary-foreground">Eliocyber</span><span aria-hidden>=</span>
+                <span>une expérience claire pour votre client.</span>
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Votre marque reste visible aux côtés de la nôtre. Le client sait qui l’accompagne au quotidien et qui assure le courtage. Personne ne marche sur le métier de l’autre.</p>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Btn to="/devenir-partenaire">Ouvrir un compte Pro — gratuit →</Btn>
+              <Btn to="/comment-ca-marche" ghost>Voir le fonctionnement</Btn>
+            </div>
+          </div>
+          <div className="rounded-[24px] border border-border bg-muted/40 p-5 sm:p-7">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Le principe, en un coup d’œil</p>
+            <ol className="mt-5 grid gap-2">
+              {([["Vous présentez", "Coordonnées + accord de contact.", false], ["Eliocyber assure le courtage", "Conseil, étude, contrat, suivi.", true], ["Vous suivez, vous êtes rémunéré", "Étapes partageables, prime à l’aboutissement.", false]] as const).map(([t, d, dark], i) => (
+                <li key={t} className="grid gap-2">
+                  {i > 0 && <span aria-hidden className="mx-auto text-primary">↓</span>}
+                  <div className={dark ? "flex gap-4 rounded-2xl bg-ink-glow p-4 shadow-[var(--shadow-lift)]" : "flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-soft)]"}>
+                    <span className={i === 0 ? "grid size-9 shrink-0 place-items-center rounded-full bg-foreground text-sm font-bold text-background" : "grid size-9 shrink-0 place-items-center rounded-full bg-primary text-sm font-bold text-primary-foreground"}>{i + 1}</span>
+                    <div><p className={dark ? "font-semibold text-primary-foreground" : "font-semibold text-foreground"}>{t}</p><p className={dark ? "text-sm text-ink-foreground" : "text-sm text-muted-foreground"}>{d}</p></div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-5 rounded-xl bg-secondary px-4 py-3 text-center text-sm font-semibold text-primary">Vous restez le prestataire de confiance. Nous restons le courtier.</p>
+          </div>
+        </div>
+      </section>
       <section className="bg-ink-glow relative overflow-hidden border-t border-primary-foreground/10" aria-labelledby="pourquoi">
         <div className="wrap py-12 lg:py-16">
           <p className="inline-flex rounded-full border border-primary-foreground/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-ink-link">Le problème que nous réglons</p>
