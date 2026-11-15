@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { seo } from "@/lib/seo";
-import { Btn, Card, KeyFigures, TrustSeal } from "@/components/site";
+import { Btn, Card, TrustSeal } from "@/components/site";
 import { InsurerMarquee } from "@/components/insurer-marquee";
 import { CommissionMockup, GaugeMockup, PipelineMockup } from "@/components/ui-mockups";
 import { fonctionnalites } from "@/lib/fonctionnalites";
