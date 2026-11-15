@@ -36,7 +36,7 @@ const families = [
 const promesses: [string, string][] = [
   ["Vous présentez, nous assurons", "Vous nous présentez le client : coordonnées + accord de contact. C’est tout. Aucun questionnaire technique à faire remplir, aucun devoir de conseil assurance à votre charge."],
   ["Nous faisons le courtage, en co-branding", "Eliocyber prend en charge le conseil, l’étude des besoins, la présentation des contrats et le suivi. Votre marque reste visible aux côtés de la nôtre, votre client ne vous perd jamais de vue."],
-  ["Vous suivez, vous êtes rémunéré", "Vous suivez les étapes partageables de chaque dossier dans votre Espace Pro. Quand le dossier aboutit, vous percevez une prime par type de client assuré."],
+  ["Vous suivez, vous êtes rémunéré", "Vous avez le suivi de votre dossier, avec des étapes partageables. Quand le dossier aboutit, vous percevez une commission par type de client assuré."],
 ];
 const promiseIcons: LucideIcon[] = [Users, Handshake, BadgeCheck];
 
@@ -136,7 +136,7 @@ function Home() {
           <div className="rounded-[24px] border border-border bg-muted/40 p-5 sm:p-7">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Le principe, en un coup d’œil</p>
             <ol className="mt-5 grid gap-2">
-              {([["Vous présentez", "Coordonnées + accord de contact.", false], ["Eliocyber assure le courtage", "Conseil, étude, contrat, suivi.", true], ["Vous suivez, vous êtes rémunéré", "Étapes partageables, prime à l’aboutissement.", false]] as const).map(([t, d, dark], i) => (
+              {([["Vous présentez", "Coordonnées + accord de contact.", false], ["Eliocyber assure le courtage", "Conseil, étude, contrat, suivi.", true], ["Vous suivez, vous êtes rémunéré", "Étapes partageables, commission à l’aboutissement.", false]] as const).map(([t, d, dark], i) => (
                 <li key={t} className="grid gap-2">
                   {i > 0 && <span aria-hidden className="mx-auto text-primary">↓</span>}
                   <div className={dark ? "flex gap-4 rounded-2xl bg-ink-glow p-4 shadow-[var(--shadow-lift)]" : "flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-soft)]"}>
