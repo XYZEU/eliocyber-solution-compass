@@ -34,10 +34,10 @@ function Home() {
       <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
       <section className="wrap sec relative lg:py-16">
         <div className="max-w-[880px]">
-          <p className="eyebrow">Pour les professionnels cyber, IT et conformité</p>
-          <h1 className="title-1 lg:!text-[44px]">Eliocyber, la plateforme de cyberassurance pour apporteurs d'affaires</h1>
-          <p className="body-text max-w-[760px] text-[17px]">Recommandez vos clients, suivez vos dossiers et valorisez votre relation avec une commission d'apport. Eliocyber prend le relais pour le conseil, la présentation des offres et la souscription.</p>
-          <p className="body-text text-[13px]">Vous informez et mettez en relation. Vous ne vendez pas d'assurance et ne conseillez pas de contrat.</p>
+          <p className="eyebrow">POUR UNE CYBER RESILIENCE TOTALE</p>
+          <h1 className="title-1 lg:!text-[44px]">L’assurance cyber,<br />sans jamais concurrencer<br />votre métier.</h1>
+          <p className="body-text max-w-[760px] text-[17px]">Gagnez un nouveau levier de valeur client, sans changer de métier, sans devenir courtier, sans concurrencer vos services. Eliocyber porte le courtage. Vous gardez votre relation.</p>
+          <p className="body-text text-[13px]">Accès gratuit</p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Btn to="/devenir-partenaire">Devenir apporteur d'affaires</Btn>
             <Btn to="/comment-ca-marche" ghost>Découvrir le parcours</Btn>
