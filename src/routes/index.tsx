@@ -9,7 +9,6 @@ import { Radar, ClipboardCheck, Send, ShieldCheck, ShieldAlert, Server, Scale, t
 
 const problemes: [string, string][] = [
   ["Le sujet n’est pas traité", "Votre client reste exposé, et vous passez à côté d’un vrai levier de valeur — sans avoir les moyens de le traiter vous-même."],
-  ["La mise en relation « bricolée »", "Sans cadre, c’est un risque réglementaire pour vous, un flou sur les rôles pour votre client, et aucun suivi."],
   ["La confiance entamée en cas de sinistre", "Si un piratage survient et que rien n’était prévu, c’est votre relation de confiance qui est touchée en premier."],
   ["Des interventions non prises en charge", "Sans pilotage assurance, certaines interventions peuvent ne pas être couvertes — même si votre client est assuré."],
   ["Des assureurs qui vendent vos services", "Certaines assurances cyber vendent des services cyber. Elles deviennent, de fait, vos concurrentes."],
@@ -90,7 +89,7 @@ function Home() {
           <p className="inline-flex rounded-full border border-primary-foreground/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-ink-link">Le problème que nous réglons</p>
           <h2 id="pourquoi" className="mt-4 font-display text-3xl font-extrabold tracking-tight text-primary-foreground sm:text-4xl">Pourquoi Eliocyber Pro existe</h2>
           <p className="mt-3 max-w-[60ch] text-[17px] leading-7 text-ink-foreground">Le besoin d’assurance cyber apparaît chez vos clients. Aujourd’hui, vous n’avez aucun moyen simple, conforme et non concurrentiel de le traiter.</p>
-          <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {problemes.map(([t, d], i) => (
               <li key={t} className="card-hover rounded-2xl bg-card p-5 shadow-[var(--shadow-soft)]">
                 <span className="font-display text-sm font-bold text-primary">{String(i + 1).padStart(2, "0")}</span>
