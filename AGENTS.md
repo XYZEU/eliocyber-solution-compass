@@ -40,3 +40,4 @@ use the editor.
 
 - Keep introducer role permissions and onboarding stages in src/lib/apporteur.ts, shared with the public guide and tests, to prevent conflicting regulatory boundaries across pages.
 - Navigation links to the shared commission simulator use /devenir-partenaire#simulateur; keep this anchor on the simulator so header and footer accesses land on the actual tool.
+- Homepage illustrative client preview and accessible journey tabs live in src/components/home-product.tsx; keep examples clearly labeled and share the journey copy with the route to avoid repetitive process sections.

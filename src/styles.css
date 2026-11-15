@@ -113,6 +113,7 @@
   --shadow-soft: 0 1px 2px color-mix(in oklab, var(--ink) 6%, transparent), 0 4px 14px -6px color-mix(in oklab, var(--ink) 10%, transparent);
   --shadow-lift: 0 2px 4px color-mix(in oklab, var(--ink) 6%, transparent), 0 14px 30px -12px color-mix(in oklab, var(--primary) 30%, transparent);
   --gradient-ink: radial-gradient(ellipse 60% 90% at 85% 10%, color-mix(in oklab, var(--primary) 45%, transparent), transparent 70%), radial-gradient(ellipse 50% 70% at 0% 100%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 70%), var(--ink);
+  --gradient-home-problem: linear-gradient(140deg, color-mix(in oklab, var(--ink-foreground) 8%, var(--ink)), var(--ink));
   --sidebar: oklch(1 0 0);
   --sidebar-foreground: oklch(0.27 0.05 245);
   --sidebar-primary: oklch(0.52 0.09 193);
@@ -184,5 +185,7 @@
   mask-image: radial-gradient(ellipse 70% 80% at 80% 0%, #000 30%, transparent 75%);
 }
 .fade-in-up { animation: fade-in-up .22s ease-out both; }
+.home-problem-card { background: var(--gradient-home-problem); transition: border-color .2s ease, box-shadow .2s ease; }
+.home-problem-card:hover { border-color: var(--ink-link); box-shadow: var(--shadow-lift); }
 @keyframes fade-in-up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .fade-in-up { animation: none; } }
