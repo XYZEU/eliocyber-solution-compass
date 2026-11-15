@@ -2,8 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { seo } from "@/lib/seo";
 import { Btn, Card, TrustSeal } from "@/components/site";
 import { InsurerMarquee } from "@/components/insurer-marquee";
-import { CommissionMockup, GaugeMockup, PipelineMockup } from "@/components/ui-mockups";
-import { CommissionSimulator } from "@/components/commission-simulator";
 import { ShieldAlert, Server, Scale, Users, Handshake, BadgeCheck, Check, type LucideIcon } from "lucide-react";
 
 const problemes: [string, string][] = [
