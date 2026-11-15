@@ -1,5 +1,6 @@
 - [x] Pages métiers : aperçu de dossier, accès au simulateur et cas d’usage illustratifs ; vérifier mobile et ordinateur.
 - [x] Harmoniser les liens d’action des cas d’usage sur les trois pages métiers (même libellé, même style, même destination).
+- [x] Bouton principal du header : libellé « Ouvrir un compte Pro », destination inchangée (/devenir-partenaire) ; vérifier mobile et ordinateur.
 - [x] Simplifier les outils du menu mobile, garder la candidature visible et alléger les groupes du footer.
 - [x] Réorganiser le header et les quatre colonnes du footer ; vérifier navigation clavier, mobile et accès au simulateur.
 - [x] Pages Devenir partenaire, MSSP, ESN, CISO + footer

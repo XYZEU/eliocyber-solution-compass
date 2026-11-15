@@ -142,10 +142,10 @@ export function SiteHeader() {
         <nav aria-label="Navigation principale" className="hidden items-center gap-4 text-sm xl:flex">
           <DesktopFeatures />
           {navLinks.map((link) => <Link key={link.to} to={link.to} className={navStyle} activeProps={{ className: "text-primary font-semibold" }}>{link.label}</Link>)}
-          <Btn to="/devenir-partenaire" className="ml-2 whitespace-nowrap">Devenir apporteur</Btn>
+          <Btn to="/devenir-partenaire" className="ml-2 whitespace-nowrap">Ouvrir un compte Pro</Btn>
         </nav>
         <div className="flex items-center gap-2 xl:hidden">
-        <Btn to="/devenir-partenaire" className="min-h-11 px-3 py-2 text-[13px]" >Devenir apporteur</Btn>
+        <Btn to="/devenir-partenaire" className="min-h-11 px-3 py-2 text-[13px]" >Ouvrir un compte Pro</Btn>
         <Button variant="ghost" size="icon" className="size-11 text-foreground" aria-label={open ? "Fermer le menu" : "Ouvrir le menu"} aria-expanded={open} aria-controls="menu-mobile" onClick={() => { setOpen((o) => !o); setFeatOpen(false); }}>
           {open ? <X /> : <Menu />}
         </Button>

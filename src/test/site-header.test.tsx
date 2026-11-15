@@ -31,7 +31,7 @@ describe("Mobile navigation closes after selecting a link", () => {
     expect(screen.getByRole("button", { name: "Outils de l’apporteur" })).toHaveAttribute("aria-expanded", "false");
   });
 
-  it.each(["Eliocyber, accueil", "Devenir apporteur"])("also closes after the persistent %s link", async (name) => {
+  it.each(["Eliocyber, accueil", "Ouvrir un compte Pro"])("also closes after the persistent %s link", async (name) => {
     await renderHeader();
     fireEvent.click(screen.getByRole("button", { name: "Ouvrir le menu" }));
     const links = screen.getAllByRole("link", { name });
