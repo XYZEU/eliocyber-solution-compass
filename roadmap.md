@@ -1,4 +1,5 @@
 - [x] Accueil : bloc trois cartes « Vous présentez / Nous faisons le courtage / Vous suivez » sous « La solution », avant les logos assureurs ; vérifier mobile et ordinateur.
+- [x] Accueil : bloc sombre « Ce que la solution change, concrètement » (4 points + accès au parcours) juste après « Comment ça marche » ; vérifier mobile et ordinateur.
 - [x] Accueil : « prime » -> « commission » et suppression de la promesse d’« Espace Pro » dans les cartes et le panneau du principe.
 - [x] Harmoniser l’espacement entre les blocs « Le problème » et « La solution » de l’accueil ; vérifier mobile et ordinateur.
 - [x] Pages métiers : aperçu de dossier, accès au simulateur et cas d’usage illustratifs ; vérifier mobile et ordinateur.
