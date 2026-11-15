@@ -26,7 +26,10 @@ const d: LandingData = {
   services: [["Plan de remédiation", "Actions priorisées, assignables à votre client, avec suivi de mise en œuvre."], ["Preuves de contrôle", "Horodatage et historique des preuves, exportables vers le courtier."], ["Suivi de renouvellement", "Rappel et re-scan à l'échéance, pour entretenir la relation."]],
   offerTitle: "Une commission unique, sans négociation",
   offerText: "Un lead, un apporteur, une commission. Selon la convention, après souscription, prime encaissée et délai de rétractation dépassé.",
-  testimonialsTitle: "Ce que disent nos partenaires",
+  useCases: [
+    ["À la restitution d’un pentest", "L’ESN présente ses constats techniques et son plan de remédiation. Si le client souhaite étudier une assurance cyber, elle recueille son consentement et transmet le dossier au courtier, qui prend en charge le conseil."],
+    ["Après une mission de remédiation", "L’ESN rassemble les preuves des contrôles déployés pour préparer la mise en relation. Elle suit l’avancement du dossier ; la sélection du contrat et la souscription restent du ressort du courtier."],
+  ],
   faq: [
     ["Puis-je recommander une police à mon client ?", "Non. Vous informez et transmettez. Le courtier conseille et présente les garanties."],
     ["Combien de temps prend la formation ?", "Une formation courte et obligatoire avant votre premier apport. Ses modalités sont précisées lors du partenariat."],

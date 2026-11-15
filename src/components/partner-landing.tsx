@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { ChevronDown } from "lucide-react";
-import { Card, CtaBanner } from "@/components/site";
+import { Activity, ArrowRight, CheckCircle2, ChevronDown, FileText, ShieldCheck } from "lucide-react";
+import { Btn, Card, CtaBanner } from "@/components/site";
 import { commissionGrid } from "@/lib/commission";
 
 export type LandingData = {
@@ -22,7 +22,7 @@ export type LandingData = {
   services: [string, string][];
   offerTitle: string;
   offerText: string;
-  testimonialsTitle: string;
+  useCases: [string, string][];
   faq: [string, string][];
   finalTitle: string;
   finalText: string;
@@ -65,12 +65,7 @@ export function PartnerLanding({ d }: { d: LandingData }) {
             <a href="#offre" className="inline-flex items-center justify-center rounded-lg border-[1.5px] border-primary px-5 py-3 text-[15px] font-semibold text-primary hover:bg-primary-soft">Voir l'offre</a>
           </div>
         </div>
-        <aside className="card-box" aria-label={d.visual.label}>
-          <p className="eyebrow">{d.visual.label}</p>
-          {d.visual.title && <p className="title-3 mt-2">{d.visual.title}</p>}
-          <p className="body-text mt-2">{d.visual.text}</p>
-          {d.visual.items && <ul className="mt-3 flex flex-wrap gap-2">{d.visual.items.map((x) => <li key={x} className="pill">{x}</li>)}</ul>}
-        </aside>
+        <PartnerDashboard visual={d.visual} />
       </section></div>
 
       <section id="probleme" className="band scroll-mt-20" aria-labelledby="h-probleme">
@@ -124,22 +119,18 @@ export function PartnerLanding({ d }: { d: LandingData }) {
             <p className="eyebrow">Offre</p>
             <h2 id="h-offre" className="title-2">{d.offerTitle}</h2>
             <p className="body-text">{d.offerText}</p>
+            <Btn to="/devenir-partenaire" hash="simulateur" ghost className="mt-3 min-h-11 gap-2">Estimer ma commission <ArrowRight className="size-4 shrink-0" aria-hidden /></Btn>
           </div>
           <CommissionTable />
         </div>
       </section>
 
-      <section className="wrap sec" aria-labelledby="h-temoin">
-        <p className="eyebrow">Témoignages</p>
-        <h2 id="h-temoin" className="title-2">{d.testimonialsTitle}</h2>
+      <section className="wrap sec" aria-labelledby="h-usages">
+        <p className="eyebrow">Dans votre activité</p>
+        <h2 id="h-usages" className="title-2">Cas d’usage types</h2>
+        <p className="body-text">Scénarios illustratifs, et non témoignages de partenaires ou résultats constatés.</p>
         <div className="mt-5 grid gap-5 md:grid-cols-2">
-          {[0, 1].map((i) => (
-            <figure key={i} className="card-box">
-              <p className="eyebrow">[Témoignage à recueillir]</p>
-              <blockquote className="body-text mt-2 italic">« [Citation d'un partenaire, avec son accord écrit] »</blockquote>
-              <figcaption className="text-sm text-muted-foreground">[Prénom, fonction, entreprise, avec autorisation de publication]</figcaption>
-            </figure>
-          ))}
+          {d.useCases.map(([title, text]) => <Card key={title} title={title} icon={FileText} className="h-full"><p className="body-text !mb-0">{text}</p></Card>)}
         </div>
       </section>
 
@@ -164,6 +155,27 @@ export function PartnerLanding({ d }: { d: LandingData }) {
       <div className="pt-14" />
       <CtaBanner title={d.finalTitle} text={d.finalText} to="/devenir-partenaire" label={d.cta} secondary={{ to: "/devenir-partenaire", hash: "profils", label: "Tous les partenaires" }} />
     </>
+  );
+}
+
+function PartnerDashboard({ visual }: { visual: LandingData["visual"] }) {
+  return (
+    <aside className="min-w-0 overflow-hidden rounded-lg border border-border bg-card shadow-[var(--shadow-lift)]" aria-label={visual.label}>
+      <div className="flex items-center justify-between gap-3 border-b border-border bg-secondary px-5 py-3">
+        <span className="flex min-w-0 items-center gap-2 text-sm font-semibold"><Activity className="size-4 shrink-0 text-primary" aria-hidden />Suivi du dossier</span>
+        <span className="shrink-0 text-xs text-muted-foreground">Exemple fictif</span>
+      </div>
+      <div className="p-5 sm:p-6">
+        <p className="eyebrow">{visual.label}</p>
+        <h2 className="mt-2 font-display text-lg font-semibold leading-6 tracking-normal">{visual.title ?? "Dossier client"}</h2>
+        <ol className="my-5 grid grid-cols-3 gap-2 border-y border-border py-4 text-xs leading-5">
+          {["Consentement", "Transmission", "Relais courtier"].map((step, i) => <li key={step} className="min-w-0"><span className={i < 2 ? "mb-2 flex size-7 items-center justify-center rounded-full bg-primary-soft text-primary" : "mb-2 flex size-7 items-center justify-center rounded-full bg-secondary text-muted-foreground"}>{i < 2 ? <CheckCircle2 className="size-4" aria-hidden /> : <ShieldCheck className="size-4" aria-hidden />}</span><span className="font-medium">{step}</span></li>)}
+        </ol>
+        <p className="body-text text-sm leading-6">{visual.text}</p>
+        {visual.items && <ul className="mt-4 space-y-2">{visual.items.map((item) => <li key={item} className="flex items-start gap-2 text-xs leading-5 text-muted-foreground"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />{item}</li>)}</ul>}
+      </div>
+      <div className="flex items-start gap-2 border-t border-border bg-primary-soft px-5 py-3 text-xs leading-5 text-primary-soft-foreground"><ShieldCheck className="mt-0.5 size-4 shrink-0" aria-hidden />Vous transmettez, le courtier conseille.</div>
+    </aside>
   );
 }
 
