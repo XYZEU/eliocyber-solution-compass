@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { fonctionnalites, findFonctionnalite } from "@/lib/fonctionnalites";
+import { coreModules, fonctionnalites, findFonctionnalite } from "@/lib/fonctionnalites";
 
 describe("Crisis feature integration", () => {
   it("places crisis management between payment and compliance in the partner collection", () => {
@@ -12,5 +12,22 @@ describe("Crisis feature integration", () => {
 
   it("resolves the new page through the shared feature collection", () => {
     expect(findFonctionnalite("agir-en-cas-de-crise")?.group).toBe("partenaire");
+  });
+});
+
+describe("Introducer-only feature pages", () => {
+  it("keeps exactly the five introducer tools as detail pages", () => {
+    expect(fonctionnalites.map((f) => f.slug)).toEqual([
+      "attirer-vos-clients", "suivre-vos-prospects", "etre-paye-sans-effort",
+      "agir-en-cas-de-crise", "conformite-et-securite",
+    ]);
+  });
+
+  it.each([
+    "portail-msp", "moteur-de-souscription", "moteur-de-risque",
+    "module-de-remediation", "portail-client",
+  ])("keeps %s only as an overview summary", (slug) => {
+    expect(findFonctionnalite(slug)).toBeUndefined();
+    expect(coreModules.find((module) => module.legacySlug === slug)?.summary.length).toBeGreaterThan(0);
   });
 });

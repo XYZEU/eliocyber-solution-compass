@@ -41,7 +41,7 @@ function Page() {
           {rules.map(([t, d]) => <Card key={t} title={t} className="h-full border-l-4 !border-l-primary"><p className="body-text !mb-0">{d}</p></Card>)}
         </div>
       </section>
-      <CtaBanner title="Prêt à transmettre votre premier dossier ?" text="Présentez votre activité pour étudier votre convention d'apport." to="/devenir-partenaire" label="Devenir apporteur d’affaires" secondary={{ to: "/nos-partenaires", label: "Qui peut nous rejoindre" }} />
+      <CtaBanner title="Prêt à transmettre votre premier dossier ?" text="Présentez votre activité pour étudier votre convention d'apport." to="/devenir-partenaire" label="Devenir apporteur d’affaires" secondary={{ to: "/devenir-partenaire", hash: "profils", label: "Qui peut nous rejoindre" }} />
     </>
   );
 }
