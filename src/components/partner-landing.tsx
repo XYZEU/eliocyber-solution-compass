@@ -42,7 +42,7 @@ export function PartnerLanding({ d }: { d: LandingData }) {
 
       <div className="hero-band"><section className="wrap sec grid items-center gap-8 md:grid-cols-[1.4fr_1fr]">
         <div className="min-w-0">
-          <nav aria-label="Fil d’Ariane" className="mb-3 text-[13px] leading-5 text-muted-foreground sm:mb-4 sm:text-sm">
+          <nav aria-label="Fil d’Ariane" className="mb-4 text-[13px] leading-5 text-muted-foreground sm:mb-5 sm:text-sm">
             <ol className="flex flex-wrap items-center gap-x-2 gap-y-0">
               <li className="shrink-0"><Link to="/" className="inline-flex min-h-11 items-center rounded-sm hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">Accueil</Link></li>
               <li className="inline-flex min-h-11 max-w-full items-center gap-2">
@@ -55,8 +55,10 @@ export function PartnerLanding({ d }: { d: LandingData }) {
               </li>
             </ol>
           </nav>
-          <p className="eyebrow flex items-center gap-2"><span className="live-dot" aria-hidden />{d.eyebrow}</p>
-          <h1 className="title-1">{d.h1}</h1>
+          <div className="mb-4 grid gap-3">
+            <p className="eyebrow flex items-center gap-2"><span className="live-dot" aria-hidden />{d.eyebrow}</p>
+            <h1 className="title-1 !m-0">{d.h1}</h1>
+          </div>
           <p className="body-text max-w-[620px] text-[17px]">{d.intro}</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link to="/devenir-partenaire" hash="candidature" className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground hover:bg-primary/90">{d.cta}</Link>
