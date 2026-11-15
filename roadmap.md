@@ -26,3 +26,4 @@
 - [x] Logo radar : SVG transparents clair/sombre, intégration header/footer, favicon et vérification mobile/ordinateur.
 
 - [x] Retirer Solution, fusionner Nos partenaires dans Devenir partenaire et résumer les modules techniques sans pages dédiées ; vérifier liens et redirections.
+- [x] Bloc « La suite de l'apporteur » retiré de l'accueil ; les 5 pages outils restent accessibles via le menu et la Vue d'ensemble
