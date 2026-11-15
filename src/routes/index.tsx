@@ -85,7 +85,7 @@ function Home() {
         </dl>
       </section>
       <section className="bg-ink-glow relative overflow-hidden border-t border-primary-foreground/10" aria-labelledby="pourquoi">
-        <div className="wrap py-12 lg:py-16">
+        <div className="wrap sec lg:py-16">
           <p className="inline-flex rounded-full border border-primary-foreground/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-ink-link">Le problème que nous réglons</p>
           <h2 id="pourquoi" className="mt-4 font-display text-3xl font-extrabold tracking-tight text-primary-foreground sm:text-4xl">Pourquoi Eliocyber Pro existe</h2>
           <p className="mt-3 max-w-[60ch] text-[17px] leading-7 text-ink-foreground">Le besoin d’assurance cyber apparaît chez vos clients. Aujourd’hui, vous n’avez aucun moyen simple, conforme et non concurrentiel de le traiter.</p>
