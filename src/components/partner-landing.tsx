@@ -41,14 +41,18 @@ export function PartnerLanding({ d }: { d: LandingData }) {
       </nav>
 
       <div className="hero-band"><section className="wrap sec grid items-center gap-8 md:grid-cols-[1.4fr_1fr]">
-        <div>
-          <nav aria-label="Fil d’Ariane" className="mb-4 text-sm text-muted-foreground">
-            <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
-              <li><Link to="/" className="inline-flex min-h-11 items-center hover:text-primary focus-visible:ring-2 focus-visible:ring-ring">Accueil</Link></li>
-              <li aria-hidden="true">/</li>
-              <li><Link to="/devenir-partenaire" hash="profils" className="inline-flex min-h-11 items-center hover:text-primary focus-visible:ring-2 focus-visible:ring-ring">Profils partenaires</Link></li>
-              <li aria-hidden="true">/</li>
-              <li><span aria-current="page" className="text-foreground">{d.h1}</span></li>
+        <div className="min-w-0">
+          <nav aria-label="Fil d’Ariane" className="mb-3 text-[13px] leading-5 text-muted-foreground sm:mb-4 sm:text-sm">
+            <ol className="flex flex-wrap items-center gap-x-2 gap-y-0">
+              <li className="shrink-0"><Link to="/" className="inline-flex min-h-11 items-center rounded-sm hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">Accueil</Link></li>
+              <li className="inline-flex min-h-11 max-w-full items-center gap-2">
+                <span aria-hidden="true" className="shrink-0">/</span>
+                <Link to="/devenir-partenaire" hash="profils" className="inline-flex min-h-11 items-center whitespace-nowrap rounded-sm hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">Profils partenaires</Link>
+              </li>
+              <li className="inline-flex min-h-11 max-w-full items-center gap-2">
+                <span aria-hidden="true" className="shrink-0">/</span>
+                <span aria-current="page" className="min-w-0 font-medium text-foreground">{d.h1}</span>
+              </li>
             </ol>
           </nav>
           <p className="eyebrow flex items-center gap-2"><span className="live-dot" aria-hidden />{d.eyebrow}</p>
