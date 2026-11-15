@@ -34,7 +34,7 @@ describe("Mobile navigation closes after selecting a link", () => {
   it.each(["Eliocyber, accueil", "Devenir apporteur"])("also closes after the persistent %s link", async (name) => {
     await renderHeader();
     fireEvent.click(screen.getByRole("button", { name: "Ouvrir le menu" }));
-    const links = screen.getAllByRole("link", { name, exact: true });
+    const links = screen.getAllByRole("link", { name });
     const link = links.at(-1);
     if (!link) throw new Error("Missing header link");
     fireEvent.click(link);
