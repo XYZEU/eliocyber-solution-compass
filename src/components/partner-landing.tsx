@@ -130,7 +130,12 @@ export function PartnerLanding({ d }: { d: LandingData }) {
         <h2 id="h-usages" className="title-2">Cas d’usage types</h2>
         <p className="body-text">Scénarios illustratifs, et non témoignages de partenaires ou résultats constatés.</p>
         <div className="mt-5 grid gap-5 md:grid-cols-2">
-          {d.useCases.map(([title, text]) => <Card key={title} title={title} icon={FileText} className="h-full"><p className="body-text !mb-0">{text}</p></Card>)}
+          {d.useCases.map(([title, text]) => (
+            <Card key={title} title={title} icon={FileText} className="flex h-full flex-col">
+              <p className="body-text !mb-0 flex-1">{text}</p>
+              <Link to="/devenir-partenaire" hash="candidature" className="mt-4 inline-flex min-h-11 self-start items-center gap-1.5 rounded-sm text-sm font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">Devenir apporteur d’affaires <ArrowRight className="size-4 shrink-0" aria-hidden /></Link>
+            </Card>
+          ))}
         </div>
       </section>
 
