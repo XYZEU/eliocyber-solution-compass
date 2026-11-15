@@ -133,27 +133,36 @@ export function SiteHeader() {
   const navStyle = "inline-flex min-h-11 items-center rounded-sm text-foreground hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-card/95 backdrop-blur">
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-5 py-3 sm:px-8 sm:py-4">
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-2 px-4 py-3 sm:gap-6 sm:px-8 sm:py-4">
         <Link to="/" className="inline-flex min-h-11 shrink-0 items-center rounded-sm focus-visible:ring-2 focus-visible:ring-ring" aria-label="Eliocyber, accueil">
-          <img src={radarLight} alt="Eliocyber" width={180} height={42} className="h-auto w-[156px] sm:w-[180px]" />
+          <img src={radarLight} alt="Eliocyber" width={180} height={42} className="h-auto w-[120px] max-[360px]:w-[96px] sm:w-[180px]" />
         </Link>
         <nav aria-label="Navigation principale" className="hidden items-center gap-4 text-sm xl:flex">
           <DesktopFeatures />
           {navLinks.map((link) => <Link key={link.to} to={link.to} className={navStyle} activeProps={{ className: "text-primary font-semibold" }}>{link.label}</Link>)}
           <Btn to="/devenir-partenaire" className="ml-2 whitespace-nowrap">Devenir apporteur</Btn>
         </nav>
-        <Button variant="ghost" size="icon" className="size-11 text-foreground xl:hidden" aria-label={open ? "Fermer le menu" : "Ouvrir le menu"} aria-expanded={open} aria-controls="menu-mobile" onClick={() => { setOpen((o) => !o); setFeatOpen(false); }}>
+        <div className="flex items-center gap-2 xl:hidden">
+        <Btn to="/devenir-partenaire" className="min-h-11 px-3 py-2 text-[13px]" >Devenir apporteur</Btn>
+        <Button variant="ghost" size="icon" className="size-11 text-foreground" aria-label={open ? "Fermer le menu" : "Ouvrir le menu"} aria-expanded={open} aria-controls="menu-mobile" onClick={() => { setOpen((o) => !o); setFeatOpen(false); }}>
           {open ? <X /> : <Menu />}
         </Button>
+        </div>
       </div>
       {open && (
         <nav id="menu-mobile" aria-label="Navigation mobile" onKeyDown={(e) => { if (e.key === "Escape") { closeMenu(); document.querySelector<HTMLButtonElement>('button[aria-controls="menu-mobile"]')?.focus(); } }} className="flex max-h-[calc(100dvh-85px)] flex-col gap-1 overflow-y-auto border-t border-border px-5 pb-5 pt-2 xl:hidden">
-          <Button variant="ghost" aria-expanded={featOpen} aria-controls="menu-mobile-features" onClick={() => setFeatOpen((o) => !o)} className="min-h-11 justify-between px-0 text-left text-[15px] font-semibold text-foreground">
-            Fonctionnalités <ChevronDown className={cn("transition-transform", featOpen && "rotate-180")} aria-hidden />
+          <Link to="/fonctionnalites" onClick={closeMenu} className={cn(navStyle, "py-2")} activeOptions={{ exact: true }} activeProps={{ className: "text-primary font-semibold" }}>Vue d’ensemble</Link>
+          <Button variant="ghost" id="menu-mobile-tools" aria-expanded={featOpen} aria-controls="menu-mobile-features" onClick={() => setFeatOpen((o) => !o)} className="min-h-11 justify-between border-t border-border px-0 text-left text-[15px] font-semibold text-foreground">
+            Outils de l’apporteur <ChevronDown className={cn("transition-transform", featOpen && "rotate-180")} aria-hidden />
           </Button>
-          {featOpen && <div id="menu-mobile-features" className="fade-in-up -mx-3 pb-2"><FeaturesMenu onNavigate={closeMenu} /></div>}
+          {featOpen && <div id="menu-mobile-features" role="region" aria-labelledby="menu-mobile-tools" onKeyDown={onMenuKeyDown} className="border-l border-border pl-3">
+            {partnerFeatures.map((feature) => {
+              const Icon = featureIcons[feature.slug] ?? LayoutGrid;
+              return <Link key={feature.slug} data-menu-item to="/fonctionnalites/$slug" params={{ slug: feature.slug }} onClick={closeMenu} className="flex min-h-11 items-center gap-3 rounded-sm py-2 text-sm text-foreground hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" activeProps={{ className: "text-primary font-semibold" }}><Icon className="size-4 shrink-0 text-primary" aria-hidden />{feature.name}</Link>;
+            })}
+          </div>}
           {navLinks.map((link) => <Link key={link.to} to={link.to} onClick={closeMenu} className={cn(navStyle, "border-t border-border py-3")} activeProps={{ className: "text-primary font-semibold" }}>{link.label}</Link>)}
-          <span onClick={closeMenu} className="mt-3"><Btn to="/devenir-partenaire" className="w-full">Devenir apporteur</Btn></span>
+          <Link to="/devenir-partenaire" hash="simulateur" onClick={closeMenu} className={cn(navStyle, "border-t border-border py-3")}><Calculator className="mr-2 size-4" aria-hidden />Simulateur de commission</Link>
         </nav>
       )}
     </header>
@@ -172,13 +181,11 @@ const footerGroups: FooterGroup[] = [
     { to: "/fonctionnalites", label: "Vue d'ensemble" },
     ...fonctionnalites.map((f) => ({ slug: f.slug, label: f.name })),
   ] },
-  { title: "Modèle partenaire", links: [
+  { title: "Parcours apporteur", links: [
     { to: "/comment-ca-marche", label: "Comment ça marche" },
     { to: "/cadre-apporteur", label: "Statut et cadre de l’apporteur" },
     { to: "/devenir-partenaire", hash: "simulateur", label: "Simulateur de commission" },
-    { to: "/partenaires/mssp", label: "MSSP et SOC" },
-    { to: "/partenaires/esn", label: "ESN cyber" },
-    { to: "/partenaires/ciso", label: "CISO freelance" },
+    { to: "/devenir-partenaire", hash: "profils", label: "Profils partenaires" },
     { to: "/devenir-partenaire", label: "Devenir apporteur d’affaires" },
   ] },
   { title: "Société et ressources", links: [
@@ -233,7 +240,7 @@ export function SiteFooter() {
       <div className="wrap py-8 md:grid md:grid-cols-[1.3fr_repeat(3,1fr)] md:gap-8 md:py-12">
         <div className="min-w-0">
           <Link to="/" className="inline-flex min-h-11 items-center rounded-sm focus-visible:ring-2 focus-visible:ring-primary-foreground" aria-label="Eliocyber, accueil"><img src={radarDark} alt="Eliocyber" width={190} height={44} className="h-auto w-[190px] max-w-full" /></Link>
-          <p className="mt-2.5 max-w-[300px] md:mt-3">La plateforme de cyberassurance pour apporteurs d'affaires cyber, IT et conformité. Le courtier prend le relais auprès de vos clients.</p>
+          <p className="mt-2.5 max-w-[300px] md:mt-3">La plateforme de cyberassurance pour apporteurs d'affaires cyber, IT et conformité.</p>
           <address className="mt-2.5 not-italic md:mt-4">
             <p className="flex min-h-11 items-center gap-2 md:min-h-0 md:py-[3px]"><Mail className="size-4 shrink-0" aria-hidden /><a href="mailto:bonjour@eliocyber.fr" className={fLink}>bonjour@eliocyber.fr</a></p>
           </address>
@@ -269,7 +276,7 @@ export function SiteFooter() {
                     aria-expanded={isOpen}
                     aria-controls={`footer-p-${id}`}
                     onClick={() => setOpen(isOpen ? null : col.title)}
-                    className="flex min-h-12 w-full items-center justify-between gap-3 py-3 text-left text-[14px] font-semibold text-primary-foreground transition-colors hover:text-primary-foreground/80 focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/80 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+                    className="flex min-h-12 w-full items-center justify-between gap-3 py-3 text-left text-[14px] font-semibold text-primary-foreground transition-colors hover:bg-ink-foreground/10 hover:text-primary-foreground focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/80 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                   >
                     {col.title}
                     <ChevronDown className={cn("size-4 shrink-0 transition-transform duration-200", isOpen && "rotate-180")} aria-hidden />
@@ -298,7 +305,7 @@ export function SiteFooter() {
           <p className="leading-[1.5] opacity-75 md:leading-relaxed md:opacity-80">Eliocyber est un courtier en assurance immatriculé à l'ORIAS sous le n° [XXX]. Le partenaire agit exclusivement en qualité d'apporteur d'affaires et n'est pas intermédiaire en assurance. Le conseil, la présentation des garanties, la souscription et la gestion du contrat sont assurés par Eliocyber. Réclamations et médiation : [coordonnées].</p>
           <div className="mt-2.5 flex flex-col gap-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
             <span className="opacity-70">© {new Date().getFullYear()} Eliocyber. Tous droits réservés.</span>
-            <ul className="grid grid-cols-2 gap-x-4 sm:flex sm:flex-wrap sm:gap-x-5">
+            <ul aria-label="Informations légales" className="grid grid-cols-2 gap-x-4 sm:flex sm:flex-wrap sm:gap-x-5">
               <li><Link to="/mentions-legales" className={cn(fLink, "inline-flex min-h-11 items-center md:min-h-0")}>Mentions légales</Link></li>
               <li><Link to="/mentions-legales" hash="donnees" className={cn(fLink, "inline-flex min-h-11 items-center md:min-h-0")}>Confidentialité</Link></li>
               <li><Link to="/mentions-legales" hash="reclamations" className={cn(fLink, "inline-flex min-h-11 items-center md:min-h-0")}>Réclamations</Link></li>
