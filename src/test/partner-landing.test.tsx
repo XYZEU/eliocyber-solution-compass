@@ -1,5 +1,5 @@
 import { createMemoryHistory, createRootRoute, createRouter, RouterProvider } from "@tanstack/react-router";
-import { act, render, screen } from "@testing-library/react";
+import { act, render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { PartnerLanding, type LandingData } from "@/components/partner-landing";
@@ -39,7 +39,8 @@ async function renderLanding() {
     render(<RouterProvider router={router} />);
     await router.load();
   });
-  return screen.getAllByRole("link", { name: /^Devenir apporteur d’affaires/, hidden: true });
+  const section = await screen.findByRole("region", { name: "Cas d’usage types", hidden: true });
+  return within(section).getAllByRole("link", { hidden: true });
 }
 
 describe("Use-case action links", () => {
