@@ -247,6 +247,18 @@ function Home() {
         </div>
       </section>
 
+      <section className="wrap sec lg:py-16">
+        <p className="eyebrow">Qui peut nous rejoindre</p>
+        <h2 className="title-2 lg:!text-[28px]">Une plateforme pour les experts de leurs clients</h2>
+        <div className="mt-6 grid gap-5 md:grid-cols-3">
+          {families.map(([t, d], i) => <Card key={t} icon={familyIcons[i]} title={t}><p className="body-text text-sm">{d}</p></Card>)}
+        </div>
+        <figure className="card-box mt-8 border-l-4 !border-l-primary">
+          <figcaption className="eyebrow">Mention de recommandation</figcaption>
+          <blockquote className="mt-2.5 text-base text-foreground">« Recommandé par [Partenaire] — Conseil, souscription et gestion assurés par Eliocyber, courtier en assurance. »</blockquote>
+        </figure>
+      </section>
+
       <section className="wrap sec lg:py-16" aria-labelledby="apercu">
         <p className="eyebrow flex items-center gap-2"><span className="live-dot" aria-hidden />Votre plateforme d’apport d’affaires</p>
         <h2 id="apercu" className="title-2 lg:!text-[28px]">Vos recommandations, vos dossiers, vos commissions</h2>
@@ -261,18 +273,6 @@ function Home() {
           </div>
           <CommissionSimulator />
         </div>
-      </section>
-
-      <section className="wrap sec lg:py-16">
-        <p className="eyebrow">Qui peut nous rejoindre</p>
-        <h2 className="title-2 lg:!text-[28px]">Une plateforme pour les experts de leurs clients</h2>
-        <div className="mt-6 grid gap-5 md:grid-cols-3">
-          {families.map(([t, d], i) => <Card key={t} icon={familyIcons[i]} title={t}><p className="body-text text-sm">{d}</p></Card>)}
-        </div>
-        <figure className="card-box mt-8 border-l-4 !border-l-primary">
-          <figcaption className="eyebrow">Mention de recommandation</figcaption>
-          <blockquote className="mt-2.5 text-base text-foreground">« Recommandé par [Partenaire] — Conseil, souscription et gestion assurés par Eliocyber, courtier en assurance. »</blockquote>
-        </figure>
       </section>
     </>
   );
