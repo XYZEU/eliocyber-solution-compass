@@ -192,18 +192,6 @@ function Home() {
       </section>
       <InsurerMarquee />
 
-      <section className="band">
-        <div className="wrap sec lg:py-16">
-          <p className="eyebrow">Parcours</p>
-          <h2 className="title-2 lg:!text-[28px]">Comment ça marche</h2>
-          <ol className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map(([t, d], i) => (
-              <li key={t}><Card icon={stepIcons[i]} eyebrow={`Étape ${i + 1}`} title={t} className="h-full"><p className="body-text text-sm">{d}</p></Card></li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
       <section className="wrap sec lg:py-16" aria-labelledby="concretement">
         <div className="bg-ink-glow relative overflow-hidden rounded-[24px] p-6 shadow-lg sm:p-8 lg:p-10">
           <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
