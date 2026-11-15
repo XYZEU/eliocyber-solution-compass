@@ -28,9 +28,9 @@ const stepIcons: LucideIcon[] = [Radar, ClipboardCheck, Send, ShieldCheck];
 const familyIcons: LucideIcon[] = [ShieldAlert, Server, Scale];
 const figures = [["0", "questionnaire technique"], ["2 min", "pour présenter un client"], ["Co-branding", "à chaque étape"], ["Suivi", "partageable"]] as const;
 const families = [
-  ["Professionnels cyber", "MSSP / SOC, ESN cyber, CISO freelance, pentesters, experts forensic, éditeurs et intégrateurs sécurité."],
-  ["Professionnels IT", "MSP, DSI externes, intégrateurs, prestataires cloud et télécom."],
-  ["Professionnels de la conformité", "DPO externes, avocats, experts-comptables, DAF externes, consultants NIS2, DORA ou ISO 27001."],
+  ["EXPERTS TECHNIQUES", "MSP, MSSP, SOC, Intégrateurs, Cloud."],
+  ["EXPERTS GOUVERNANCE", "ESN, DSI externes, Ciso externes, Dpo, Auditeurs."],
+  ["EXPERTS EDITEURS", "Grc, Edr, Siem, Elearning, Scoring."],
 ] as const;
 const promesses: [string, string][] = [
   ["Vous présentez, nous assurons", "Vous nous présentez le client : coordonnées + accord de contact. C’est tout. Aucun questionnaire technique à faire remplir, aucun devoir de conseil assurance à votre charge."],
