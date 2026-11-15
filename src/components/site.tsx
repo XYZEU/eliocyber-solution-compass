@@ -133,9 +133,9 @@ export function SiteHeader() {
   const navStyle = "inline-flex min-h-11 items-center rounded-sm text-foreground hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-card/95 backdrop-blur">
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-5 py-3 sm:px-8 sm:py-4">
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-2 px-4 py-3 sm:gap-6 sm:px-8 sm:py-4">
         <Link to="/" className="inline-flex min-h-11 shrink-0 items-center rounded-sm focus-visible:ring-2 focus-visible:ring-ring" aria-label="Eliocyber, accueil">
-          <img src={radarLight} alt="Eliocyber" width={180} height={42} className="h-auto w-[156px] sm:w-[180px]" />
+          <img src={radarLight} alt="Eliocyber" width={180} height={42} className="h-auto w-[120px] max-[360px]:w-[96px] sm:w-[180px]" />
         </Link>
         <nav aria-label="Navigation principale" className="hidden items-center gap-4 text-sm xl:flex">
           <DesktopFeatures />
