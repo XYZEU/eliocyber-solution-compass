@@ -77,7 +77,7 @@ function Home() {
           <p className="body-text max-w-[760px] text-[17px]">Recommandez l’assurance cyber à vos clients et faites valoir vos interventions techniques en cas de crise. Eliocyber porte le courtage et ses obligations réglementaires. Vous gardez votre relation client.</p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Btn to="/devenir-partenaire">Devenir partenaire apporteur</Btn>
-            <Btn href="/devenir-partenaire#simulateur" ghost>Estimer mes commissions →</Btn>
+            <Btn to="/devenir-partenaire" hash="simulateur" ghost>Estimer mes commissions →</Btn>
           </div>
           <div className="mt-6"><Link to="/cadre-apporteur" className="text-sm font-semibold text-primary hover:underline">Comprendre le statut d'apporteur →</Link></div>
           <div className="mt-6"><TrustSeal /></div>
