@@ -17,8 +17,8 @@ const fams = [
 function Page() {
   return (
     <>
-      <PageIntro eyebrow="Nos partenaires" title="Ceux qui voient le risque, ceux qui le protègent">
-        Nous travaillons avec des professionnels cyber, IT et de la conformité. Ils identifient le besoin ; nous le transformons en protection.
+      <PageIntro eyebrow="Nos partenaires" title="Les apporteurs d'affaires de la cyberassurance">
+        Indépendants et sociétés cyber, IT ou conformité : recommandez vos clients sur la plateforme Eliocyber. Votre candidature est examinée selon votre activité et les règles professionnelles qui s'appliquent à votre métier.
       </PageIntro>
       <section className="band" aria-labelledby="familles">
         <div className="wrap sec">
@@ -51,7 +51,7 @@ function Page() {
           </Card>
         </div>
       </section>
-      <CtaBanner title="Devenir partenaire" text="Choisissez votre profil, suivez la formation courte et créez votre premier dossier." to="/devenir-partenaire" label="Créer mon compte partenaire" secondary={{ to: "/comment-ca-marche", label: "Voir les 6 étapes" }} />
+      <CtaBanner title="Devenir partenaire" text="Choisissez votre profil, suivez la formation courte et créez votre premier dossier." to="/devenir-partenaire" label="Devenir apporteur d’affaires" secondary={{ to: "/comment-ca-marche", label: "Voir les 6 étapes" }} />
     </>
   );
 }

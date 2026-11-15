@@ -43,30 +43,6 @@ function Home() {
             <Btn to="/comment-ca-marche" ghost>Découvrir le parcours</Btn>
           </div>
           <div className="mt-6"><Link to="/cadre-apporteur" className="text-sm font-semibold text-primary hover:underline">Comprendre le statut d'apporteur →</Link></div>
-          <div className="mt-6"><TrustSeal /></div>
-        </div>
-      </section>
-       </div>
-          <div className="mt-6"><TrustSeal /></div>
-        </div>
-        <aside className="card-box !p-7 shadow-lg" aria-label="Exemple de dossier">
-          <p className="eyebrow flex items-center gap-2"><span className="live-dot" aria-hidden />Aperçu d'un dossier transmis</p>
-          <h2 className="title-3 mt-3.5">PME industrielle, 48 postes</h2>
-          <p className="body-text text-sm">Transmis par : Cabinet MSP Ouest</p>
-          <div className="my-3 flex flex-wrap gap-2">
-            <span className="pill">Score de priorité : élevé</span>
-            <span className="pill !bg-secondary !text-secondary-foreground">Consentement recueilli</span>
-          </div>
-          <div className="my-4" aria-label="Maturité cyber estimée : 62 %">
-            <div className="flex justify-between text-xs font-semibold text-muted-foreground"><span>Maturité cyber</span><span>62 %</span></div>
-            <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-muted"><div className="h-full w-[62%] rounded-full bg-primary" /></div>
-          </div>
-          <p className="body-text text-sm">Contrôles manquants : sauvegardes testées, MFA sur accès privilégiés.</p>
-          <Link to="/solution" className="text-sm font-semibold text-primary hover:underline">Voir le plan de remédiation →</Link>
-        </aside>
-      </section>
-      </div>
-
       <InsurerMarquee />
 
       <section className="wrap pt-10 lg:pt-14 pb-10 lg:pb-14" aria-label="Chiffres clés"><KeyFigures items={figures} /></section>
