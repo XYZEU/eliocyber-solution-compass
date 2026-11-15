@@ -1,9 +1,9 @@
 - [x] Pages Devenir partenaire, MSSP, ESN, CISO + footer
-- [ ] Recentrer l'accueil et les appels à l'action sur les apporteurs d'affaires.
-- [ ] Réaligner le parcours et la candidature, sans créer de faux compte ou envoi.
-- [ ] Présenter les fonctionnalités comme la suite de l'apporteur.
-- [ ] Ajouter un guide du statut et du cadre réglementaire, avec liens de navigation.
-- [ ] Vérifier les parcours, le menu et le simulateur sur mobile et ordinateur.
+- [x] Recentrer l'accueil et les appels à l'action sur les apporteurs d'affaires.
+- [x] Réaligner le parcours et la candidature, sans créer de faux compte ou envoi.
+- [x] Présenter les fonctionnalités comme la suite de l'apporteur.
+- [x] Ajouter un guide du statut et du cadre réglementaire, avec liens de navigation.
+- [x] Vérifier les parcours, le menu et le simulateur sur mobile et ordinateur.
 - [x] Footer MSSP/ESN/CISO -> /partenaires/*
 - [x] Accès partenaires -> /devenir-partenaire (nouvelle maquette + formulaire)
 - [x] Ressources + livres blancs (formulaire -> PDF)
