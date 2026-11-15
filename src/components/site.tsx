@@ -177,6 +177,11 @@ type FooterLink =
 type FooterGroup = { title: string; links: FooterLink[] };
 
 const footerGroups: FooterGroup[] = [
+  { title: "Usages", links: [
+    { to: "/partenaires/mssp", label: "MSSP et SOC" },
+    { to: "/partenaires/esn", label: "ESN cyber" },
+    { to: "/partenaires/ciso", label: "CISO freelance" },
+  ] },
   { title: "Outils de l’apporteur", links: [
     { to: "/fonctionnalites", label: "Vue d'ensemble" },
     ...fonctionnalites.map((f) => ({ slug: f.slug, label: f.name })),
@@ -237,8 +242,8 @@ export function SiteFooter() {
           <p className="flex items-center gap-3"><Mail className="size-5 shrink-0 text-ink-link" aria-hidden /><span>Réponse sous 2 jours ouvrés.</span></p>
         </div>
       </div>
-      <div className="wrap py-8 md:grid md:grid-cols-[1.3fr_repeat(3,1fr)] md:gap-8 md:py-12">
-        <div className="min-w-0">
+      <div className="wrap py-8 md:grid md:grid-cols-4 md:gap-6 md:py-12 xl:grid-cols-[1.2fr_repeat(4,1fr)]">
+        <div className="min-w-0 md:col-span-4 xl:col-span-1">
           <Link to="/" className="inline-flex min-h-11 items-center rounded-sm focus-visible:ring-2 focus-visible:ring-primary-foreground" aria-label="Eliocyber, accueil"><img src={radarDark} alt="Eliocyber" width={190} height={44} className="h-auto w-[190px] max-w-full" /></Link>
           <p className="mt-2.5 max-w-[300px] md:mt-3">La plateforme de cyberassurance pour apporteurs d'affaires cyber, IT et conformité.</p>
           <address className="mt-2.5 not-italic md:mt-4">
