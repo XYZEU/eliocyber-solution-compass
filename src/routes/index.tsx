@@ -5,7 +5,7 @@ import { InsurerMarquee } from "@/components/insurer-marquee";
 import { CommissionMockup, GaugeMockup, PipelineMockup } from "@/components/ui-mockups";
 import { fonctionnalites } from "@/lib/fonctionnalites";
 import { CommissionSimulator } from "@/components/commission-simulator";
-import { Radar, ClipboardCheck, Send, ShieldCheck, ShieldAlert, Server, Scale, Users, Handshake, BadgeCheck, type LucideIcon } from "lucide-react";
+import { Radar, ClipboardCheck, Send, ShieldCheck, ShieldAlert, Server, Scale, Users, Handshake, BadgeCheck, Check, type LucideIcon } from "lucide-react";
 
 const problemes: [string, string][] = [
   ["Le sujet n’est pas traité", "Votre client reste exposé, et vous passez à côté d’un vrai levier de valeur — sans avoir les moyens de le traiter vous-même."],
@@ -39,6 +39,12 @@ const promesses: [string, string][] = [
   ["Vous suivez, vous êtes rémunéré", "Vous avez le suivi de votre dossier, avec des étapes partageables. Quand le dossier aboutit, vous percevez une commission par type de client assuré."],
 ];
 const promiseIcons: LucideIcon[] = [Users, Handshake, BadgeCheck];
+const changements = [
+  "Votre client est enfin couvert, sans que vous deveniez courtier",
+  "Aucun risque réglementaire, les rôles sont clairs et formalisés",
+  "En cas de sinistre, le pilotage assurance est assuré — votre relation est protégée",
+  "Vous créez un revenu adjacent, sans vendre de services en plus, sans concurrencer qui que ce soit",
+];
 
 function Home() {
   return (
@@ -168,6 +174,27 @@ function Home() {
               <li key={t}><Card icon={stepIcons[i]} eyebrow={`Étape ${i + 1}`} title={t} className="h-full"><p className="body-text text-sm">{d}</p></Card></li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section className="wrap sec lg:py-16" aria-labelledby="concretement">
+        <div className="bg-ink-glow relative overflow-hidden rounded-[24px] p-6 shadow-lg sm:p-8 lg:p-10">
+          <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
+          <div className="relative">
+            <h2 id="concretement" className="font-display text-2xl font-extrabold tracking-tight text-primary-foreground sm:text-[28px]">Ce que la solution change, concrètement</h2>
+            <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+              {changements.map((t) => (
+                <li key={t} className="flex items-start gap-3 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 p-5 backdrop-blur-sm">
+                  <Check className="mt-0.5 size-5 shrink-0 text-ink-link" aria-hidden />
+                  <p className="text-[15px] font-semibold leading-snug text-primary-foreground">{t}</p>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm leading-relaxed text-ink-foreground">Concrètement, comment ça se passe au quotidien ? Voici le parcours en 4 étapes.</p>
+              <Btn to="/comment-ca-marche" onDark className="shrink-0">Voir le fonctionnement →</Btn>
+            </div>
+          </div>
         </div>
       </section>
 
