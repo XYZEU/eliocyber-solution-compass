@@ -213,6 +213,22 @@ function Home() {
         </figure>
       </section>
 
+      <section className="wrap sec" aria-labelledby="h-faq">
+        <p className="eyebrow">Questions fréquentes</p>
+        <h2 id="h-faq" className="title-2">Vos questions</h2>
+        <div className="mt-5 space-y-3">
+          {faq.map(([q, a]) => (
+            <details key={q} className="card-box group">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-foreground">
+                <h3 className="text-[16px]">{q}</h3>
+                <ChevronDown className="size-5 shrink-0 transition-transform group-open:rotate-180" aria-hidden />
+              </summary>
+              <p className="body-text mt-2 !mb-0">{a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
       <CtaBanner title="Prêt à présenter votre premier client ?" text="Sans questionnaire technique. Sans changer de métier." to="/devenir-partenaire" label="Demander ma convention d’apporteur" />
     </>
   );
