@@ -66,8 +66,6 @@ function Home() {
         </aside>
       </section>
       </div>
-      <InsurerMarquee />
-
       <section className="bg-ink-glow relative overflow-hidden" aria-label="Chiffres clés">
         <dl className="wrap grid gap-4 py-10 sm:grid-cols-2 lg:grid-cols-4 lg:py-12">
           {figures.map(([v, l]) => (
@@ -79,6 +77,7 @@ function Home() {
           ))}
         </dl>
       </section>
+      <InsurerMarquee />
 
       <section className="band">
         <div className="wrap sec lg:py-16">
