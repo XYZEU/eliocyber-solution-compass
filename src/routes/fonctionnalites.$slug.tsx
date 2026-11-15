@@ -1,12 +1,15 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { faqJsonLd } from "@/lib/seo";
 import { seo } from "@/lib/seo";
 import { Check, ChevronDown } from "lucide-react";
 import { Card, CtaBanner } from "@/components/site";
-import { findFonctionnalite, fonctionnalites } from "@/lib/fonctionnalites";
+import { coreModules, findFonctionnalite, fonctionnalites } from "@/lib/fonctionnalites";
 
 export const Route = createFileRoute("/fonctionnalites/$slug")({
   loader: ({ params }) => {
+    if (coreModules.some((module) => module.legacySlug === params.slug)) {
+      throw redirect({ to: "/fonctionnalites", hash: "modules", statusCode: 301 });
+    }
     const f = findFonctionnalite(params.slug);
     if (!f) throw notFound();
     return f;

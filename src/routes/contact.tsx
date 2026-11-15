@@ -58,7 +58,7 @@ function Page() {
         <p className="body-text mt-4 text-sm">
           {profil === "partenaire"
             ? <>Avant de nous écrire, découvrez <Link to="/comment-ca-marche" className="font-semibold text-primary hover:underline">les 6 étapes du parcours partenaire</Link>.</>
-            : <>Découvrez d'abord <Link to="/solution" className="font-semibold text-primary hover:underline">les garanties que nous proposons</Link>.</>}
+            : <>Découvrez d'abord <Link to="/fonctionnalites" hash="modules" className="font-semibold text-primary hover:underline">les modules qui accompagnent votre dossier</Link>.</>}
         </p>
       </section>
 

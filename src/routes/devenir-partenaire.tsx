@@ -26,6 +26,12 @@ const profiles = [
   { to: "/partenaires/ciso", label: "CISO freelance" },
 ] as const;
 
+const families = [
+  ["Cyber", "MSSP, SOC, ESN cyber", "CISO freelance, experts forensic, pentesters.", ["Incident de sécurité", "Audit de maturité ou pentest", "Déploiement EDR ou MFA"]],
+  ["IT", "MSP, DSI externes", "Intégrateurs et prestataires cloud ou télécom.", ["Gestion du parc et QBR", "Renouvellement d'infrastructure", "Migration cloud"]],
+  ["Conformité", "DPO, avocats, experts-comptables", "Consultants NIS2, DORA ou ISO 27001, DAF externes.", ["Audit RGPD ou litige", "Revue annuelle et budget", "Gestion des risques"]],
+] as const;
+
 function Page() {
   return (
     <>
@@ -39,6 +45,16 @@ function Page() {
           {profiles.map((p, i) => <span key={p.to}>{i > 0 && " · "}<Link to={p.to} className="text-primary hover:underline">{p.label}</Link></span>)}
         </p>
       </div>
+
+      <section id="profils" className="band scroll-mt-28" aria-labelledby="familles">
+        <div className="wrap sec">
+          <h2 id="familles" className="title-2">Trois familles de partenaires</h2>
+          <p className="body-text">Indépendants et sociétés cyber, IT ou conformité : votre candidature est examinée selon votre activité et les règles professionnelles qui s’appliquent à votre métier.</p>
+          <div className="mt-5 grid gap-5 md:grid-cols-3">
+            {families.map(([eyebrow, title, who, triggers]) => <Card key={eyebrow} eyebrow={eyebrow} title={title} className="h-full"><p className="body-text">{who}</p><h4 className="mb-2 mt-4 text-[13px] font-semibold">Déclencheurs types</h4><ul className="flex flex-wrap gap-2">{triggers.map((trigger) => <li key={trigger} className="pill">{trigger}</li>)}</ul></Card>)}
+          </div>
+        </div>
+      </section>
 
       <section className="band" aria-labelledby="parcours">
         <div className="wrap sec">
@@ -64,14 +80,18 @@ function Page() {
           <div className="mt-5 grid gap-5 md:grid-cols-2">
             <Card title="Vous pouvez">
               <ul className="mt-3 space-y-2 text-muted-foreground">
-                {["Détecter un besoin", "Expliquer qu'un courtier spécialisé peut accompagner", "Recueillir le consentement", "Transmettre le dossier", "Suivre son avancement"].map((x) => <li key={x} className="flex gap-2"><Check className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />{x}</li>)}
+                {["Détecter un besoin", "Expliquer qu'un courtier spécialisé peut accompagner", "Recueillir le consentement", "Transmettre un dossier structuré", "Suivre son avancement"].map((x) => <li key={x} className="flex gap-2"><Check className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />{x}</li>)}
               </ul>
             </Card>
             <Card title="Vous ne pouvez pas">
               <ul className="mt-3 space-y-2 text-muted-foreground">
-                {["Conseiller une couverture", "Présenter une police", "Promettre un prix ou une garantie", "Signer un devis"].map((x) => <li key={x} className="flex gap-2"><X className="mt-0.5 size-4 shrink-0 text-destructive" aria-hidden /><span><span className="sr-only">Interdit : </span>{x}</span></li>)}
+                {["Conseiller une couverture", "Présenter ou recommander un contrat", "Annoncer un prix ou une garantie", "Signer un devis"].map((x) => <li key={x} className="flex gap-2"><X className="mt-0.5 size-4 shrink-0 text-destructive" aria-hidden /><span><span className="sr-only">Interdit : </span>{x}</span></li>)}
               </ul>
             </Card>
+          </div>
+          <div className="mt-6 border-t border-border pt-5">
+            <h3 className="title-3">Ce que fait le courtier</h3>
+            <ul className="mt-3 grid gap-2 text-muted-foreground sm:grid-cols-2">{["Recueil des besoins et conseil", "Sélection de l’assureur", "Souscription du contrat", "Suivi du contrat et gestion du sinistre"].map((item) => <li key={item} className="flex gap-2"><Check className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />{item}</li>)}</ul>
           </div>
           <p className="mt-5 font-semibold text-primary">Un lead, un apporteur, une commission</p>
         </div>
@@ -91,7 +111,7 @@ function ApplicationForm() {
         <p className="eyebrow">Candidature partenaire</p>
         <h2 id="cand-title" className="title-2">Prêt à transmettre votre premier dossier ?</h2>
         <p className="body-text">Présentez votre profil. Nous étudions votre candidature, précisons les conditions de la convention et la formation obligatoire avant votre premier apport.</p>
-        <p className="body-text text-sm">Découvrez d'abord <Link to="/nos-partenaires" className="font-semibold text-primary hover:underline">tous les profils partenaires</Link>.</p>
+        <p className="body-text text-sm">Découvrez d'abord <Link to="/devenir-partenaire" hash="profils" className="font-semibold text-primary hover:underline">tous les profils partenaires</Link>.</p>
       </div>
       <div className="card-box">
         {sent ? (

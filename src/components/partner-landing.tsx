@@ -147,7 +147,7 @@ export function PartnerLanding({ d }: { d: LandingData }) {
       </section>
 
       <div className="pt-14" />
-      <CtaBanner title={d.finalTitle} text={d.finalText} to="/devenir-partenaire" label={d.cta} secondary={{ to: "/nos-partenaires", label: "Tous les partenaires" }} />
+      <CtaBanner title={d.finalTitle} text={d.finalText} to="/devenir-partenaire" label={d.cta} secondary={{ to: "/devenir-partenaire", hash: "profils", label: "Tous les partenaires" }} />
     </>
   );
 }

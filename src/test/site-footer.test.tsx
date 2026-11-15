@@ -121,20 +121,20 @@ describe("Footer accordions — Escape", () => {
 
 describe("Footer links — states", () => {
   it("marks the current page link with aria-current and underline", async () => {
-    await renderFooter("/fonctionnalites/portail-msp");
-    const current = screen.getAllByRole("link", { name: "Portail MSP", hidden: true });
+    await renderFooter("/fonctionnalites/attirer-vos-clients");
+    const current = screen.getAllByRole("link", { name: "Attirer vos clients", hidden: true });
     expect(current.length).toBeGreaterThan(0);
     for (const l of current) {
       expect(l).toHaveAttribute("aria-current", "page");
       expect(l.className).toContain("underline");
     }
-    for (const l of screen.getAllByRole("link", { name: "Moteur de risque", hidden: true }))
+    for (const l of screen.getAllByRole("link", { name: "Suivre vos prospects", hidden: true }))
       expect(l).not.toHaveAttribute("aria-current");
   });
 
   it("links carry hover and visible focus styles", async () => {
     await renderFooter();
-    const link = screen.getAllByRole("link", { name: "Portail MSP", hidden: true })[0]!;
+    const link = screen.getAllByRole("link", { name: "Attirer vos clients", hidden: true })[0]!;
     expect(link.className).toMatch(/hover:underline/);
     expect(link.className).toMatch(/focus-visible:ring-2/);
   });

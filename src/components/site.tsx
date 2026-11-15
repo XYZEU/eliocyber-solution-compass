@@ -1,18 +1,16 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { fonctionnalites } from "@/lib/fonctionnalites";
-import { Activity, BookOpen, ChevronDown, Coins, Cpu, Gauge, LayoutGrid, LifeBuoy, Mail, MapPin, Menu, Phone, QrCode, Server, ShieldCheck, UserRound, Wrench, X, type LucideIcon } from "lucide-react";
+import { Activity, BookOpen, ChevronDown, Coins, LayoutGrid, LifeBuoy, Mail, MapPin, Menu, Phone, QrCode, ShieldCheck, X, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import radarLight from "@/assets/eliocyber-logo-radar-clair.svg";
 import radarDark from "@/assets/eliocyber-logo-radar-sombre.svg";
 
 
 const partnerFeatures = fonctionnalites.filter((f) => f.group === "partenaire");
-const coreFeatures = fonctionnalites.filter((f) => !f.group);
 
 const featureIcons: Record<string, LucideIcon> = {
   "attirer-vos-clients": QrCode, "suivre-vos-prospects": Activity, "etre-paye-sans-effort": Coins, "agir-en-cas-de-crise": LifeBuoy, "conformite-et-securite": ShieldCheck,
-  "portail-msp": Server, "moteur-de-souscription": Cpu, "moteur-de-risque": Gauge, "module-de-remediation": Wrench, "portail-client": UserRound,
 };
 
 function onMenuKeyDown(e: React.KeyboardEvent<HTMLElement>) {
@@ -61,7 +59,11 @@ function FeaturesMenu({ onNavigate }: { onNavigate: () => void }) {
             </Link>
           </li>
         ))}
-        {col("Cœur de plateforme et souscription", coreFeatures)}
+        <div className="min-w-0 border-t border-border pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
+          <p className="eyebrow mb-2">Cœur de plateforme et souscription</p>
+          <p className="body-text text-sm">Suivi technique, souscription et démarches du client : les modules qui soutiennent vos recommandations et le travail du courtier.</p>
+          <Link data-menu-item to="/fonctionnalites" hash="modules" onClick={onNavigate} className={item}><span className={chip}><LayoutGrid className="size-4" aria-hidden /></span><span className="text-sm font-semibold text-primary">Découvrir les modules dans la vue d’ensemble →</span></Link>
+        </div>
       </div>
       <Link data-menu-item to="/cadre-apporteur" onClick={onNavigate} className="bg-ink-glow group relative mt-4 flex items-center gap-3 overflow-hidden rounded-lg px-4 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
         <span aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
@@ -97,10 +99,10 @@ function DesktopFeatures() {
   );
 }
 
-type BtnTo = "/contact" | "/comment-ca-marche" | "/nos-partenaires" | "/solution" | "/devenir-partenaire";
+type BtnTo = "/contact" | "/comment-ca-marche" | "/devenir-partenaire";
 export type Profil = "entreprise" | "partenaire";
 
-export function Btn({ to, children, ghost, className, profil, onDark }: { to: BtnTo; children: ReactNode; ghost?: boolean; className?: string; profil?: Profil | undefined; onDark?: boolean }) {
+export function Btn({ to, children, ghost, className, profil, onDark, hash }: { to: BtnTo; children: ReactNode; ghost?: boolean; className?: string; profil?: Profil | undefined; onDark?: boolean; hash?: string }) {
   const cls = cn(
         "inline-flex items-center justify-center rounded-lg px-5 py-3 text-[15px] font-semibold shadow-sm transition-all hover:-translate-y-px",
         ghost && onDark
@@ -111,7 +113,7 @@ export function Btn({ to, children, ghost, className, profil, onDark }: { to: Bt
         className,
       );
   if (to === "/contact") return <Link to="/contact" search={profil ? { profil } : {}} className={cls}>{children}</Link>;
-  return <Link to={to} className={cls}>{children}</Link>;
+  return <Link to={to} hash={hash} className={cls}>{children}</Link>;
 }
 
 export function SiteHeader() {
@@ -155,14 +157,13 @@ export function SiteHeader() {
 
 type FooterLink =
   | { label: string; to: "/contact"; search: { profil: Profil } }
-  | { label: string; to: "/solution" | "/comment-ca-marche" | "/a-propos" | "/fonctionnalites" | "/ressources" | "/nos-partenaires" | "/devenir-partenaire" | "/partenaires/mssp" | "/partenaires/esn" | "/partenaires/ciso" | "/cadre-apporteur" }
+  | { label: string; to: "/comment-ca-marche" | "/a-propos" | "/fonctionnalites" | "/ressources" | "/devenir-partenaire" | "/partenaires/mssp" | "/partenaires/esn" | "/partenaires/ciso" | "/cadre-apporteur" }
   | { label: string; slug: string };
 
 type FooterGroup = { title: string; links: FooterLink[] };
 
 const footerGroups: FooterGroup[] = [
   { title: "Découvrir", links: [
-    { to: "/solution", label: "La cyberassurance de vos clients" },
     { to: "/fonctionnalites", label: "Vue d'ensemble" },
     { to: "/comment-ca-marche", label: "Comment ça marche" },
     { to: "/ressources", label: "Ressources et livres blancs" },
@@ -174,10 +175,9 @@ const footerGroups: FooterGroup[] = [
     { to: "/partenaires/mssp", label: "MSSP et SOC" },
     { to: "/partenaires/esn", label: "ESN cyber" },
     { to: "/partenaires/ciso", label: "CISO freelance" },
-    { to: "/nos-partenaires", label: "Tous les partenaires" },
     { to: "/devenir-partenaire", label: "Devenir apporteur d’affaires" },
   ] },
-  { title: "Plateforme", links: fonctionnalites.filter((f) => !f.group).map((f) => ({ slug: f.slug, label: f.name })) },
+  { title: "Plateforme", links: fonctionnalites.map((f) => ({ slug: f.slug, label: f.name })) },
 ];
 
 const fLink = "text-ink-link underline-offset-4 transition-colors hover:text-primary-foreground hover:underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/80 focus-visible:ring-offset-2 focus-visible:ring-offset-ink active:text-primary-foreground active:underline";
@@ -324,7 +324,7 @@ export function Card({ eyebrow, title, children, className, icon: Icon }: { eyeb
   );
 }
 
-export function CtaBanner({ title, text, to, label, profil, secondary }: { title: string; text: string; to: BtnTo; label: string; profil?: Profil; secondary?: { to: BtnTo; label: string; profil?: Profil | undefined } }) {
+export function CtaBanner({ title, text, to, label, profil, secondary }: { title: string; text: string; to: BtnTo; label: string; profil?: Profil; secondary?: { to: BtnTo; hash?: string; label: string; profil?: Profil | undefined } }) {
   return (
     <section className="wrap pb-14">
       <div className="bg-ink-glow relative flex flex-col items-start justify-between gap-6 overflow-hidden rounded-2xl px-6 py-8 shadow-lg sm:flex-row sm:items-center sm:px-10 sm:py-10">
@@ -335,7 +335,7 @@ export function CtaBanner({ title, text, to, label, profil, secondary }: { title
           <p className="mt-2 max-w-[560px] text-ink-foreground">{text}</p>
         </div>
         <div className="relative flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:shrink-0">
-          {secondary && <Btn to={secondary.to} profil={secondary.profil} ghost onDark>{secondary.label}</Btn>}
+          {secondary && <Btn to={secondary.to} hash={secondary.hash} profil={secondary.profil} ghost onDark>{secondary.label}</Btn>}
           <Btn to={to} profil={profil}>{label}</Btn>
         </div>
       </div>

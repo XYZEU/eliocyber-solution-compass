@@ -14,3 +14,5 @@
 - [x] Open Graph adaptés Ressources + Fonctionnalités
 - [x] Workflow GitHub Actions -> xyzeu.github.io/eliocyber-solution-compass/ (base path + prérendu statique + deploy.yml)
 - [x] Logo radar : SVG transparents clair/sombre, intégration header/footer, favicon et vérification mobile/ordinateur.
+
+- [ ] Retirer Solution, fusionner Nos partenaires dans Devenir partenaire et résumer les modules techniques sans pages dédiées ; vérifier liens et redirections.
