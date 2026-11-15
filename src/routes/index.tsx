@@ -43,6 +43,10 @@ function Home() {
             <Btn to="/comment-ca-marche" ghost>Découvrir le parcours</Btn>
           </div>
           <div className="mt-6"><Link to="/cadre-apporteur" className="text-sm font-semibold text-primary hover:underline">Comprendre le statut d'apporteur →</Link></div>
+          <div className="mt-6"><TrustSeal /></div>
+        </div>
+      </section>
+      </div>
       <InsurerMarquee />
 
       <section className="wrap pt-10 lg:pt-14 pb-10 lg:pb-14" aria-label="Chiffres clés"><KeyFigures items={figures} /></section>
