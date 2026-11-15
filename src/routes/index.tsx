@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { seo, faqJsonLd } from "@/lib/seo";
 import { Btn, Card, CtaBanner, TrustSeal } from "@/components/site";
 import { InsurerMarquee } from "@/components/insurer-marquee";
-import { ShieldAlert, Server, Scale, Check, FileCheck2, Handshake, Activity, Layers, Code2, ArrowRight, ChevronDown, type LucideIcon } from "lucide-react";
+import { ShieldAlert, Server, Scale, Check, Layers, Code2, ArrowRight, ChevronDown, type LucideIcon } from "lucide-react";
 import { ClientPreview, PartnerJourney } from "@/components/home-product";
 
 const problemes: [string, string][] = [
@@ -36,7 +36,6 @@ const promesses: [string, string][] = [
   ["Nous faisons le courtage, en co-branding", "Eliocyber prend en charge le conseil, l’étude des besoins, la présentation des contrats et le suivi. Votre marque reste visible aux côtés de la nôtre, votre client ne vous perd jamais de vue."],
   ["Vous suivez, vous êtes rémunéré", "Vous avez le suivi de votre dossier, avec des étapes partageables. Quand le dossier aboutit, vous percevez une commission par type de client assuré."],
 ];
-const figureIcons = [FileCheck2, Handshake, Activity];
 const changements = [
   "Votre client est enfin couvert, sans que vous deveniez courtier",
   "Aucun risque réglementaire, les rôles sont clairs et formalisés",
