@@ -388,7 +388,7 @@ export function TrustSeal() {
   return (
     <div className="inline-flex max-w-full flex-wrap items-center gap-x-4 gap-y-2 rounded-xl border border-border bg-card px-4 py-3 text-[13px] text-muted-foreground shadow-sm">
       <span className="icon-chip !size-8"><ShieldCheck className="size-4" aria-hidden /></span>
-      <span className="whitespace-nowrap"><strong className="text-foreground">Courtier ORIAS</strong> n° [XXX]</span>
+      <span className="whitespace-nowrap"><strong className="text-foreground">Courtier ORIAS</strong> n°22004647</span>
       <span aria-hidden className="hidden h-4 w-px bg-border sm:block" />
       <span className="whitespace-nowrap">Contrôle ACPR</span>
       <span aria-hidden className="hidden h-4 w-px bg-border sm:block" />
