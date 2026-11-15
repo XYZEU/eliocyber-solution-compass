@@ -7,6 +7,14 @@ import { fonctionnalites } from "@/lib/fonctionnalites";
 import { CommissionSimulator } from "@/components/commission-simulator";
 import { Radar, ClipboardCheck, Send, ShieldCheck, ShieldAlert, Server, Scale, type LucideIcon } from "lucide-react";
 
+const problemes: [string, string][] = [
+  ["Le sujet n’est pas traité", "Votre client reste exposé, et vous passez à côté d’un vrai levier de valeur — sans avoir les moyens de le traiter vous-même."],
+  ["La mise en relation « bricolée »", "Sans cadre, c’est un risque réglementaire pour vous, un flou sur les rôles pour votre client, et aucun suivi."],
+  ["La confiance entamée en cas de sinistre", "Si un piratage survient et que rien n’était prévu, c’est votre relation de confiance qui est touchée en premier."],
+  ["Des interventions non prises en charge", "Sans pilotage assurance, certaines interventions peuvent ne pas être couvertes — même si votre client est assuré."],
+  ["Des assureurs qui vendent vos services", "Certaines assurances cyber vendent des services cyber. Elles deviennent, de fait, vos concurrentes."],
+];
+
 export const Route = createFileRoute("/")({
   head: () => seo("/", "Eliocyber — Plateforme de cyberassurance pour apporteurs d’affaires", "Recommandez vos clients, suivez vos dossiers et vos commissions. Eliocyber, la plateforme de cyberassurance des professionnels cyber, IT et conformité."),
   component: Home,
@@ -76,6 +84,29 @@ function Home() {
             </div>
           ))}
         </dl>
+      </section>
+      <section className="bg-ink-glow relative overflow-hidden border-t border-primary-foreground/10" aria-labelledby="pourquoi">
+        <div className="wrap py-12 lg:py-16">
+          <p className="inline-flex rounded-full border border-primary-foreground/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-ink-link">Le problème que nous réglons</p>
+          <h2 id="pourquoi" className="mt-4 font-display text-3xl font-extrabold tracking-tight text-primary-foreground sm:text-4xl">Pourquoi Eliocyber Pro existe</h2>
+          <p className="mt-3 max-w-[60ch] text-[17px] leading-7 text-ink-foreground">Le besoin d’assurance cyber apparaît chez vos clients. Aujourd’hui, vous n’avez aucun moyen simple, conforme et non concurrentiel de le traiter.</p>
+          <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {problemes.map(([t, d], i) => (
+              <li key={t} className="card-hover rounded-2xl bg-card p-5 shadow-[var(--shadow-soft)]">
+                <span className="font-display text-sm font-bold text-primary">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="mt-3 font-display text-[17px] font-bold leading-snug text-foreground">{t}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
+              </li>
+            ))}
+          </ol>
+          <div className="mt-6 flex flex-col gap-5 rounded-2xl border border-ink-link/40 bg-primary-foreground/5 p-6 md:flex-row md:items-center md:justify-between lg:p-8">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-link">La réponse Eliocyber Pro</p>
+              <p className="mt-2 max-w-[62ch] text-lg font-semibold leading-snug text-primary-foreground">Vous présentez le client. Nous faisons le courtage. Vous restez le prestataire de confiance. Nous restons le courtier. Personne ne marche sur le métier de l’autre.</p>
+            </div>
+            <Btn to="/devenir-partenaire" onDark className="shrink-0">Ouvrir un compte Pro — gratuit →</Btn>
+          </div>
+        </div>
       </section>
       <InsurerMarquee />
 
