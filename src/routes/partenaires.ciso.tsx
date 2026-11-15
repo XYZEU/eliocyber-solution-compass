@@ -9,7 +9,7 @@ const d: LandingData = {
   h1: "CISO freelance",
   intro: "Vous pilotez la sécurité de plusieurs entreprises. Quand le comité de direction demande « et si ça arrivait demain ? », vous pouvez ouvrir un dossier d'assurance cyber, transmis à un courtier spécialisé.",
   cta: "Devenir apporteur d’affaires",
-  visual: { label: "Au comité de direction", title: "« Votre roadmap prévoit quatre chantiers. Le dossier d'assurance couvre le risque résiduel. »", text: "Le dossier pré-qualifié est transmis au courtier, qui conseille le dirigeant." },
+  visual: { label: "Au comité de direction", title: "Diagnostic et roadmap", text: "Le dossier pré-qualifié est transmis au courtier, qui conseille le dirigeant.", items: ["Diagnostic documenté", "Roadmap jointe"] },
   problemTitle: "Le risque résiduel reste à la charge de l'entreprise",
   problems: [
     ["Une roadmap sans filet", "Vos chantiers réduisent le risque, mais un incident peut survenir avant qu'ils soient achevés."],
@@ -26,7 +26,10 @@ const d: LandingData = {
   services: [["Tableau de gouvernance", "Une vue consolidée des contrôles, des priorités et de leur avancement."], ["Dossier pour le comité", "Preuves, historique et plan de remédiation prêts à présenter."], ["Suivi documenté", "Chaque dossier est tracé, utile pour vos rapports au comité."]],
   offerTitle: "Un revenu complémentaire, sans rôle d'intermédiaire",
   offerText: "Une commission unique selon la convention, après souscription, prime encaissée et délai de rétractation dépassé. Vous ne conseillez pas l'assurance : le courtier s'en charge.",
-  testimonialsTitle: "Ce que disent nos partenaires",
+  useCases: [
+    ["Lors d’un comité de direction", "Le CISO présente les risques résiduels et les priorités de sécurité. Avec l’accord du dirigeant, il organise une mise en relation avec un courtier spécialisé, sans présenter de garantie ni annoncer de prix."],
+    ["À la revue de la roadmap", "Le CISO rassemble le diagnostic, les contrôles et les actions prévues pour une entreprise qu’il accompagne. Le courtier étudie les besoins d’assurance ; le CISO conserve son rôle de référent technique et suit le dossier transmis."],
+  ],
   faq: [
     ["Puis-je présenter une garantie à mon dirigeant ?", "Non. Vous informez et transmettez. La présentation des garanties relève du courtier."],
     ["Ma responsabilité est-elle engagée sur le contrat ?", "Le conseil, la souscription et la gestion du contrat relèvent du courtier. Vous restez responsable de vos propres actes et du respect des limites de votre rôle."],

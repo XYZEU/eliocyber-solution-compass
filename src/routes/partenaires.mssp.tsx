@@ -26,7 +26,10 @@ const d: LandingData = {
   services: [["Tableau de bord multi-clients", "Portefeuille, statut d'assurabilité, échéances et actions prioritaires."], ["Dossier de souscription pré-rempli", "Généré à partir de vos données, exportable ou transmis au courtier."], ["Reporting client", "Preuve de l'amélioration de la posture, utile pour les QBR et les renouvellements."]],
   offerTitle: "Une commission simple, versée au dossier",
   offerText: "Un lead, un apporteur, une commission. Une rémunération unique selon la convention, après souscription, prime encaissée et délai de rétractation dépassé.",
-  testimonialsTitle: "Ils ont franchi le pas",
+  useCases: [
+    ["Après une revue de sécurité", "Un MSSP identifie des contrôles à renforcer lors d’une revue client. Avec son consentement, il transmet les constats au courtier et suit le dossier, sans recommander de contrat."],
+    ["Lors d’un point de suivi SOC", "Le SOC documente les incidents et les mesures correctives. Si le client souhaite explorer la cyberassurance, le partenaire organise la mise en relation ; le courtier évalue ses besoins et présente les garanties."],
+  ],
   faq: [
     ["Devenons-nous courtiers ?", "Non. Vous apportez des affaires. Vous ne conseillez pas, ne présentez pas de police et ne signez rien."],
     ["Faut-il suivre une formation ?", "Oui, une courte formation obligatoire, pour que chacun reste dans son rôle."],

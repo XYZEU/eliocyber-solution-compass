@@ -30,6 +30,7 @@ use the editor.
 <!-- LOVABLE:END -->
 - Shared header/footer/cards live in src/components/site.tsx and wrap every page from __root; each page sets SEO via its seo() helper so canonical/OG stay consistent.
 - Partner landing pages (/partenaires/*) share src/components/partner-landing.tsx driven by a per-page data object; the commission grid lives in src/lib/commission.ts so all pages show the same values.
+- Partner dashboard previews share the landing template and use per-page illustrative use cases, keeping the three profession pages consistent without inventing customer testimonials.
 - Content collections (livres blancs, fonctionnalités) live as typed arrays in src/lib/*.ts and render through one $slug route each; the sitemap reads the same arrays.
 - Only introducer tools have feature detail pages; core modules are summaries on the overview, and their legacy URLs redirect there to preserve published links.
 - Retired Solution and Nos partenaires URLs permanently redirect to overview modules and partner profiles respectively; internal navigation and the sitemap use only active destinations.
