@@ -3,7 +3,6 @@ import { seo } from "@/lib/seo";
 import { Btn, Card, TrustSeal } from "@/components/site";
 import { InsurerMarquee } from "@/components/insurer-marquee";
 import { CommissionMockup, GaugeMockup, PipelineMockup } from "@/components/ui-mockups";
-import { fonctionnalites } from "@/lib/fonctionnalites";
 import { CommissionSimulator } from "@/components/commission-simulator";
 import { Radar, ClipboardCheck, Send, ShieldCheck, ShieldAlert, Server, Scale, Users, Handshake, BadgeCheck, Check, type LucideIcon } from "lucide-react";
 
@@ -264,13 +263,6 @@ function Home() {
         </div>
       </section>
 
-      <section className="band" aria-labelledby="outils"><div className="wrap sec">
-        <p className="eyebrow">La suite de l'apporteur</p>
-        <h2 id="outils" className="title-2">De la recommandation à la gestion de crise</h2>
-        <ul className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {fonctionnalites.filter((f) => f.group === "partenaire").map((f) => <li key={f.slug} className="card-box flex flex-col"><h3 className="title-3">{f.name}</h3><p className="body-text flex-1">{f.summary}</p><Link to="/fonctionnalites/$slug" params={{ slug: f.slug }} className="mt-2 font-semibold text-primary hover:underline">Découvrir →</Link></li>)}
-        </ul>
-      </div></section>
       <section className="wrap sec lg:py-16">
         <p className="eyebrow">Qui peut nous rejoindre</p>
         <h2 className="title-2 lg:!text-[28px]">Une plateforme pour les experts de leurs clients</h2>
