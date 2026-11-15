@@ -38,3 +38,4 @@ use the editor.
 - Component files (src/components/*.tsx) export only React components; head/SEO helpers (seo, faqJsonLd) live in src/lib/seo.ts so Fast Refresh never invalidates the root layout and crashes open tabs.
 
 - Keep introducer role permissions and onboarding stages in src/lib/apporteur.ts, shared with the public guide and tests, to prevent conflicting regulatory boundaries across pages.
+- Navigation links to the shared commission simulator use /devenir-partenaire#simulateur; keep this anchor on the simulator so header and footer accesses land on the actual tool.

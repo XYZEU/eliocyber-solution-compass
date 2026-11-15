@@ -152,7 +152,7 @@ export function SiteHeader() {
             Fonctionnalités <ChevronDown className={cn("transition-transform", featOpen && "rotate-180")} aria-hidden />
           </Button>
           {featOpen && <div id="menu-mobile-features" className="fade-in-up -mx-3 pb-2"><FeaturesMenu onNavigate={closeMenu} /></div>}
-          {navLinks.map((link) => <Link key={link.to} to={link.to} hash={link.hash} onClick={closeMenu} className={cn(navStyle, "border-t border-border py-3")} activeProps={{ className: "text-primary font-semibold" }}>{link.label}</Link>)}
+          {navLinks.map((link) => <Link key={link.to} to={link.to} onClick={closeMenu} className={cn(navStyle, "border-t border-border py-3")} activeProps={{ className: "text-primary font-semibold" }}>{link.label}</Link>)}
           <span onClick={closeMenu} className="mt-3"><Btn to="/devenir-partenaire" className="w-full">Devenir apporteur</Btn></span>
         </nav>
       )}
@@ -197,7 +197,7 @@ const groupAnchor = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g
 function FooterLinkItem({ link, className, onClick }: { link: FooterLink; className: string; onClick?: () => void }) {
   if ("search" in link) return <Link to="/contact" search={link.search} onClick={onClick} className={className} activeProps={linkActive}>{link.label}</Link>;
   if ("slug" in link) return <Link to="/fonctionnalites/$slug" params={{ slug: link.slug }} onClick={onClick} className={className} activeProps={linkActive}>{link.label}</Link>;
-  return <Link to={link.to} hash={link.hash} onClick={onClick} className={className} activeProps={linkActive}>{link.label}</Link>;
+  return <Link to={link.to} {...(link.hash ? { hash: link.hash } : {})} onClick={onClick} className={className} activeProps={linkActive}>{link.label}</Link>;
 }
 
 function onAccordionKeyDown(e: React.KeyboardEvent<HTMLElement>, close: () => void) {
