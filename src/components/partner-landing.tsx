@@ -61,8 +61,8 @@ export function PartnerLanding({ d }: { d: LandingData }) {
           </div>
           <p className="body-text w-full max-w-[60ch] text-[17px] leading-7">{d.intro}</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <Link to="/devenir-partenaire" hash="candidature" className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground hover:bg-primary/90">{d.cta}</Link>
-            <a href="#offre" className="inline-flex items-center justify-center rounded-lg border-[1.5px] border-primary px-5 py-3 text-[15px] font-semibold text-primary hover:bg-primary-soft">Voir l'offre</a>
+            <Btn to="/devenir-partenaire" hash="candidature">{d.cta}</Btn>
+            <Btn href="#offre" ghost>Voir l'offre</Btn>
           </div>
         </div>
         <PartnerDashboard visual={d.visual} />

@@ -107,16 +107,18 @@ function DesktopFeatures() {
 type BtnTo = "/contact" | "/comment-ca-marche" | "/devenir-partenaire";
 export type Profil = "entreprise" | "partenaire";
 
-export function Btn({ to, children, ghost, className, profil, onDark, hash }: { to: BtnTo; children: ReactNode; ghost?: boolean; className?: string; profil?: Profil | undefined; onDark?: boolean; hash?: string }) {
+export function Btn({ to, href, children, ghost, className, profil, onDark, hash }: { children: ReactNode; ghost?: boolean; className?: string; profil?: Profil | undefined; onDark?: boolean; hash?: string } & ({ to: BtnTo; href?: never } | { href: `#${string}`; to?: never })) {
   const cls = cn(
-        "inline-flex items-center justify-center rounded-lg px-5 py-3 text-[15px] font-semibold shadow-sm transition-all hover:-translate-y-px",
+        "inline-flex min-h-11 items-center justify-center rounded-lg px-5 py-3 text-[15px] font-semibold shadow-sm transition-all hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         ghost && onDark
           ? "border-[1.5px] border-ink-foreground/40 text-primary-foreground shadow-none hover:bg-ink-foreground/10"
           : ghost
           ? "border-[1.5px] border-primary text-primary shadow-none hover:bg-primary-soft"
           : "bg-primary text-primary-foreground hover:bg-primary/90",
+        onDark && "focus-visible:ring-primary-foreground focus-visible:ring-offset-ink",
         className,
       );
+  if (href !== undefined) return <a href={href} className={cls}>{children}</a>;
   if (to === "/contact") return <Link to="/contact" search={profil ? { profil } : {}} className={cls}>{children}</Link>;
   return <Link to={to} {...(hash ? { hash } : {})} className={cls}>{children}</Link>;
 }
