@@ -1,3 +1,4 @@
+- [x] Accueil : bloc trois cartes « Vous présentez / Nous faisons le courtage / Vous suivez » sous « La solution », avant les logos assureurs ; vérifier mobile et ordinateur.
 - [x] Harmoniser l’espacement entre les blocs « Le problème » et « La solution » de l’accueil ; vérifier mobile et ordinateur.
 - [x] Pages métiers : aperçu de dossier, accès au simulateur et cas d’usage illustratifs ; vérifier mobile et ordinateur.
 - [x] Harmoniser les liens d’action des cas d’usage sur les trois pages métiers (même libellé, même style, même destination).
