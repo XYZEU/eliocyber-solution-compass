@@ -93,20 +93,6 @@ function Home() {
         <ClientPreview />
       </section>
       </div>
-      <section className="bg-ink-glow relative overflow-hidden" aria-label="Chiffres clés">
-        <dl className="wrap grid gap-5 py-6 sm:grid-cols-3 sm:py-8">
-          {figures.map(([v, l], i) => {
-            const Icon = figureIcons[i] ?? Activity;
-            return (
-            <div key={v} className="group flex items-center gap-4 rounded-lg border border-ink-foreground/20 px-6 py-5 transition-colors hover:border-ink-link/60">
-              <Icon className="size-6 shrink-0 text-ink-link" aria-hidden />
-              <div><dt className="sr-only">{l}</dt>
-              <dd className="font-display text-[26px] font-extrabold text-ink-link">{v}</dd>
-              <dd className="mt-1 text-sm leading-snug text-ink-foreground">{l}</dd></div>
-            </div>
-          );})}
-        </dl>
-      </section>
       <section className="bg-ink-glow relative overflow-hidden border-t border-primary-foreground/10" aria-labelledby="pourquoi">
         <div className="wrap sec">
           <p className="eyebrow !text-ink-link">Le problème que nous réglons</p>
