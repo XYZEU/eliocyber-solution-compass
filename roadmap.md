@@ -33,3 +33,5 @@
 - [x] Bloc « Comment ça marche » (parcours en 4 étapes) retiré de l'accueil ; la page dédiée /comment-ca-marche reste accessible depuis le bouton « Voir le fonctionnement »
 - [x] Bloc « Vos recommandations, vos dossiers, vos commissions » (aperçus + simulateur) retiré de l'accueil ; simulateur conservé sur /devenir-partenaire#simulateur
 - [x] Accueil : bloc final « Prêt à présenter votre premier client ? » (CTA Ouvrir un compte Pro) en bas de page ; vérifier mobile et ordinateur.
+- [x] Archive ZIP du code source des pages Vue d'ensemble + 5 sous-pages livrée dans Files
+- [x] Export PDF des 6 pages Vue d'ensemble + 5 sous-pages, vérifié page par page, ZIP dans Files
